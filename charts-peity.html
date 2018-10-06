@@ -2,7 +2,10 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,22 +16,20 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    <link rel="stylesheet" href="assets/scss/style.css">
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
 </head>
+
 <body>
-        <!-- Left Panel -->
+    <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
@@ -143,37 +144,37 @@
                         </div>
 
                         <div class="dropdown for-notification">
-                          <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bell"></i>
-                            <span class="count bg-danger">5</span>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="notification">
-                            <p class="red">You have 3 Notification</p>
-                            <a class="dropdown-item media bg-flat-color-1" href="#">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="count bg-danger">5</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">You have 3 Notification</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
                                 <i class="fa fa-check"></i>
                                 <p>Server #1 overloaded.</p>
                             </a>
-                            <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
                                 <i class="fa fa-info"></i>
                                 <p>Server #2 overloaded.</p>
                             </a>
-                            <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
                                 <i class="fa fa-warning"></i>
                                 <p>Server #3 overloaded.</p>
                             </a>
-                          </div>
+                            </div>
                         </div>
 
                         <div class="dropdown for-message">
-                          <button class="btn btn-secondary dropdown-toggle" type="button"
+                            <button class="btn btn-secondary dropdown-toggle" type="button"
                                 id="message"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="ti-email"></i>
-                            <span class="count bg-primary">9</span>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="message">
-                            <p class="red">You have 4 Mails</p>
-                            <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <i class="ti-email"></i>
+                                <span class="count bg-primary">9</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="message">
+                                <p class="red">You have 4 Mails</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
                                 <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jonathan Smith</span>
@@ -181,7 +182,7 @@
                                         <p>Hello, this is an example msg</p>
                                 </span>
                             </a>
-                            <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
                                 <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jack Sanders</span>
@@ -189,7 +190,7 @@
                                         <p>Lorem ipsum dolor sit amet, consectetur</p>
                                 </span>
                             </a>
-                            <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
                                 <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Cheryl Wheeler</span>
@@ -197,7 +198,7 @@
                                         <p>Hello, this is an example msg</p>
                                 </span>
                             </a>
-                            <a class="dropdown-item media bg-flat-color-3" href="#">
+                                <a class="dropdown-item media bg-flat-color-3" href="#">
                                 <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Rachel Santos</span>
@@ -205,7 +206,7 @@
                                         <p>Lorem ipsum dolor sit amet, consectetur</p>
                                 </span>
                             </a>
-                          </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -217,13 +218,13 @@
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                                <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
 
-                                <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
 
-                                <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
 
-                                <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>
 
@@ -231,7 +232,7 @@
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
                             <i class="flag-icon flag-icon-us"></i>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="language" >
+                        <div class="dropdown-menu" aria-labelledby="language">
                             <div class="dropdown-item">
                                 <span class="flag-icon flag-icon-fr"></span>
                             </div>
@@ -351,141 +352,141 @@
 
                     <!-- /# row -->
 
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Line Charts</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <span class="peity-line" data-width="100%">6,2,8,4,3,8,1,3,6,5,9,2,8,1,4,8,9,8,2,1</span>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <span class="peity-line" data-width="100%">6,2,8,4,-3,8,1,-3,6,-5,9,2,-8,1,4,8,9,8,2,1</span>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <span class="peity-line" data-width="100%">6,2,8,4,3,8,1,3,6,5,9,2,8,1,4,8,9,8,2,1</span>
-                                        </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Line Charts</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <span class="peity-line" data-width="100%">6,2,8,4,3,8,1,3,6,5,9,2,8,1,4,8,9,8,2,1</span>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <span class="peity-line" data-width="100%">6,2,8,4,-3,8,1,-3,6,-5,9,2,-8,1,4,8,9,8,2,1</span>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <span class="peity-line" data-width="100%">6,2,8,4,3,8,1,3,6,5,9,2,8,1,4,8,9,8,2,1</span>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /# card -->
                         </div>
-                        <!-- /# column -->
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
 
                     <!-- /# row -->
 
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Bar Charts</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <span class="bar" data-peity='{ "fill": ["#13DAFE", "#6164C1"]}'>6,2,8,4,3,8,1,3,6,5,9,2,8,1,4,8,9,8,2,1</span>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <span class="bar" data-peity='{ "fill": ["#F96262", "#f2f2f2"]}'>6,2,8,4,-3,8,1,-3,6,-5,9,2,-8,1,4,8,9,8,2,1</span>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <span class="bar" data-peity='{ "fill": ["#99D683", "#4C5667"]}'>6,2,8,4,3,8,1,3,6,5,9,2,8,1,4,8,9,8,2,1</span>
-                                        </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Bar Charts</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <span class="bar" data-peity='{ "fill": ["#13DAFE", "#6164C1"]}'>6,2,8,4,3,8,1,3,6,5,9,2,8,1,4,8,9,8,2,1</span>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <span class="bar" data-peity='{ "fill": ["#F96262", "#f2f2f2"]}'>6,2,8,4,-3,8,1,-3,6,-5,9,2,-8,1,4,8,9,8,2,1</span>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <span class="bar" data-peity='{ "fill": ["#99D683", "#4C5667"]}'>6,2,8,4,3,8,1,3,6,5,9,2,8,1,4,8,9,8,2,1</span>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /# card -->
                         </div>
-                        <!-- /# column -->
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
 
                     <!-- /# row -->
 
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Data attributes</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-2">
-                                            <p class="data-attributes">
-                                                <span data-peity='{ "fill": ["#13DAFE", "#eeeeee"],    "innerRadius": 10, "radius": 40 }'>1/7</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <p class="data-attributes">
-                                                <span data-peity='{ "fill": ["#6164C1", "#eeeeee"], "innerRadius": 14, "radius": 36 }'>2/7</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <p class="data-attributes">
-                                                <span data-peity='{ "fill": ["#F96262", "#eeeeee"], "innerRadius": 16, "radius": 32 }'>3/7</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <p class="data-attributes">
-                                                <span data-peity='{ "fill": ["#99D683", "#eeeeee"],  "innerRadius": 18, "radius": 28 }'>4/7</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <p class="data-attributes">
-                                                <span data-peity='{ "fill": ["#FFCA4A", "#eeeeee"],   "innerRadius": 20, "radius": 24 }'>5/7</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <p class="data-attributes">
-                                                <span data-peity='{ "fill": ["indigo", "#eeeeee"], "innerRadius": 18, "radius": 20 }'>6/7</span>
-                                            </p>
-                                        </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Data attributes</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <p class="data-attributes">
+                                            <span data-peity='{ "fill": ["#13DAFE", "#eeeeee"],    "innerRadius": 10, "radius": 40 }'>1/7</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <p class="data-attributes">
+                                            <span data-peity='{ "fill": ["#6164C1", "#eeeeee"], "innerRadius": 14, "radius": 36 }'>2/7</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <p class="data-attributes">
+                                            <span data-peity='{ "fill": ["#F96262", "#eeeeee"], "innerRadius": 16, "radius": 32 }'>3/7</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <p class="data-attributes">
+                                            <span data-peity='{ "fill": ["#99D683", "#eeeeee"],  "innerRadius": 18, "radius": 28 }'>4/7</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <p class="data-attributes">
+                                            <span data-peity='{ "fill": ["#FFCA4A", "#eeeeee"],   "innerRadius": 20, "radius": 24 }'>5/7</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <p class="data-attributes">
+                                            <span data-peity='{ "fill": ["indigo", "#eeeeee"], "innerRadius": 18, "radius": 20 }'>6/7</span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /# card -->
                         </div>
-                        <!-- /# column -->
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
 
                     <!-- /# row -->
 
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Setting Colours Dynamically</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-3">
-                                            <span class="bar-colours-1">5,3,9,6,5,9,7,3,5,2</span>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <span class="bar-colours-2">5,3,2,-1,-3,-2,2,3,5,2</span>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <span class="bar-colours-3">0,-3,-6,-4,-5,-4,-7,-3,-5,-2</span>
-                                        </div>
-                                        <div class="col-lg-3">
-                                            <span class="pie-colours-2">5,3,9,6,5</span>
-                                        </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Setting Colours Dynamically</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <span class="bar-colours-1">5,3,9,6,5,9,7,3,5,2</span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <span class="bar-colours-2">5,3,2,-1,-3,-2,2,3,5,2</span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <span class="bar-colours-3">0,-3,-6,-4,-5,-4,-7,-3,-5,-2</span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <span class="pie-colours-2">5,3,9,6,5</span>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /# card -->
                         </div>
-                        <!-- /# column -->
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
 
                     <!-- /# row -->
-                        <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Updating Charts</h4>
-                                </div>
-                                <div class="card-body">
-                                    <span class="updating-chart">5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2</span>
-                                </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Updating Charts</h4>
                             </div>
-                            <!-- /# card -->
+                            <div class="card-body">
+                                <span class="updating-chart">5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,7,3,5,2</span>
+                            </div>
                         </div>
-                        <!-- /# column -->
+                        <!-- /# card -->
+                    </div>
+                    <!-- /# column -->
 
 
 
@@ -503,15 +504,16 @@
     <!-- Right Panel -->
 
 
-    <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <script src="assets/js/lib/peitychart/jquery.peity.min.js"></script>
+    <script src="vendors/peity/jquery.peity.min.js"></script>
     <!-- scripit init-->
-    <script src="assets/js/lib/peitychart/peitychart.init.js"></script>
+    <script src="assets/js/init-scripts/peitychart/peitychart.init.js"></script>
     <!-- scripit init-->
 
 </body>
+
 </html>

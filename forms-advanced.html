@@ -2,7 +2,10 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,23 +16,25 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="assets/css/normalize.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
-    <link rel="stylesheet" href="assets/scss/style.css">
-    <link rel="stylesheet" href="assets/css/lib/chosen/chosen.min.css">
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+
+
+    <link rel="stylesheet" href="vendors/chosen/chosen.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
 
 </head>
+
 <body>
-        <!-- Left Panel -->
+    <!-- Left Panel -->
 
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
@@ -144,37 +149,37 @@
                         </div>
 
                         <div class="dropdown for-notification">
-                          <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-bell"></i>
-                            <span class="count bg-danger">5</span>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="notification">
-                            <p class="red">You have 3 Notification</p>
-                            <a class="dropdown-item media bg-flat-color-1" href="#">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="count bg-danger">5</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">You have 3 Notification</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
                                 <i class="fa fa-check"></i>
                                 <p>Server #1 overloaded.</p>
                             </a>
-                            <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
                                 <i class="fa fa-info"></i>
                                 <p>Server #2 overloaded.</p>
                             </a>
-                            <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
                                 <i class="fa fa-warning"></i>
                                 <p>Server #3 overloaded.</p>
                             </a>
-                          </div>
+                            </div>
                         </div>
 
                         <div class="dropdown for-message">
-                          <button class="btn btn-secondary dropdown-toggle" type="button"
+                            <button class="btn btn-secondary dropdown-toggle" type="button"
                                 id="message"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="ti-email"></i>
-                            <span class="count bg-primary">9</span>
-                          </button>
-                          <div class="dropdown-menu" aria-labelledby="message">
-                            <p class="red">You have 4 Mails</p>
-                            <a class="dropdown-item media bg-flat-color-1" href="#">
+                                <i class="ti-email"></i>
+                                <span class="count bg-primary">9</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="message">
+                                <p class="red">You have 4 Mails</p>
+                                <a class="dropdown-item media bg-flat-color-1" href="#">
                                 <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jonathan Smith</span>
@@ -182,7 +187,7 @@
                                         <p>Hello, this is an example msg</p>
                                 </span>
                             </a>
-                            <a class="dropdown-item media bg-flat-color-4" href="#">
+                                <a class="dropdown-item media bg-flat-color-4" href="#">
                                 <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Jack Sanders</span>
@@ -190,7 +195,7 @@
                                         <p>Lorem ipsum dolor sit amet, consectetur</p>
                                 </span>
                             </a>
-                            <a class="dropdown-item media bg-flat-color-5" href="#">
+                                <a class="dropdown-item media bg-flat-color-5" href="#">
                                 <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Cheryl Wheeler</span>
@@ -198,7 +203,7 @@
                                         <p>Hello, this is an example msg</p>
                                 </span>
                             </a>
-                            <a class="dropdown-item media bg-flat-color-3" href="#">
+                                <a class="dropdown-item media bg-flat-color-3" href="#">
                                 <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
                                 <span class="message media-body">
                                     <span class="name float-left">Rachel Santos</span>
@@ -206,7 +211,7 @@
                                         <p>Lorem ipsum dolor sit amet, consectetur</p>
                                 </span>
                             </a>
-                          </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -218,13 +223,13 @@
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                                <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> My Profile</a>
 
-                                <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+                            <a class="nav-link" href="#"><i class="fa fa-user"></i> Notifications <span class="count">13</span></a>
 
-                                <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i> Settings</a>
 
-                                <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                            <a class="nav-link" href="#"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
                     </div>
 
@@ -232,7 +237,7 @@
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown"  id="language" aria-haspopup="true" aria-expanded="true">
                             <i class="flag-icon flag-icon-us"></i>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="language" >
+                        <div class="dropdown-menu" aria-labelledby="language">
                             <div class="dropdown-item">
                                 <span class="flag-icon flag-icon-fr"></span>
                             </div>
@@ -300,7 +305,7 @@
                                         <div class="input-group-addon"><i class="fa fa-phone"></i></div>
                                         <input class="form-control">
                                     </div>
-                                    <small class="form-text text-muted">ex. (999) 999-9999</small>
+                                        <small class="form-text text-muted">ex. (999) 999-9999</small>
                                 </div>
                                 <div class="form-group">
                                     <label class=" form-control-label">Taxpayer Identification Numbers</label>
@@ -345,7 +350,7 @@
                             </div>
                             <div class="card-body">
 
-                                  <select data-placeholder="Choose a Country..." class="standardSelect" tabindex="1">
+                                <select data-placeholder="Choose a Country..." class="standardSelect" tabindex="1">
                                     <option value=""></option>
                                     <option value="United States">United States</option>
                                     <option value="United Kingdom">United Kingdom</option>
@@ -368,7 +373,7 @@
                             </div>
                             <div class="card-body">
 
-                                  <select data-placeholder="Choose a country..." multiple class="standardSelect">
+                                <select data-placeholder="Choose a country..." multiple class="standardSelect">
                                     <option value=""></option>
                                     <option value="United States">United States</option>
                                     <option value="United Kingdom">United Kingdom</option>
@@ -392,92 +397,85 @@
                             </div>
                             <div class="card-body">
 
-                                  <select data-placeholder="Your Favorite Football Team" multiple class="standardSelect" tabindex="5">
+                                <select data-placeholder="Your Favorite Football Team" multiple class="standardSelect" tabindex="5">
                                     <option value=""></option>
                                     <optgroup label="NFC EAST">
-                                      <option>Dallas Cowboys</option>
-                                      <option>New York Giants</option>
-                                      <option>Philadelphia Eagles</option>
-                                      <option>Washington Redskins</option>
+                                        <option>Dallas Cowboys</option>
+                                        <option>New York Giants</option>
+                                        <option>Philadelphia Eagles</option>
+                                        <option>Washington Redskins</option>
                                     </optgroup>
                                     <optgroup label="NFC NORTH">
-                                      <option>Chicago Bears</option>
-                                      <option>Detroit Lions</option>
-                                      <option>Green Bay Packers</option>
-                                      <option>Minnesota Vikings</option>
+                                        <option>Chicago Bears</option>
+                                        <option>Detroit Lions</option>
+                                        <option>Green Bay Packers</option>
+                                        <option>Minnesota Vikings</option>
                                     </optgroup>
                                     <optgroup label="NFC SOUTH">
-                                      <option>Atlanta Falcons</option>
-                                      <option>Carolina Panthers</option>
-                                      <option>New Orleans Saints</option>
-                                      <option>Tampa Bay Buccaneers</option>
+                                        <option>Atlanta Falcons</option>
+                                        <option>Carolina Panthers</option>
+                                        <option>New Orleans Saints</option>
+                                        <option>Tampa Bay Buccaneers</option>
                                     </optgroup>
                                     <optgroup label="NFC WEST">
-                                      <option>Arizona Cardinals</option>
-                                      <option>St. Louis Rams</option>
-                                      <option>San Francisco 49ers</option>
-                                      <option>Seattle Seahawks</option>
+                                        <option>Arizona Cardinals</option>
+                                        <option>St. Louis Rams</option>
+                                        <option>San Francisco 49ers</option>
+                                        <option>Seattle Seahawks</option>
                                     </optgroup>
                                     <optgroup label="AFC EAST">
-                                      <option>Buffalo Bills</option>
-                                      <option>Miami Dolphins</option>
-                                      <option>New England Patriots</option>
-                                      <option>New York Jets</option>
+                                        <option>Buffalo Bills</option>
+                                        <option>Miami Dolphins</option>
+                                        <option>New England Patriots</option>
+                                        <option>New York Jets</option>
                                     </optgroup>
                                     <optgroup label="AFC NORTH">
-                                      <option>Baltimore Ravens</option>
-                                      <option>Cincinnati Bengals</option>
-                                      <option>Cleveland Browns</option>
-                                      <option>Pittsburgh Steelers</option>
+                                        <option>Baltimore Ravens</option>
+                                        <option>Cincinnati Bengals</option>
+                                        <option>Cleveland Browns</option>
+                                        <option>Pittsburgh Steelers</option>
                                     </optgroup>
                                     <optgroup label="AFC SOUTH">
-                                      <option>Houston Texans</option>
-                                      <option>Indianapolis Colts</option>
-                                      <option>Jacksonville Jaguars</option>
-                                      <option>Tennessee Titans</option>
+                                        <option>Houston Texans</option>
+                                        <option>Indianapolis Colts</option>
+                                        <option>Jacksonville Jaguars</option>
+                                        <option>Tennessee Titans</option>
                                     </optgroup>
                                     <optgroup label="AFC WEST">
-                                      <option>Denver Broncos</option>
-                                      <option>Kansas City Chiefs</option>
-                                      <option>Oakland Raiders</option>
-                                      <option>San Diego Chargers</option>
+                                        <option>Denver Broncos</option>
+                                        <option>Kansas City Chiefs</option>
+                                        <option>Oakland Raiders</option>
+                                        <option>San Diego Chargers</option>
                                     </optgroup>
-                                  </select>
-
+                                </select>
                             </div>
                         </div>
-
                     </div>
-
-
-
                 </div>
-
-
             </div><!-- .animated -->
         </div><!-- .content -->
-
 
     </div><!-- /#right-panel -->
 
     <!-- Right Panel -->
 
 
-    <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/plugins.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
+<script src="vendors/jquery/dist/jquery.min.js"></script>
+<script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="vendors/chosen/chosen.jquery.min.js"></script>
 
-    <script>
-        jQuery(document).ready(function() {
-            jQuery(".standardSelect").chosen({
-                disable_search_threshold: 10,
-                no_results_text: "Oops, nothing found!",
-                width: "100%"
-            });
+<script>
+    jQuery(document).ready(function() {
+        jQuery(".standardSelect").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "Oops, nothing found!",
+            width: "100%"
         });
-    </script>
+    });
+</script>
 
 </body>
+
 </html>

@@ -1,0 +1,53 @@
+{
+  "name": "datatables.net-buttons-bs4",
+  "description": "Buttons for DataTables with styling for [Bootstrap 4](http://getbootstrap.com/)",
+  "main": [
+    "js/buttons.bootstrap4.js",
+    "css/buttons.bootstrap4.css"
+  ],
+  "keywords": [
+    "buttons",
+    "excel",
+    "pdf",
+    "csv",
+    "column visibility",
+    "print",
+    "DataTables",
+    "jQuery",
+    "table",
+    "Bootstrap 4"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7",
+    "datatables.net-bs4": ">=1.10.13",
+    "datatables.net-buttons": ">=1.2.4"
+  },
+  "moduleType": [
+    "globals",
+    "amd",
+    "node"
+  ],
+  "ignore": [
+    "composer.json",
+    "datatables.json",
+    "package.json"
+  ],
+  "authors": [
+    {
+      "name": "SpryMedia Ltd",
+      "homepage": "https://datatables.net"
+    }
+  ],
+  "homepage": "https://datatables.net",
+  "license": "MIT",
+  "version": "1.5.4",
+  "_release": "1.5.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.5.4",
+    "commit": "a5a6f2acc5723c8b167dcb39d9999f7cda86fd24"
+  },
+  "_source": "https://github.com/DataTables/Dist-DataTables-Buttons-Bootstrap4.git",
+  "_target": "^1.5.3",
+  "_originalSource": "datatables.net-buttons-bs4"
+}

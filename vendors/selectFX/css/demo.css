@@ -1,0 +1,250 @@
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
+
+body {
+	background: #3498db;
+	color: #fff;
+	font-weight: 400;
+	font-size: 1em;
+	padding: 35px 10px;
+	border-right: 25px solid #fff;
+	border-left: 25px solid #fff;
+	font-family: 'Raleway', Arial, sans-serif;
+}
+
+body::before,
+body::after {
+	content: '';
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 25px;
+	background: #fff;
+	z-index: 1001;
+}
+
+body::after {
+	top: auto;
+	bottom: 0;
+}
+
+a {
+	color: #1e6fa4;
+	text-decoration: none;
+	outline: none;
+}
+
+a:hover, a:focus {
+	color: #125480;
+	outline: none;
+}
+
+/* Demo themes */
+.color-2 { background: #bbc7c8; color: #fff; }
+.color-2 a { color: #566473; }
+.color-2 a:hover, .color-2 a:focus { color: #34495e; }
+.color-3 { background: #00b6ad; color: #fff; }
+.color-3 a { color: #04706b; }
+.color-3 a:hover, .color-3 a:focus { color: #03514d; }
+.color-4 { background: #3b3f45; color: #f9f9f9; }
+.color-4 a { color: #eb7e7f; }
+.color-4 a:hover, .color-4 a:focus { color: #c56667; }
+.color-5 { background: #f06d54; color: #fff; }
+.color-5 a { color: #a35749; }
+.color-5 a:hover, .color-5 a:focus { color: #6d3126; }
+.color-6 { background: #f9f9f9; border-color: #f9f9f9; color: #62706c; }
+.color-6::before, .color-6::after { background: #f9f9f9; }
+.color-6 a { color: #1ecd97; }
+.color-6 a:hover, .color-6 a:focus { color: #1ab585; }
+.color-7 { background: #fffed8; color: #6bccb4; }
+.color-7 a { color: #eb7e7f; }
+.color-7 a:hover, .color-6 a:focus { color: #c36263; }
+.color-8 { background: #415c71; color: #fefef8; }
+.color-8 a { color: #7ad7ee; }
+.color-8 a:hover, .color-8 a:focus { color: #539eb1; }
+
+section {
+	padding: 4% 1em 10%;
+	text-align: center;
+}
+
+label.select-label {
+	display: block;
+	text-transform: uppercase;
+	padding: 1em 0 1.5em;
+	font-size: 75%;
+	letter-spacing: 1px;
+	font-weight: 700;
+	width: 300px;
+	text-align: left;
+	margin: 0 auto;
+	color: #c0c6c4;
+}
+
+.color-4 label.select-label {
+	color: #282b30;
+	font-size: 1em;
+}
+
+/* Header */
+.codrops-header {
+	margin: 0 auto;
+	padding: 2em;
+	text-align: center;
+}
+
+.codrops-header h1 span {
+	display: block;
+	font-size: 30%;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	opacity: 0.8;
+}
+
+.codrops-header h1 {
+	margin: 0;
+	font-weight: 700;
+	font-size: 3.5em;
+	line-height: 1.3;
+}
+
+/* To Navigation Style */
+.codrops-top {
+	width: 100%;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 0.69em;
+	line-height: 2.2;
+}
+
+.codrops-top a {
+	display: inline-block;
+	padding: 0 1em;
+	text-decoration: none;
+	letter-spacing: 1px;
+}
+
+.codrops-top span.right {
+	float: right;
+}
+
+.codrops-top span.right a {
+	display: block;
+	float: left;
+}
+
+.codrops-icon:before {
+	margin: 0 4px;
+	text-transform: none;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-family: 'codropsicons';
+	line-height: 1;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+}
+
+.codrops-icon-drop:before {
+	content: "\e001";
+}
+
+.codrops-icon-prev:before {
+	content: "\e004";
+}
+
+/* Demo Buttons Style */
+.codrops-demos {
+	padding-top: 1em;
+	font-size: 0.9em;
+}
+
+.codrops-demos a {
+	display: inline-block;
+	margin: 0.5em;
+	padding: 0.7em 1.1em;
+	outline: none;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+}
+
+.codrops-demos a.current-demo {
+	color: inherit;
+}
+
+/* Related demos */
+.related {
+	padding-top: 20em;
+}
+
+.related p {
+	font-size: 1.6em;
+}
+
+.related > a {
+	border: 3px solid;
+	border-color: initial;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	margin: 20px 10px;
+	padding: 25px;
+}
+
+.related a img {
+	max-width: 100%;
+	opacity: 0.8;
+}
+
+.related a:hover img,
+.related a:active img {
+	opacity: 1;
+}
+
+.related a h3 {
+	margin: 0;
+	padding: 0.5em 0 0.3em;
+	max-width: 300px;
+	text-align: left;
+}
+
+.wrap {
+	padding: 1em 0;
+}
+
+@media screen and (max-width: 30em) {
+
+	body::before,
+	body::after {
+		display: none !important;
+	}
+
+	body {
+		border: none !important;
+		padding: 0 !important;
+	}
+
+	.codrops-header h1 {
+		font-size: 2em;
+	}
+
+	.codrops-icon span {
+		display: none;
+	}
+
+}

@@ -1,0 +1,148 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon/icomoon.eot?-rdnm34');
+	src:url('../fonts/icomoon/icomoon.eot?#iefix-rdnm34') format('embedded-opentype'),
+		url('../fonts/icomoon/icomoon.woff?-rdnm34') format('woff'),
+		url('../fonts/icomoon/icomoon.ttf?-rdnm34') format('truetype'),
+		url('../fonts/icomoon/icomoon.svg?-rdnm34#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+div.cs-skin-overlay {
+	background: transparent;
+	font-size: 1.35em;
+	font-weight: 700;
+	max-width: 400px;
+	z-index: 2000;
+	color: #95948f;
+	box-shadow: 0 10px 0 -5px rgba(0,0,0,0.1);
+}
+
+@media screen and (max-width: 30em) {
+	div.cs-skin-overlay { font-size: 1em; }
+}
+
+.cs-skin-overlay > span {
+	background: #fff;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.cs-skin-overlay > span::after,
+.cs-skin-overlay.cs-active > span::after {
+	font-family: 'icomoon';
+	-webkit-transform: translate3d(0,-50%,0);
+	transform: translate3d(0,-50%,0);
+	content: '\e013';
+}
+
+.cs-skin-overlay .cs-selected span::after {
+	content: '';
+}
+
+.cs-skin-overlay.cs-active > span {
+	background: #fff;
+	border-color: #fff;
+}
+
+.cs-skin-overlay .cs-options {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	overflow-y: auto;
+	background: rgba(255,255,255,0.96);
+	opacity: 0;
+	-webkit-transform: perspective(1000px) translate3d(0, 0, -200px);
+	transform: perspective(1000px) translate3d(0, 0, -200px);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.4s, visibility 0s 0.4s;
+	transition: transform 0.4s, opacity 0.4s, visibility 0s 0.4s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+
+.cs-skin-overlay.cs-active .cs-options {
+	opacity: 1;
+	-webkit-transform: perspective(1000px) translate3d(0, 0, 0px);
+	transform: perspective(1000px) translate3d(0, 0, 0px);
+	-webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
+	transition: opacity 0.4s, transform 0.4s;
+}
+
+.cs-skin-overlay .cs-options > ul {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	-webkit-transform: translate3d(-50%, -50%,0);
+	transform: translate3d(-50%, -50%,0);
+}
+
+.cs-skin-overlay .cs-optgroup {
+	width: 50%;
+	padding: 1em 2em;
+	float: left;
+}
+
+@media screen and (max-width: 30em) {
+	.cs-skin-overlay .cs-optgroup { width: 100%; float: none; }
+}
+
+.cs-skin-overlay .cs-optgroup > span {
+	font-size: 60%;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	padding: 1em 0;
+	color: #bbb9b4;
+}
+
+.cs-skin-overlay li.cs-optgroup ul {
+	padding-left: 0;
+}
+
+.cs-skin-overlay li.cs-optgroup {
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+}
+
+.cs-skin-overlay li.cs-optgroup:first-child {
+	text-align: right;
+	-webkit-transform: translate3d(1em,0,0);
+	transform: translate3d(1em,0,0);
+}
+
+@media screen and (max-width: 30em) {
+	.cs-skin-overlay li.cs-optgroup:first-child { text-align: left; }
+}
+
+.cs-skin-overlay li.cs-optgroup:nth-child(2) {
+	-webkit-transform: translate3d(-1em,0,0);
+	transform: translate3d(-1em,0,0);
+}
+
+.cs-skin-overlay.cs-active li.cs-optgroup {
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+}
+
+.cs-skin-overlay li.cs-optgroup ul span {
+	padding: 0.2em 0;
+}
+
+.cs-skin-overlay li.cs-optgroup li span:hover,
+.cs-skin-overlay li.cs-focus span,
+.cs-skin-overlay li.cs-selected span {
+	color: #f06d54;
+	background: transparent;
+}
