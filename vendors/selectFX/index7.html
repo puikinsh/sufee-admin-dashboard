@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>Inspiration for Custom Select Elements | Demo 7</title>
+		<meta name="description" content="Creative styles and ideas for custom select elements" />
+		<meta name="keywords" content="custom select, select style, javascript, inspiration, select element" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/cs-select.css" />
+		<link rel="stylesheet" type="text/css" href="css/cs-skin-boxes.css" />
+		<!--[if IE]>
+  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body class="color-7">
+		<div class="container">
+			<!-- Top Navigation -->
+			<div class="codrops-top clearfix">
+				<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/DraggableDualViewSlideshow/"><span>Previous Demo</span></a>
+				<span class="right"><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=19400"><span>Back to the Codrops Article</span></a></span>
+			</div>
+			<header class="codrops-header">
+				<h1><span>Inspiration for</span> Custom Select Elements</h1>	
+				<nav class="codrops-demos">
+					<a href="index.html">Border</a>
+					<a href="index2.html">Underline</a>
+					<a href="index3.html">Elastic</a>
+					<a href="index4.html">Slide</a>
+					<a href="index5.html">Overlay</a>
+					<a href="index6.html">Rotate</a>
+					<a class="current-demo" href="index7.html">Box Select</a>
+					<a href="index8.html">Circular</a>
+				</nav>
+			</header>
+			<section>
+				<select class="cs-select cs-skin-boxes">
+					<option value="" disabled selected>Pick your color</option>
+					<option value="#588c75" data-class="color-588c75">#588c75</option>
+					<option value="#b0c47f" data-class="color-b0c47f">#b0c47f</option>
+					<option value="#f3e395" data-class="color-f3e395">#f3e395</option>
+					<option value="#f3ae73" data-class="color-f3ae73">#f3ae73</option>
+					<option value="#da645a" data-class="color-da645a">#da645a</option>
+					<option value="#79a38f" data-class="color-79a38f">#79a38f</option>
+					<option value="#c1d099" data-class="color-c1d099">#c1d099</option>
+					<option value="#f5eaaa" data-class="color-f5eaaa">#f5eaaa</option>
+					<option value="#f5be8f" data-class="color-f5be8f">#f5be8f</option>
+					<option value="#e1837b" data-class="color-e1837b">#e1837b</option>
+					<option value="#9bbaab" data-class="color-9bbaab">#9bbaab</option>
+					<option value="#d1dcb2" data-class="color-d1dcb2">#d1dcb2</option>
+					<option value="#f9eec0" data-class="color-f9eec0">#f9eec0</option>
+					<option value="#f7cda9" data-class="color-f7cda9">#f7cda9</option>
+					<option value="#e8a19b" data-class="color-e8a19b">#e8a19b</option>
+					<option value="#bdd1c8" data-class="color-bdd1c8">#bdd1c8</option>
+					<option value="#e1e7cd" data-class="color-e1e7cd">#e1e7cd</option>
+					<option value="#faf4d4" data-class="color-faf4d4">#faf4d4</option>
+					<option value="#fbdfc9" data-class="color-fbdfc9">#fbdfc9</option>
+					<option value="#f1c1bd" data-class="color-f1c1bd">#f1c1bd</option>
+				</select>
+			</section>
+			<!-- Related demos -->
+			<section class="related">
+				<p>If you enjoyed this demo you might also like:</p>
+				<a href="http://tympanus.net/Development/ResponsiveMultiLevelMenu/">
+					<img src="http://tympanus.net/codrops/wp-content/uploads/2013/04/MultiLevelMenu-300x162.jpg" />
+					<h3>Multi-Level Menu</h3>
+				</a>
+				<a href="http://tympanus.net/Development/SimpleDropDownEffects/">
+					<img src="http://tympanus.net/codrops/wp-content/uploads/2012/11/SimpleDropDownEffects-300x162.jpg" />
+					<h3>Drop-Down List Effects</h3>
+				</a>
+			</section>
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script src="js/selectFx.js"></script>
+		<script>
+			(function() {
+				[].slice.call( document.querySelectorAll( 'select.cs-select' ) ).forEach( function(el) {	
+					new SelectFx(el, {
+						stickyPlaceholder: false,
+						onChange: function(val){
+							document.querySelector('span.cs-placeholder').style.backgroundColor = val;
+						}
+					});
+				} );
+			})();
+		</script>
+	</body>
+</html>

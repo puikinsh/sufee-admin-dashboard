@@ -1,0 +1,28 @@
+{
+  "name": "sufee-admin-dashboard",
+  "version": "1.0.0",
+  "description": "Sufee Admin Dashboard",
+  "main": "assets/js/main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:sarangaem/sufee-admin-dashboard.git"
+  },
+  "keywords": [
+    "html",
+    "js",
+    "css"
+  ],
+  "author": "Aigars Silkalns",
+  "license": "MIT",
+  "homepage": "https://colorlib.com/polygon/sufee/index.html",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-lintspaces": "^0.8.3",
+    "grunt-pleeease": "^1.4.0",
+    "grunt-sass": "^3.0.1",
+    "node-sass": "^4.9.3"
+  }
+}

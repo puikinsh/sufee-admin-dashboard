@@ -15,10 +15,6 @@
         });
     });
 
-
-
-
-
     //WidgetChart 1
     var ctx = document.getElementById( "widgetChart1" );
     ctx.height = 150;
@@ -41,17 +37,6 @@
                 display: false
             },
             responsive: true,
-            tooltips: {
-                mode: 'index',
-                titleFontSize: 12,
-                titleFontColor: '#000',
-                bodyFontColor: '#000',
-                backgroundColor: '#fff',
-                titleFontFamily: 'Montserrat',
-                bodyFontFamily: 'Montserrat',
-                cornerRadius: 3,
-                intersect: false,
-            },
             scales: {
                 xAxes: [ {
                     gridLines: {
@@ -109,17 +94,6 @@
                 display: false
             },
             responsive: true,
-            tooltips: {
-                mode: 'index',
-                titleFontSize: 12,
-                titleFontColor: '#000',
-                bodyFontColor: '#000',
-                backgroundColor: '#fff',
-                titleFontFamily: 'Montserrat',
-                bodyFontFamily: 'Montserrat',
-                cornerRadius: 3,
-                intersect: false,
-            },
             scales: {
                 xAxes: [ {
                     gridLines: {
@@ -179,17 +153,6 @@
                 display: false
             },
             responsive: true,
-            // tooltips: {
-            //     mode: 'index',
-            //     titleFontSize: 12,
-            //     titleFontColor: '#000',
-            //     bodyFontColor: '#000',
-            //     backgroundColor: '#fff',
-            //     titleFontFamily: 'Montserrat',
-            //     bodyFontFamily: 'Montserrat',
-            //     cornerRadius: 3,
-            //     intersect: false,
-            // },
             scales: {
                 xAxes: [ {
                     gridLines: {
