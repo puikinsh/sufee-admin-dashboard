@@ -10,10 +10,16 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'src/index.html')
+        main: resolve(__dirname, 'src/index.html'),
+        'ui-buttons': resolve(__dirname, 'src/ui-buttons.html'),
+        'ui-badges': resolve(__dirname, 'src/ui-badges.html'),
+        'ui-tabs': resolve(__dirname, 'src/ui-tabs.html'),
+        'ui-social-buttons': resolve(__dirname, 'src/ui-social-buttons.html'),
+        'ui-cards': resolve(__dirname, 'src/ui-cards.html'),
+        'ui-alerts': resolve(__dirname, 'src/ui-alerts.html'),
+        'ui-progressbar': resolve(__dirname, 'src/ui-progressbar.html')
       }
     },
-    target: 'es2015',
     assetsDir: 'assets',
     sourcemap: true
   },
@@ -42,5 +48,11 @@ export default defineConfig({
       '@scripts': resolve(__dirname, 'src/scripts'),
       '@assets': resolve(__dirname, 'src/assets')
     }
+  },
+  optimizeDeps: {
+    include: [
+      'bootstrap',
+      'chart.js'
+    ]
   }
 })

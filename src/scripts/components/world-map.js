@@ -1,25 +1,20 @@
-// World Map Component using Plotly.js
-// Modern, jQuery-free, interactive world map visualization
+// World Map Component - Lightweight Alternative
+// Modern, jQuery-free, country statistics visualization
 
 export class WorldMap {
   constructor(containerId, options = {}) {
     this.containerId = containerId
     this.container = document.getElementById(containerId)
     
-    // Get the container's height from inline styles or use default
-    const containerHeight = this.container ? 
-      parseInt(this.container.style.height) || 320 : 320
-    
     this.options = {
       showCountryNames: true,
-      showLegend: false,
-      height: containerHeight,
+      showVisitorCount: true,
+      height: 300,
       backgroundColor: 'white',
       ...options
     }
     
     this.data = null
-    this.plotlyLoaded = false
     
     this.init()
   }
@@ -31,17 +26,11 @@ export class WorldMap {
     }
 
     try {
-      // Load Plotly.js dynamically
-      await this.loadPlotly()
-      
       // Generate sample data
       this.generateSampleData()
       
-      // Create the map
-      this.createMap()
-      
-      // Set up responsive behavior
-      this.setupResponsive()
+      // Create the country statistics view
+      this.createCountryStats()
       
     } catch (error) {
       console.error('Failed to initialize world map:', error)
@@ -49,41 +38,22 @@ export class WorldMap {
     }
   }
 
-  async loadPlotly() {
-    if (window.Plotly) {
-      this.plotlyLoaded = true
-      return
-    }
-
-    try {
-      // Import Plotly.js
-      const Plotly = await import('plotly.js-dist-min')
-      window.Plotly = Plotly.default || Plotly
-      this.plotlyLoaded = true
-    } catch (error) {
-      throw new Error('Failed to load Plotly.js: ' + error.message)
-    }
-  }
-
   generateSampleData() {
     // Sample data showing visitor/user statistics by country
     const countries = [
-      'United States', 'China', 'Germany', 'United Kingdom', 'France',
-      'Japan', 'Canada', 'Australia', 'Brazil', 'India', 'Russia',
-      'South Korea', 'Italy', 'Spain', 'Netherlands', 'Sweden'
-    ]
-    
-    const countryCodes = [
-      'USA', 'CHN', 'DEU', 'GBR', 'FRA', 'JPN', 'CAN', 'AUS',
-      'BRA', 'IND', 'RUS', 'KOR', 'ITA', 'ESP', 'NLD', 'SWE'
+      { name: 'United States', code: 'us', visitors: 4250, percentage: 35.2 },
+      { name: 'United Kingdom', code: 'gb', visitors: 1890, percentage: 15.7 },
+      { name: 'Germany', code: 'de', visitors: 1420, percentage: 11.8 },
+      { name: 'France', code: 'fr', visitors: 980, percentage: 8.1 },
+      { name: 'Canada', code: 'ca', visitors: 760, percentage: 6.3 },
+      { name: 'Australia', code: 'au', visitors: 650, percentage: 5.4 },
+      { name: 'Japan', code: 'jp', visitors: 540, percentage: 4.5 },
+      { name: 'Netherlands', code: 'nl', visitors: 420, percentage: 3.5 },
+      { name: 'Italy', code: 'it', visitors: 380, percentage: 3.2 },
+      { name: 'Spain', code: 'es', visitors: 320, percentage: 2.7 }
     ]
 
-    this.data = countries.map((country, index) => ({
-      country: country,
-      code: countryCodes[index],
-      value: Math.floor(Math.random() * 10000) + 500,
-      users: Math.floor(Math.random() * 5000) + 100
-    }))
+    this.data = countries
   }
 
   createMap() {

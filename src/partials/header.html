@@ -1,0 +1,207 @@
+<!-- Top Header -->
+<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container-fluid px-3">
+            <!-- Left side -->
+            <div class="d-flex align-items-center flex-grow-1">
+                <!-- Desktop menu toggle -->
+                <button class="btn rounded-circle p-0 d-flex align-items-center justify-content-center me-3" 
+                        id="sidebarToggleDesktop" 
+                        type="button" 
+                        style="width: 43px; height: 43px; background-color: #e74c3c; border: none; color: white;">
+                    <i class="fa fa-bars"></i>
+                </button>
+                
+                <!-- Search trigger -->
+                <button class="btn btn-link text-secondary p-2 me-2" id="searchToggle">
+                    <i class="fa fa-search"></i>
+                </button>
+                
+                <!-- Search Form -->
+                <form class="search-form d-none flex-grow-1" action="#" method="GET" style="max-width: 400px;">
+                    <div class="input-group">
+                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <button class="btn btn-outline-secondary" type="button" id="searchClose">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right side -->
+            <div class="d-flex align-items-center">
+
+                <!-- Notifications Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-link text-secondary position-relative p-2" 
+                            type="button" 
+                            data-bs-toggle="dropdown" 
+                            aria-expanded="false">
+                        <i class="fa fa-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">
+                            3
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 350px; max-width: 90vw;">
+                        <li><h6 class="dropdown-header bg-light fw-bold py-3 px-3">Notifications</h6></li>
+                        <li><hr class="dropdown-divider my-0"></li>
+                        <li>
+                            <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                <div class="d-flex align-items-start">
+                                    <div class="flex-shrink-0">
+                                        <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                            <i class="fa fa-info text-white" style="font-size: 12px;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                        <div class="small text-muted">December 12, 2025</div>
+                                        <div class="fw-semibold" style="font-size: 13px; line-height: 1.3;">A new monthly report is ready to download!</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0"></li>
+                        <li>
+                            <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                <div class="d-flex align-items-start">
+                                    <div class="flex-shrink-0">
+                                        <div class="rounded-circle bg-success d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                            <i class="fa fa-donate text-white" style="font-size: 12px;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                        <div class="small text-muted">December 7, 2025</div>
+                                        <div class="fw-semibold" style="font-size: 13px; line-height: 1.3;">$290.29 has been deposited into your account!</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0"></li>
+                        <li>
+                            <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                <div class="d-flex align-items-start">
+                                    <div class="flex-shrink-0">
+                                        <div class="rounded-circle bg-warning d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                            <i class="fa fa-exclamation-triangle text-white" style="font-size: 12px;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                        <div class="small text-muted">December 2, 2025</div>
+                                        <div class="fw-semibold" style="font-size: 13px; line-height: 1.3;">Spending Alert: We've noticed unusually high spending.</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0"></li>
+                        <li class="text-center">
+                            <a class="dropdown-item py-2 text-primary fw-semibold px-3" href="#">Show All Alerts</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Messages Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-link text-secondary position-relative p-2" 
+                            type="button" 
+                            data-bs-toggle="dropdown" 
+                            aria-expanded="false">
+                        <i class="fa fa-envelope"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size: 10px;">
+                            7
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 350px; max-width: 90vw;">
+                        <li><h6 class="dropdown-header bg-light fw-bold py-3 px-3">Messages</h6></li>
+                        <li><hr class="dropdown-divider my-0"></li>
+                        <li>
+                            <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                <div class="d-flex align-items-start">
+                                    <img src="images/admin.jpg" alt="User" class="rounded-circle flex-shrink-0" width="36" height="36">
+                                    <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                        <div class="fw-bold" style="font-size: 14px;">Jonathan Smith</div>
+                                        <div class="small text-muted" style="font-size: 12px; line-height: 1.3;">Hi there! I am wondering if you can help me with a problem...</div>
+                                        <div class="small text-muted mt-1" style="font-size: 11px;">Just now</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0"></li>
+                        <li>
+                            <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                <div class="d-flex align-items-start">
+                                    <img src="images/admin.jpg" alt="User" class="rounded-circle flex-shrink-0" width="36" height="36">
+                                    <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                        <div class="fw-bold" style="font-size: 14px;">Jack Sanders</div>
+                                        <div class="small text-muted" style="font-size: 12px; line-height: 1.3;">I have the photos that you ordered last month, how would you...</div>
+                                        <div class="small text-muted mt-1" style="font-size: 11px;">5 min ago</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider my-0"></li>
+                        <li class="text-center">
+                            <a class="dropdown-item py-2 text-primary fw-semibold px-3" href="#">Read All Messages</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Language Selector -->
+                <div class="dropdown">
+                    <button class="btn btn-link text-secondary p-2 d-flex align-items-center" 
+                            type="button" 
+                            data-bs-toggle="dropdown" 
+                            aria-expanded="false">
+                        <i class="fas fa-globe me-1"></i>
+                        <span class="d-none d-sm-inline small">EN</span>
+                        <i class="fas fa-chevron-down ms-1" style="font-size: 10px;"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="min-width: 150px;">
+                        <li><a class="dropdown-item py-2 px-3" href="#"><i class="fi fi-us me-2"></i>English</a></li>
+                        <li><a class="dropdown-item py-2 px-3" href="#"><i class="fi fi-fr me-2"></i>French</a></li>
+                        <li><a class="dropdown-item py-2 px-3" href="#"><i class="fi fi-es me-2"></i>Spanish</a></li>
+                        <li><a class="dropdown-item py-2 px-3" href="#"><i class="fi fi-it me-2"></i>Italian</a></li>
+                    </ul>
+                </div>
+
+                <!-- User Dropdown -->
+                <div class="dropdown">
+                    <button class="btn btn-link text-decoration-none p-2 d-flex align-items-center" 
+                            type="button" 
+                            data-bs-toggle="dropdown" 
+                            aria-expanded="false">
+                        <img src="images/admin.jpg" alt="User" class="rounded-circle me-2" width="32" height="32">
+                        <span class="text-dark d-none d-md-inline fw-semibold" style="font-size: 14px;">John Doe</span>
+                        <i class="fa fa-angle-down text-secondary ms-1" style="font-size: 12px;"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="min-width: 180px;">
+                        <li>
+                            <a class="dropdown-item py-2 px-3" href="#">
+                                <i class="fa fa-user me-2"></i> My Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2 px-3" href="#">
+                                <i class="fa fa-cog me-2"></i> Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2 px-3 d-flex align-items-center justify-content-between" href="#">
+                                <span><i class="fa fa-bell me-2"></i> Notifications</span>
+                                <span class="badge bg-primary rounded-pill">42</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item py-2 px-3" href="#">
+                                <i class="fa fa-power-off me-2"></i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

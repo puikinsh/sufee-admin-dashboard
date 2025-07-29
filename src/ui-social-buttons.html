@@ -2,336 +2,26 @@
 <html lang="en" data-bs-theme="light">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Social Buttons - Sufee Admin</title>
     <meta name="description" content="Modern Sufee Admin Dashboard with Bootstrap 5">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <!-- Themify Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/0.1.2/css/themify-icons.css">
-    
-    <!-- Flag Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.2.3/css/flag-icons.min.css">
+    <div data-partial="head-common"></div>
 </head>
 
-<body class="sufee-dashboard" data-page="social-buttons">
+<body class="sufee-dashboard" data-page="ui-social-buttons">
     <!-- Main Container -->
     <div class="d-flex min-vh-100">
         
         <!-- Sidebar -->
-        <nav class="sidebar bg-dark text-white position-fixed d-flex flex-column" id="sidebar">
-            <!-- Brand -->
-            <div class="sidebar-brand d-flex align-items-center justify-content-center py-3 border-bottom border-secondary">
-                <img src="images/sufee-logo.svg" alt="Sufee Admin" class="logo-full" height="32">
-                <img src="images/sufee-logo-mini.svg" alt="SA" class="logo-mini" height="32">
-            </div>
-
-            <!-- Navigation -->
-            <div class="sidebar-nav flex-grow-1 overflow-auto py-3">
-                <ul class="nav nav-pills flex-column">
-                    <!-- Dashboard -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="fas fa-tachometer-alt me-2"></i>
-                            <span class="nav-text">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <!-- UI Elements Section -->
-                    <li class="nav-header mt-3 mb-2">
-                        <span class="small fw-bold text-uppercase">UI Elements</span>
-                    </li>
-
-                    <!-- Components -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#componentsSubmenu" role="button">
-                            <i class="fas fa-laptop me-2"></i>
-                            <span class="nav-text">Components</span>
-                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
-                        </a>
-                        <div class="collapse show" id="componentsSubmenu">
-                            <ul class="nav nav-pills flex-column">
-                                <li class="nav-item"><a class="nav-link" href="ui-buttons.html"><i class="fas fa-puzzle-piece"></i><span class="nav-text">Buttons</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="ui-badges.html"><i class="fas fa-id-badge"></i><span class="nav-text">Badges</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="ui-tabs.html"><i class="fas fa-bars"></i><span class="nav-text">Tabs</span></a></li>
-                                <li class="nav-item"><a class="nav-link active" href="ui-social-buttons.html"><i class="fas fa-share-square"></i><span class="nav-text">Social Buttons</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="ui-cards.html"><i class="fas fa-id-card"></i><span class="nav-text">Cards</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="ui-alerts.html"><i class="fas fa-exclamation-triangle"></i><span class="nav-text">Alerts</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="ui-progressbar.html"><i class="fas fa-spinner"></i><span class="nav-text">Progress Bars</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="ui-modals.html"><i class="fas fa-fire"></i><span class="nav-text">Modals</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="ui-switches.html"><i class="fas fa-book"></i><span class="nav-text">Switches</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="ui-grids.html"><i class="fas fa-th"></i><span class="nav-text">Grids</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="ui-typography.html"><i class="fas fa-file-word"></i><span class="nav-text">Typography</span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- Tables -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#tablesSubmenu" role="button">
-                            <i class="fas fa-table me-2"></i>
-                            <span class="nav-text">Tables</span>
-                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
-                        </a>
-                        <div class="collapse" id="tablesSubmenu">
-                            <ul class="nav nav-pills flex-column">
-                                <li class="nav-item"><a class="nav-link" href="tables-basic.html"><i class="fas fa-table"></i><span class="nav-text">Basic Table</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="tables-data.html"><i class="fas fa-table"></i><span class="nav-text">Data Table</span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- Forms -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#formsSubmenu" role="button">
-                            <i class="fas fa-edit me-2"></i>
-                            <span class="nav-text">Forms</span>
-                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
-                        </a>
-                        <div class="collapse" id="formsSubmenu">
-                            <ul class="nav nav-pills flex-column">
-                                <li class="nav-item"><a class="nav-link" href="forms-basic.html"><i class="fas fa-edit"></i><span class="nav-text">Basic Form</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="forms-advanced.html"><i class="fas fa-edit"></i><span class="nav-text">Advanced Form</span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- Icons Section -->
-                    <li class="nav-header mt-3 mb-2">
-                        <span class="small fw-bold text-uppercase">Icons</span>
-                    </li>
-
-                    <!-- Icons -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#iconsSubmenu" role="button">
-                            <i class="fas fa-icons me-2"></i>
-                            <span class="nav-text">Icons</span>
-                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
-                        </a>
-                        <div class="collapse" id="iconsSubmenu">
-                            <ul class="nav nav-pills flex-column">
-                                <li class="nav-item"><a class="nav-link" href="font-fontawesome.html"><i class="fab fa-font-awesome"></i><span class="nav-text">Font Awesome</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="font-themify.html"><i class="fas fa-icons"></i><span class="nav-text">Themify Icons</span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- Widgets -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="widgets.html">
-                            <i class="fas fa-cube me-2"></i>
-                            <span class="nav-text">Widgets</span>
-                        </a>
-                    </li>
-
-                    <!-- Charts -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#chartsSubmenu" role="button">
-                            <i class="fas fa-chart-bar me-2"></i>
-                            <span class="nav-text">Charts</span>
-                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
-                        </a>
-                        <div class="collapse" id="chartsSubmenu">
-                            <ul class="nav nav-pills flex-column">
-                                <li class="nav-item"><a class="nav-link" href="charts-chartjs.html"><i class="fas fa-line-chart"></i><span class="nav-text">Chart JS</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="charts-flot.html"><i class="fas fa-area-chart"></i><span class="nav-text">Flot Chart</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="charts-peity.html"><i class="fas fa-pie-chart"></i><span class="nav-text">Peity Chart</span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- Maps -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#mapsSubmenu" role="button">
-                            <i class="fas fa-map me-2"></i>
-                            <span class="nav-text">Maps</span>
-                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
-                        </a>
-                        <div class="collapse" id="mapsSubmenu">
-                            <ul class="nav nav-pills flex-column">
-                                <li class="nav-item"><a class="nav-link" href="maps-gmap.html"><i class="fas fa-map-marker"></i><span class="nav-text">Google Maps</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="maps-vector.html"><i class="fas fa-street-view"></i><span class="nav-text">Vector Maps</span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <!-- Extras Section -->
-                    <li class="nav-header mt-3 mb-2">
-                        <span class="small fw-bold text-uppercase">Extras</span>
-                    </li>
-
-                    <!-- Pages -->
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesSubmenu" role="button">
-                            <i class="fas fa-file me-2"></i>
-                            <span class="nav-text">Pages</span>
-                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
-                        </a>
-                        <div class="collapse" id="pagesSubmenu">
-                            <ul class="nav nav-pills flex-column">
-                                <li class="nav-item"><a class="nav-link" href="page-login.html"><i class="fas fa-sign-in-alt"></i><span class="nav-text">Login</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="page-register.html"><i class="fas fa-user-plus"></i><span class="nav-text">Register</span></a></li>
-                                <li class="nav-item"><a class="nav-link" href="pages-forget.html"><i class="fas fa-paper-plane"></i><span class="nav-text">Forgot Password</span></a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <div data-partial="sidebar" data-partial-replace="true"></div>
 
         <!-- Main Content Area -->
         <div class="main-content flex-grow-1">
             <!-- Top Header -->
-            <header class="header">
-                <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-                    <div class="container-fluid px-3">
-                        <!-- Left side -->
-                        <div class="d-flex align-items-center flex-grow-1">
-                            <!-- Desktop menu toggle -->
-                            <button class="btn rounded-circle p-0 d-flex align-items-center justify-content-center me-3" 
-                                    id="sidebarToggleDesktop" 
-                                    type="button" 
-                                    style="width: 43px; height: 43px; background-color: #e74c3c; border: none; color: white;">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            
-                            <!-- Search trigger -->
-                            <button class="btn btn-link text-secondary p-2 me-2" id="searchToggle">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                            <!-- Search Form -->
-                            <form class="search-form d-none flex-grow-1" action="#" method="GET" style="max-width: 400px;">
-                                <div class="input-group">
-                                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                                    <button class="btn btn-outline-secondary" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-outline-secondary" type="button" id="searchClose">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <!-- Right side -->
-                        <div class="d-flex align-items-center">
-                            <!-- Notifications -->
-                            <div class="dropdown me-3">
-                                <button class="btn btn-link text-secondary position-relative p-2" 
-                                        type="button" 
-                                        data-bs-toggle="dropdown" 
-                                        aria-expanded="false">
-                                    <i class="fa fa-bell"></i>
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">
-                                        3
-                                    </span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 350px; max-width: 90vw;">
-                                    <li><h6 class="dropdown-header bg-light fw-bold py-3 px-3">Notifications</h6></li>
-                                    <li><hr class="dropdown-divider my-0"></li>
-                                    <li>
-                                        <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
-                                            <div class="d-flex align-items-start">
-                                                <div class="flex-shrink-0 me-2">
-                                                    <i class="fas fa-info-circle text-primary"></i>
-                                                </div>
-                                                <div class="flex-grow-1" style="min-width: 0;">
-                                                    <div class="fw-bold" style="font-size: 14px;">System Update</div>
-                                                    <div class="small text-muted" style="font-size: 12px; line-height: 1.3;">New features available in dashboard</div>
-                                                    <div class="small text-muted mt-1" style="font-size: 11px;">2 min ago</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- Messages -->
-                            <div class="dropdown me-3">
-                                <button class="btn btn-link text-secondary position-relative p-2" 
-                                        type="button" 
-                                        data-bs-toggle="dropdown" 
-                                        aria-expanded="false">
-                                    <i class="fa fa-envelope"></i>
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size: 10px;">
-                                        7
-                                    </span>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 350px; max-width: 90vw;">
-                                    <li><h6 class="dropdown-header bg-light fw-bold py-3 px-3">Messages</h6></li>
-                                    <li><hr class="dropdown-divider my-0"></li>
-                                    <li>
-                                        <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
-                                            <div class="d-flex align-items-start">
-                                                <img src="images/admin.jpg" alt="User" class="rounded-circle flex-shrink-0" width="36" height="36">
-                                                <div class="flex-grow-1 ms-2" style="min-width: 0;">
-                                                    <div class="fw-bold" style="font-size: 14px;">Jonathan Smith</div>
-                                                    <div class="small text-muted" style="font-size: 12px; line-height: 1.3;">Hi there! I am wondering if you can help me with a problem...</div>
-                                                    <div class="small text-muted mt-1" style="font-size: 11px;">Just now</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <!-- User Profile -->
-                            <div class="dropdown">
-                                <button class="btn btn-link p-0" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="images/admin.jpg" alt="Admin" class="rounded-circle" width="40" height="40">
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                                    <li><h6 class="dropdown-header">Account</h6></li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fa fa-user me-2"></i> My Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fa fa-user me-2"></i> Notifications <span class="badge bg-primary rounded-pill ms-2">13</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fas fa-cog me-2"></i> Settings
-                                        </a>
-                                    </li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fas fa-sign-out-alt me-2"></i> Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </header>
+            <div data-partial="header" data-partial-replace="true"></div>
 
             <!-- Breadcrumb -->
-            <div class="breadcrumb-section bg-white border-bottom px-4 py-3">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="#" class="text-decoration-none">UI Elements</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Social Buttons</li>
-                    </ol>
-                </nav>
-            </div>
+            <div data-breadcrumb data-breadcrumb-title="Social Buttons" data-breadcrumb-path="UI Elements|Components|Social Buttons"></div>
 
             <!-- Content Area -->
             <main class="content-area p-4">
@@ -341,212 +31,180 @@
                     <div class="card mb-4">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <div>
-                                <h5 class="card-title mb-1">2025 Social Media Buttons</h5>
-                                <small class="text-muted">Usage: <code>&lt;button class="btn social facebook"&gt;&lt;i class="fab fa-facebook"&gt;&lt;/i&gt;&lt;span&gt;Facebook&lt;/span&gt;&lt;/button&gt;</code></small>
+                                <h5 class="card-title mb-1">Social Media Buttons</h5>
+                                <small class="text-muted">Usage: <code>&lt;button class="btn btn-social btn-facebook"&gt;&lt;i class="fab fa-facebook-f"&gt;&lt;/i&gt;Facebook&lt;/button&gt;</code></small>
                             </div>
                         </div>
                         <div class="card-body">
                             <h6 class="mb-3">Size Small <small class="text-muted">Add class <code>.btn-sm</code></small></h6>
                             <div class="mb-4">
-                                <button type="button" class="btn btn-sm social facebook me-2 mb-2">
-                                    <i class="fab fa-facebook"></i>
-                                    <span>Facebook</span>
+                                <button type="button" class="btn btn-sm btn-social btn-facebook me-2 mb-2">
+                                    <i class="fab fa-facebook-f me-2"></i>
+                                    Facebook
                                 </button>
-                                <button type="button" class="btn btn-sm social x-twitter me-2 mb-2">
-                                    <i class="fab fa-x-twitter"></i>
-                                    <span>X</span>
+                                <button type="button" class="btn btn-sm btn-social btn-x me-2 mb-2">
+                                    <i class="fab fa-x-twitter me-2"></i>
+                                    X (Twitter)
                                 </button>
-                                <button type="button" class="btn btn-sm social linkedin me-2 mb-2">
-                                    <i class="fab fa-linkedin"></i>
-                                    <span>LinkedIn</span>
+                                <button type="button" class="btn btn-sm btn-social btn-linkedin me-2 mb-2">
+                                    <i class="fab fa-linkedin-in me-2"></i>
+                                    LinkedIn
                                 </button>
-                                <button type="button" class="btn btn-sm social instagram me-2 mb-2">
-                                    <i class="fab fa-instagram"></i>
-                                    <span>Instagram</span>
+                                <button type="button" class="btn btn-sm btn-social btn-instagram me-2 mb-2">
+                                    <i class="fab fa-instagram me-2"></i>
+                                    Instagram
                                 </button>
-                                <button type="button" class="btn btn-sm social tiktok me-2 mb-2">
-                                    <i class="fab fa-tiktok"></i>
-                                    <span>TikTok</span>
+                                <button type="button" class="btn btn-sm btn-social btn-tiktok me-2 mb-2">
+                                    <i class="fab fa-tiktok me-2"></i>
+                                    TikTok
                                 </button>
-                                <button type="button" class="btn btn-sm social youtube me-2 mb-2">
-                                    <i class="fab fa-youtube"></i>
-                                    <span>YouTube</span>
+                                <button type="button" class="btn btn-sm btn-social btn-youtube me-2 mb-2">
+                                    <i class="fab fa-youtube me-2"></i>
+                                    YouTube
                                 </button>
-                                <button type="button" class="btn btn-sm social discord me-2 mb-2">
-                                    <i class="fab fa-discord"></i>
-                                    <span>Discord</span>
+                                <button type="button" class="btn btn-sm btn-social btn-discord me-2 mb-2">
+                                    <i class="fab fa-discord me-2"></i>
+                                    Discord
                                 </button>
-                                <button type="button" class="btn btn-sm social slack me-2 mb-2">
-                                    <i class="fab fa-slack"></i>
-                                    <span>Slack</span>
+                                <button type="button" class="btn btn-sm btn-social btn-slack me-2 mb-2">
+                                    <i class="fab fa-slack me-2"></i>
+                                    Slack
                                 </button>
-                                <button type="button" class="btn btn-sm social telegram me-2 mb-2">
-                                    <i class="fab fa-telegram"></i>
-                                    <span>Telegram</span>
+                                <button type="button" class="btn btn-sm btn-social btn-telegram me-2 mb-2">
+                                    <i class="fab fa-telegram me-2"></i>
+                                    Telegram
                                 </button>
-                                <button type="button" class="btn btn-sm social whatsapp me-2 mb-2">
-                                    <i class="fab fa-whatsapp"></i>
-                                    <span>WhatsApp</span>
+                                <button type="button" class="btn btn-sm btn-social btn-whatsapp me-2 mb-2">
+                                    <i class="fab fa-whatsapp me-2"></i>
+                                    WhatsApp
                                 </button>
-                                <button type="button" class="btn btn-sm social threads me-2 mb-2">
-                                    <i class="fab fa-threads"></i>
-                                    <span>Threads</span>
+                                <button type="button" class="btn btn-sm btn-social btn-snapchat me-2 mb-2">
+                                    <i class="fab fa-snapchat me-2"></i>
+                                    Snapchat
                                 </button>
-                                <button type="button" class="btn btn-sm social github me-2 mb-2">
-                                    <i class="fab fa-github"></i>
-                                    <span>GitHub</span>
+                                <button type="button" class="btn btn-sm btn-social btn-github me-2 mb-2">
+                                    <i class="fab fa-github me-2"></i>
+                                    GitHub
                                 </button>
-                                <button type="button" class="btn btn-sm social stack-overflow me-2 mb-2">
-                                    <i class="fab fa-stack-overflow"></i>
-                                    <span>Stack Overflow</span>
+                                <button type="button" class="btn btn-sm btn-social btn-pinterest me-2 mb-2">
+                                    <i class="fab fa-pinterest me-2"></i>
+                                    Pinterest
                                 </button>
-                                <button type="button" class="btn btn-sm social dribbble me-2 mb-2">
-                                    <i class="fab fa-dribbble"></i>
-                                    <span>Dribbble</span>
+                                <button type="button" class="btn btn-sm btn-social btn-reddit me-2 mb-2">
+                                    <i class="fab fa-reddit me-2"></i>
+                                    Reddit
                                 </button>
-                                <button type="button" class="btn btn-sm social behance me-2 mb-2">
-                                    <i class="fab fa-behance"></i>
-                                    <span>Behance</span>
+                                <button type="button" class="btn btn-sm btn-social btn-spotify me-2 mb-2">
+                                    <i class="fab fa-spotify me-2"></i>
+                                    Spotify
                                 </button>
-                                <button type="button" class="btn btn-sm social pinterest me-2 mb-2">
-                                    <i class="fab fa-pinterest"></i>
-                                    <span>Pinterest</span>
-                                </button>
-                                <button type="button" class="btn btn-sm social reddit me-2 mb-2">
-                                    <i class="fab fa-reddit"></i>
-                                    <span>Reddit</span>
-                                </button>
-                                <button type="button" class="btn btn-sm social spotify me-2 mb-2">
-                                    <i class="fab fa-spotify"></i>
-                                    <span>Spotify</span>
-                                </button>
-                                <button type="button" class="btn btn-sm social twitch me-2 mb-2">
-                                    <i class="fab fa-twitch"></i>
-                                    <span>Twitch</span>
-                                </button>
-                                <button type="button" class="btn btn-sm social mastodon me-2 mb-2">
-                                    <i class="fab fa-mastodon"></i>
-                                    <span>Mastodon</span>
+                                <button type="button" class="btn btn-sm btn-social btn-twitch me-2 mb-2">
+                                    <i class="fab fa-twitch me-2"></i>
+                                    Twitch
                                 </button>
                             </div>
 
                             <h6 class="mb-3">Size Normal</h6>
                             <div class="mb-4">
-                                <button type="button" class="btn social facebook me-2 mb-2">
-                                    <i class="fab fa-facebook"></i>
-                                    <span>Facebook</span>
+                                <button type="button" class="btn btn-social btn-facebook me-2 mb-2">
+                                    <i class="fab fa-facebook-f me-2"></i>
+                                    Facebook
                                 </button>
-                                <button type="button" class="btn social x-twitter me-2 mb-2">
-                                    <i class="fab fa-x-twitter"></i>
-                                    <span>X</span>
+                                <button type="button" class="btn btn-social btn-x me-2 mb-2">
+                                    <i class="fab fa-x-twitter me-2"></i>
+                                    X (Twitter)
                                 </button>
-                                <button type="button" class="btn social linkedin me-2 mb-2">
-                                    <i class="fab fa-linkedin"></i>
-                                    <span>LinkedIn</span>
+                                <button type="button" class="btn btn-social btn-linkedin me-2 mb-2">
+                                    <i class="fab fa-linkedin-in me-2"></i>
+                                    LinkedIn
                                 </button>
-                                <button type="button" class="btn social instagram me-2 mb-2">
-                                    <i class="fab fa-instagram"></i>
-                                    <span>Instagram</span>
+                                <button type="button" class="btn btn-social btn-instagram me-2 mb-2">
+                                    <i class="fab fa-instagram me-2"></i>
+                                    Instagram
                                 </button>
-                                <button type="button" class="btn social tiktok me-2 mb-2">
-                                    <i class="fab fa-tiktok"></i>
-                                    <span>TikTok</span>
+                                <button type="button" class="btn btn-social btn-tiktok me-2 mb-2">
+                                    <i class="fab fa-tiktok me-2"></i>
+                                    TikTok
                                 </button>
-                                <button type="button" class="btn social youtube me-2 mb-2">
-                                    <i class="fab fa-youtube"></i>
-                                    <span>YouTube</span>
+                                <button type="button" class="btn btn-social btn-youtube me-2 mb-2">
+                                    <i class="fab fa-youtube me-2"></i>
+                                    YouTube
                                 </button>
-                                <button type="button" class="btn social discord me-2 mb-2">
-                                    <i class="fab fa-discord"></i>
-                                    <span>Discord</span>
+                                <button type="button" class="btn btn-social btn-discord me-2 mb-2">
+                                    <i class="fab fa-discord me-2"></i>
+                                    Discord
                                 </button>
-                                <button type="button" class="btn social slack me-2 mb-2">
-                                    <i class="fab fa-slack"></i>
-                                    <span>Slack</span>
+                                <button type="button" class="btn btn-social btn-slack me-2 mb-2">
+                                    <i class="fab fa-slack me-2"></i>
+                                    Slack
                                 </button>
-                                <button type="button" class="btn social telegram me-2 mb-2">
-                                    <i class="fab fa-telegram"></i>
-                                    <span>Telegram</span>
+                                <button type="button" class="btn btn-social btn-telegram me-2 mb-2">
+                                    <i class="fab fa-telegram me-2"></i>
+                                    Telegram
                                 </button>
-                                <button type="button" class="btn social whatsapp me-2 mb-2">
-                                    <i class="fab fa-whatsapp"></i>
-                                    <span>WhatsApp</span>
+                                <button type="button" class="btn btn-social btn-whatsapp me-2 mb-2">
+                                    <i class="fab fa-whatsapp me-2"></i>
+                                    WhatsApp
                                 </button>
-                                <button type="button" class="btn social threads me-2 mb-2">
-                                    <i class="fab fa-threads"></i>
-                                    <span>Threads</span>
+                                <button type="button" class="btn btn-social btn-snapchat me-2 mb-2">
+                                    <i class="fab fa-snapchat me-2"></i>
+                                    Snapchat
                                 </button>
-                                <button type="button" class="btn social github me-2 mb-2">
-                                    <i class="fab fa-github"></i>
-                                    <span>GitHub</span>
+                                <button type="button" class="btn btn-social btn-github me-2 mb-2">
+                                    <i class="fab fa-github me-2"></i>
+                                    GitHub
                                 </button>
-                                <button type="button" class="btn social stack-overflow me-2 mb-2">
-                                    <i class="fab fa-stack-overflow"></i>
-                                    <span>Stack Overflow</span>
+                                <button type="button" class="btn btn-social btn-pinterest me-2 mb-2">
+                                    <i class="fab fa-pinterest me-2"></i>
+                                    Pinterest
                                 </button>
-                                <button type="button" class="btn social dribbble me-2 mb-2">
-                                    <i class="fab fa-dribbble"></i>
-                                    <span>Dribbble</span>
+                                <button type="button" class="btn btn-social btn-reddit me-2 mb-2">
+                                    <i class="fab fa-reddit me-2"></i>
+                                    Reddit
                                 </button>
-                                <button type="button" class="btn social behance me-2 mb-2">
-                                    <i class="fab fa-behance"></i>
-                                    <span>Behance</span>
+                                <button type="button" class="btn btn-social btn-spotify me-2 mb-2">
+                                    <i class="fab fa-spotify me-2"></i>
+                                    Spotify
                                 </button>
-                                <button type="button" class="btn social pinterest me-2 mb-2">
-                                    <i class="fab fa-pinterest"></i>
-                                    <span>Pinterest</span>
-                                </button>
-                                <button type="button" class="btn social reddit me-2 mb-2">
-                                    <i class="fab fa-reddit"></i>
-                                    <span>Reddit</span>
-                                </button>
-                                <button type="button" class="btn social spotify me-2 mb-2">
-                                    <i class="fab fa-spotify"></i>
-                                    <span>Spotify</span>
-                                </button>
-                                <button type="button" class="btn social twitch me-2 mb-2">
-                                    <i class="fab fa-twitch"></i>
-                                    <span>Twitch</span>
-                                </button>
-                                <button type="button" class="btn social mastodon me-2 mb-2">
-                                    <i class="fab fa-mastodon"></i>
-                                    <span>Mastodon</span>
+                                <button type="button" class="btn btn-social btn-twitch me-2 mb-2">
+                                    <i class="fab fa-twitch me-2"></i>
+                                    Twitch
                                 </button>
                             </div>
 
                             <h6 class="mb-3">Size Large <small class="text-muted">Add class <code>.btn-lg</code></small></h6>
                             <div class="mb-4">
-                                <button type="button" class="btn btn-lg social facebook me-2 mb-2">
-                                    <i class="fab fa-facebook"></i>
-                                    <span>Facebook</span>
+                                <button type="button" class="btn btn-lg btn-social btn-facebook me-2 mb-2">
+                                    <i class="fab fa-facebook-f me-2"></i>
+                                    Facebook
                                 </button>
-                                <button type="button" class="btn btn-lg social x-twitter me-2 mb-2">
-                                    <i class="fab fa-x-twitter"></i>
-                                    <span>X</span>
+                                <button type="button" class="btn btn-lg btn-social btn-x me-2 mb-2">
+                                    <i class="fab fa-x-twitter me-2"></i>
+                                    X (Twitter)
                                 </button>
-                                <button type="button" class="btn btn-lg social linkedin me-2 mb-2">
-                                    <i class="fab fa-linkedin"></i>
-                                    <span>LinkedIn</span>
+                                <button type="button" class="btn btn-lg btn-social btn-linkedin me-2 mb-2">
+                                    <i class="fab fa-linkedin-in me-2"></i>
+                                    LinkedIn
                                 </button>
-                                <button type="button" class="btn btn-lg social instagram me-2 mb-2">
-                                    <i class="fab fa-instagram"></i>
-                                    <span>Instagram</span>
+                                <button type="button" class="btn btn-lg btn-social btn-instagram me-2 mb-2">
+                                    <i class="fab fa-instagram me-2"></i>
+                                    Instagram
                                 </button>
-                                <button type="button" class="btn btn-lg social tiktok me-2 mb-2">
-                                    <i class="fab fa-tiktok"></i>
-                                    <span>TikTok</span>
+                                <button type="button" class="btn btn-lg btn-social btn-tiktok me-2 mb-2">
+                                    <i class="fab fa-tiktok me-2"></i>
+                                    TikTok
                                 </button>
-                                <button type="button" class="btn btn-lg social youtube me-2 mb-2">
-                                    <i class="fab fa-youtube"></i>
-                                    <span>YouTube</span>
+                                <button type="button" class="btn btn-lg btn-social btn-youtube me-2 mb-2">
+                                    <i class="fab fa-youtube me-2"></i>
+                                    YouTube
                                 </button>
-                                <button type="button" class="btn btn-lg social discord me-2 mb-2">
-                                    <i class="fab fa-discord"></i>
-                                    <span>Discord</span>
+                                <button type="button" class="btn btn-lg btn-social btn-discord me-2 mb-2">
+                                    <i class="fab fa-discord me-2"></i>
+                                    Discord
                                 </button>
-                                <button type="button" class="btn btn-lg social slack me-2 mb-2">
-                                    <i class="fab fa-slack"></i>
-                                    <span>Slack</span>
+                                <button type="button" class="btn btn-lg btn-social btn-slack me-2 mb-2">
+                                    <i class="fab fa-slack me-2"></i>
+                                    Slack
                                 </button>
                             </div>
                         </div>
@@ -561,96 +219,96 @@
                         <div class="card-body">
                             <h6 class="mb-3">Size Small</h6>
                             <div class="mb-4">
-                                <button type="button" class="btn btn-sm social facebook me-2 mb-2">
-                                    <i class="fab fa-facebook"></i>
+                                <button type="button" class="btn btn-sm btn-social btn-facebook me-2 mb-2">
+                                    <i class="fab fa-facebook-f"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm social x-twitter me-2 mb-2">
+                                <button type="button" class="btn btn-sm btn-social btn-x me-2 mb-2">
                                     <i class="fab fa-x-twitter"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm social linkedin me-2 mb-2">
-                                    <i class="fab fa-linkedin"></i>
+                                <button type="button" class="btn btn-sm btn-social btn-linkedin me-2 mb-2">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm social instagram me-2 mb-2">
+                                <button type="button" class="btn btn-sm btn-social btn-instagram me-2 mb-2">
                                     <i class="fab fa-instagram"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm social tiktok me-2 mb-2">
+                                <button type="button" class="btn btn-sm btn-social btn-tiktok me-2 mb-2">
                                     <i class="fab fa-tiktok"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm social youtube me-2 mb-2">
+                                <button type="button" class="btn btn-sm btn-social btn-youtube me-2 mb-2">
                                     <i class="fab fa-youtube"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm social discord me-2 mb-2">
+                                <button type="button" class="btn btn-sm btn-social btn-discord me-2 mb-2">
                                     <i class="fab fa-discord"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm social slack me-2 mb-2">
+                                <button type="button" class="btn btn-sm btn-social btn-slack me-2 mb-2">
                                     <i class="fab fa-slack"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm social telegram me-2 mb-2">
+                                <button type="button" class="btn btn-sm btn-social btn-telegram me-2 mb-2">
                                     <i class="fab fa-telegram"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm social whatsapp me-2 mb-2">
+                                <button type="button" class="btn btn-sm btn-social btn-whatsapp me-2 mb-2">
                                     <i class="fab fa-whatsapp"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm social threads me-2 mb-2">
-                                    <i class="fab fa-threads"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm social github me-2 mb-2">
+                                <button type="button" class="btn btn-sm btn-social btn-github me-2 mb-2">
                                     <i class="fab fa-github"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-social btn-reddit me-2 mb-2">
+                                    <i class="fab fa-reddit"></i>
                                 </button>
                             </div>
 
                             <h6 class="mb-3">Size Normal</h6>
                             <div class="mb-4">
-                                <button type="button" class="btn social facebook me-2 mb-2">
-                                    <i class="fab fa-facebook"></i>
+                                <button type="button" class="btn btn-social btn-facebook me-2 mb-2">
+                                    <i class="fab fa-facebook-f"></i>
                                 </button>
-                                <button type="button" class="btn social x-twitter me-2 mb-2">
+                                <button type="button" class="btn btn-social btn-x me-2 mb-2">
                                     <i class="fab fa-x-twitter"></i>
                                 </button>
-                                <button type="button" class="btn social linkedin me-2 mb-2">
-                                    <i class="fab fa-linkedin"></i>
+                                <button type="button" class="btn btn-social btn-linkedin me-2 mb-2">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </button>
-                                <button type="button" class="btn social instagram me-2 mb-2">
+                                <button type="button" class="btn btn-social btn-instagram me-2 mb-2">
                                     <i class="fab fa-instagram"></i>
                                 </button>
-                                <button type="button" class="btn social tiktok me-2 mb-2">
+                                <button type="button" class="btn btn-social btn-tiktok me-2 mb-2">
                                     <i class="fab fa-tiktok"></i>
                                 </button>
-                                <button type="button" class="btn social youtube me-2 mb-2">
+                                <button type="button" class="btn btn-social btn-youtube me-2 mb-2">
                                     <i class="fab fa-youtube"></i>
                                 </button>
-                                <button type="button" class="btn social discord me-2 mb-2">
+                                <button type="button" class="btn btn-social btn-discord me-2 mb-2">
                                     <i class="fab fa-discord"></i>
                                 </button>
-                                <button type="button" class="btn social slack me-2 mb-2">
+                                <button type="button" class="btn btn-social btn-slack me-2 mb-2">
                                     <i class="fab fa-slack"></i>
                                 </button>
                             </div>
 
                             <h6 class="mb-3">Size Large</h6>
                             <div>
-                                <button type="button" class="btn btn-lg social facebook me-2 mb-2">
-                                    <i class="fab fa-facebook"></i>
+                                <button type="button" class="btn btn-lg btn-social btn-facebook me-2 mb-2">
+                                    <i class="fab fa-facebook-f"></i>
                                 </button>
-                                <button type="button" class="btn btn-lg social x-twitter me-2 mb-2">
+                                <button type="button" class="btn btn-lg btn-social btn-x me-2 mb-2">
                                     <i class="fab fa-x-twitter"></i>
                                 </button>
-                                <button type="button" class="btn btn-lg social linkedin me-2 mb-2">
-                                    <i class="fab fa-linkedin"></i>
+                                <button type="button" class="btn btn-lg btn-social btn-linkedin me-2 mb-2">
+                                    <i class="fab fa-linkedin-in"></i>
                                 </button>
-                                <button type="button" class="btn btn-lg social instagram me-2 mb-2">
+                                <button type="button" class="btn btn-lg btn-social btn-instagram me-2 mb-2">
                                     <i class="fab fa-instagram"></i>
                                 </button>
-                                <button type="button" class="btn btn-lg social tiktok me-2 mb-2">
+                                <button type="button" class="btn btn-lg btn-social btn-tiktok me-2 mb-2">
                                     <i class="fab fa-tiktok"></i>
                                 </button>
-                                <button type="button" class="btn btn-lg social youtube me-2 mb-2">
+                                <button type="button" class="btn btn-lg btn-social btn-youtube me-2 mb-2">
                                     <i class="fab fa-youtube"></i>
                                 </button>
-                                <button type="button" class="btn btn-lg social discord me-2 mb-2">
+                                <button type="button" class="btn btn-lg btn-social btn-discord me-2 mb-2">
                                     <i class="fab fa-discord"></i>
                                 </button>
-                                <button type="button" class="btn btn-lg social slack me-2 mb-2">
+                                <button type="button" class="btn btn-lg btn-social btn-slack me-2 mb-2">
                                     <i class="fab fa-slack"></i>
                                 </button>
                             </div>
