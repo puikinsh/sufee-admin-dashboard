@@ -1,0 +1,18 @@
+<svg width="200" height="32" viewBox="0 0 200 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle for the icon -->
+  <circle cx="16" cy="16" r="14" fill="#20a8d8" stroke="#ffffff" stroke-width="1"/>
+  
+  <!-- Dashboard/Grid icon -->
+  <rect x="10" y="10" width="3" height="3" fill="#ffffff" rx="0.5"/>
+  <rect x="15" y="10" width="3" height="3" fill="#ffffff" rx="0.5"/>
+  <rect x="20" y="10" width="3" height="3" fill="#ffffff" rx="0.5"/>
+  <rect x="10" y="15" width="3" height="3" fill="#ffffff" rx="0.5"/>
+  <rect x="15" y="15" width="6" height="3" fill="#ffffff" rx="0.5"/>
+  <rect x="10" y="20" width="6" height="3" fill="#ffffff" rx="0.5"/>
+  <rect x="18" y="20" width="5" height="3" fill="#ffffff" rx="0.5"/>
+  
+  <!-- Text: "SufeeAdmin" -->
+  <text x="42" y="20" font-family="'Open Sans', Arial, sans-serif" font-size="22" fill="#ffffff" dominant-baseline="middle">
+    <tspan font-weight="600">Sufee</tspan><tspan font-weight="400">Admin</tspan>
+  </text>
+</svg>

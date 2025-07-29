@@ -1,0 +1,320 @@
+// CSS Variables for sidebar layout
+:root {
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 70px;
+  --menu-bg: #272c33;
+  --menu-color: #c8c9ce;
+  --text-primary: #272c33;
+  --text-secondary: #868e96;
+  --color-flat-1: #20a8d8;
+  --color-flat-2: #f86c6b;
+  --color-flat-3: #ffc107;
+  --color-flat-4: #20c997;
+  --color-flat-5: #6610f2;
+}
+
+// Sidebar Component Styles - Original exact replica
+aside.left-panel {
+  background: var(--menu-bg);
+  display: table-cell;
+  height: 100vh;
+  min-height: 100%;
+  padding: 0 25px;
+  transition: width 0.3s ease;
+  vertical-align: top;
+  width: var(--sidebar-width);
+
+  .navbar {
+    background: #272c33;
+    border-radius: 0;
+    border: none;
+    display: block;
+    margin: 0 0 100px;
+    padding: 0;
+
+    .navbar-header {
+      float: none;
+      text-align: center;
+      width: 100%;
+    }
+
+    .navbar-brand {
+      border-bottom: 1px solid #4e4e52;
+      color: #f1f2f7 !important;
+      font-family: 'Open Sans';
+      font-size: 22px;
+      line-height: 50px;
+      margin: 0;
+      text-align: left;
+      text-transform: capitalize;
+      display: inline-block;
+      height: 69px;
+      padding: 0;
+      position: relative;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+
+      span {
+        font-weight: 600;
+      }
+
+      img {
+        max-width: 160px;
+      }
+
+      &.hidden {
+        display: none;
+      }
+    }
+
+    .menu-title {
+      border-bottom: 1px solid #4e4e52;
+      color: #9496a1;
+      clear: both;
+      display: block;
+      font-family: 'Open Sans';
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 50px;
+      padding: 15px 0 0;
+      text-transform: uppercase;
+      width: 100%;
+    }
+
+    .navbar-nav {
+      float: none;
+      position: relative;
+
+      li {
+        width: 100%;
+
+        &.active .menu-icon,
+        &:hover .toggle_nav_button:before,
+        .toggle_nav_button.nav-open:before {
+          color: #fff !important;
+        }
+
+        .dropdown-toggle:after {
+          display: none;
+        }
+
+        > a {
+          background: none !important;
+          color: #c8c9ce !important;
+          display: inline-block;
+          font-family: 'Open Sans';
+          font-size: 14px;
+          line-height: 50px;
+          padding: 0;
+          position: relative;
+          width: 100%;
+          text-decoration: none;
+
+          &:hover,
+          &:hover .menu-icon {
+            color: #fff !important;
+          }
+
+          .menu-icon {
+            color: #8b939b;
+            float: left;
+            margin-top: 8px;
+            width: 55px;
+          }
+
+          .menu-title-text {
+            font-size: 14px;
+            display: inline-block;
+            vertical-align: middle;
+          }
+
+          .badge {
+            border-radius: 0;
+            font-family: 'Open Sans';
+            font-weight: 600;
+            padding: 0.4em 0.5em;
+            margin-left: auto;
+          }
+        }
+
+        &.menu-item-has-children {
+          position: relative;
+
+          > a {
+            &::after {
+              content: "\f105";
+              font-family: 'Font Awesome 6 Free';
+              font-weight: 900;
+              color: var(--menu-color);
+              font-size: 16px;
+              margin-left: auto;
+              transition: all 0.25s ease;
+            }
+
+            &:hover::after {
+              color: #fff;
+            }
+          }
+
+          .sub-menu {
+            background: var(--menu-bg);
+            border: none;
+            box-shadow: none;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease;
+            padding-left: 35px;
+            list-style: none;
+            margin: 0;
+            display: block;
+
+            li {
+              position: relative;
+
+              a {
+                padding: 8px 0;
+                font-size: 13px;
+
+                .menu-icon {
+                  margin-right: 10px;
+                  font-size: 12px;
+                  width: 15px;
+                }
+              }
+            }
+          }
+
+          &.show {
+            > a::after {
+              content: "\f107";
+            }
+
+            .sub-menu {
+              max-height: 500px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Collapsed sidebar state - original replica
+body.open aside.left-panel {
+  .navbar {
+    .navbar-brand {
+      display: none;
+      
+      &.hidden {
+        display: inline-block !important;
+        text-align: center;
+        
+        img {
+          margin: 0 auto;
+        }
+      }
+    }
+
+    .navbar-nav {
+      li {
+        position: relative;
+
+        > a {
+          justify-content: center;
+          padding: 10px 0;
+
+          .menu-icon {
+            margin-right: 0;
+            font-size: 18px;
+          }
+
+          .menu-title-text {
+            display: none;
+          }
+
+          .badge {
+            display: none;
+          }
+        }
+
+        &.menu-item-has-children {
+          > a::after {
+            display: none;
+          }
+
+          .sub-menu {
+            position: absolute;
+            left: var(--sidebar-collapsed-width);
+            top: 0;
+            width: 200px;
+            background: var(--menu-bg);
+            border: 1px solid #4e4e52;
+            padding: 10px;
+            z-index: 1000;
+            max-height: none;
+            padding-left: 0;
+
+            li a {
+              padding: 8px 15px;
+
+              .menu-title-text {
+                display: inline;
+              }
+            }
+          }
+
+          &:hover .sub-menu {
+            max-height: 500px;
+          }
+        }
+      }
+
+      .menu-title {
+        display: none;
+      }
+    }
+  }
+}
+
+// Original responsive styles
+@media (max-width: 1024px) {
+  aside.left-panel {
+    padding: 0 20px;
+    width: 200px;
+  }
+  
+  .navbar .navbar-nav li > a .menu-icon {
+    width: 30px;
+  }
+}
+
+@media (max-width: 575.99px) {
+  body {
+    display: block;
+  }
+  
+  aside.left-panel {
+    display: block;
+    height: auto;
+    min-height: inherit;
+    padding: 0 15px;
+    width: 100%;
+  }
+  
+  .menutoggle {
+    display: none;
+  }
+  
+  .right-panel {
+    display: block;
+    
+    header.header {
+      padding: 5px 10px 1px 5px;
+      
+      div[class*="col"] {
+        padding: 0;
+      }
+    }
+  }
+}

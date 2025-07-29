@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sufee Admin - Modern Dashboard</title>
+    <meta name="description" content="Modern Sufee Admin Dashboard with Bootstrap 5">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/0.1.2/css/themify-icons.css">
+    
+    <!-- Flag Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.2.3/css/flag-icons.min.css">
+  <script type="module" crossorigin src="/assets/main-Dig8DsW_.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-BftWI0hr.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="dashboard">
+    <!-- Main Container -->
+    <div class="d-flex vh-100 overflow-hidden">
+        
+        <!-- Sidebar -->
+        <nav class="sidebar bg-dark text-white position-fixed d-flex flex-column" id="sidebar">
+            <!-- Brand -->
+            <div class="sidebar-brand d-flex align-items-center justify-content-center py-3 border-bottom border-secondary">
+                <img src="images/sufee-logo.svg" alt="Sufee Admin" class="logo-full" height="32">
+                <img src="images/sufee-logo-mini.svg" alt="SA" class="logo-mini" height="32">
+            </div>
+
+            <!-- Navigation -->
+            <div class="sidebar-nav flex-grow-1 overflow-auto py-3">
+                <ul class="nav nav-pills flex-column">
+                    <!-- Dashboard -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <!-- UI Elements Section -->
+                    <li class="nav-header mt-3 mb-2">
+                        <span class="small fw-bold text-uppercase">UI Elements</span>
+                    </li>
+
+                    <!-- Components -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#componentsSubmenu" role="button">
+                            <i class="fas fa-laptop me-2"></i>
+                            <span class="nav-text">Components</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="componentsSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="ui-buttons.html"><i class="fas fa-puzzle-piece"></i><span class="nav-text">Buttons</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-badges.html"><i class="fas fa-id-badge"></i><span class="nav-text">Badges</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-tabs.html"><i class="fas fa-bars"></i><span class="nav-text">Tabs</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-social-buttons.html"><i class="fas fa-share-square"></i><span class="nav-text">Social Buttons</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-cards.html"><i class="fas fa-id-card"></i><span class="nav-text">Cards</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-alerts.html"><i class="fas fa-exclamation-triangle"></i><span class="nav-text">Alerts</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-progressbar.html"><i class="fas fa-spinner"></i><span class="nav-text">Progress Bars</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-modals.html"><i class="fas fa-fire"></i><span class="nav-text">Modals</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-switches.html"><i class="fas fa-book"></i><span class="nav-text">Switches</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-grids.html"><i class="fas fa-th"></i><span class="nav-text">Grids</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-typography.html"><i class="fas fa-file-word"></i><span class="nav-text">Typography</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Tables -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#tablesSubmenu" role="button">
+                            <i class="fas fa-table me-2"></i>
+                            <span class="nav-text">Tables</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="tablesSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="tables-basic.html"><i class="fas fa-table"></i><span class="nav-text">Basic Table</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="tables-data.html"><i class="fas fa-table"></i><span class="nav-text">Data Table</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Forms -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#formsSubmenu" role="button">
+                            <i class="fas fa-edit me-2"></i>
+                            <span class="nav-text">Forms</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="formsSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="forms-basic.html"><i class="fas fa-edit"></i><span class="nav-text">Basic Form</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="forms-advanced.html"><i class="fas fa-edit"></i><span class="nav-text">Advanced Form</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Icons Section -->
+                    <li class="nav-header mt-3 mb-2">
+                        <span class="small fw-bold text-uppercase">Icons</span>
+                    </li>
+
+                    <!-- Icons -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#iconsSubmenu" role="button">
+                            <i class="fas fa-icons me-2"></i>
+                            <span class="nav-text">Icons</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="iconsSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="font-fontawesome.html"><i class="fab fa-font-awesome"></i><span class="nav-text">Font Awesome</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="font-themify.html"><i class="ti-themify-logo"></i><span class="nav-text">Themify Icons</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Widgets -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="widgets.html">
+                            <i class="ti-email me-2"></i>
+                            <span class="nav-text">Widgets</span>
+                        </a>
+                    </li>
+
+                    <!-- Charts -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#chartsSubmenu" role="button">
+                            <i class="fas fa-chart-bar me-2"></i>
+                            <span class="nav-text">Charts</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="chartsSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="charts-chartjs.html"><i class="fas fa-line-chart"></i><span class="nav-text">Chart JS</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="charts-flot.html"><i class="fas fa-area-chart"></i><span class="nav-text">Flot Chart</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="charts-peity.html"><i class="fas fa-pie-chart"></i><span class="nav-text">Peity Chart</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Maps -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#mapsSubmenu" role="button">
+                            <i class="fas fa-map me-2"></i>
+                            <span class="nav-text">Maps</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="mapsSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="maps-gmap.html"><i class="fas fa-map-marker"></i><span class="nav-text">Google Maps</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="maps-vector.html"><i class="fas fa-street-view"></i><span class="nav-text">Vector Maps</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Extras Section -->
+                    <li class="nav-header mt-3 mb-2">
+                        <span class="small fw-bold text-uppercase">Extras</span>
+                    </li>
+
+                    <!-- Pages -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesSubmenu" role="button">
+                            <i class="fas fa-file me-2"></i>
+                            <span class="nav-text">Pages</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="pagesSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="page-login.html"><i class="fas fa-sign-in-alt"></i><span class="nav-text">Login</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="page-register.html"><i class="fas fa-user-plus"></i><span class="nav-text">Register</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="pages-forget.html"><i class="fas fa-paper-plane"></i><span class="nav-text">Forgot Password</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <header class="header">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                    <div class="container-fluid px-3">
+                        <!-- Left side -->
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <!-- Desktop menu toggle -->
+                            <button class="btn rounded-circle p-0 d-flex align-items-center justify-content-center me-3" 
+                                    id="sidebarToggleDesktop" 
+                                    type="button" 
+                                    style="width: 43px; height: 43px; background-color: #e74c3c; border: none; color: white;">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            
+                            <!-- Search trigger -->
+                            <button class="btn btn-link text-secondary p-2 me-2" id="searchToggle">
+                                <i class="fa fa-search fs-5"></i>
+                            </button>
+                            
+                            <!-- Search Form -->
+                            <form class="search-form d-none flex-grow-1" action="#" method="GET" style="max-width: 400px;">
+                                <div class="input-group">
+                                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-outline-secondary" type="button" id="searchClose">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Right side -->
+                        <div class="d-flex align-items-center">
+
+                            <!-- Notifications Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-secondary position-relative p-2" 
+                                        type="button" 
+                                        data-bs-toggle="dropdown" 
+                                        aria-expanded="false">
+                                    <i class="fa fa-bell fs-5"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">
+                                        3
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 350px; max-width: 90vw;">
+                                    <li><h6 class="dropdown-header bg-light fw-bold py-3 px-3">Notifications</h6></li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                            <div class="d-flex align-items-start">
+                                                <div class="flex-shrink-0">
+                                                    <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                                        <i class="fa fa-info text-white" style="font-size: 12px;"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                                    <div class="small text-muted">December 12, 2019</div>
+                                                    <div class="fw-semibold" style="font-size: 13px; line-height: 1.3;">A new monthly report is ready to download!</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                            <div class="d-flex align-items-start">
+                                                <div class="flex-shrink-0">
+                                                    <div class="rounded-circle bg-success d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                                        <i class="fa fa-donate text-white" style="font-size: 12px;"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                                    <div class="small text-muted">December 7, 2019</div>
+                                                    <div class="fw-semibold" style="font-size: 13px; line-height: 1.3;">$290.29 has been deposited into your account!</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                            <div class="d-flex align-items-start">
+                                                <div class="flex-shrink-0">
+                                                    <div class="rounded-circle bg-warning d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                                        <i class="fa fa-exclamation-triangle text-white" style="font-size: 12px;"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                                    <div class="small text-muted">December 2, 2019</div>
+                                                    <div class="fw-semibold" style="font-size: 13px; line-height: 1.3;">Spending Alert: We've noticed unusually high spending.</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li class="text-center">
+                                        <a class="dropdown-item py-2 text-primary fw-semibold px-3" href="#">Show All Alerts</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Messages Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-secondary position-relative p-2" 
+                                        type="button" 
+                                        data-bs-toggle="dropdown" 
+                                        aria-expanded="false">
+                                    <i class="fa fa-envelope fs-5"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size: 10px;">
+                                        7
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 350px; max-width: 90vw;">
+                                    <li><h6 class="dropdown-header bg-light fw-bold py-3 px-3">Messages</h6></li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                            <div class="d-flex align-items-start">
+                                                <img src="images/admin.jpg" alt="User" class="rounded-circle flex-shrink-0" width="36" height="36">
+                                                <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                                    <div class="fw-bold" style="font-size: 14px;">Jonathan Smith</div>
+                                                    <div class="small text-muted" style="font-size: 12px; line-height: 1.3;">Hi there! I am wondering if you can help me with a problem...</div>
+                                                    <div class="small text-muted mt-1" style="font-size: 11px;">Just now</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                            <div class="d-flex align-items-start">
+                                                <img src="images/admin.jpg" alt="User" class="rounded-circle flex-shrink-0" width="36" height="36">
+                                                <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                                    <div class="fw-bold" style="font-size: 14px;">Jack Sanders</div>
+                                                    <div class="small text-muted" style="font-size: 12px; line-height: 1.3;">I have the photos that you ordered last month, how would you...</div>
+                                                    <div class="small text-muted mt-1" style="font-size: 11px;">5 min ago</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li class="text-center">
+                                        <a class="dropdown-item py-2 text-primary fw-semibold px-3" href="#">Read All Messages</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Language Selector -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-secondary p-2" 
+                                        type="button" 
+                                        data-bs-toggle="dropdown" 
+                                        aria-expanded="false">
+                                    <i class="flag-icon flag-icon-us fs-5"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="min-width: 150px;">
+                                    <li><a class="dropdown-item py-2 px-3" href="#"><i class="flag-icon flag-icon-us me-2"></i>English</a></li>
+                                    <li><a class="dropdown-item py-2 px-3" href="#"><i class="flag-icon flag-icon-fr me-2"></i>French</a></li>
+                                    <li><a class="dropdown-item py-2 px-3" href="#"><i class="flag-icon flag-icon-es me-2"></i>Spanish</a></li>
+                                    <li><a class="dropdown-item py-2 px-3" href="#"><i class="flag-icon flag-icon-it me-2"></i>Italian</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- User Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-decoration-none p-2 d-flex align-items-center" 
+                                        type="button" 
+                                        data-bs-toggle="dropdown" 
+                                        aria-expanded="false">
+                                    <img src="images/admin.jpg" alt="User" class="rounded-circle me-2" width="32" height="32">
+                                    <span class="text-dark d-none d-md-inline fw-semibold">John Doe</span>
+                                    <i class="fa fa-angle-down text-secondary ms-1"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="min-width: 180px;">
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#">
+                                            <i class="fa fa-user me-2"></i> My Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#">
+                                            <i class="fa fa-cog me-2"></i> Settings
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3 d-flex align-items-center justify-content-between" href="#">
+                                            <span><i class="fa fa-bell me-2"></i> Notifications</span>
+                                            <span class="badge bg-primary rounded-pill">42</span>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#">
+                                            <i class="fa fa-power-off me-2"></i> Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Breadcrumbs -->
+            <div class="breadcrumb-section bg-light border-bottom py-3">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <h1 class="h4 mb-0">Dashboard</h1>
+                        </div>
+                        <div class="col-md-6">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb mb-0 justify-content-md-end">
+                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    <!-- Success Alert -->
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <span class="badge bg-success me-2">Success</span>
+                                You successfully read this important alert message.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Widget Cards -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-primary">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h4 class="card-title">10,468</h4>
+                                            <p class="card-text">Members online</p>
+                                        </div>
+                                        <div class="dropdown">
+                                            <button class="btn btn-link text-white p-0" data-bs-toggle="dropdown">
+                                                <i class="fas fa-cog"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <canvas id="widgetChart1" height="70"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-danger">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h4 class="card-title">10,468</h4>
+                                            <p class="card-text">Members online</p>
+                                        </div>
+                                        <div class="dropdown">
+                                            <button class="btn btn-link text-white p-0" data-bs-toggle="dropdown">
+                                                <i class="fas fa-cog"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <canvas id="widgetChart2" height="70"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-warning">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h4 class="card-title">10,468</h4>
+                                            <p class="card-text">Members online</p>
+                                        </div>
+                                        <div class="dropdown">
+                                            <button class="btn btn-link text-white p-0" data-bs-toggle="dropdown">
+                                                <i class="fas fa-cog"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <canvas id="widgetChart3" height="70"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-success">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <h4 class="card-title">10,468</h4>
+                                            <p class="card-text">Members online</p>
+                                        </div>
+                                        <div class="dropdown">
+                                            <button class="btn btn-link text-white p-0" data-bs-toggle="dropdown">
+                                                <i class="fas fa-cog"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <canvas id="widgetChart4" height="70"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Cards -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card social-card social-facebook">
+                                <div class="card-body text-center">
+                                    <i class="fab fa-facebook fa-3x text-white mb-3"></i>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4 class="text-white">40k</h4>
+                                            <p class="text-white-50">Friends</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <h4 class="text-white">450</h4>
+                                            <p class="text-white-50">Feeds</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card social-card social-x">
+                                <div class="card-body text-center">
+                                    <div class="x-icon-wrapper mb-3">
+                                        <svg class="x-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4 class="text-white">30k</h4>
+                                            <p class="text-white-50">Followers</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <h4 class="text-white">450</h4>
+                                            <p class="text-white-50">Posts</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card social-card social-linkedin">
+                                <div class="card-body text-center">
+                                    <i class="fab fa-linkedin fa-3x text-white mb-3"></i>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4 class="text-white">40+</h4>
+                                            <p class="text-white-50">Contacts</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <h4 class="text-white">250</h4>
+                                            <p class="text-white-50">Feeds</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card social-card social-instagram">
+                                <div class="card-body text-center">
+                                    <i class="fab fa-instagram fa-3x text-white mb-3"></i>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4 class="text-white">85k</h4>
+                                            <p class="text-white-50">Followers</p>
+                                        </div>
+                                        <div class="col-6">
+                                            <h4 class="text-white">1.2k</h4>
+                                            <p class="text-white-50">Posts</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Traffic Chart & Profile Card -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-xl-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="card-title mb-0">Traffic</h5>
+                                        <small class="text-muted">October 2017</small>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        <div class="btn-group" role="group">
+                                            <input type="radio" class="btn-check" name="period" id="day" autocomplete="off">
+                                            <label class="btn btn-outline-secondary btn-sm" for="day">Day</label>
+                                            
+                                            <input type="radio" class="btn-check" name="period" id="month" autocomplete="off" checked>
+                                            <label class="btn btn-outline-secondary btn-sm" for="month">Month</label>
+                                            
+                                            <input type="radio" class="btn-check" name="period" id="year" autocomplete="off">
+                                            <label class="btn btn-outline-secondary btn-sm" for="year">Year</label>
+                                        </div>
+                                        <button class="btn btn-primary btn-sm">
+                                            <i class="fas fa-download"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="trafficChart" height="200"></canvas>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <div class="text-muted small">Visits</div>
+                                            <strong>29,703 Users (40%)</strong>
+                                            <div class="progress mt-2" style="height: 4px;">
+                                                <div class="progress-bar bg-success" style="width: 40%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="text-muted small">Unique</div>
+                                            <strong>24,093 Users (20%)</strong>
+                                            <div class="progress mt-2" style="height: 4px;">
+                                                <div class="progress-bar bg-info" style="width: 20%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="text-muted small">Pageviews</div>
+                                            <strong>78,706 Views (60%)</strong>
+                                            <div class="progress mt-2" style="height: 4px;">
+                                                <div class="progress-bar bg-warning" style="width: 60%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Profile Card -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="card x-card">
+                                <div class="card-header bg-dark text-white text-center position-relative">
+                                    <div class="position-absolute top-0 end-0 m-2">
+                                        <svg class="x-icon-small" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img src="images/admin.jpg" alt="Profile" class="rounded-circle me-3" width="60" height="60">
+                                        <div>
+                                            <h5 class="mb-0">Jim Doe</h5>
+                                            <small>Project Manager</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col-4">
+                                            <h6>750</h6>
+                                            <small class="text-muted">Posts</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <h6>865</h6>
+                                            <small class="text-muted">Following</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <h6>3645</h6>
+                                            <small class="text-muted">Followers</small>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <textarea class="form-control" rows="2" placeholder="What's happening?"></textarea>
+                                    </div>
+                                </div>
+                                <div class="card-footer d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <a href="#" class="text-muted me-2"><i class="fas fa-camera"></i></a>
+                                        <a href="#" class="text-muted me-2"><i class="fas fa-map-marker-alt"></i></a>
+                                        <small class="text-muted">New Castle, UK</small>
+                                    </div>
+                                    <span class="badge bg-primary">32</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Stats Cards -->
+                        <div class="col-xl-3 col-lg-6">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body d-flex align-items-center">
+                                            <div class="me-3">
+                                                <div class="icon-circle bg-success">
+                                                    <i class="ti-money text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="text-muted small">Total Profit</div>
+                                                <h5 class="mb-0">1,012</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body d-flex align-items-center">
+                                            <div class="me-3">
+                                                <div class="icon-circle bg-primary">
+                                                    <i class="ti-user text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="text-muted small">New Customer</div>
+                                                <h5 class="mb-0">961</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body d-flex align-items-center">
+                                            <div class="me-3">
+                                                <div class="icon-circle bg-warning">
+                                                    <i class="ti-layout-grid2 text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="text-muted small">Active Projects</div>
+                                                <h5 class="mb-0">770</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- World Map -->
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">World Map</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div id="worldMap" style="height: 300px;" class="d-flex align-items-center justify-content-center bg-light">
+                                        <p class="text-muted mb-0">World map will be implemented with modern mapping library</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-nW5jKCS-.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/main-legacy-AM7arMVu.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

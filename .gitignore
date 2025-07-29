@@ -3,3 +3,5 @@ npm-debug.log
 node_modules
 .sass-cache
 Docker/
+CLAUDE.md
+MODERNIZATION_PLAN.md

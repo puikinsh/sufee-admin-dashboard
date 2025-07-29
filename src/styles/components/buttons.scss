@@ -1,0 +1,70 @@
+// Button Component Styles
+
+.btn {
+  border-radius: 0;
+  transition: all 0.15s ease-in-out;
+  
+  &:focus {
+    box-shadow: none !important;
+    outline: 0;
+  }
+
+  // Ensure white text for all solid buttons except warning
+  &.btn-primary,
+  &.btn-secondary,
+  &.btn-success,
+  &.btn-danger,
+  &.btn-info,
+  &.btn-dark {
+    color: white !important;
+    
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: white !important;
+    }
+  }
+
+  // Warning button should have dark text for readability
+  &.btn-warning {
+    color: #212529 !important;
+    
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: #212529 !important;
+    }
+  }
+
+  // Light button should have dark text
+  &.btn-light {
+    color: #212529 !important;
+    
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      color: #212529 !important;
+    }
+  }
+
+  // Disabled state should maintain text colors
+  &:disabled,
+  &.disabled {
+    &.btn-primary,
+    &.btn-secondary, 
+    &.btn-success,
+    &.btn-danger,
+    &.btn-info,
+    &.btn-dark {
+      color: rgba(255, 255, 255, 0.5) !important;
+    }
+    
+    &.btn-warning,
+    &.btn-light {
+      color: rgba(33, 37, 41, 0.5) !important;
+    }
+  }
+}

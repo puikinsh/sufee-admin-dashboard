@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Badges - Sufee Admin</title>
+    <meta name="description" content="Badge Components - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/0.1.2/css/themify-icons.css">
+    
+    <!-- Flag Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/7.2.3/css/flag-icons.min.css">
+</head>
+
+<body class="sufee-dashboard" data-page="ui-badges">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <nav class="sidebar bg-dark text-white position-fixed d-flex flex-column" id="sidebar">
+            <!-- Brand -->
+            <div class="sidebar-brand d-flex align-items-center justify-content-center py-3 border-bottom border-secondary">
+                <img src="images/sufee-logo.svg" alt="Sufee Admin" class="logo-full" height="32">
+                <img src="images/sufee-logo-mini.svg" alt="SA" class="logo-mini" height="32">
+            </div>
+
+            <!-- Navigation -->
+            <div class="sidebar-nav flex-grow-1 overflow-auto py-3">
+                <ul class="nav nav-pills flex-column">
+                    <!-- Dashboard -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <!-- UI Elements Section -->
+                    <li class="nav-header mt-3 mb-2">
+                        <span class="small fw-bold text-uppercase">UI Elements</span>
+                    </li>
+
+                    <!-- Components -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-bs-toggle="collapse" data-bs-target="#componentsSubmenu" role="button" aria-expanded="true">
+                            <i class="fas fa-laptop me-2"></i>
+                            <span class="nav-text">Components</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse show" id="componentsSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="ui-buttons.html"><i class="fas fa-puzzle-piece"></i><span class="nav-text">Buttons</span></a></li>
+                                <li class="nav-item"><a class="nav-link active" href="ui-badges.html"><i class="fas fa-id-badge"></i><span class="nav-text">Badges</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-tabs.html"><i class="fas fa-bars"></i><span class="nav-text">Tabs</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-social-buttons.html"><i class="fas fa-share-square"></i><span class="nav-text">Social Buttons</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-cards.html"><i class="fas fa-id-card"></i><span class="nav-text">Cards</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-alerts.html"><i class="fas fa-exclamation-triangle"></i><span class="nav-text">Alerts</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-progressbar.html"><i class="fas fa-spinner"></i><span class="nav-text">Progress Bars</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-modals.html"><i class="fas fa-fire"></i><span class="nav-text">Modals</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-switches.html"><i class="fas fa-book"></i><span class="nav-text">Switches</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-grids.html"><i class="fas fa-th"></i><span class="nav-text">Grids</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="ui-typography.html"><i class="fas fa-file-word"></i><span class="nav-text">Typography</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Tables -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#tablesSubmenu" role="button">
+                            <i class="fas fa-table me-2"></i>
+                            <span class="nav-text">Tables</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="tablesSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="tables-basic.html"><i class="fas fa-table"></i><span class="nav-text">Basic Table</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="tables-data.html"><i class="fas fa-table"></i><span class="nav-text">Data Table</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Forms -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#formsSubmenu" role="button">
+                            <i class="fas fa-th me-2"></i>
+                            <span class="nav-text">Forms</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="formsSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="forms-basic.html"><i class="fas fa-th"></i><span class="nav-text">Basic Form</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="forms-advanced.html"><i class="fas fa-th"></i><span class="nav-text">Advanced Form</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Icons Section -->
+                    <li class="nav-header mt-3 mb-2">
+                        <span class="small fw-bold text-uppercase">Icons</span>
+                    </li>
+
+                    <!-- Icons -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#iconsSubmenu" role="button">
+                            <i class="fas fa-icons me-2"></i>
+                            <span class="nav-text">Icons</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="iconsSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="font-fontawesome.html"><i class="fab fa-font-awesome"></i><span class="nav-text">Font Awesome</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="font-themify.html"><i class="fas fa-icons"></i><span class="nav-text">Themify Icons</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Widgets -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="widgets.html">
+                            <i class="fas fa-cube me-2"></i>
+                            <span class="nav-text">Widgets</span>
+                        </a>
+                    </li>
+
+                    <!-- Charts -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#chartsSubmenu" role="button">
+                            <i class="fas fa-chart-bar me-2"></i>
+                            <span class="nav-text">Charts</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="chartsSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="charts-chartjs.html"><i class="fas fa-line-chart"></i><span class="nav-text">Chart JS</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="charts-flot.html"><i class="fas fa-area-chart"></i><span class="nav-text">Flot Chart</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="charts-peity.html"><i class="fas fa-pie-chart"></i><span class="nav-text">Peity Chart</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Maps -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#mapsSubmenu" role="button">
+                            <i class="fas fa-map me-2"></i>
+                            <span class="nav-text">Maps</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="mapsSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="maps-gmap.html"><i class="fas fa-map-marker"></i><span class="nav-text">Google Maps</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="maps-vector.html"><i class="fas fa-street-view"></i><span class="nav-text">Vector Maps</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Extras Section -->
+                    <li class="nav-header mt-3 mb-2">
+                        <span class="small fw-bold text-uppercase">Extras</span>
+                    </li>
+
+                    <!-- Pages -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesSubmenu" role="button">
+                            <i class="fas fa-file me-2"></i>
+                            <span class="nav-text">Pages</span>
+                            <i class="fas fa-chevron-right ms-auto nav-arrow"></i>
+                        </a>
+                        <div class="collapse" id="pagesSubmenu">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item"><a class="nav-link" href="page-login.html"><i class="fas fa-sign-in-alt"></i><span class="nav-text">Login</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="page-register.html"><i class="fas fa-user-plus"></i><span class="nav-text">Register</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="pages-forget.html"><i class="fas fa-paper-plane"></i><span class="nav-text">Forgot Password</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <header class="header">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                    <div class="container-fluid px-3">
+                        <!-- Left side -->
+                        <div class="d-flex align-items-center flex-grow-1">
+                            <!-- Desktop menu toggle -->
+                            <button class="btn rounded-circle p-0 d-flex align-items-center justify-content-center me-3" 
+                                    id="sidebarToggleDesktop" 
+                                    type="button" 
+                                    style="width: 43px; height: 43px; background-color: #e74c3c; border: none; color: white;">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            
+                            <!-- Search trigger -->
+                            <button class="btn btn-link text-secondary p-2 me-2" id="searchToggle">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                            <!-- Search Form -->
+                            <form class="search-form d-none flex-grow-1" action="#" method="GET" style="max-width: 400px;">
+                                <div class="input-group">
+                                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-outline-secondary" type="button" id="searchClose">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Right side -->
+                        <div class="d-flex align-items-center">
+
+                            <!-- Notifications Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-secondary position-relative p-2" 
+                                        type="button" 
+                                        data-bs-toggle="dropdown" 
+                                        aria-expanded="false">
+                                    <i class="fa fa-bell"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">
+                                        3
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 350px; max-width: 90vw;">
+                                    <li><h6 class="dropdown-header bg-light fw-bold py-3 px-3">Notifications</h6></li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                            <div class="d-flex align-items-start">
+                                                <div class="flex-shrink-0">
+                                                    <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                                        <i class="fa fa-info text-white" style="font-size: 12px;"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                                    <div class="small text-muted">December 12, 2025</div>
+                                                    <div class="fw-semibold" style="font-size: 13px; line-height: 1.3;">A new monthly report is ready to download!</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li class="text-center">
+                                        <a class="dropdown-item py-2 text-primary fw-semibold px-3" href="#">Show All Alerts</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Messages Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-secondary position-relative p-2" 
+                                        type="button" 
+                                        data-bs-toggle="dropdown" 
+                                        aria-expanded="false">
+                                    <i class="fa fa-envelope"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark" style="font-size: 10px;">
+                                        7
+                                    </span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 350px; max-width: 90vw;">
+                                    <li><h6 class="dropdown-header bg-light fw-bold py-3 px-3">Messages</h6></li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal;">
+                                            <div class="d-flex align-items-start">
+                                                <img src="images/admin.jpg" alt="User" class="rounded-circle flex-shrink-0" width="36" height="36">
+                                                <div class="flex-grow-1 ms-2" style="min-width: 0;">
+                                                    <div class="fw-bold" style="font-size: 14px;">Jonathan Smith</div>
+                                                    <div class="small text-muted" style="font-size: 12px; line-height: 1.3;">Hi there! I am wondering if you can help me with a problem...</div>
+                                                    <div class="small text-muted mt-1" style="font-size: 11px;">Just now</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-0"></li>
+                                    <li class="text-center">
+                                        <a class="dropdown-item py-2 text-primary fw-semibold px-3" href="#">Read All Messages</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Language Selector -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-secondary p-2 d-flex align-items-center" 
+                                        type="button" 
+                                        data-bs-toggle="dropdown" 
+                                        aria-expanded="false">
+                                    <i class="fas fa-globe me-1"></i>
+                                    <span class="d-none d-sm-inline small">EN</span>
+                                    <i class="fas fa-chevron-down ms-1" style="font-size: 10px;"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="min-width: 150px;">
+                                    <li><a class="dropdown-item py-2 px-3" href="#"><i class="flag-icon flag-icon-us me-2"></i>English</a></li>
+                                    <li><a class="dropdown-item py-2 px-3" href="#"><i class="flag-icon flag-icon-fr me-2"></i>French</a></li>
+                                    <li><a class="dropdown-item py-2 px-3" href="#"><i class="flag-icon flag-icon-es me-2"></i>Spanish</a></li>
+                                    <li><a class="dropdown-item py-2 px-3" href="#"><i class="flag-icon flag-icon-it me-2"></i>Italian</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- User Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-decoration-none p-2 d-flex align-items-center" 
+                                        type="button" 
+                                        data-bs-toggle="dropdown" 
+                                        aria-expanded="false">
+                                    <img src="images/admin.jpg" alt="User" class="rounded-circle me-2" width="32" height="32">
+                                    <span class="text-dark d-none d-md-inline fw-semibold" style="font-size: 14px;">John Doe</span>
+                                    <i class="fa fa-angle-down text-secondary ms-1" style="font-size: 12px;"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="min-width: 180px;">
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#">
+                                            <i class="fa fa-user me-2"></i> My Profile
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#">
+                                            <i class="fa fa-bell me-2"></i> Notifications
+                                            <span class="badge rounded-pill bg-primary ms-auto">13</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#">
+                                            <i class="fa fa-cog me-2"></i> Settings
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item py-2 px-3" href="#">
+                                            <i class="fa fa-power-off me-2"></i> Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Breadcrumb Section -->
+            <section class="breadcrumb-section py-3 px-4 bg-white border-bottom">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h1 class="h4 mb-0">Badges</h1>
+                        </div>
+                        <div class="col-sm-8">
+                            <nav aria-label="breadcrumb" class="float-sm-end">
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Badges</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Content Area -->
+            <section class="content-area p-4">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Left Column -->
+                        <div class="col-md-6">
+                            <!-- Basic Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Basic Badges</h5>
+                                    <small class="text-muted">Use class <code>.badge</code> with contextual classes</small>
+                                </div>
+                                <div class="card-body">
+                                    <span class="badge bg-primary me-2 mb-2">Primary</span>
+                                    <span class="badge bg-secondary me-2 mb-2">Secondary</span>
+                                    <span class="badge bg-success me-2 mb-2">Success</span>
+                                    <span class="badge bg-danger me-2 mb-2">Danger</span>
+                                    <span class="badge bg-warning text-dark me-2 mb-2">Warning</span>
+                                    <span class="badge bg-info me-2 mb-2">Info</span>
+                                    <span class="badge bg-light text-dark me-2 mb-2">Light</span>
+                                    <span class="badge bg-dark me-2 mb-2">Dark</span>
+                                </div>
+                            </div>
+
+                            <!-- Badges with Buttons -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Badges in Buttons</h5>
+                                    <small class="text-muted">Add badges to buttons for counters or notifications</small>
+                                </div>
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-primary me-2 mb-2">
+                                        Notifications <span class="badge bg-secondary">4</span>
+                                    </button>
+                                    <button type="button" class="btn btn-success me-2 mb-2">
+                                        Messages <span class="badge bg-light text-dark">12</span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger me-2 mb-2">
+                                        Alerts <span class="badge bg-warning text-dark">3</span>
+                                    </button>
+                                    <button type="button" class="btn btn-info me-2 mb-2">
+                                        Tasks <span class="badge bg-dark">8</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Positioned Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Positioned Badges</h5>
+                                    <small class="text-muted">Position badges on buttons or other elements</small>
+                                </div>
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-primary position-relative me-3 mb-3">
+                                        Inbox
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            99+
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                    </button>
+                                    
+                                    <button type="button" class="btn btn-secondary position-relative me-3 mb-3">
+                                        Profile
+                                        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New alerts</span>
+                                        </span>
+                                    </button>
+
+                                    <div class="position-relative d-inline-block me-3 mb-3">
+                                        <i class="fas fa-bell fs-3 text-muted"></i>
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                            5
+                                            <span class="visually-hidden">notifications</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="position-relative d-inline-block me-3 mb-3">
+                                        <i class="fas fa-envelope fs-3 text-muted"></i>
+                                        <span class="position-absolute top-0 start-100 translate-middle badge bg-warning text-dark rounded-pill">
+                                            New
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Badges with Icons -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Badges with Icons</h5>
+                                    <small class="text-muted">Add icons to make badges more meaningful</small>
+                                </div>
+                                <div class="card-body">
+                                    <span class="badge bg-primary me-2 mb-2">
+                                        <i class="fas fa-user me-1"></i> 125 Users
+                                    </span>
+                                    <span class="badge bg-success me-2 mb-2">
+                                        <i class="fas fa-check me-1"></i> Completed
+                                    </span>
+                                    <span class="badge bg-danger me-2 mb-2">
+                                        <i class="fas fa-times me-1"></i> Failed
+                                    </span>
+                                    <span class="badge bg-warning text-dark me-2 mb-2">
+                                        <i class="fas fa-exclamation-triangle me-1"></i> Warning
+                                    </span>
+                                    <span class="badge bg-info me-2 mb-2">
+                                        <i class="fas fa-info-circle me-1"></i> Info
+                                    </span>
+                                    <span class="badge bg-dark me-2 mb-2">
+                                        <i class="fas fa-cog me-1"></i> Settings
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Pill Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Pill Badges</h5>
+                                    <small class="text-muted">Use <code>.rounded-pill</code> for rounded badges</small>
+                                </div>
+                                <div class="card-body">
+                                    <span class="badge bg-primary rounded-pill me-2 mb-2">Primary</span>
+                                    <span class="badge bg-secondary rounded-pill me-2 mb-2">Secondary</span>
+                                    <span class="badge bg-success rounded-pill me-2 mb-2">Success</span>
+                                    <span class="badge bg-danger rounded-pill me-2 mb-2">Danger</span>
+                                    <span class="badge bg-warning text-dark rounded-pill me-2 mb-2">Warning</span>
+                                    <span class="badge bg-info rounded-pill me-2 mb-2">Info</span>
+                                    <span class="badge bg-light text-dark rounded-pill me-2 mb-2">Light</span>
+                                    <span class="badge bg-dark rounded-pill me-2 mb-2">Dark</span>
+                                </div>
+                            </div>
+
+                            <!-- Link Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Link Badges</h5>
+                                    <small class="text-muted">Use badges as links with hover effects</small>
+                                </div>
+                                <div class="card-body">
+                                    <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2">Primary Link</a>
+                                    <a href="#" class="badge bg-secondary text-decoration-none me-2 mb-2">Secondary Link</a>
+                                    <a href="#" class="badge bg-success text-decoration-none me-2 mb-2">Success Link</a>
+                                    <a href="#" class="badge bg-danger text-decoration-none me-2 mb-2">Danger Link</a>
+                                    <a href="#" class="badge bg-warning text-dark text-decoration-none me-2 mb-2">Warning Link</a>
+                                    <a href="#" class="badge bg-info text-decoration-none me-2 mb-2">Info Link</a>
+                                    <a href="#" class="badge bg-dark text-decoration-none me-2 mb-2">Dark Link</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="col-md-6">
+                            <!-- Badge Sizes -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Badge Sizes</h5>
+                                    <small class="text-muted">Different badge sizes using font-size utilities</small>
+                                </div>
+                                <div class="card-body d-flex align-items-center flex-wrap gap-2">
+                                    <span class="badge bg-primary" style="font-size: 0.6rem;">Extra Small</span>
+                                    <span class="badge bg-secondary" style="font-size: 0.75rem;">Small</span>
+                                    <span class="badge bg-success">Normal</span>
+                                    <span class="badge bg-danger" style="font-size: 1.1rem;">Large</span>
+                                    <span class="badge bg-warning text-dark" style="font-size: 1.25rem;">Extra Large</span>
+                                </div>
+                            </div>
+
+                            <!-- Status Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Status Badges</h5>
+                                    <small class="text-muted">Common status indicators</small>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <strong>User Status:</strong>
+                                        <span class="badge bg-success ms-2">Online</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Payment Status:</strong>
+                                        <span class="badge bg-warning text-dark ms-2">Pending</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Order Status:</strong>
+                                        <span class="badge bg-info ms-2">Processing</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Project Status:</strong>
+                                        <span class="badge bg-primary ms-2">In Progress</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Task Status:</strong>
+                                        <span class="badge bg-success ms-2">Completed</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Issue Status:</strong>
+                                        <span class="badge bg-danger ms-2">Critical</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Badge with Close Button -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Dismissible Badges</h5>
+                                    <small class="text-muted">Badges with close buttons</small>
+                                </div>
+                                <div class="card-body">
+                                    <span class="badge bg-primary me-2 mb-2" id="badge1">
+                                        JavaScript
+                                        <button type="button" class="btn-close btn-close-white ms-2" aria-label="Close" onclick="this.parentElement.remove()"></button>
+                                    </span>
+                                    <span class="badge bg-success me-2 mb-2" id="badge2">
+                                        React
+                                        <button type="button" class="btn-close btn-close-white ms-2" aria-label="Close" onclick="this.parentElement.remove()"></button>
+                                    </span>
+                                    <span class="badge bg-info me-2 mb-2" id="badge3">
+                                        Bootstrap
+                                        <button type="button" class="btn-close btn-close-white ms-2" aria-label="Close" onclick="this.parentElement.remove()"></button>
+                                    </span>
+                                    <span class="badge bg-warning text-dark me-2 mb-2" id="badge4">
+                                        HTML5
+                                        <button type="button" class="btn-close ms-2" aria-label="Close" onclick="this.parentElement.remove()"></button>
+                                    </span>
+                                    <span class="badge bg-secondary me-2 mb-2" id="badge5">
+                                        CSS3
+                                        <button type="button" class="btn-close btn-close-white ms-2" aria-label="Close" onclick="this.parentElement.remove()"></button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Counter Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Counter Badges</h5>
+                                    <small class="text-muted">Numeric counters and statistics</small>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col-4 mb-3">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <i class="fas fa-users fs-2 text-primary mb-2"></i>
+                                                <span class="badge bg-primary rounded-pill">1,432</span>
+                                                <small class="text-muted mt-1">Users</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 mb-3">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <i class="fas fa-shopping-cart fs-2 text-success mb-2"></i>
+                                                <span class="badge bg-success rounded-pill">856</span>
+                                                <small class="text-muted mt-1">Orders</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 mb-3">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <i class="fas fa-dollar-sign fs-2 text-warning mb-2"></i>
+                                                <span class="badge bg-warning text-dark rounded-pill">$24,560</span>
+                                                <small class="text-muted mt-1">Revenue</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Badge List -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Badge Lists</h5>
+                                    <small class="text-muted">Badges in list groups</small>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            Inbox
+                                            <span class="badge bg-primary rounded-pill">14</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            Sent
+                                            <span class="badge bg-secondary rounded-pill">7</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            Drafts
+                                            <span class="badge bg-warning text-dark rounded-pill">2</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            Spam
+                                            <span class="badge bg-danger rounded-pill">99+</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            Trash
+                                            <span class="badge bg-dark rounded-pill">3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Custom Badge Styles -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Custom Badge Styles</h5>
+                                    <small class="text-muted">Creative badge variations</small>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Gradient Badges -->
+                                    <span class="badge me-2 mb-2" style="background: linear-gradient(45deg, #007bff, #6610f2);">Gradient Blue</span>
+                                    <span class="badge me-2 mb-2" style="background: linear-gradient(45deg, #28a745, #20c997);">Gradient Green</span>
+                                    <span class="badge me-2 mb-2" style="background: linear-gradient(45deg, #dc3545, #fd7e14);">Gradient Red</span>
+                                    <br>
+                                    <!-- Outlined Badges -->
+                                    <span class="badge border border-primary text-primary bg-transparent me-2 mb-2">Outlined Primary</span>
+                                    <span class="badge border border-success text-success bg-transparent me-2 mb-2">Outlined Success</span>
+                                    <span class="badge border border-danger text-danger bg-transparent me-2 mb-2">Outlined Danger</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>

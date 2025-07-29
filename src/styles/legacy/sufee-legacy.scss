@@ -1,0 +1,379 @@
+// Legacy Sufee styles migrated to Bootstrap 5 compatibility
+// This file contains the core visual design elements from the original theme
+
+// Original layout - exact replica
+body {
+  background: #f1f2f7;
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+// Container for table layout
+.basix-container {
+  display: table;
+  width: 100%;
+  height: 100vh;
+  table-layout: fixed;
+}
+
+// Remove default Bootstrap column floats (not needed in flexbox)
+div[class*="col-"] {
+  // Bootstrap 5 uses flexbox, no need for float
+}
+
+// Typography improvements
+p {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  color: #878787;
+}
+
+// Button and link improvements
+a, button {
+  text-decoration: none;
+  outline: none !important;
+  color: #878787;
+  transition: all 0.25s ease;
+}
+
+a:focus, a:hover {
+  text-decoration: none;
+  color: #000;
+}
+
+// Focus improvements
+.btn:focus, button:focus {
+  box-shadow: none !important;
+  outline: 0;
+}
+
+// Utility classes
+.no-padding {
+  padding: 0 !important;
+}
+
+.transition {
+  transition: all 0.3s ease;
+}
+
+// Bootstrap 5 float utilities (missing in our setup)
+.float-start {
+  float: left !important;
+}
+
+.float-end {
+  float: right !important;
+}
+
+// Ensure Bootstrap grid classes work properly
+.col-sm-4,
+.col-sm-5,
+.col-sm-7,
+.col-sm-8,
+.col-sm-12,
+.col-12 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 576px) {
+  .col-sm-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+  .col-sm-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+  .col-sm-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+  .col-sm-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+  .col-sm-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+// Flat color backgrounds
+.bg-flat-color-1 { background: var(--color-flat-1); }
+.bg-flat-color-2 { background: var(--color-flat-2); }
+.bg-flat-color-3 { background: var(--color-flat-3); }
+.bg-flat-color-4 { background: var(--color-flat-4); }
+.bg-flat-color-5 { background: var(--color-flat-5); }
+
+// Original right panel - exact replica
+.right-panel {
+  display: table-cell;
+  vertical-align: top;
+  width: auto;
+  background: #f1f2f7;
+  -webkit-transition: margin-left 0.35s ease;
+  transition: margin-left 0.35s ease;
+}
+
+// Collapsed state - exact replica
+body.open {
+  aside.left-panel {
+    width: 70px;
+  }
+}
+
+// Breadcrumbs
+.breadcrumbs {
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px 0;
+  min-height: 70px;
+
+  .page-header {
+    h1 {
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin: 0;
+    }
+  }
+
+  .breadcrumb {
+    background: none;
+    font-size: 14px;
+    padding: 0;
+
+    .breadcrumb-item {
+      color: var(--text-secondary);
+      
+      &.active {
+        color: var(--text-primary);
+      }
+    }
+  }
+}
+
+// Content area
+.content {
+  padding: 0 20px;
+  flex-grow: 1;
+}
+
+// Cards enhancements
+.card {
+  border-radius: 0;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  
+  h4 {
+    font-size: 1.1rem;
+  }
+}
+
+// Form enhancements
+.input-group-text {
+  background-color: transparent;
+  border-left: 0;
+}
+
+// Login page styles
+.login-logo {
+  text-align: center;
+  margin-bottom: 15px;
+
+  span {
+    color: #ffffff;
+    font-size: 24px;
+  }
+}
+
+.login-content {
+  max-width: 540px;
+  margin: 8vh auto;
+}
+
+.login-form {
+  background: #ffffff;
+  padding: 30px 30px 20px;
+  border-radius: 2px;
+
+  h4 {
+    color: #878787;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .btn {
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 15px;
+    border: 0;
+  }
+
+  label {
+    color: #878787;
+    text-transform: uppercase;
+
+    a {
+      color: #ff2e44;
+    }
+  }
+}
+
+// Social login
+.social-login-content {
+  margin: 0 -30px;
+  border-top: 1px solid #e7e7e7;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 30px 0;
+  background: #fcfcfc;
+}
+
+.social-button {
+  padding: 0 30px;
+
+  .facebook {
+    background: #3b5998;
+    color: #fff;
+
+    &:hover {
+      background: #344e86;
+    }
+  }
+
+  .twitter {
+    background: #00aced;
+    color: #fff;
+
+    &:hover {
+      background: #0099d4;
+    }
+  }
+
+  i {
+    padding: 19px;
+  }
+}
+
+// Icon enhancements
+.icon-section {
+  margin: 0 0 3em;
+  clear: both;
+  overflow: hidden;
+}
+
+.icon-container {
+  width: 240px;
+  padding: 0.7em 0;
+  float: left;
+  position: relative;
+  text-align: left;
+
+  [class^="ti-"], [class*=" ti-"] {
+    color: #000;
+    position: absolute;
+    margin-top: 3px;
+    transition: 0.3s;
+  }
+
+  &:hover {
+    [class^="ti-"], [class*=" ti-"] {
+      font-size: 2.2em;
+      margin-top: -5px;
+    }
+
+    .icon-name {
+      color: #000;
+      margin-left: 45px;
+    }
+  }
+}
+
+.icon-name {
+  color: #aaa;
+  margin-left: 35px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+// FontAwesome icon list styling
+.fontawesome-icon-list {
+  .page-header {
+    border-bottom: 1px solid #C9CDD7;
+    padding-bottom: 9px;
+    margin: 30px 0 27px;
+  }
+
+  h2 {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  i {
+    font-size: 16px;
+    padding-right: 10px;
+  }
+}
+
+// Badge styles for headings
+.badges {
+  h1, h2, h3, h4, h5, h6 {
+    margin: 5px 0;
+  }
+}
+
+// Custom badge styles
+.badge {
+  &.badge-complete {
+    background-color: var(--bs-success);
+    color: white;
+  }
+  
+  &.badge-pending {
+    background-color: var(--bs-warning);
+    color: white;
+  }
+}
+
+// Vue.js list styles
+.vue-lists {
+  ol, ul {
+    padding-left: 30px;
+  }
+}
+
+// Dropdown positioning fix
+.card .dropdown.float-end {
+  .dropdown-menu {
+    left: auto !important;
+    right: 0 !important;
+    top: 93% !important;
+  }
+}
+
+// Social box widget
+.social-box {
+  i {
+    line-height: 110px;
+  }
+
+  ul {
+    display: inline-block;
+    margin: 7px 0 0;
+    padding: 10px;
+    width: 100%;
+
+    li {
+      color: #949CA0;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 0 10px 0 0;
+      text-align: right;
+
+      &:last-child {
+        padding-left: 10px;
+        padding-right: 0;
+        text-align: left;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -1,0 +1,234 @@
+// Header Component Styles - Original exact replica
+
+header.header {
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  clear: both;
+  display: block;
+  padding: 0;
+  width: 100%;
+
+  .header-menu {
+    display: block;
+    width: 100%;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .col-sm-7 {
+      position: inherit;
+      float: left;
+      width: 58.333333%;
+    }
+
+    .col-sm-5 {
+      float: left;
+      width: 41.666667%;
+    }
+  }
+}
+
+// Menu toggle button
+.menutoggle {
+  background: #e74c3c;
+  border-radius: 50%;
+  color: #fff !important;
+  cursor: pointer;
+  font-size: 18px;
+  height: 43px;
+  width: 43px;
+  line-height: 43px;
+  text-align: center;
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+
+  &:hover {
+    background: #c0392b;
+  }
+
+  i {
+    font-size: 16px;
+  }
+}
+
+// Collapsed state menu toggle
+body.open .menutoggle i:before {
+  content: "\f0a4";
+}
+
+// Search functionality
+.search-trigger {
+  background: transparent;
+  border: none;
+  color: #868e96;
+  cursor: pointer;
+  font-size: 16px;
+  height: 41px;
+  width: 43px;
+  display: inline-block;
+  text-align: center;
+  line-height: 41px;
+}
+
+// Header dropdowns
+.dropdown {
+  display: inline-block;
+  
+  .dropdown-toggle {
+    background: transparent;
+    border: none;
+    color: #868e96;
+    font-size: 16px;
+    position: relative;
+    padding: 8px 12px;
+    display: inline-block;
+
+    .count {
+      background: #d9534f;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 10px;
+      height: 18px;
+      width: 18px;
+      line-height: 18px;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      text-align: center;
+    }
+  }
+
+  .dropdown-menu {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    min-width: 250px;
+    max-width: 350px;
+
+    p {
+      font-size: 14px;
+      margin: 0;
+      padding: 8px 15px;
+      font-weight: 600;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .dropdown-item {
+      color: #868e96;
+      font-size: 13px;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      &:hover {
+        background: #f8f9fa;
+      }
+    }
+  }
+}
+
+// User area
+.user-area {
+  position: relative;
+  float: right;
+
+  .dropdown-toggle {
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user-menu {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    min-width: 150px;
+    padding: 5px 0;
+
+    .nav-link {
+      color: #868e96;
+      display: block;
+      font-size: 14px;
+      line-height: 22px;
+      padding: 8px 15px;
+      text-decoration: none;
+
+      &:hover {
+        background: #f8f9fa;
+        color: #000;
+      }
+
+      i {
+        margin-right: 8px;
+        width: 16px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+// Language select
+.language-select {
+  float: right;
+  margin-right: 15px;
+
+  .dropdown-toggle {
+    background: transparent;
+    border: none;
+    color: #868e96;
+    font-size: 16px;
+    padding: 8px;
+    text-decoration: none;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .dropdown-menu {
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    min-width: 60px;
+    padding: 5px 0;
+
+    .dropdown-item {
+      color: #868e96;
+      display: block;
+      font-size: 14px;
+      padding: 8px 15px;
+      text-decoration: none;
+      text-align: center;
+
+      &:hover {
+        background: #f8f9fa;
+      }
+
+      i {
+        font-size: 16px;
+      }
+    }
+  }
+}

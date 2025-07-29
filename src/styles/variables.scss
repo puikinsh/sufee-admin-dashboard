@@ -1,0 +1,114 @@
+// Modern SCSS Variables for Sufee Admin Dashboard
+// Migrated from Bootstrap 4 to Bootstrap 5 compatible variables
+
+// Color System
+:root {
+  // Primary Colors
+  --bs-primary: #20a8d8;
+  --bs-secondary: #6c757d;
+  --bs-success: #4dbd74;
+  --bs-info: #63c2de;
+  --bs-warning: #ffc107;
+  --bs-danger: #f86c6b;
+  --bs-light: #f8f9fa;
+  --bs-dark: #272c33;
+
+  // Custom Theme Colors
+  --color-flat-1: #20a8d8;
+  --color-flat-2: #63c2de;
+  --color-flat-3: #ffc107;
+  --color-flat-4: #f86c6b;
+  --color-flat-5: #4dbd74;
+
+  // Layout Colors
+  --menu-bg: #272c33;
+  --menu-color: #c8c9ce;
+  --header-bg: #ffffff;
+  --container-bg: #f1f2f7;
+
+  // Text Colors
+  --text-primary: #373757;
+  --text-secondary: #878787;
+  --text-muted: #868e96;
+
+  // Layout
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 70px;
+  --header-height: 70px;
+}
+
+// SCSS Variables (using actual color values for Bootstrap compatibility)
+$primary: #20a8d8;
+$secondary: #6c757d;
+$success: #4dbd74;
+$info: #63c2de;
+$warning: #ffc107;
+$danger: #f86c6b;
+$light: #f8f9fa;
+$dark: #272c33;
+
+// Theme specific variables
+$menu-bg: #272c33;
+$menu-color: #c8c9ce;
+$header-bg: #ffffff;
+$container-bg: #f1f2f7;
+
+// Bootstrap 5 customizations
+$enable-css-grid: true;
+$enable-negative-margins: true;
+$enable-dark-mode: true;
+
+// Typography
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+
+// Spacing
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+// Breakpoints (Bootstrap 5 default)
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Container max widths
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
+// Component specific variables (SCSS variables)
+$sidebar-width: 280px;
+$sidebar-collapsed-width: 70px;
+$header-height: 70px;
+
+// Border radius
+$border-radius: 0.375rem;
+$border-radius-sm: 0.25rem;
+$border-radius-lg: 0.5rem;
+
+// Shadows
+$box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+$box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+$box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+
+// Transitions
+$transition-base: all 0.25s ease-in-out;
+$transition-fade: opacity 0.15s linear;
+$transition-collapse: height 0.35s ease;

@@ -1,0 +1,904 @@
+// Sufee Admin Dashboard - Modern Bootstrap 5 Styles
+
+// Import variables first
+@import "variables";
+
+// Bootstrap 5 imports
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+// Bootstrap components
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/button-group";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/accordion";
+@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/pagination";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/progress";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/toasts";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/popover";
+@import "bootstrap/scss/carousel";
+@import "bootstrap/scss/spinners";
+@import "bootstrap/scss/offcanvas";
+@import "bootstrap/scss/placeholders";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/utilities/api";
+
+// Sufee theme variables
+:root {
+  --sufee-sidebar-width: 280px;
+  --sufee-sidebar-collapsed-width: 70px;
+  --sufee-sidebar-bg: #272c33;
+  --sufee-sidebar-text: #c8c9ce;
+  --sufee-sidebar-text-active: #ffffff;
+  --sufee-brand-primary: #20a8d8;
+  --sufee-brand-danger: #f86c6b;
+  --sufee-brand-warning: #ffc107;
+  --sufee-brand-success: #20c997;
+  --sufee-brand-info: #17a2b8;
+  --sufee-header-bg: #ffffff;
+  --sufee-content-bg: #f1f2f7;
+  --sufee-menu-toggle-bg: #e74c3c;
+  --sufee-menu-toggle-hover: #c0392b;
+}
+
+// Global styles
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--sufee-content-bg);
+}
+
+// Sidebar Styles
+.sidebar {
+  width: var(--sufee-sidebar-width);
+  height: 100vh;
+  background-color: var(--sufee-sidebar-bg);
+  transition: all 0.3s ease;
+  z-index: 1000;
+
+  // Logo/Brand section
+  .sidebar-brand {
+    height: 70px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    justify-content: flex-start !important;
+    padding-left: 25px;
+    position: relative;
+    
+    .logo-full, .logo-mini {
+      transition: all 0.3s ease;
+      max-width: 100%;
+      height: auto;
+    }
+    
+    .logo-mini {
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .logo-full {
+      opacity: 1;
+      position: relative;
+    }
+  }
+
+  // Navigation
+  .sidebar-nav {
+    padding: 0 25px;
+    
+    .nav {
+      --bs-nav-pills-border-radius: 0;
+      --bs-nav-pills-link-active-color: var(--sufee-sidebar-text-active);
+      --bs-nav-pills-link-active-bg: transparent;
+    }
+
+    .nav-item {
+      margin-bottom: 2px;
+
+      .nav-link {
+        color: var(--sufee-sidebar-text);
+        padding: 12px 0;
+        border-radius: 0;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+        border: none;
+        position: relative;
+
+        &:hover, &.active {
+          color: var(--sufee-sidebar-text-active);
+          background-color: transparent;
+        }
+
+        i {
+          width: 20px;
+          font-size: 16px;
+          color: #8b939b;
+          transition: color 0.3s ease;
+        }
+
+        &:hover i, &.active i {
+          color: var(--sufee-sidebar-text-active);
+        }
+
+        .nav-arrow {
+          font-size: 12px;
+          transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        &[aria-expanded="true"] .nav-arrow {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    // Section headers
+    .nav-header {
+      span {
+        color: #9496a1;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    // Submenu styling - smooth animation with fixed heights
+    .collapse {
+      // Hidden state with pre-calculated dimensions
+      display: none;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-8px) scale(0.95);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      margin: 0;
+      padding: 0;
+      
+      // Override Bootstrap's interfering classes
+      &.collapsing {
+        display: none !important;
+        height: 0 !important;
+        transition: none !important;
+      }
+      
+      // Shown state with smooth animation
+      &.show {
+        display: block;
+        height: auto;
+        overflow: visible;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      
+      .nav {
+        // Fixed dimensions to prevent any layout calculation delays
+        margin: 8px 0 0 35px;
+        padding: 0;
+        width: calc(100% - 35px);
+        
+        // Each nav item has a fixed height to prevent content jumping
+        .nav-item {
+          height: 32px; // Fixed height per item
+          margin: 0;
+          display: flex;
+          align-items: center;
+
+          .nav-link {
+            padding: 8px 0;
+            font-size: 13px;
+            line-height: 16px; // Fixed line height
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 32px; // Match parent height
+            box-sizing: border-box;
+
+            i {
+              width: 15px;
+              height: 12px; // Fixed icon height
+              font-size: 12px;
+              flex-shrink: 0;
+              margin-right: 8px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            
+            // Fix text positioning
+            .nav-text {
+              line-height: 16px;
+              height: 16px;
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Main content area
+.main-content {
+  margin-left: var(--sufee-sidebar-width);
+  min-height: 100vh;
+  background-color: var(--sufee-content-bg);
+  transition: margin-left 0.3s ease;
+  flex: 1;
+  overflow-y: auto;
+}
+
+// Header styles
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  .navbar {
+    padding: 8px 0;
+    min-height: 60px;
+  }
+
+  // Menu toggle button styling
+  #sidebarToggleDesktop {
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: var(--sufee-menu-toggle-hover) !important;
+      transform: scale(1.05);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+    }
+  }
+
+  // Search functionality
+  .search-form {
+    transition: all 0.3s ease;
+    
+    &.d-none {
+      display: none !important;
+    }
+    
+    .form-control {
+      border: 1px solid #e9ecef;
+      border-radius: 4px;
+      
+      &:focus {
+        border-color: var(--sufee-brand-primary);
+        box-shadow: 0 0 0 0.2rem rgba(32, 168, 216, 0.25);
+      }
+    }
+  }
+
+  // Header icons styling
+  .btn-link {
+    border: none;
+    text-decoration: none;
+    
+    &:hover {
+      color: var(--sufee-brand-primary) !important;
+      transform: scale(1.1);
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  // Badge positioning and styling
+  .badge {
+    &.bg-danger {
+      background-color: var(--sufee-brand-danger) !important;
+    }
+    
+    &.bg-warning {
+      background-color: var(--sufee-brand-warning) !important;
+    }
+    
+    &.bg-primary {
+      background-color: var(--sufee-brand-primary) !important;
+    }
+  }
+
+  // Dropdown styling and positioning
+  .dropdown-menu {
+    border-radius: 8px;
+    border: none;
+    margin-top: 8px;
+    overflow: hidden;
+    
+    // Ensure dropdowns don't overflow viewport
+    &.dropdown-menu-end {
+      --bs-position: end;
+    }
+    
+    .dropdown-item {
+      border-radius: 0;
+      transition: all 0.2s ease;
+      
+      &:hover, &:focus {
+        background-color: #f8f9fa;
+        color: var(--sufee-brand-primary);
+      }
+      
+      &:active {
+        background-color: var(--sufee-brand-primary);
+        color: white;
+      }
+    }
+    
+    .dropdown-header {
+      border-radius: 0;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+    
+    .dropdown-divider {
+      margin: 0;
+      opacity: 0.2;
+    }
+  }
+
+  // Search form smooth transitions
+  .search-form {
+    transition: all 0.3s ease;
+    
+    &:not(.d-none) {
+      animation: slideInLeft 0.3s ease;
+    }
+  }
+
+  // Search trigger smooth hide/show
+  #searchToggle {
+    transition: all 0.2s ease;
+    
+    &.d-none {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+  }
+}
+
+@keyframes slideInLeft {
+  from { 
+    opacity: 0; 
+    transform: translateX(-20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+// Breadcrumb section
+.breadcrumb-section {
+  background-color: white;
+  border-bottom: 1px solid #e9ecef;
+  
+  .breadcrumb {
+    background: none;
+    padding: 0;
+    margin: 0;
+    
+    .breadcrumb-item {
+      font-size: 14px;
+      
+      &.active {
+        color: #6c757d;
+      }
+    }
+  }
+}
+
+// Content area
+.content-area {
+  background-color: var(--sufee-content-bg);
+  min-height: calc(100vh - 120px);
+}
+
+// Widget cards with Sufee colors
+.card {
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  
+  &.bg-primary {
+    background-color: var(--sufee-brand-primary) !important;
+  }
+  
+  &.bg-danger {
+    background-color: var(--sufee-brand-danger) !important;
+  }
+  
+  &.bg-warning {
+    background-color: var(--sufee-brand-warning) !important;
+  }
+  
+  &.bg-success {
+    background-color: var(--sufee-brand-success) !important;
+  }
+}
+
+// Social media cards
+.social-card {
+  &.social-facebook {
+    background: linear-gradient(135deg, #3b5998, #4e69a2);
+  }
+  
+  &.social-twitter {
+    background: linear-gradient(135deg, #00aced, #1dcaff);
+  }
+  
+  &.social-linkedin {
+    background: linear-gradient(135deg, #4875b4, #5a87c7);
+  }
+  
+  &.social-google {
+    background: linear-gradient(135deg, #d34836, #e05d4e);
+  }
+}
+
+// Icon circles for stats - with stronger specificity
+.icon-circle,
+.card .icon-circle,
+.card-body .icon-circle {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  position: relative;
+  overflow: hidden;
+  
+  i {
+    font-size: 18px !important;
+    color: white !important;
+    line-height: 1 !important;
+    font-weight: 400 !important;
+  }
+  
+  &.bg-success {
+    background-color: var(--sufee-brand-success) !important;
+    border: none !important;
+  }
+  
+  &.bg-primary {
+    background-color: var(--sufee-brand-primary) !important;
+    border: none !important;
+  }
+  
+  &.bg-warning {
+    background-color: var(--sufee-brand-warning) !important;
+    border: none !important;
+  }
+  
+  &.bg-danger {
+    background-color: var(--sufee-brand-danger) !important;
+    border: none !important;
+  }
+  
+  &.bg-info {
+    background-color: var(--sufee-brand-info) !important;
+    border: none !important;
+  }
+}
+
+// Twitter card styling
+.twitter-card {
+  .card-header {
+    background: linear-gradient(135deg, #17a2b8, #20c3db);
+  }
+}
+
+// Mobile responsiveness
+@media (max-width: 991.98px) {
+  .sidebar {
+    position: fixed;
+    left: -#{var(--sufee-sidebar-width)};
+    transition: left 0.3s ease;
+    
+    &.show {
+      left: 0;
+    }
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    
+    &.show {
+      display: block;
+    }
+  }
+}
+
+// Sidebar collapsed state
+.sidebar-collapsed {
+  .sidebar {
+    width: var(--sufee-sidebar-collapsed-width);
+    
+    .sidebar-brand {
+      justify-content: center !important;
+      padding-left: 0;
+      
+      .logo-full {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .logo-mini {
+        opacity: 1;
+        pointer-events: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    
+    .sidebar-nav {
+      padding: 0 15px;
+      
+      .nav-header {
+        display: none;
+      }
+      
+      .nav-item {
+        .nav-link {
+          justify-content: center;
+          padding: 15px 0;
+          
+          .nav-text {
+            display: none;
+          }
+          
+          .nav-arrow {
+            display: none;
+          }
+          
+          i {
+            margin: 0;
+            font-size: 18px;
+          }
+        }
+        
+        .collapse {
+          position: absolute;
+          left: var(--sufee-sidebar-collapsed-width);
+          top: 0;
+          width: 200px;
+          background-color: var(--sufee-sidebar-bg);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 4px;
+          padding: 10px;
+          z-index: 1000;
+          display: none;
+          
+          .nav {
+            padding-left: 0;
+            
+            .nav-item {
+              .nav-link {
+                justify-content: flex-start;
+                padding: 8px 15px;
+                
+                .nav-text {
+                  display: inline;
+                }
+              }
+            }
+          }
+        }
+        
+        &:hover .collapse {
+          display: block;
+        }
+      }
+    }
+  }
+  
+  .main-content {
+    margin-left: var(--sufee-sidebar-collapsed-width);
+  }
+}
+
+// Utility classes
+.text-white-50 {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+// Chart containers
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+// Custom scrollbar for sidebar
+.sidebar-nav {
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+// Social Media Brand Colors
+.btn-social {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  // Facebook
+  &.btn-facebook {
+    background-color: #1877f2;
+    border-color: #1877f2;
+    color: white;
+    
+    &:hover {
+      background-color: #166fe5;
+      border-color: #166fe5;
+      color: white;
+    }
+  }
+  
+  // X (Twitter)
+  &.btn-x,
+  &.btn-twitter {
+    background-color: #000000;
+    border-color: #000000;
+    color: white;
+    
+    &:hover {
+      background-color: #333333;
+      border-color: #333333;
+      color: white;
+    }
+  }
+  
+  // LinkedIn
+  &.btn-linkedin {
+    background-color: #0077b5;
+    border-color: #0077b5;
+    color: white;
+    
+    &:hover {
+      background-color: #006ba1;
+      border-color: #006ba1;
+      color: white;
+    }
+  }
+  
+  // Instagram
+  &.btn-instagram {
+    background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+    border: none;
+    color: white;
+    
+    &:hover {
+      background: linear-gradient(45deg, #7a349f, #e01a1a, #e39d3e);
+      color: white;
+    }
+  }
+  
+  // TikTok
+  &.btn-tiktok {
+    background-color: #000000;
+    border-color: #000000;
+    color: white;
+    
+    &:hover {
+      background-color: #ff0050;
+      border-color: #ff0050;
+      color: white;
+    }
+  }
+  
+  // YouTube
+  &.btn-youtube {
+    background-color: #ff0000;
+    border-color: #ff0000;
+    color: white;
+    
+    &:hover {
+      background-color: #e60000;
+      border-color: #e60000;
+      color: white;
+    }
+  }
+  
+  // Discord
+  &.btn-discord {
+    background-color: #5865f2;
+    border-color: #5865f2;
+    color: white;
+    
+    &:hover {
+      background-color: #4752c4;
+      border-color: #4752c4;
+      color: white;
+    }
+  }
+  
+  // Slack
+  &.btn-slack {
+    background-color: #4a154b;
+    border-color: #4a154b;
+    color: white;
+    
+    &:hover {
+      background-color: #611f69;
+      border-color: #611f69;
+      color: white;
+    }
+  }
+  
+  // Snapchat
+  &.btn-snapchat {
+    background-color: #fffc00;
+    border-color: #fffc00;
+    color: #000000;
+    
+    &:hover {
+      background-color: #e6e300;
+      border-color: #e6e300;
+      color: #000000;
+    }
+  }
+  
+  // WhatsApp
+  &.btn-whatsapp {
+    background-color: #25d366;
+    border-color: #25d366;
+    color: white;
+    
+    &:hover {
+      background-color: #20b85a;
+      border-color: #20b85a;
+      color: white;
+    }
+  }
+  
+  // Telegram
+  &.btn-telegram {
+    background-color: #0088cc;
+    border-color: #0088cc;
+    color: white;
+    
+    &:hover {
+      background-color: #0077b3;
+      border-color: #0077b3;
+      color: white;
+    }
+  }
+  
+  // Reddit
+  &.btn-reddit {
+    background-color: #ff4500;
+    border-color: #ff4500;
+    color: white;
+    
+    &:hover {
+      background-color: #e63e00;
+      border-color: #e63e00;
+      color: white;
+    }
+  }
+  
+  // Pinterest
+  &.btn-pinterest {
+    background-color: #bd081c;
+    border-color: #bd081c;
+    color: white;
+    
+    &:hover {
+      background-color: #a40717;
+      border-color: #a40717;
+      color: white;
+    }
+  }
+  
+  // Twitch
+  &.btn-twitch {
+    background-color: #9146ff;
+    border-color: #9146ff;
+    color: white;
+    
+    &:hover {
+      background-color: #7c3aed;
+      border-color: #7c3aed;
+      color: white;
+    }
+  }
+  
+  // GitHub
+  &.btn-github {
+    background-color: #333333;
+    border-color: #333333;
+    color: white;
+    
+    &:hover {
+      background-color: #24292e;
+      border-color: #24292e;
+      color: white;
+    }
+  }
+  
+  // Spotify
+  &.btn-spotify {
+    background-color: #1ed760;
+    border-color: #1ed760;
+    color: #000000;
+    
+    &:hover {
+      background-color: #1bc653;
+      border-color: #1bc653;
+      color: #000000;
+    }
+  }
+}
+
+// Component imports
+@import "components/widgets";
+@import "components/header";
+@import "components/sidebar";
+@import "components/buttons";
+@import "components/cards";
+@import "components/forms";
+@import "components/tables";
+@import "components/charts";

@@ -1,0 +1,21 @@
+// Card Component Styles
+
+.card {
+  border-radius: 0;
+  margin-bottom: 1.5rem;
+  
+  .card-header {
+    .card-actions {
+      .btn {
+        border: none;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 0.5rem;
+        
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
