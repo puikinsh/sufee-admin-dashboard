@@ -24,49 +24,17 @@ export class Navigation {
       return
     }
 
-    // Convert Bootstrap collapse attributes to custom ones
-    this.convertCollapseAttributes()
+    // Don't convert attributes - let Bootstrap handle collapses natively
     this.setupEventListeners()
-    this.initializeSubMenus()
     this.handleResponsiveBreakpoints()
   }
 
-  convertCollapseAttributes() {
-    // Convert Bootstrap collapse data attributes to custom ones to prevent conflicts
-    const sidebarCollapses = document.querySelectorAll('.sidebar [data-bs-toggle="collapse"]')
-    sidebarCollapses.forEach(element => {
-      const target = element.getAttribute('data-bs-target')
-      if (target) {
-        element.setAttribute('data-custom-collapse-target', target)
-        element.removeAttribute('data-bs-toggle')
-        element.removeAttribute('data-bs-target')
-      }
-    })
-  }
 
   setupEventListeners() {
     // Main menu toggle
     this.menuToggle.addEventListener('click', (e) => {
       e.preventDefault()
       this.toggleSidebar()
-    })
-
-    // Custom collapse toggles (using data-custom-collapse-target to avoid Bootstrap conflicts)
-    const collapseToggles = document.querySelectorAll('[data-custom-collapse-target]')
-    
-    collapseToggles.forEach(toggle => {
-      toggle.addEventListener('click', (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        
-        // Get target collapse element using custom attribute
-        const targetSelector = toggle.getAttribute('data-custom-collapse-target')
-        const targetElement = document.querySelector(targetSelector)
-        
-        if (targetElement) {
-          this.toggleCollapse(targetElement)
-        }
-      })
     })
 
     // Close sidebar on outside click (mobile)
@@ -120,99 +88,6 @@ export class Navigation {
     this.dispatchEvent('sidebar:closed')
   }
 
-  toggleCollapse(collapseElement) {
-    const isOpen = collapseElement.classList.contains('show')
-    
-    // Close all other collapses at the same level (accordion behavior)
-    const parentNav = collapseElement.closest('.sidebar-nav')
-    if (parentNav) {
-      const allCollapses = parentNav.querySelectorAll('.collapse.show')
-      allCollapses.forEach(collapse => {
-        if (collapse !== collapseElement) {
-          this.closeCollapse(collapse)
-        }
-      })
-    }
-
-    if (isOpen) {
-      this.closeCollapse(collapseElement)
-    } else {
-      this.openCollapse(collapseElement)
-    }
-  }
-
-  openCollapse(collapseElement) {
-    // Show element first, then trigger animation with slight delay
-    collapseElement.style.display = 'block'
-    
-    // Force reflow to ensure display:block is applied before adding .show class
-    collapseElement.offsetHeight
-    
-    // Add show class to trigger CSS animation
-    collapseElement.classList.add('show')
-    
-    // Update aria-expanded attribute on the toggle button
-    const toggle = document.querySelector(`[data-custom-collapse-target="#${collapseElement.id}"]`)
-    if (toggle) {
-      toggle.setAttribute('aria-expanded', 'true')
-    }
-
-    // Emit custom event
-    this.dispatchEvent('submenu:opened', { collapseElement })
-  }
-
-  closeCollapse(collapseElement) {
-    // Remove show class to trigger CSS animation
-    collapseElement.classList.remove('show')
-    
-    // Hide element after animation completes (250ms)
-    setTimeout(() => {
-      if (!collapseElement.classList.contains('show')) {
-        collapseElement.style.display = 'none'
-      }
-    }, 250)
-    
-    // Update aria-expanded attribute on the toggle button
-    const toggle = document.querySelector(`[data-custom-collapse-target="#${collapseElement.id}"]`)
-    if (toggle) {
-      toggle.setAttribute('aria-expanded', 'false')
-    }
-
-    // Emit custom event
-    this.dispatchEvent('submenu:closed', { collapseElement })
-  }
-
-  initializeSubMenus() {
-    // Pre-calculate and fix heights for all collapse elements to prevent jumping
-    const collapses = document.querySelectorAll('.collapse')
-    collapses.forEach(collapse => {
-      // Get the nav inside the collapse
-      const nav = collapse.querySelector('.nav')
-      if (nav) {
-        // Count the nav items and calculate exact height
-        const navItems = nav.querySelectorAll('.nav-item')
-        const exactHeight = navItems.length * 32 + 8 // 32px per item + 8px top margin
-        
-        // Pre-set the exact dimensions to prevent any layout calculation
-        collapse.style.setProperty('--calculated-height', `${exactHeight}px`)
-        nav.style.height = `${exactHeight - 8}px` // Subtract top margin
-        nav.style.minHeight = `${exactHeight - 8}px`
-        nav.style.maxHeight = `${exactHeight - 8}px`
-      }
-      
-      // Ensure all collapses start in the closed state
-      if (!collapse.classList.contains('show')) {
-        collapse.style.display = 'none'
-      }
-      
-      // Set proper aria-expanded state
-      const toggle = document.querySelector(`[data-custom-collapse-target="#${collapse.id}"]`)
-      if (toggle) {
-        const isExpanded = collapse.classList.contains('show')
-        toggle.setAttribute('aria-expanded', isExpanded.toString())
-      }
-    })
-  }
 
   handleResponsiveBreakpoints() {
     const windowWidth = window.innerWidth

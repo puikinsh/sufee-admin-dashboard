@@ -15,23 +15,26 @@
             transition: all 0.3s ease;
             cursor: pointer;
             height: 100%;
+            background: var(--bs-gray-100);
+            border: 1px solid transparent;
         }
         
         .icon-box:hover {
-            background: var(--bs-light);
+            background: white;
             transform: translateY(-2px);
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            border-color: var(--bs-primary);
         }
         
         .icon-box i {
             font-size: 2.5rem;
             margin-bottom: 10px;
             display: block;
-            color: var(--bs-info);
+            color: var(--bs-dark);
         }
         
         .icon-box:hover i {
-            color: var(--bs-dark);
+            color: var(--bs-primary);
         }
         
         .icon-name {
@@ -150,9 +153,9 @@
             color: var(--bs-secondary);
         }
     </style>
-  <script type="module" crossorigin src="/assets/font-themify-Cn3NxpfL.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
-  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module" crossorigin src="/assets/font-themify-NrJ5hgqL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-BpvFxo3n.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CTF9q11D.css">
   <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
   <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
 </head>
@@ -279,10 +282,14 @@
                     </div>
 
                     <!-- Arrows & Direction Icons -->
-                    <div class="category-header">
-                        <h4>Arrows & Direction Icons</h4>
-                    </div>
-                    <div class="row mb-5" id="arrowIcons">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Arrows & Direction Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="arrowIcons">
                         <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
                             <div class="icon-box" onclick="copyIcon('ti-arrow-up')">
                                 <i class="ti-arrow-up"></i>
@@ -427,13 +434,21 @@
                                 <span class="icon-name">ti-split-v</span>
                             </div>
                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Web App Icons -->
-                    <div class="category-header">
-                        <h4>Web Application Icons</h4>
-                    </div>
-                    <div class="row mb-5" id="webAppIcons">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Web Application Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="webAppIcons">
                         <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
                             <div class="icon-box" onclick="copyIcon('ti-home')">
                                 <i class="ti-home"></i>
@@ -614,13 +629,21 @@
                                 <span class="icon-name">ti-cut</span>
                             </div>
                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Control Icons -->
-                    <div class="category-header">
-                        <h4>Control Icons</h4>
-                    </div>
-                    <div class="row mb-5" id="controlIcons">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Control Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="controlIcons">
                         <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
                             <div class="icon-box" onclick="copyIcon('ti-control-stop')">
                                 <i class="ti-control-stop"></i>
@@ -687,13 +710,21 @@
                                 <span class="icon-name">ti-control-eject</span>
                             </div>
                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Device Icons -->
-                    <div class="category-header">
-                        <h4>Device Icons</h4>
-                    </div>
-                    <div class="row mb-5" id="deviceIcons">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Device Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="deviceIcons">
                         <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
                             <div class="icon-box" onclick="copyIcon('ti-mobile')">
                                 <i class="ti-mobile"></i>
@@ -784,13 +815,21 @@
                                 <span class="icon-name">ti-game</span>
                             </div>
                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Layout Icons -->
-                    <div class="category-header">
-                        <h4>Layout Icons</h4>
-                    </div>
-                    <div class="row mb-5" id="layoutIcons">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Layout Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="layoutIcons">
                         <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
                             <div class="icon-box" onclick="copyIcon('ti-layout-sidebar-left')">
                                 <i class="ti-layout-sidebar-left"></i>
@@ -911,13 +950,21 @@
                                 <span class="icon-name">ti-layout-menu-v</span>
                             </div>
                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Brand Icons -->
-                    <div class="category-header">
-                        <h4>Brand Icons</h4>
-                    </div>
-                    <div class="row mb-5" id="brandIcons">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Brand Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="brandIcons">
                         <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
                             <div class="icon-box" onclick="copyIcon('ti-apple')">
                                 <i class="ti-apple"></i>
@@ -1068,6 +1115,10 @@
                                 <span class="icon-name">ti-wordpress</span>
                             </div>
                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -1135,6 +1186,6 @@
     </script>
   <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
   <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
-  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/font-themify-legacy-DLxAec9d.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/font-themify-legacy-DCIsXKo_.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
 </body>
 </html>

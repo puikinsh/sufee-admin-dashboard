@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Google Maps - Sufee Admin</title>
+    <meta name="description" content="Google Maps integration - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <div data-partial="head-common"></div>
+  <script type="module" crossorigin src="/assets/maps-gmap-BJcRzYKL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-BpvFxo3n.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CTF9q11D.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="maps-gmap">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <div data-breadcrumb data-breadcrumb-title="Google Maps" data-breadcrumb-path="Dashboard|Maps"></div>
+
+            <!-- Main Content -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Basic Map</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="map" id="basic-map" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Map with Markers</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div id="map-2" class="map" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Geometry overlays</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="map" id="map-3" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Elevation locations</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div id="map-4" class="map" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Geolocation</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="map" id="map-5" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Styled Map (Night Mode)</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div id="map-6" class="map" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Traffic & Transit Layers</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="map" id="map-7" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Map events</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="map" id="map-8" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div data-partial="scripts-common"></div>
+    
+    <!-- Google Maps initialization -->
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/maps-gmap-legacy-D6efTIvD.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

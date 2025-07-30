@@ -151,7 +151,7 @@ aside.left-panel {
               color: var(--menu-color);
               font-size: 16px;
               margin-left: auto;
-              transition: all 0.25s ease;
+              transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             &:hover::after {
@@ -202,82 +202,9 @@ aside.left-panel {
   }
 }
 
-// Collapsed sidebar state - original replica
-body.open aside.left-panel {
-  .navbar {
-    .navbar-brand {
-      display: none;
-      
-      &.hidden {
-        display: inline-block !important;
-        text-align: center;
-        
-        img {
-          margin: 0 auto;
-        }
-      }
-    }
-
-    .navbar-nav {
-      li {
-        position: relative;
-
-        > a {
-          justify-content: center;
-          padding: 10px 0;
-
-          .menu-icon {
-            margin-right: 0;
-            font-size: 18px;
-          }
-
-          .menu-title-text {
-            display: none;
-          }
-
-          .badge {
-            display: none;
-          }
-        }
-
-        &.menu-item-has-children {
-          > a::after {
-            display: none;
-          }
-
-          .sub-menu {
-            position: absolute;
-            left: var(--sidebar-collapsed-width);
-            top: 0;
-            width: 200px;
-            background: var(--menu-bg);
-            border: 1px solid #4e4e52;
-            padding: 10px;
-            z-index: 1000;
-            max-height: none;
-            padding-left: 0;
-
-            li a {
-              padding: 8px 15px;
-
-              .menu-title-text {
-                display: inline;
-              }
-            }
-          }
-
-          &:hover .sub-menu {
-            max-height: 500px;
-          }
-        }
-      }
-
-      .menu-title {
-        display: none;
-      }
-    }
-  }
-}
+// Collapsed sidebar state - disabled to prevent conflicts
+// This is handled by the new .sidebar.collapsed styles below
+// body.open aside.left-panel { ... }
 
 // Original responsive styles
 @media (max-width: 1024px) {
@@ -327,6 +254,30 @@ body.open aside.left-panel {
   transition: all 0.3s ease;
   z-index: 1050;
   
+  // Override Bootstrap collapse to prevent any transitions that cause movement
+  .collapsing {
+    // No height transition - let max-height handle it below
+    overflow: hidden;
+  }
+  
+  .collapse:not(.show) {
+    display: block;
+    height: auto; // Don't use height: 0
+    overflow: hidden;
+  }
+  
+  .collapse.show {
+    display: block;
+    height: auto;
+    overflow: hidden;
+    
+    // Override for sidebar submenus - prevent height:auto jump
+    &.sidebar .collapse.show,
+    .sidebar & {
+      height: unset !important; // Don't override our max-height
+    }
+  }
+  
   &.collapsed {
     width: var(--sidebar-collapsed-width);
     
@@ -350,8 +301,33 @@ body.open aside.left-panel {
       display: none;
     }
     
+    // Don't hide collapses, let them animate properly
+    .nav-link {
+      justify-content: center;
+      
+      i {
+        margin-right: 0;
+      }
+    }
+    
+    // Keep submenus as normal dropdowns, not floating
     .collapse {
-      display: none !important;
+      position: relative !important;
+      width: 100% !important;
+      left: 0 !important;
+      top: 0 !important;
+      
+      .nav-pills {
+        .nav-link {
+          // Match the global submenu padding to prevent resize
+          padding: 8px 16px 8px 36px !important; // Moved slightly left
+          justify-content: flex-start;
+          
+          .nav-text {
+            display: inline;
+          }
+        }
+      }
     }
   }
   
@@ -385,18 +361,6 @@ body.open aside.left-panel {
         font-weight: 500;
         position: relative;
         
-        &::before {
-          content: '';
-          position: absolute;
-          right: 16px;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 6px;
-          height: 6px;
-          background: var(--sidebar-active-color);
-          border-radius: 50%;
-        }
-        
         i {
           color: #fff !important;
         }
@@ -409,14 +373,29 @@ body.open aside.left-panel {
       }
     }
     
-    // Submenu styles
+    // Submenu styles - use Bootstrap's native collapse with smooth transitions
     .collapse {
+      position: relative !important;
+      left: 0 !important;
+      top: 0 !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-sizing: border-box !important;
+      
       .nav-pills {
-        padding-left: 0;
-        margin-top: 8px;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-top: 8px !important;
+        margin-bottom: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        position: relative !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
         
         .nav-link {
-          padding: 8px 16px 8px 44px;
+          padding: 8px 16px 8px 36px !important; // Moved slightly left + !important
           font-size: 0.9em;
           border-left: 3px solid transparent;
           
@@ -433,18 +412,6 @@ body.open aside.left-panel {
             border-radius: 6px;
             font-weight: 500;
             position: relative;
-            
-            &::before {
-              content: '';
-              position: absolute;
-              right: 16px;
-              top: 50%;
-              transform: translateY(-50%);
-              width: 4px;
-              height: 4px;
-              background: var(--sidebar-active-color);
-              border-radius: 50%;
-            }
           }
         }
       }
@@ -452,15 +419,20 @@ body.open aside.left-panel {
   }
   
   // Parent menu toggle button styles
-  .nav-link[data-bs-toggle="collapse"],
-  .nav-link[data-custom-collapse-target] {
+  .nav-link[data-bs-toggle="collapse"] {
     .nav-arrow {
-      transition: transform 0.2s ease;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     &[aria-expanded="true"] {
       .nav-arrow {
         transform: rotate(90deg);
+      }
+    }
+    
+    &.collapsed {
+      .nav-arrow {
+        transform: rotate(0deg);
       }
     }
   }
@@ -551,8 +523,217 @@ body.open aside.left-panel {
     transition: all 0.3s ease;
   }
   
-  .sidebar-collapsed .main-content {
+  body.sidebar-collapsed .main-content {
     margin-left: var(--sidebar-collapsed-width);
     width: calc(100% - var(--sidebar-collapsed-width));
+  }
+  
+  body.sidebar-collapsed .sidebar {
+    width: var(--sidebar-collapsed-width);
+  }
+}
+
+// Fix for all submenus to prevent jumping and resizing
+.sidebar .collapse,
+.sidebar .collapsing,
+.sidebar .collapse.show {
+  // Force CSS containment to prevent any layout shifts
+  contain: layout style !important;
+  
+  // Lock positioning completely
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: auto !important;
+  bottom: auto !important;
+  
+  // Lock dimensions to prevent resizing
+  box-sizing: border-box !important;
+  width: 100% !important;
+  
+  // Remove any transforms or transitions that might cause micro-movements
+  transform: none !important;
+  transform-origin: top left !important;
+  
+  // Prevent subpixel rendering issues
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  will-change: auto !important;
+  
+  // Force pixel-perfect positioning
+  translate: 0px 0px !important;
+  rotate: 0deg !important;
+  scale: 1 !important;
+  
+  // Lock the position and prevent any movement
+  .nav-pills {
+    // Complete positioning lock
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: auto !important;
+    bottom: auto !important;
+    
+    // Remove any transforms
+    transform: none !important;
+    transform-origin: top left !important;
+    
+    // Lock margins and dimensions
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 8px !important; // Lock consistent top margin
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    
+    // Prevent rendering issues
+    backface-visibility: hidden !important;
+    will-change: auto !important;
+    
+    transition: none !important; // Disable any transitions on the container
+    
+    // Lock the list styling
+    list-style: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    
+    // Lock nav-item spacing (both li and .nav-item)
+    li,
+    .nav-item {
+      margin: 0 !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      position: relative !important;
+      list-style: none !important;
+      
+      // Remove any browser default spacing
+      &::before,
+      &::after {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
+    
+    .nav-link {
+      // Lock positioning completely
+      position: relative !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: auto !important;
+      bottom: auto !important;
+      
+      // Remove any floats and set display
+      float: none !important;
+      clear: both !important;
+      display: flex !important;
+      align-items: center !important;
+      
+      // Ensure consistent padding in all states - moved slightly left
+      padding: 8px 16px 8px 36px !important;
+      margin: 0 !important;
+      margin-bottom: 0 !important; // Explicitly override any inherited margin-bottom
+      transform: none !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      font-size: 0.9em !important; // Lock font size
+      line-height: 1.5 !important; // Lock line height
+      min-height: 36px !important; // Lock minimum height
+      height: auto !important;
+      transition: background-color 0.2s ease, color 0.2s ease !important; // Only allow color transitions
+      
+      // Prevent any text alignment changes
+      text-align: left !important;
+      vertical-align: top !important;
+      
+      i {
+        font-size: 12px !important;
+        width: 20px !important;
+        margin-right: 8px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+    }
+  }
+}
+
+// NUCLEAR OPTION: Completely disable Bootstrap collapse and use pure CSS
+.sidebar {
+  // Override ALL Bootstrap collapse behavior
+  .collapse,
+  .collapsing {
+    // Remove ALL Bootstrap transitions and animations
+    transition: none !important;
+    animation: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    
+    // Lock all positioning
+    position: static !important;
+    display: block !important;
+    
+    // Disable ALL child animations
+    * {
+      transition: none !important;
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+  
+  // Create our own show/hide using pure visibility
+  .collapse:not(.show) {
+    display: none !important;
+  }
+  
+  .collapse.show {
+    display: block !important;
+  }
+}
+
+// Ultimate fix: Override ALL possible conflicting submenu styles
+.sidebar .collapse .nav-pills .nav-link,
+.sidebar .collapsing .nav-pills .nav-link,
+.sidebar .collapse.show .nav-pills .nav-link {
+  // Lock ALL properties that could cause movement
+  padding: 8px 16px 8px 36px !important;
+  margin: 0 !important;
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  transition: background-color 0.2s ease, color 0.2s ease !important;
+  
+  // Lock display and layout
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  
+  // Lock font and sizing
+  font-size: 0.9em !important;
+  line-height: 1.5 !important;
+  min-height: 36px !important;
+  
+  // Lock box model
+  box-sizing: border-box !important;
+  width: 100% !important;
+}
+
+// Fix for Components menu toggle
+a[data-bs-target="#componentsSubmenu"] {
+  &[aria-expanded="true"] .nav-arrow {
+    transform: rotate(90deg) !important;
+  }
+  
+  &[aria-expanded="false"] .nav-arrow,
+  &.collapsed .nav-arrow {
+    transform: rotate(0deg) !important;
   }
 }

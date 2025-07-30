@@ -72,8 +72,7 @@ export default defineConfig({
   optimizeDeps: {
     include: [
       'bootstrap',
-      'chart.js',
-      'gmaps'
+      'chart.js'
     ]
   }
 })

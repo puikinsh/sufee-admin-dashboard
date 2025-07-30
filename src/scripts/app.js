@@ -70,17 +70,6 @@ export class App {
     })
   }
 
-  disableBootstrapCollapse() {
-    // Prevent Bootstrap from automatically initializing collapse elements in the sidebar
-    const sidebarCollapses = document.querySelectorAll('.sidebar [data-bs-toggle="collapse"]')
-    sidebarCollapses.forEach(element => {
-      // Remove the data attribute temporarily to prevent Bootstrap initialization
-      const target = element.getAttribute('data-bs-target')
-      element.setAttribute('data-custom-collapse-target', target)
-      element.removeAttribute('data-bs-toggle')
-      element.removeAttribute('data-bs-target')
-    })
-  }
 
   loadPageComponents() {
     const body = document.body

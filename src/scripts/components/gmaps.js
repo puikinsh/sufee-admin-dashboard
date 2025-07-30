@@ -1,233 +1,387 @@
-// Google Maps component initialization
-import GMaps from 'gmaps';
+// Google Maps component using native Google Maps JavaScript API
+// No jQuery or external dependencies required
 
-// Wait for Google Maps API to be loaded
-window.initializeMaps = function() {
+class GoogleMapsManager {
+    constructor() {
+        this.maps = {};
+        this.markers = {};
+    }
+
+    // Initialize all maps when the API is ready
+    initialize() {
+        // Basic Map
+        this.initBasicMap();
+        
+        // Map with Markers
+        this.initMarkersMap();
+        
+        // Geometry Overlays Map
+        this.initGeometryMap();
+        
+        // Elevation Map
+        this.initElevationMap();
+        
+        // Geolocation Map
+        this.initGeolocationMap();
+        
+        // Styled Map
+        this.initStyledMap();
+        
+        // Traffic Layer Map
+        this.initTrafficMap();
+        
+        // Map Events
+        this.initEventsMap();
+    }
+
     // Basic Map
-    if (document.getElementById('basic-map')) {
-        const basicMap = new GMaps({
-            el: '#basic-map',
-            lat: -12.043333,
-            lng: -77.028333,
-            zoomControl: true,
-            zoomControlOpt: {
-                style: 'SMALL',
-                position: 'TOP_LEFT'
-            },
-            panControl: false,
-            streetViewControl: false,
+    initBasicMap() {
+        const element = document.getElementById('basic-map');
+        if (!element) return;
+
+        this.maps.basic = new google.maps.Map(element, {
+            center: { lat: -12.043333, lng: -77.028333 },
+            zoom: 8,
             mapTypeControl: false,
-            overviewMapControl: false
+            streetViewControl: false,
+            fullscreenControl: true,
+            zoomControl: true,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.LEFT_TOP
+            }
         });
     }
 
-    // Fusion Tables Map
-    if (document.getElementById('map-2')) {
-        const infoWindow2 = new google.maps.InfoWindow({});
-        const map2 = new GMaps({
-            el: '#map-2',
-            zoom: 11,
-            lat: 41.850033,
-            lng: -87.6500523
+    // Map with Markers
+    initMarkersMap() {
+        const element = document.getElementById('map-2');
+        if (!element) return;
+
+        this.maps.markers = new google.maps.Map(element, {
+            center: { lat: 41.850033, lng: -87.6500523 },
+            zoom: 11
         });
-        
-        // Note: Fusion Tables was deprecated in 2019 and shut down in 2020
-        // This example would need to be updated to use a different data source
-        console.warn('Fusion Tables has been deprecated. Consider using Google Maps Data Layer or other alternatives.');
+
+        // Add some example markers
+        const locations = [
+            { lat: 41.850033, lng: -87.6500523, title: 'Chicago' },
+            { lat: 41.881832, lng: -87.623177, title: 'Willis Tower' },
+            { lat: 41.878876, lng: -87.635918, title: 'Millennium Park' }
+        ];
+
+        this.markers.markers = locations.map(location => {
+            const marker = new google.maps.Marker({
+                position: { lat: location.lat, lng: location.lng },
+                map: this.maps.markers,
+                title: location.title,
+                animation: google.maps.Animation.DROP
+            });
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: `<div class="p-2"><h6>${location.title}</h6><p>Click for more info</p></div>`
+            });
+
+            marker.addListener('click', () => {
+                infoWindow.open(this.maps.markers, marker);
+            });
+
+            return marker;
+        });
     }
 
     // Geometry Overlays Map
-    if (document.getElementById('map-3')) {
-        const map3 = new GMaps({
-            el: '#map-3',
-            lat: -12.043333,
-            lng: -77.028333
+    initGeometryMap() {
+        const element = document.getElementById('map-3');
+        if (!element) return;
+
+        this.maps.geometry = new google.maps.Map(element, {
+            center: { lat: -12.040397656836609, lng: -77.03373871559225 },
+            zoom: 14
         });
 
-        const bounds = [
-            [-12.030397656836609, -77.02373871559225],
-            [-12.034804866577001, -77.01154422636042]
+        // Rectangle
+        const rectangle = new google.maps.Rectangle({
+            strokeColor: '#0d6efd',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#0d6efd',
+            fillOpacity: 0.35,
+            map: this.maps.geometry,
+            bounds: {
+                north: -12.030397656836609,
+                south: -12.034804866577001,
+                east: -77.01154422636042,
+                west: -77.02373871559225
+            }
+        });
+
+        // Polygon
+        const triangleCoords = [
+            { lat: -12.040397656836609, lng: -77.03373871559225 },
+            { lat: -12.040248585302038, lng: -77.03993927003302 },
+            { lat: -12.050047116528843, lng: -77.02448169303511 },
+            { lat: -12.044804866577001, lng: -77.02154422636042 }
         ];
-        
-        map3.drawRectangle({
-            bounds: bounds,
-            strokeColor: '#BBD8E9',
-            strokeOpacity: 1,
+
+        const polygon = new google.maps.Polygon({
+            paths: triangleCoords,
+            strokeColor: '#198754',
+            strokeOpacity: 0.8,
             strokeWeight: 3,
-            fillColor: '#BBD8E9',
-            fillOpacity: 0.6
+            fillColor: '#198754',
+            fillOpacity: 0.35,
+            map: this.maps.geometry
         });
 
-        const paths = [
-            [-12.040397656836609, -77.03373871559225],
-            [-12.040248585302038, -77.03993927003302],
-            [-12.050047116528843, -77.02448169303511],
-            [-12.044804866577001, -77.02154422636042]
-        ];
-        
-        map3.drawPolygon({
-            paths: paths,
-            strokeColor: '#25D359',
-            strokeOpacity: 1,
-            strokeWeight: 3,
-            fillColor: '#25D359',
-            fillOpacity: 0.6
+        // Circle
+        const circle = new google.maps.Circle({
+            strokeColor: '#6f42c1',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#6f42c1',
+            fillOpacity: 0.35,
+            map: this.maps.geometry,
+            center: { lat: -12.040504866577001, lng: -77.02024422636042 },
+            radius: 350
         });
 
-        map3.drawCircle({
-            lat: -12.040504866577001,
-            lng: -77.02024422636042,
-            radius: 350,
-            strokeColor: '#432070',
-            strokeOpacity: 1,
-            strokeWeight: 3,
-            fillColor: '#432070',
-            fillOpacity: 0.6
-        });
-
-        // Fit bounds
-        const allBounds = [...bounds, ...paths];
-        const latLngBounds = allBounds.map(coord => 
-            new google.maps.LatLng(coord[0], coord[1])
-        );
-        map3.fitLatLngBounds(latLngBounds);
+        // Fit bounds to show all shapes
+        const bounds = new google.maps.LatLngBounds();
+        bounds.extend({ lat: -12.030397656836609, lng: -77.03993927003302 });
+        bounds.extend({ lat: -12.050047116528843, lng: -77.01154422636042 });
+        this.maps.geometry.fitBounds(bounds);
     }
 
     // Elevation Map
-    if (document.getElementById('map-4')) {
-        const map4 = new GMaps({
-            el: '#map-4',
-            lat: -12.043333,
-            lng: -77.028333
+    initElevationMap() {
+        const element = document.getElementById('map-4');
+        if (!element) return;
+
+        this.maps.elevation = new google.maps.Map(element, {
+            center: { lat: -12.043333, lng: -77.028333 },
+            zoom: 13
         });
 
-        map4.getElevations({
-            locations: [
-                [-12.040397656836609, -77.03373871559225],
-                [-12.050047116528843, -77.02448169303511],
-                [-12.044804866577001, -77.02154422636042]
-            ],
-            callback: function(result, status) {
-                if (status == google.maps.ElevationStatus.OK) {
-                    result.forEach(location => {
-                        map4.addMarker({
-                            lat: location.location.lat(),
-                            lng: location.location.lng(),
-                            title: 'Marker with InfoWindow',
-                            infoWindow: {
-                                content: `<p>The elevation is ${location.elevation.toFixed(2)} meters</p>`
-                            }
-                        });
+        const elevator = new google.maps.ElevationService();
+        const locations = [
+            { lat: -12.040397656836609, lng: -77.03373871559225 },
+            { lat: -12.050047116528843, lng: -77.02448169303511 },
+            { lat: -12.044804866577001, lng: -77.02154422636042 }
+        ];
+
+        // Request elevation data
+        elevator.getElevationForLocations({
+            locations: locations
+        }, (results, status) => {
+            if (status === 'OK' && results) {
+                results.forEach((result, index) => {
+                    const marker = new google.maps.Marker({
+                        position: result.location,
+                        map: this.maps.elevation,
+                        title: `Elevation: ${result.elevation.toFixed(2)} meters`
                     });
-                }
+
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: `<div class="p-2">
+                            <h6>Location ${index + 1}</h6>
+                            <p>Elevation: <strong>${result.elevation.toFixed(2)}</strong> meters</p>
+                        </div>`
+                    });
+
+                    marker.addListener('click', () => {
+                        infoWindow.open(this.maps.elevation, marker);
+                    });
+                });
             }
         });
     }
 
     // Geolocation Map
-    if (document.getElementById('map-5')) {
-        const map5 = new GMaps({
-            el: '#map-5',
-            lat: -12.043333,
-            lng: -77.028333
+    initGeolocationMap() {
+        const element = document.getElementById('map-5');
+        if (!element) return;
+
+        this.maps.geolocation = new google.maps.Map(element, {
+            center: { lat: -12.043333, lng: -77.028333 },
+            zoom: 6
         });
 
-        GMaps.geolocate({
-            success: function(position) {
-                map5.setCenter(position.coords.latitude, position.coords.longitude);
-                map5.addMarker({
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
-                    title: 'Your Location',
-                    infoWindow: {
-                        content: '<p>You are here!</p>'
-                    }
-                });
-            },
-            error: function(error) {
-                console.error('Geolocation failed:', error.message);
-            },
-            not_supported: function() {
-                console.warn('Your browser does not support geolocation');
-            }
-        });
-    }
+        // Try HTML5 geolocation
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
 
-    // KML Layer Map
-    if (document.getElementById('map-6')) {
-        const infoWindow6 = new google.maps.InfoWindow({});
-        const map6 = new GMaps({
-            el: '#map-6',
-            zoom: 12,
-            lat: 40.65,
-            lng: -73.95
-        });
+                    this.maps.geolocation.setCenter(pos);
+                    this.maps.geolocation.setZoom(15);
 
-        // Note: Example KML URL, replace with actual KML feed
-        console.warn('KML example - ensure the KML URL is valid and accessible');
-    }
+                    new google.maps.Marker({
+                        position: pos,
+                        map: this.maps.geolocation,
+                        title: 'Your Location',
+                        icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            scale: 10,
+                            fillColor: '#0d6efd',
+                            fillOpacity: 0.8,
+                            strokeColor: '#fff',
+                            strokeWeight: 2
+                        }
+                    });
 
-    // Weather Layers Map
-    if (document.getElementById('map-7')) {
-        const map7 = new GMaps({
-            el: '#map-7',
-            lat: -12.043333,
-            lng: -77.028333,
-            zoom: 3
-        });
-
-        // Note: Weather and cloud layers require additional API setup
-        try {
-            map7.addLayer('weather', {
-                clickable: false
-            });
-            map7.addLayer('clouds');
-        } catch (e) {
-            console.warn('Weather layers require additional API configuration');
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: '<div class="p-2"><h6>You are here!</h6></div>'
+                    });
+                    
+                    infoWindow.setPosition(pos);
+                    infoWindow.open(this.maps.geolocation);
+                },
+                () => {
+                    this.handleLocationError(true, this.maps.geolocation.getCenter());
+                }
+            );
+        } else {
+            // Browser doesn't support Geolocation
+            this.handleLocationError(false, this.maps.geolocation.getCenter());
         }
+    }
+
+    handleLocationError(browserHasGeolocation, pos) {
+        const infoWindow = new google.maps.InfoWindow({
+            content: browserHasGeolocation
+                ? 'Error: The Geolocation service failed.'
+                : 'Error: Your browser doesn\'t support geolocation.'
+        });
+        infoWindow.setPosition(pos);
+        infoWindow.open(this.maps.geolocation);
+    }
+
+    // Styled Map
+    initStyledMap() {
+        const element = document.getElementById('map-6');
+        if (!element) return;
+
+        // Night mode style
+        const nightStyle = [
+            { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+            { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+            { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+            {
+                featureType: 'administrative.locality',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#d59563' }]
+            },
+            {
+                featureType: 'road',
+                elementType: 'geometry',
+                stylers: [{ color: '#38414e' }]
+            },
+            {
+                featureType: 'road',
+                elementType: 'geometry.stroke',
+                stylers: [{ color: '#212a37' }]
+            },
+            {
+                featureType: 'road',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#9ca5b3' }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{ color: '#746855' }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'geometry.stroke',
+                stylers: [{ color: '#1f2835' }]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'labels.text.fill',
+                stylers: [{ color: '#f3d19c' }]
+            },
+            {
+                featureType: 'water',
+                elementType: 'geometry',
+                stylers: [{ color: '#17263c' }]
+            }
+        ];
+
+        this.maps.styled = new google.maps.Map(element, {
+            center: { lat: 40.65, lng: -73.95 },
+            zoom: 12,
+            styles: nightStyle
+        });
+    }
+
+    // Traffic Layer Map
+    initTrafficMap() {
+        const element = document.getElementById('map-7');
+        if (!element) return;
+
+        this.maps.traffic = new google.maps.Map(element, {
+            center: { lat: 34.04924594193164, lng: -118.24104309082031 },
+            zoom: 13,
+            mapTypeId: 'roadmap'
+        });
+
+        const trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(this.maps.traffic);
+
+        const transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(this.maps.traffic);
     }
 
     // Map Events
-    if (document.getElementById('map-8')) {
-        const map8 = new GMaps({
-            el: '#map-8',
-            zoom: 16,
-            lat: -12.043333,
-            lng: -77.028333,
-            click: function(e) {
-                console.log('Map clicked at:', e.latLng.lat(), e.latLng.lng());
-            },
-            dragend: function(e) {
-                console.log('Map drag ended');
-            }
+    initEventsMap() {
+        const element = document.getElementById('map-8');
+        if (!element) return;
+
+        this.maps.events = new google.maps.Map(element, {
+            center: { lat: -12.043333, lng: -77.028333 },
+            zoom: 16
         });
 
-        // Add a marker that shows coordinates when clicked
-        map8.addMarker({
-            lat: -12.043333,
-            lng: -77.028333,
-            title: 'Click me!',
-            click: function(e) {
-                alert(`Marker position: ${e.position.lat()}, ${e.position.lng()}`);
-            }
+        // Click event
+        this.maps.events.addListener('click', (e) => {
+            const marker = new google.maps.Marker({
+                position: e.latLng,
+                map: this.maps.events,
+                animation: google.maps.Animation.DROP
+            });
+
+            const infoWindow = new google.maps.InfoWindow({
+                content: `<div class="p-2">
+                    <h6>You clicked here!</h6>
+                    <p>Lat: ${e.latLng.lat().toFixed(6)}</p>
+                    <p>Lng: ${e.latLng.lng().toFixed(6)}</p>
+                </div>`
+            });
+
+            marker.addListener('click', () => {
+                infoWindow.open(this.maps.events, marker);
+            });
         });
-    }
-};
 
-// Set up the callback for Google Maps API
-window.initializeMaps = window.initializeMaps || function() {
-    console.warn('Google Maps API not loaded yet');
-};
-
-// Initialize when DOM is ready and Google Maps is loaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        if (window.google && window.google.maps) {
-            window.initializeMaps();
-        }
-    });
-} else {
-    if (window.google && window.google.maps) {
-        window.initializeMaps();
+        // Add instructions
+        const controlDiv = document.createElement('div');
+        controlDiv.className = 'bg-white border rounded shadow-sm m-2 p-2';
+        controlDiv.innerHTML = '<small>Click anywhere on the map to place a marker</small>';
+        this.maps.events.controls[google.maps.ControlPosition.TOP_CENTER].push(controlDiv);
     }
 }
+
+// Create global instance
+window.googleMapsManager = new GoogleMapsManager();
+
+// Initialize when Google Maps is loaded
+window.initGoogleMaps = function() {
+    window.googleMapsManager.initialize();
+};
+
+// Export for module usage
+export default GoogleMapsManager;

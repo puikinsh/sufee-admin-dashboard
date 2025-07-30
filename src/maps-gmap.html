@@ -40,7 +40,7 @@
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="mb-0">Fusion Tables layers</h4>
+                                    <h4 class="mb-0">Map with Markers</h4>
                                 </div>
                                 <div class="card-body">
                                     <div id="map-2" class="map" style="height: 400px;"></div>
@@ -84,7 +84,7 @@
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="mb-0">KML layers</h4>
+                                    <h4 class="mb-0">Styled Map (Night Mode)</h4>
                                 </div>
                                 <div class="card-body">
                                     <div id="map-6" class="map" style="height: 400px;"></div>
@@ -95,7 +95,7 @@
                         <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="mb-0">Layers</h4>
+                                    <h4 class="mb-0">Traffic & Transit Layers</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="map" id="map-7" style="height: 400px;"></div>
@@ -121,18 +121,16 @@
 
     <div data-partial="scripts-common"></div>
     
-    <!-- Google Maps API -->
-    <script>
-        // Define callback before loading Google Maps API
-        window.initGoogleMaps = function() {
-            // Import and initialize gmaps component after API loads
-            import('./scripts/components/gmaps.js').then(module => {
-                if (window.initializeMaps) {
-                    window.initializeMaps();
-                }
-            });
-        };
+    <!-- Google Maps initialization -->
+    <script type="module">
+        import GoogleMapsManager from './scripts/components/gmaps.js';
+        
+        // Load Google Maps API
+        const script = document.createElement('script');
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2jlT6C_to6X1mMvR9yRWeRvpIgTXgddM&callback=initGoogleMaps&libraries=geometry,places';
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2jlT6C_to6X1mMvR9yRWeRvpIgTXgddM&callback=initGoogleMaps" async defer></script>
 </body>
 </html>

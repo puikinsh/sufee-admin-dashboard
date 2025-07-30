@@ -36,7 +36,6 @@
     "bootstrap": "^5.3.7",
     "chart.js": "^4.5.0",
     "flag-icons": "^7.2.3",
-    "gmaps": "^0.4.25",
     "leaflet": "^1.9.4",
     "themify-icons": "^1.0.0"
   },
