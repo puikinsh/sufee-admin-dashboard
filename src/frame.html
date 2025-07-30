@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Frame Layout - Sufee Admin</title>
+    <meta name="description" content="Frame Layout - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Frame-specific styles */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 200px);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .iframe-content {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .iframe-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            color: #6c757d;
+        }
+        
+        .iframe-loading .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.3em;
+        }
+        
+        .iframe-loading h5 {
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        
+        .iframe-controls {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .iframe-controls .form-control {
+            border-radius: 6px;
+        }
+        
+        .iframe-controls .btn {
+            border-radius: 6px;
+        }
+        
+        .iframe-url-bar {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .iframe-url-input {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .iframe-actions {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        
+        .preset-urls {
+            margin-top: 15px;
+        }
+        
+        .preset-btn {
+            margin: 2px;
+            font-size: 0.875rem;
+        }
+        
+        .iframe-status {
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 0.875rem;
+            display: none;
+        }
+        
+        .iframe-status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .iframe-status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .iframe-info {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .iframe-info h6 {
+            color: #495057;
+            margin-bottom: 10px;
+        }
+        
+        .iframe-info p {
+            color: #6c757d;
+            margin-bottom: 10px;
+            font-size: 0.875rem;
+        }
+        
+        .iframe-info ul {
+            color: #6c757d;
+            font-size: 0.875rem;
+            margin-bottom: 0;
+        }
+        
+        .iframe-info ul li {
+            margin-bottom: 5px;
+        }
+        
+        .iframe-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            border-radius: 8px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .iframe-url-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .iframe-url-input {
+                min-width: auto;
+                margin-bottom: 10px;
+            }
+            
+            .iframe-actions {
+                justify-content: center;
+            }
+            
+            .iframe-container {
+                height: calc(100vh - 250px);
+            }
+        }
+        
+        /* Security warning styles */
+        .security-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .security-warning .warning-icon {
+            color: #f39c12;
+            margin-right: 8px;
+        }
+        
+        .security-warning h6 {
+            margin-bottom: 8px;
+            color: #856404;
+        }
+        
+        .security-warning p {
+            margin-bottom: 0;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body class="sufee-dashboard" data-page="frame">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Frame Layout" data-breadcrumb-path="Dashboard|Frame Layout"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h1 class="h3 mb-3">Frame Layout</h1>
+                            <p class="text-muted mb-0">Embed external content within the dashboard interface</p>
+                        </div>
+                    </div>
+
+                    <!-- Security Warning -->
+                    <div class="security-warning">
+                        <h6>
+                            <i class="fas fa-exclamation-triangle warning-icon"></i>
+                            Security Notice
+                        </h6>
+                        <p>
+                            Only load trusted content in the iframe. External sites may not load due to security policies (X-Frame-Options, CSP).
+                            For production use, ensure proper content validation and security measures.
+                        </p>
+                    </div>
+
+                    <!-- Frame Information -->
+                    <div class="iframe-info">
+                        <h6>About Frame Layout</h6>
+                        <p>This layout provides a way to embed external content within the dashboard interface while maintaining the navigation and header structure.</p>
+                        <ul>
+                            <li>Enter any valid URL to load external content</li>
+                            <li>Use preset URLs for quick testing</li>
+                            <li>The iframe adapts to the available space</li>
+                            <li>Loading indicators provide user feedback</li>
+                        </ul>
+                    </div>
+
+                    <!-- Iframe Controls -->
+                    <div class="iframe-controls">
+                        <div class="iframe-url-bar">
+                            <div class="iframe-url-input">
+                                <input type="url" 
+                                       class="form-control" 
+                                       id="urlInput" 
+                                       placeholder="Enter URL to load (e.g., https://example.com)" 
+                                       value="/">
+                            </div>
+                            <div class="iframe-actions">
+                                <button class="btn btn-primary" id="loadBtn">
+                                    <i class="fas fa-play"></i> Load
+                                </button>
+                                <button class="btn btn-secondary" id="refreshBtn">
+                                    <i class="fas fa-refresh"></i> Refresh
+                                </button>
+                                <button class="btn btn-outline-secondary" id="homeBtn">
+                                    <i class="fas fa-home"></i> Home
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Preset URLs -->
+                        <div class="preset-urls">
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="text-muted small me-2">Quick links:</span>
+                                <button class="btn btn-outline-primary btn-sm preset-btn" data-url="/">Dashboard</button>
+                                <button class="btn btn-outline-primary btn-sm preset-btn" data-url="/index.html">Home</button>
+                                <button class="btn btn-outline-primary btn-sm preset-btn" data-url="/ui-buttons.html">UI Components</button>
+                                <button class="btn btn-outline-primary btn-sm preset-btn" data-url="/charts-chartjs.html">Charts</button>
+                                <button class="btn btn-outline-primary btn-sm preset-btn" data-url="/tables-basic.html">Tables</button>
+                                <button class="btn btn-outline-primary btn-sm preset-btn" data-url="https://example.com">Example.com</button>
+                                <button class="btn btn-outline-primary btn-sm preset-btn" data-url="https://www.google.com/search?igu=1">Google</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Messages -->
+                    <div class="iframe-status" id="statusMessage"></div>
+
+                    <!-- Iframe Container -->
+                    <div class="iframe-container">
+                        <!-- Loading Indicator -->
+                        <div class="iframe-loading" id="loadingIndicator">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <h5>Loading content...</h5>
+                            <p class="text-muted">Please wait while the content loads</p>
+                        </div>
+                        
+                        <!-- Iframe Content -->
+                        <iframe id="contentFrame" 
+                                class="iframe-content" 
+                                src="/"
+                                title="Embedded Content"
+                                loading="lazy">
+                            <p>Your browser does not support iframes.</p>
+                        </iframe>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script type="module">
+        // Frame functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlInput = document.getElementById('urlInput');
+            const loadBtn = document.getElementById('loadBtn');
+            const refreshBtn = document.getElementById('refreshBtn');
+            const homeBtn = document.getElementById('homeBtn');
+            const contentFrame = document.getElementById('contentFrame');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const statusMessage = document.getElementById('statusMessage');
+            const presetBtns = document.querySelectorAll('.preset-btn');
+            
+            let currentUrl = '/';
+            let loadTimeout;
+            
+            // Show status message
+            function showStatus(message, type = 'success') {
+                statusMessage.textContent = message;
+                statusMessage.className = `iframe-status ${type}`;
+                statusMessage.style.display = 'block';
+                
+                // Auto-hide after 3 seconds
+                setTimeout(() => {
+                    statusMessage.style.display = 'none';
+                }, 3000);
+            }
+            
+            // Show loading state
+            function showLoading() {
+                loadingIndicator.style.display = 'flex';
+                loadBtn.disabled = true;
+                loadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                
+                // Set timeout for loading
+                loadTimeout = setTimeout(() => {
+                    hideLoading();
+                    showStatus('Loading timed out. The content may not be accessible.', 'error');
+                }, 15000); // 15 second timeout
+            }
+            
+            // Hide loading state
+            function hideLoading() {
+                loadingIndicator.style.display = 'none';
+                loadBtn.disabled = false;
+                loadBtn.innerHTML = '<i class="fas fa-play"></i> Load';
+                
+                if (loadTimeout) {
+                    clearTimeout(loadTimeout);
+                    loadTimeout = null;
+                }
+            }
+            
+            // Validate URL
+            function isValidUrl(string) {
+                try {
+                    new URL(string);
+                    return true;
+                } catch (_) {
+                    // Try with protocol
+                    try {
+                        if (!string.startsWith('http://') && !string.startsWith('https://') && !string.startsWith('/')) {
+                            new URL('https://' + string);
+                            return true;
+                        }
+                    } catch (_) {
+                        return false;
+                    }
+                    return false;
+                }
+            }
+            
+            // Load URL in iframe
+            function loadUrl(url) {
+                if (!url.trim()) {
+                    showStatus('Please enter a valid URL', 'error');
+                    return;
+                }
+                
+                // Normalize URL
+                let normalizedUrl = url.trim();
+                if (!normalizedUrl.startsWith('http://') && 
+                    !normalizedUrl.startsWith('https://') && 
+                    !normalizedUrl.startsWith('/')) {
+                    normalizedUrl = 'https://' + normalizedUrl;
+                }
+                
+                if (!isValidUrl(normalizedUrl)) {
+                    showStatus('Please enter a valid URL', 'error');
+                    return;
+                }
+                
+                showLoading();
+                currentUrl = normalizedUrl;
+                urlInput.value = normalizedUrl;
+                
+                // Update iframe src
+                contentFrame.src = normalizedUrl;
+                
+                console.log('Loading URL:', normalizedUrl);
+            }
+            
+            // Event listeners
+            loadBtn.addEventListener('click', function() {
+                loadUrl(urlInput.value);
+            });
+            
+            refreshBtn.addEventListener('click', function() {
+                if (currentUrl) {
+                    showLoading();
+                    contentFrame.src = currentUrl + (currentUrl.includes('?') ? '&' : '?') + '_t=' + Date.now();
+                    showStatus('Content refreshed');
+                }
+            });
+            
+            homeBtn.addEventListener('click', function() {
+                loadUrl('/');
+            });
+            
+            // Preset button clicks
+            presetBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const url = this.getAttribute('data-url');
+                    loadUrl(url);
+                });
+            });
+            
+            // Enter key in URL input
+            urlInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    loadUrl(this.value);
+                }
+            });
+            
+            // Iframe load events
+            contentFrame.addEventListener('load', function() {
+                hideLoading();
+                
+                try {
+                    // Try to access iframe content (will fail for cross-origin)
+                    const iframeDoc = this.contentDocument || this.contentWindow.document;
+                    if (iframeDoc) {
+                        const title = iframeDoc.title;
+                        if (title) {
+                            showStatus(`Loaded: ${title}`);
+                        } else {
+                            showStatus('Content loaded successfully');
+                        }
+                    } else {
+                        showStatus('Content loaded successfully');
+                    }
+                } catch (e) {
+                    // Cross-origin restriction - normal behavior
+                    showStatus('Content loaded successfully');
+                }
+            });
+            
+            contentFrame.addEventListener('error', function() {
+                hideLoading();
+                showStatus('Failed to load content. The URL may not be accessible.', 'error');
+            });
+            
+            // Handle iframe navigation attempts
+            window.addEventListener('message', function(event) {
+                // Handle messages from iframe content if needed
+                console.log('Message from iframe:', event.data);
+            });
+            
+            // Initial load indication
+            showLoading();
+            
+            // Auto-hide loading when page is ready
+            if (contentFrame.complete || contentFrame.readyState === 'complete') {
+                hideLoading();
+            }
+            
+            // Back/Forward button handling
+            window.addEventListener('popstate', function(event) {
+                if (event.state && event.state.iframeUrl) {
+                    urlInput.value = event.state.iframeUrl;
+                    loadUrl(event.state.iframeUrl);
+                }
+            });
+            
+            // Update browser history when URL changes
+            function updateHistory(url) {
+                const title = `Frame: ${url}`;
+                history.pushState({iframeUrl: url}, title, window.location.pathname + '?url=' + encodeURIComponent(url));
+            }
+            
+            // Check for URL parameter on load
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialUrl = urlParams.get('url');
+            if (initialUrl) {
+                urlInput.value = initialUrl;
+                loadUrl(initialUrl);
+            }
+            
+            // Update history when loading new URLs
+            const originalLoadUrl = loadUrl;
+            loadUrl = function(url) {
+                originalLoadUrl(url);
+                if (url !== '/') {
+                    updateHistory(url);
+                }
+            };
+        });
+    </script>
+</body>
+</html>

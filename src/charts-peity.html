@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Sparkline Charts - Sufee Admin</title>
+    <meta name="description" content="Sparkline Charts - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Sparkline container styles */
+        .sparkline-container {
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+        }
+        
+        .sparkline-small {
+            width: 80px;
+            height: 40px;
+        }
+        
+        .sparkline-medium {
+            width: 120px;
+            height: 60px;
+        }
+        
+        .sparkline-large {
+            width: 100%;
+            max-width: 300px;
+            height: 80px;
+        }
+        
+        /* Inline sparklines */
+        .inline-sparkline {
+            display: inline-block;
+            width: 100px;
+            height: 20px;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+        
+        /* Dashboard widget styles */
+        .dashboard-widget {
+            padding: 20px;
+            border-radius: 0.375rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .dashboard-widget:hover {
+            transform: translateY(-2px);
+        }
+        
+        .widget-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .widget-label {
+            color: var(--bs-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 15px;
+        }
+        
+        .widget-trend {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .trend-value {
+            font-weight: 600;
+        }
+        
+        .trend-up {
+            color: var(--bs-success);
+        }
+        
+        .trend-down {
+            color: var(--bs-danger);
+        }
+        
+        /* Sparkline grid */
+        .sparkline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .sparkline-item {
+            text-align: center;
+        }
+        
+        .sparkline-title {
+            font-size: 0.875rem;
+            color: var(--bs-secondary);
+            margin-bottom: 10px;
+        }
+        
+        /* Color variations */
+        .sparkline-primary { color: var(--bs-primary); }
+        .sparkline-success { color: var(--bs-success); }
+        .sparkline-danger { color: var(--bs-danger); }
+        .sparkline-warning { color: var(--bs-warning); }
+        .sparkline-info { color: var(--bs-info); }
+        
+        /* Demo controls */
+        .demo-controls {
+            background: var(--bs-light);
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-bottom: 20px;
+        }
+        
+        .control-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Live data indicator */
+        .live-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--bs-success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            margin-right: 5px;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        /* Tooltip styles */
+        .sparkline-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            pointer-events: none;
+            z-index: 10;
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="sufee-dashboard" data-page="charts-peity">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Sparkline Charts" data-breadcrumb-path="Charts|Sparkline Charts"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h1 class="h3 mb-3">Sparkline Charts</h1>
+                            <p class="text-muted mb-0">Small, inline charts perfect for dashboards and data visualization</p>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Widgets -->
+                    <div class="row mb-4">
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body dashboard-widget">
+                                    <div class="widget-value text-primary">$12,458</div>
+                                    <div class="widget-label">Total Revenue</div>
+                                    <div class="widget-trend">
+                                        <span class="trend-value trend-up">
+                                            <i class="fas fa-arrow-up"></i> +12.5%
+                                        </span>
+                                        <div class="sparkline-container sparkline-medium ms-auto">
+                                            <canvas id="revenueSparkline"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body dashboard-widget">
+                                    <div class="widget-value text-success">1,842</div>
+                                    <div class="widget-label">Active Users</div>
+                                    <div class="widget-trend">
+                                        <span class="trend-value trend-up">
+                                            <i class="fas fa-arrow-up"></i> +5.2%
+                                        </span>
+                                        <div class="sparkline-container sparkline-medium ms-auto">
+                                            <canvas id="usersSparkline"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body dashboard-widget">
+                                    <div class="widget-value text-warning">68.5%</div>
+                                    <div class="widget-label">Conversion Rate</div>
+                                    <div class="widget-trend">
+                                        <span class="trend-value trend-down">
+                                            <i class="fas fa-arrow-down"></i> -2.1%
+                                        </span>
+                                        <div class="sparkline-container sparkline-medium ms-auto">
+                                            <canvas id="conversionSparkline"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body dashboard-widget">
+                                    <div class="widget-value text-info">
+                                        <span class="live-indicator"></span>425
+                                    </div>
+                                    <div class="widget-label">Live Visitors</div>
+                                    <div class="widget-trend">
+                                        <div class="sparkline-container sparkline-medium w-100">
+                                            <canvas id="liveSparkline"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pie and Donut Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Mini Pie Charts</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="sparkline-grid">
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie1"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">1/5 (20%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie2"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">226/360 (63%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie3"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">0.52/1.561 (33%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie4"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">1/4 (25%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie5"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">226/300 (75%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie6"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">0.9/1.0 (90%)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Mini Donut Charts</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="sparkline-grid">
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut1"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">1/5 (20%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut2"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">226/360 (63%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut3"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">0.52/1.561 (33%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut4"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">1/4 (25%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut5"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">226/300 (75%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut6"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">0.9/1.0 (90%)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Line Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Line Sparklines</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Revenue Trend:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="line1"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Profit/Loss:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="line2"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Growth Rate:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="line3"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bar Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Bar Sparklines</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Daily Sales:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="bar1"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Performance:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="bar2"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Activity:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="bar3"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Styled Donuts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Progress Indicators</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress1"></canvas>
+                                                </div>
+                                                <small class="text-muted">CPU Usage</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress2"></canvas>
+                                                </div>
+                                                <small class="text-muted">Memory</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress3"></canvas>
+                                                </div>
+                                                <small class="text-muted">Disk Space</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress4"></canvas>
+                                                </div>
+                                                <small class="text-muted">Network</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress5"></canvas>
+                                                </div>
+                                                <small class="text-muted">Battery</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress6"></canvas>
+                                                </div>
+                                                <small class="text-muted">Storage</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Sparklines -->
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Dynamic Color Sparklines</h5>
+                                    <div class="demo-controls">
+                                        <div class="control-group">
+                                            <button class="btn btn-sm btn-primary" onclick="updateDynamicCharts()">
+                                                <i class="fas fa-refresh"></i> Update Data
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-3 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Positive Only:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="dynamic1"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Mixed Values:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="dynamic2"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Negative Only:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="dynamic3"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Category Pie:</span>
+                                                <div class="sparkline-container sparkline-medium ms-3">
+                                                    <canvas id="dynamic4"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Updating Chart -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Real-time Updating Sparkline</h5>
+                                    <div class="badge bg-success">
+                                        <span class="live-indicator"></span> Live
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="sparkline-container w-100" style="height: 150px;">
+                                        <canvas id="liveUpdateChart"></canvas>
+                                    </div>
+                                    <div class="mt-3 text-center">
+                                        <small class="text-muted">Real-time data updates every 500ms</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script type="module">
+        import Chart from 'chart.js/auto';
+        
+        // Sparkline chart defaults
+        const sparklineDefaults = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false }
+            },
+            elements: {
+                point: { radius: 0 },
+                line: { borderWidth: 2 }
+            }
+        };
+        
+        // Create mini pie chart
+        function createMiniPie(elementId, percentage, color) {
+            const ctx = document.getElementById(elementId).getContext('2d');
+            return new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: [percentage, 100 - percentage],
+                        backgroundColor: [color, '#f2f2f2'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    ...sparklineDefaults,
+                    cutout: 0
+                }
+            });
+        }
+        
+        // Create mini donut chart
+        function createMiniDonut(elementId, percentage, color) {
+            const ctx = document.getElementById(elementId).getContext('2d');
+            return new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [percentage, 100 - percentage],
+                        backgroundColor: [color, '#f2f2f2'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    ...sparklineDefaults,
+                    cutout: '50%'
+                }
+            });
+        }
+        
+        // Create sparkline
+        function createSparkline(elementId, data, type = 'line', color = '#007bff') {
+            const ctx = document.getElementById(elementId).getContext('2d');
+            const gradient = ctx.createLinearGradient(0, 0, 0, 60);
+            gradient.addColorStop(0, color + '40');
+            gradient.addColorStop(1, color + '00');
+            
+            return new Chart(ctx, {
+                type: type,
+                data: {
+                    labels: Array(data.length).fill(''),
+                    datasets: [{
+                        data: data,
+                        borderColor: color,
+                        backgroundColor: type === 'line' ? gradient : color + '80',
+                        fill: type === 'line',
+                        tension: 0.4,
+                        borderWidth: type === 'line' ? 2 : 0
+                    }]
+                },
+                options: {
+                    ...sparklineDefaults,
+                    scales: {
+                        x: { display: false },
+                        y: { display: false }
+                    }
+                }
+            });
+        }
+        
+        // Initialize dashboard widgets
+        function initDashboardWidgets() {
+            // Revenue sparkline
+            createSparkline('revenueSparkline', [65, 59, 80, 81, 56, 55, 70], 'line', '#007bff');
+            
+            // Users sparkline
+            createSparkline('usersSparkline', [30, 35, 40, 45, 50, 48, 52], 'line', '#28a745');
+            
+            // Conversion sparkline
+            createSparkline('conversionSparkline', [70, 72, 68, 69, 67, 65, 66], 'line', '#ffc107');
+            
+            // Live visitors (will be updated)
+            const liveData = [20, 25, 30, 35, 32, 38, 40];
+            const liveChart = createSparkline('liveSparkline', liveData, 'line', '#17a2b8');
+            
+            // Update live chart
+            setInterval(() => {
+                liveData.shift();
+                liveData.push(Math.floor(Math.random() * 20) + 30);
+                liveChart.data.datasets[0].data = liveData;
+                liveChart.update('none');
+            }, 2000);
+        }
+        
+        // Initialize mini pie charts
+        function initMiniPieCharts() {
+            createMiniPie('pie1', 20, '#13dafe');
+            createMiniPie('pie2', 63, '#6164C1');
+            createMiniPie('pie3', 33, '#F96262');
+            createMiniPie('pie4', 25, '#99D683');
+            createMiniPie('pie5', 75, '#FFCA4A');
+            createMiniPie('pie6', 90, '#4C5667');
+        }
+        
+        // Initialize mini donut charts
+        function initMiniDonutCharts() {
+            createMiniDonut('donut1', 20, '#13DAFE');
+            createMiniDonut('donut2', 63, '#6164C1');
+            createMiniDonut('donut3', 33, '#F96262');
+            createMiniDonut('donut4', 25, '#99D683');
+            createMiniDonut('donut5', 75, '#FFCA4A');
+            createMiniDonut('donut6', 90, '#4C5667');
+        }
+        
+        // Initialize line sparklines
+        function initLineSparklines() {
+            createSparkline('line1', [6, 2, 8, 4, 3, 8, 1, 3, 6, 5, 9, 2, 8, 1, 4, 8, 9, 8, 2, 1], 'line', '#007bff');
+            createSparkline('line2', [6, 2, 8, 4, -3, 8, 1, -3, 6, -5, 9, 2, -8, 1, 4, 8, 9, 8, 2, 1], 'line', '#dc3545');
+            createSparkline('line3', [6, 2, 8, 4, 3, 8, 1, 3, 6, 5, 9, 2, 8, 1, 4, 8, 9, 8, 2, 1], 'line', '#28a745');
+        }
+        
+        // Initialize bar sparklines
+        function initBarSparklines() {
+            createSparkline('bar1', [6, 2, 8, 4, 3, 8, 1, 3, 6, 5, 9, 2, 8, 1, 4, 8, 9, 8, 2, 1], 'bar', '#13DAFE');
+            createSparkline('bar2', [6, 2, 8, 4, -3, 8, 1, -3, 6, -5, 9, 2, -8, 1, 4, 8, 9, 8, 2, 1], 'bar', '#F96262');
+            createSparkline('bar3', [6, 2, 8, 4, 3, 8, 1, 3, 6, 5, 9, 2, 8, 1, 4, 8, 9, 8, 2, 1], 'bar', '#99D683');
+        }
+        
+        // Initialize progress indicators
+        function initProgressIndicators() {
+            const progressValues = [
+                { id: 'progress1', value: 14, color: '#13DAFE' },
+                { id: 'progress2', value: 29, color: '#6164C1' },
+                { id: 'progress3', value: 43, color: '#F96262' },
+                { id: 'progress4', value: 57, color: '#99D683' },
+                { id: 'progress5', value: 71, color: '#FFCA4A' },
+                { id: 'progress6', value: 86, color: '#6f42c1' }
+            ];
+            
+            progressValues.forEach(item => {
+                const ctx = document.getElementById(item.id).getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [{
+                            data: [item.value, 100 - item.value],
+                            backgroundColor: [item.color, '#eeeeee'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        ...sparklineDefaults,
+                        cutout: '70%',
+                        rotation: -90,
+                        circumference: 180
+                    }
+                });
+            });
+        }
+        
+        // Dynamic charts
+        let dynamicCharts = [];
+        
+        function initDynamicCharts() {
+            // Positive values bar chart
+            const chart1 = createSparkline('dynamic1', [5, 3, 9, 6, 5, 9, 7, 3, 5, 2], 'bar', '#28a745');
+            
+            // Mixed values bar chart with colors
+            const ctx2 = document.getElementById('dynamic2').getContext('2d');
+            const data2 = [5, 3, 2, -1, -3, -2, 2, 3, 5, 2];
+            const colors2 = data2.map(v => v >= 0 ? '#28a745' : '#dc3545');
+            const chart2 = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: Array(data2.length).fill(''),
+                    datasets: [{
+                        data: data2,
+                        backgroundColor: colors2,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    ...sparklineDefaults,
+                    scales: {
+                        x: { display: false },
+                        y: { display: false }
+                    }
+                }
+            });
+            
+            // Negative values
+            const chart3 = createSparkline('dynamic3', [0, -3, -6, -4, -5, -4, -7, -3, -5, -2], 'bar', '#dc3545');
+            
+            // Pie chart
+            const ctx4 = document.getElementById('dynamic4').getContext('2d');
+            const chart4 = new Chart(ctx4, {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: [5, 3, 9, 6, 5],
+                        backgroundColor: ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8'],
+                        borderWidth: 0
+                    }]
+                },
+                options: sparklineDefaults
+            });
+            
+            dynamicCharts = [chart1, chart2, chart3, chart4];
+        }
+        
+        // Update dynamic charts
+        window.updateDynamicCharts = function() {
+            dynamicCharts.forEach((chart, index) => {
+                if (index < 3) {
+                    // Update bar charts
+                    const newData = Array(10).fill(0).map(() => {
+                        if (index === 0) return Math.random() * 10;
+                        if (index === 1) return Math.random() * 10 - 5;
+                        return -Math.random() * 7;
+                    });
+                    
+                    chart.data.datasets[0].data = newData;
+                    
+                    if (index === 1) {
+                        // Update colors for mixed chart
+                        chart.data.datasets[0].backgroundColor = newData.map(v => v >= 0 ? '#28a745' : '#dc3545');
+                    }
+                } else {
+                    // Update pie chart
+                    chart.data.datasets[0].data = Array(5).fill(0).map(() => Math.random() * 10 + 1);
+                }
+                
+                chart.update();
+            });
+        };
+        
+        // Live updating chart
+        function initLiveUpdateChart() {
+            const ctx = document.getElementById('liveUpdateChart').getContext('2d');
+            const data = Array(50).fill(0).map(() => Math.random() * 100);
+            
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array(50).fill(''),
+                    datasets: [{
+                        data: data,
+                        borderColor: '#007bff',
+                        backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...sparklineDefaults,
+                    animation: {
+                        duration: 0
+                    },
+                    scales: {
+                        x: { display: false },
+                        y: { 
+                            display: false,
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            });
+            
+            // Update live chart
+            setInterval(() => {
+                chart.data.datasets[0].data.shift();
+                chart.data.datasets[0].data.push(Math.random() * 100);
+                chart.update('none');
+            }, 500);
+        }
+        
+        // Initialize all charts
+        document.addEventListener('DOMContentLoaded', function() {
+            initDashboardWidgets();
+            initMiniPieCharts();
+            initMiniDonutCharts();
+            initLineSparklines();
+            initBarSparklines();
+            initProgressIndicators();
+            initDynamicCharts();
+            initLiveUpdateChart();
+        });
+    </script>
+</body>
+</html>

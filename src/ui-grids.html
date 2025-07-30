@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Grid System - Sufee Admin</title>
+    <meta name="description" content="Bootstrap 5 Grid System Examples - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+</head>
+
+<body class="sufee-dashboard" data-page="ui-grids">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Grid System" data-breadcrumb-path="UI Elements|Layout|Grid System"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h1 class="h3 mb-3">Bootstrap 5 Grid System</h1>
+                            <p class="text-muted mb-0">Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, six default responsive tiers, and dozens of predefined classes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Equal Width Columns -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Equal Width Columns</h5>
+                                    <span class="badge bg-primary">Auto Layout</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">For example, here are two grid layouts that apply to every device and viewport, from xs to xxl. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.</p>
+                                    
+                                    <!-- 3 Equal Columns -->
+                                    <div class="row g-3 mb-3">
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col</code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 2 Equal Columns -->
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Setting Column Width -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Setting One Column Width</h5>
+                                    <span class="badge bg-success">Flexible</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Auto-layout for flexbox grid columns also means you can set the width of one column and have the sibling columns automatically resize around it.</p>
+                                    
+                                    <div class="row g-3 mb-3">
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                <code>.col-6</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col</code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3">
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-5">
+                                            <div class="p-3 bg-success text-white border rounded text-center">
+                                                <code>.col-5</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Variable Width Content -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Variable Width Content</h5>
+                                    <span class="badge bg-info">Auto-sizing</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Use <code>col-{breakpoint}-auto</code> classes to size columns based on the natural width of their content.</p>
+                                    
+                                    <div class="row g-3 justify-content-md-center">
+                                        <div class="col col-lg-2">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col .col-lg-2</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-auto">
+                                            <div class="p-3 bg-warning text-dark border rounded text-center">
+                                                <code>.col-md-auto</code><br>
+                                                <small>Variable width content</small>
+                                            </div>
+                                        </div>
+                                        <div class="col col-lg-2">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col .col-lg-2</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Responsive Classes -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Responsive Classes</h5>
+                                    <span class="badge bg-danger">Breakpoints</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Bootstrap's grid includes six tiers of predefined classes for building complex responsive layouts.</p>
+                                    
+                                    <!-- All breakpoints -->
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                <code>.col-12 .col-sm-6 .col-md-4 .col-lg-3 .col-xl-2</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-md-8 col-lg-9 col-xl-10">
+                                            <div class="p-3 bg-secondary text-white border rounded text-center">
+                                                <code>.col-12 .col-sm-6 .col-md-8 .col-lg-9 .col-xl-10</code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mix and match -->
+                                    <div class="row g-3">
+                                        <div class="col-6 col-md-4">
+                                            <div class="p-3 bg-success text-white border rounded text-center">
+                                                <code>.col-6 .col-md-4</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-4">
+                                            <div class="p-3 bg-info text-white border rounded text-center">
+                                                <code>.col-6 .col-md-4</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-4">
+                                            <div class="p-3 bg-warning text-dark border rounded text-center">
+                                                <code>.col-6 .col-md-4</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alignment -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Vertical Alignment</h5>
+                                    <span class="badge bg-dark">Flexbox</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Use flexbox alignment utilities to vertically and horizontally align columns.</p>
+                                    
+                                    <!-- Top aligned -->
+                                    <div class="row align-items-start g-3 mb-3" style="height: 100px;">
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.align-items-start</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.align-items-start</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.align-items-start</code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Center aligned -->
+                                    <div class="row align-items-center g-3 mb-3" style="height: 100px;">
+                                        <div class="col">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                <code>.align-items-center</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                <code>.align-items-center</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                <code>.align-items-center</code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bottom aligned -->
+                                    <div class="row align-items-end g-3" style="height: 100px;">
+                                        <div class="col">
+                                            <div class="p-3 bg-success text-white border rounded text-center">
+                                                <code>.align-items-end</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-success text-white border rounded text-center">
+                                                <code>.align-items-end</code>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="p-3 bg-success text-white border rounded text-center">
+                                                <code>.align-items-end</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column Wrapping -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Column Wrapping</h5>
+                                    <span class="badge bg-warning text-dark">Auto-wrap</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.</p>
+                                    
+                                    <div class="row g-3">
+                                        <div class="col-9">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                <code>.col-9</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="p-3 bg-warning text-dark border rounded text-center">
+                                                <code>.col-4</code><br>
+                                                <small>Since 9 + 4 = 13 > 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="p-3 bg-success text-white border rounded text-center">
+                                                <code>.col-6</code><br>
+                                                <small>Subsequent columns continue along the new line.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column Breaks -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Column Breaks</h5>
+                                    <span class="badge bg-secondary">w-100</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Breaking columns to a new line in flexbox requires a small hack: add an element with <code>width: 100%</code> wherever you want to wrap your columns to a new line.</p>
+                                    
+                                    <div class="row g-3">
+                                        <div class="col-6 col-sm-3">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col-6 .col-sm-3</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-sm-3">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col-6 .col-sm-3</code>
+                                            </div>
+                                        </div>
+
+                                        <!-- Force next columns to break to new line -->
+                                        <div class="w-100"></div>
+
+                                        <div class="col-6 col-sm-3">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                <code>.col-6 .col-sm-3</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-sm-3">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                <code>.col-6 .col-sm-3</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ordering -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Order Classes</h5>
+                                    <span class="badge bg-info">Flexbox Order</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Use <code>.order-</code> classes for controlling the visual order of your content.</p>
+                                    
+                                    <div class="row g-3">
+                                        <div class="col order-3">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                First in DOM, but <code>.order-3</code>
+                                            </div>
+                                        </div>
+                                        <div class="col order-1">
+                                            <div class="p-3 bg-success text-white border rounded text-center">
+                                                Second in DOM, but <code>.order-1</code>
+                                            </div>
+                                        </div>
+                                        <div class="col order-2">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                Third in DOM, but <code>.order-2</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Offsetting Columns -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Offsetting Columns</h5>
+                                    <span class="badge bg-danger">Offset</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Move columns to the right using <code>.offset-md-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns.</p>
+                                    
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-4">
+                                            <div class="p-3 bg-light border rounded text-center">
+                                                <code>.col-md-4</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 offset-md-4">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                <code>.col-md-4 .offset-md-4</code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-3 offset-md-3">
+                                            <div class="p-3 bg-success text-white border rounded text-center">
+                                                <code>.col-md-3 .offset-md-3</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 offset-md-3">
+                                            <div class="p-3 bg-warning text-dark border rounded text-center">
+                                                <code>.col-md-3 .offset-md-3</code>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3">
+                                        <div class="col-md-6 offset-md-3">
+                                            <div class="p-3 bg-info text-white border rounded text-center">
+                                                <code>.col-md-6 .offset-md-3</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nesting -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Nesting</h5>
+                                    <span class="badge bg-dark">Nested Grids</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">To nest your content with the default grid, add a new <code>.row</code> and set of <code>.col-sm-*</code> columns within an existing <code>.col-sm-*</code> column.</p>
+                                    
+                                    <div class="row g-3">
+                                        <div class="col-sm-3">
+                                            <div class="p-3 bg-primary text-white border rounded text-center">
+                                                Level 1: <code>.col-sm-3</code>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <div class="p-3 bg-light border rounded">
+                                                <div class="mb-2">Level 1: <code>.col-sm-9</code></div>
+                                                <div class="row g-2">
+                                                    <div class="col-8 col-sm-6">
+                                                        <div class="p-2 bg-success text-white border rounded text-center">
+                                                            Level 2: <code>.col-8 .col-sm-6</code>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4 col-sm-6">
+                                                        <div class="p-2 bg-warning text-dark border rounded text-center">
+                                                            Level 2: <code>.col-4 .col-sm-6</code>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+</body>
+</html>

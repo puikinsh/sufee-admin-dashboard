@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Sparkline Charts - Sufee Admin</title>
+    <meta name="description" content="Sparkline Charts - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Sparkline container styles */
+        .sparkline-container {
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+        }
+        
+        .sparkline-small {
+            width: 80px;
+            height: 40px;
+        }
+        
+        .sparkline-medium {
+            width: 120px;
+            height: 60px;
+        }
+        
+        .sparkline-large {
+            width: 100%;
+            max-width: 300px;
+            height: 80px;
+        }
+        
+        /* Inline sparklines */
+        .inline-sparkline {
+            display: inline-block;
+            width: 100px;
+            height: 20px;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+        
+        /* Dashboard widget styles */
+        .dashboard-widget {
+            padding: 20px;
+            border-radius: 0.375rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .dashboard-widget:hover {
+            transform: translateY(-2px);
+        }
+        
+        .widget-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .widget-label {
+            color: var(--bs-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 15px;
+        }
+        
+        .widget-trend {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .trend-value {
+            font-weight: 600;
+        }
+        
+        .trend-up {
+            color: var(--bs-success);
+        }
+        
+        .trend-down {
+            color: var(--bs-danger);
+        }
+        
+        /* Sparkline grid */
+        .sparkline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .sparkline-item {
+            text-align: center;
+        }
+        
+        .sparkline-title {
+            font-size: 0.875rem;
+            color: var(--bs-secondary);
+            margin-bottom: 10px;
+        }
+        
+        /* Color variations */
+        .sparkline-primary { color: var(--bs-primary); }
+        .sparkline-success { color: var(--bs-success); }
+        .sparkline-danger { color: var(--bs-danger); }
+        .sparkline-warning { color: var(--bs-warning); }
+        .sparkline-info { color: var(--bs-info); }
+        
+        /* Demo controls */
+        .demo-controls {
+            background: var(--bs-light);
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-bottom: 20px;
+        }
+        
+        .control-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Live data indicator */
+        .live-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--bs-success);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            margin-right: 5px;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        /* Tooltip styles */
+        .sparkline-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            pointer-events: none;
+            z-index: 10;
+            display: none;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/charts-peity-Cmh7T4X3.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="charts-peity">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Sparkline Charts" data-breadcrumb-path="Charts|Sparkline Charts"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h1 class="h3 mb-3">Sparkline Charts</h1>
+                            <p class="text-muted mb-0">Small, inline charts perfect for dashboards and data visualization</p>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Widgets -->
+                    <div class="row mb-4">
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body dashboard-widget">
+                                    <div class="widget-value text-primary">$12,458</div>
+                                    <div class="widget-label">Total Revenue</div>
+                                    <div class="widget-trend">
+                                        <span class="trend-value trend-up">
+                                            <i class="fas fa-arrow-up"></i> +12.5%
+                                        </span>
+                                        <div class="sparkline-container sparkline-medium ms-auto">
+                                            <canvas id="revenueSparkline"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body dashboard-widget">
+                                    <div class="widget-value text-success">1,842</div>
+                                    <div class="widget-label">Active Users</div>
+                                    <div class="widget-trend">
+                                        <span class="trend-value trend-up">
+                                            <i class="fas fa-arrow-up"></i> +5.2%
+                                        </span>
+                                        <div class="sparkline-container sparkline-medium ms-auto">
+                                            <canvas id="usersSparkline"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body dashboard-widget">
+                                    <div class="widget-value text-warning">68.5%</div>
+                                    <div class="widget-label">Conversion Rate</div>
+                                    <div class="widget-trend">
+                                        <span class="trend-value trend-down">
+                                            <i class="fas fa-arrow-down"></i> -2.1%
+                                        </span>
+                                        <div class="sparkline-container sparkline-medium ms-auto">
+                                            <canvas id="conversionSparkline"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6 mb-4">
+                            <div class="card">
+                                <div class="card-body dashboard-widget">
+                                    <div class="widget-value text-info">
+                                        <span class="live-indicator"></span>425
+                                    </div>
+                                    <div class="widget-label">Live Visitors</div>
+                                    <div class="widget-trend">
+                                        <div class="sparkline-container sparkline-medium w-100">
+                                            <canvas id="liveSparkline"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pie and Donut Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Mini Pie Charts</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="sparkline-grid">
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie1"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">1/5 (20%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie2"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">226/360 (63%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie3"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">0.52/1.561 (33%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie4"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">1/4 (25%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie5"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">226/300 (75%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="pie6"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">0.9/1.0 (90%)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Mini Donut Charts</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="sparkline-grid">
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut1"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">1/5 (20%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut2"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">226/360 (63%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut3"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">0.52/1.561 (33%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut4"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">1/4 (25%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut5"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">226/300 (75%)</div>
+                                        </div>
+                                        <div class="sparkline-item">
+                                            <div class="sparkline-container sparkline-small">
+                                                <canvas id="donut6"></canvas>
+                                            </div>
+                                            <div class="sparkline-title">0.9/1.0 (90%)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Line Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Line Sparklines</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Revenue Trend:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="line1"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Profit/Loss:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="line2"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Growth Rate:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="line3"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bar Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Bar Sparklines</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Daily Sales:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="bar1"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Performance:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="bar2"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Activity:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="bar3"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Custom Styled Donuts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Progress Indicators</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress1"></canvas>
+                                                </div>
+                                                <small class="text-muted">CPU Usage</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress2"></canvas>
+                                                </div>
+                                                <small class="text-muted">Memory</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress3"></canvas>
+                                                </div>
+                                                <small class="text-muted">Disk Space</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress4"></canvas>
+                                                </div>
+                                                <small class="text-muted">Network</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress5"></canvas>
+                                                </div>
+                                                <small class="text-muted">Battery</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                                            <div class="text-center">
+                                                <div class="sparkline-container sparkline-medium mx-auto mb-2">
+                                                    <canvas id="progress6"></canvas>
+                                                </div>
+                                                <small class="text-muted">Storage</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Sparklines -->
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Dynamic Color Sparklines</h5>
+                                    <div class="demo-controls">
+                                        <div class="control-group">
+                                            <button class="btn btn-sm btn-primary" onclick="updateDynamicCharts()">
+                                                <i class="fas fa-refresh"></i> Update Data
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-3 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Positive Only:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="dynamic1"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Mixed Values:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="dynamic2"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Negative Only:</span>
+                                                <div class="sparkline-container sparkline-large ms-3">
+                                                    <canvas id="dynamic3"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <span>Category Pie:</span>
+                                                <div class="sparkline-container sparkline-medium ms-3">
+                                                    <canvas id="dynamic4"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Updating Chart -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Real-time Updating Sparkline</h5>
+                                    <div class="badge bg-success">
+                                        <span class="live-indicator"></span> Live
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="sparkline-container w-100" style="height: 150px;">
+                                        <canvas id="liveUpdateChart"></canvas>
+                                    </div>
+                                    <div class="mt-3 text-center">
+                                        <small class="text-muted">Real-time data updates every 500ms</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/charts-peity-legacy-TvKFHp1Y.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

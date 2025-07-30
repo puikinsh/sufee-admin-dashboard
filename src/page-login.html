@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Login - Sufee Admin</title>
+    <meta name="description" content="Login - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Login page specific styles */
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .login-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+            margin: 20px;
+        }
+        
+        .login-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .login-logo {
+            margin-bottom: 20px;
+        }
+        
+        .login-logo img {
+            max-height: 60px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .login-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .login-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            margin-top: 5px;
+        }
+        
+        .login-form {
+            padding: 40px 30px;
+        }
+        
+        .form-floating {
+            margin-bottom: 20px;
+        }
+        
+        .form-floating .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1rem 0.75rem;
+            height: auto;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-floating .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .form-floating label {
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+        
+        .form-check {
+            margin-bottom: 25px;
+        }
+        
+        .form-check-input {
+            border-radius: 4px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .form-check-input:checked {
+            background-color: #667eea;
+            border-color: #667eea;
+        }
+        
+        .form-check-label {
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+        
+        .forgot-password {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .forgot-password:hover {
+            color: #5a6fd8;
+            text-decoration: underline;
+        }
+        
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .social-login {
+            border-top: 1px solid #e9ecef;
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+        
+        .social-title {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .social-title::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e9ecef;
+            z-index: 1;
+        }
+        
+        .social-title span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn-social {
+            border-radius: 10px;
+            padding: 10px 15px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn-facebook {
+            color: #3b5998;
+            border-color: #3b5998;
+            background: transparent;
+        }
+        
+        .btn-facebook:hover {
+            background: #3b5998;
+            color: white;
+        }
+        
+        .btn-twitter {
+            color: #1da1f2;
+            border-color: #1da1f2;
+            background: transparent;
+        }
+        
+        .btn-twitter:hover {
+            background: #1da1f2;
+            color: white;
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .register-link p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+        
+        .register-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .register-link a:hover {
+            color: #5a6fd8;
+            text-decoration: underline;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .login-header,
+            .login-form {
+                padding: 30px 20px;
+            }
+            
+            .login-title {
+                font-size: 1.25rem;
+            }
+        }
+        
+        /* Animation for form inputs */
+        .form-floating .form-control:focus + label,
+        .form-floating .form-control:not(:placeholder-shown) + label {
+            transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+        }
+        
+        /* Loading animation */
+        .btn-login:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .btn-login.loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Enhanced focus styles for accessibility */
+        .btn:focus,
+        .form-control:focus,
+        .form-check-input:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <!-- Login Header -->
+        <div class="login-header">
+            <div class="login-logo">
+                <img src="/images/logo.png" alt="Sufee Admin Logo">
+            </div>
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-subtitle">Sign in to your account</p>
+        </div>
+        
+        <!-- Login Form -->
+        <div class="login-form">
+            <form id="loginForm" novalidate>
+                <!-- Email Input -->
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required>
+                    <label for="email">Email address</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+                
+                <!-- Password Input -->
+                <div class="form-floating position-relative">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    <label for="password">Password</label>
+                    <button type="button" class="btn btn-link position-absolute end-0 top-50 translate-middle-y me-2" 
+                            id="togglePassword" style="z-index: 5; border: none; background: none; color: #6c757d;">
+                        <i class="fas fa-eye" id="toggleIcon"></i>
+                    </button>
+                    <div class="invalid-feedback">
+                        Password is required.
+                    </div>
+                </div>
+                
+                <!-- Remember Me & Forgot Password -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
+                        <label class="form-check-label" for="rememberMe">
+                            Remember me
+                        </label>
+                    </div>
+                    <a href="/pages-forget.html" class="forgot-password">Forgot password?</a>
+                </div>
+                
+                <!-- Login Button -->
+                <button type="submit" class="btn btn-primary btn-login">
+                    Sign In
+                </button>
+                
+                <!-- Social Login -->
+                <div class="social-login">
+                    <div class="social-title">
+                        <span>Or continue with</span>
+                    </div>
+                    
+                    <button type="button" class="btn btn-facebook btn-social">
+                        <i class="fab fa-facebook-f me-2"></i>
+                        Continue with Facebook
+                    </button>
+                    
+                    <button type="button" class="btn btn-twitter btn-social">
+                        <i class="fab fa-twitter me-2"></i>
+                        Continue with Twitter
+                    </button>
+                </div>
+                
+                <!-- Register Link -->
+                <div class="register-link">
+                    <p>Don't have an account? <a href="/page-register.html">Sign up here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script type="module">
+        // Login form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const togglePassword = document.getElementById('togglePassword');
+            const toggleIcon = document.getElementById('toggleIcon');
+            const submitButton = loginForm.querySelector('button[type="submit"]');
+            
+            // Password visibility toggle
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // Toggle eye icon
+                if (type === 'text') {
+                    toggleIcon.classList.remove('fa-eye');
+                    toggleIcon.classList.add('fa-eye-slash');
+                } else {
+                    toggleIcon.classList.remove('fa-eye-slash');
+                    toggleIcon.classList.add('fa-eye');
+                }
+            });
+            
+            // Form validation
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            function showError(input, message) {
+                input.classList.add('is-invalid');
+                const feedback = input.nextElementSibling;
+                if (feedback && feedback.classList.contains('invalid-feedback')) {
+                    feedback.textContent = message;
+                }
+            }
+            
+            function clearError(input) {
+                input.classList.remove('is-invalid');
+                input.classList.add('is-valid');
+            }
+            
+            // Real-time validation
+            emailInput.addEventListener('blur', function() {
+                if (this.value.trim() === '') {
+                    showError(this, 'Email address is required.');
+                } else if (!validateEmail(this.value)) {
+                    showError(this, 'Please enter a valid email address.');
+                } else {
+                    clearError(this);
+                }
+            });
+            
+            passwordInput.addEventListener('blur', function() {
+                if (this.value.trim() === '') {
+                    showError(this, 'Password is required.');
+                } else if (this.value.length < 6) {
+                    showError(this, 'Password must be at least 6 characters.');
+                } else {
+                    clearError(this);
+                }
+            });
+            
+            // Clear validation on input
+            [emailInput, passwordInput].forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('is-invalid')) {
+                        this.classList.remove('is-invalid');
+                    }
+                });
+            });
+            
+            // Form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                
+                // Validate email
+                if (emailInput.value.trim() === '') {
+                    showError(emailInput, 'Email address is required.');
+                    isValid = false;
+                } else if (!validateEmail(emailInput.value)) {
+                    showError(emailInput, 'Please enter a valid email address.');
+                    isValid = false;
+                } else {
+                    clearError(emailInput);
+                }
+                
+                // Validate password
+                if (passwordInput.value.trim() === '') {
+                    showError(passwordInput, 'Password is required.');
+                    isValid = false;
+                } else if (passwordInput.value.length < 6) {
+                    showError(passwordInput, 'Password must be at least 6 characters.');
+                    isValid = false;
+                } else {
+                    clearError(passwordInput);
+                }
+                
+                if (isValid) {
+                    // Show loading state
+                    submitButton.disabled = true;
+                    submitButton.classList.add('loading');
+                    submitButton.textContent = 'Signing In...';
+                    
+                    // Simulate login process
+                    setTimeout(() => {
+                        // In a real application, you would send the data to your server
+                        console.log('Login attempt:', {
+                            email: emailInput.value,
+                            password: passwordInput.value,
+                            rememberMe: document.getElementById('rememberMe').checked
+                        });
+                        
+                        // For demo purposes, show success and redirect
+                        alert('Login successful! (This is a demo)');
+                        
+                        // Reset button state
+                        submitButton.disabled = false;
+                        submitButton.classList.remove('loading');
+                        submitButton.textContent = 'Sign In';
+                        
+                        // In a real app, you would redirect to the dashboard
+                        // window.location.href = '/index.html';
+                    }, 2000);
+                }
+            });
+            
+            // Social login buttons
+            document.querySelector('.btn-facebook').addEventListener('click', function() {
+                alert('Facebook login would be implemented here');
+            });
+            
+            document.querySelector('.btn-twitter').addEventListener('click', function() {
+                alert('Twitter login would be implemented here');
+            });
+            
+            // Keyboard accessibility
+            document.addEventListener('keydown', function(e) {
+                // Allow form submission with Ctrl+Enter
+                if (e.ctrlKey && e.key === 'Enter') {
+                    loginForm.dispatchEvent(new Event('submit'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>

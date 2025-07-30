@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Google Maps - Sufee Admin</title>
+    <meta name="description" content="Google Maps integration - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <div data-partial="head-common"></div>
+    <script type="module" src="./main.js"></script>
+</head>
+
+<body class="sufee-dashboard" data-page="maps-gmap">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <div data-breadcrumb data-breadcrumb-title="Google Maps" data-breadcrumb-path="Dashboard|Maps"></div>
+
+            <!-- Main Content -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    <div class="row g-4">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Basic Map</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="map" id="basic-map" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Fusion Tables layers</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div id="map-2" class="map" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Geometry overlays</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="map" id="map-3" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Elevation locations</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div id="map-4" class="map" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Geolocation</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="map" id="map-5" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">KML layers</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div id="map-6" class="map" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Layers</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="map" id="map-7" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="mb-0">Map events</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="map" id="map-8" style="height: 400px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div data-partial="scripts-common"></div>
+    
+    <!-- Google Maps API -->
+    <script>
+        // Define callback before loading Google Maps API
+        window.initGoogleMaps = function() {
+            // Import and initialize gmaps component after API loads
+            import('./scripts/components/gmaps.js').then(module => {
+                if (window.initializeMaps) {
+                    window.initializeMaps();
+                }
+            });
+        };
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2jlT6C_to6X1mMvR9yRWeRvpIgTXgddM&callback=initGoogleMaps" async defer></script>
+</body>
+</html>

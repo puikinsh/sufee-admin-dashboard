@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Font Awesome Icons - Sufee Admin</title>
+    <meta name="description" content="Font Awesome Icons - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Icon showcase styles */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+        }
+        
+        @media (min-width: 576px) {
+            .icon-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 15px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .icon-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 20px;
+            }
+        }
+        
+        .icon-box {
+            text-align: center;
+            padding: 20px 10px;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            background: var(--bs-gray-100);
+            border: 1px solid transparent;
+        }
+        
+        .icon-box:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            border-color: var(--bs-primary);
+        }
+        
+        .icon-box i {
+            font-size: 1.75rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--bs-dark);
+        }
+        
+        .icon-box:hover i {
+            color: var(--bs-primary);
+        }
+        
+        .icon-name {
+            font-size: 0.75rem;
+            color: var(--bs-secondary);
+            word-break: break-all;
+            display: block;
+            margin-top: 5px;
+            font-family: 'Monaco', 'Consolas', monospace;
+        }
+        
+        /* Search box */
+        .icon-search-wrapper {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+            padding: 20px 0;
+            margin: -20px -20px 30px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-bottom: 1px solid var(--bs-border-color);
+        }
+        
+        .icon-search input {
+            font-size: 1rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+        }
+        
+        /* Icon size demos */
+        .icon-size-demo {
+            display: flex;
+            align-items: flex-end;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .icon-size-demo .size-item {
+            text-align: center;
+        }
+        
+        .icon-size-demo .size-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--bs-secondary);
+            margin-top: 5px;
+            font-family: 'Monaco', 'Consolas', monospace;
+        }
+        
+        /* Icon variations */
+        .icon-variations {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .icon-variations .variation-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 20px;
+            background: var(--bs-gray-100);
+            border-radius: 0.375rem;
+            min-width: 100px;
+        }
+        
+        .icon-variations .variation-item span {
+            font-size: 0.75rem;
+            color: var(--bs-secondary);
+        }
+        
+        /* Icon buttons demo */
+        .icon-button-demo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        /* Copy notification */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--bs-success);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 1050;
+            font-size: 0.875rem;
+        }
+        
+        .copy-notification i {
+            margin-right: 8px;
+        }
+        
+        .copy-notification.show {
+            display: flex;
+            align-items: center;
+            animation: slideInUp 0.3s ease;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Stacked icons demo */
+        .stacked-demo {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .stacked-item {
+            text-align: center;
+        }
+        
+        .stacked-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--bs-secondary);
+            margin-top: 10px;
+        }
+        
+        /* Icon stats */
+        .icon-stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 15px;
+            background: var(--bs-gray-100);
+            border-radius: 0.375rem;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--bs-primary);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--bs-secondary);
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/font-fontawesome-Cn3NxpfL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="font-fontawesome">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Font Awesome" data-breadcrumb-path="Icons|Font Awesome"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h1 class="h3 mb-3">Font Awesome Icons</h1>
+                                    <p class="text-muted mb-4">The complete set of free icons in Font Awesome 6.7</p>
+                                    
+                                    <!-- Icon Stats -->
+                                    <div class="icon-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-number">2000+</span>
+                                            <span class="stat-label">Free Icons</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">200+</span>
+                                            <span class="stat-label">Web App Icons</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">50+</span>
+                                            <span class="stat-label">Brand Icons</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-number">16</span>
+                                            <span class="stat-label">Transportation</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Search Box -->
+                                    <div class="icon-search-wrapper">
+                                        <div class="row">
+                                            <div class="col-lg-6 mx-auto">
+                                                <div class="input-group">
+                                                    <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
+                                                    <input type="text" class="form-control border-start-0" id="iconSearch" placeholder="Search icons... (e.g., 'home', 'user', 'heart')">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Icon Sizes Demo -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Icon Sizes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="icon-size-demo">
+                                        <div class="size-item">
+                                            <i class="fas fa-home"></i>
+                                            <span class="size-label">Normal</span>
+                                        </div>
+                                        <div class="size-item">
+                                            <i class="fas fa-home fa-lg"></i>
+                                            <span class="size-label">fa-lg</span>
+                                        </div>
+                                        <div class="size-item">
+                                            <i class="fas fa-home fa-2x"></i>
+                                            <span class="size-label">fa-2x</span>
+                                        </div>
+                                        <div class="size-item">
+                                            <i class="fas fa-home fa-3x"></i>
+                                            <span class="size-label">fa-3x</span>
+                                        </div>
+                                        <div class="size-item">
+                                            <i class="fas fa-home fa-4x"></i>
+                                            <span class="size-label">fa-4x</span>
+                                        </div>
+                                        <div class="size-item">
+                                            <i class="fas fa-home fa-5x"></i>
+                                            <span class="size-label">fa-5x</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Icon Variations -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Icon Variations</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="icon-variations">
+                                        <div class="variation-item">
+                                            <i class="fas fa-quote-left fa-2x"></i>
+                                            <span>Normal</span>
+                                        </div>
+                                        <div class="variation-item">
+                                            <i class="fas fa-quote-left fa-2x fa-border"></i>
+                                            <span>Border</span>
+                                        </div>
+                                        <div class="variation-item">
+                                            <i class="fas fa-quote-left fa-2x fa-pull-left"></i>
+                                            <span>Pull Left</span>
+                                        </div>
+                                        <div class="variation-item">
+                                            <i class="fas fa-quote-left fa-2x fa-pull-right"></i>
+                                            <span>Pull Right</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Animated Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="icon-variations">
+                                        <div class="variation-item">
+                                            <i class="fas fa-spinner fa-spin fa-2x"></i>
+                                            <span>Spin</span>
+                                        </div>
+                                        <div class="variation-item">
+                                            <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                                            <span>Spin</span>
+                                        </div>
+                                        <div class="variation-item">
+                                            <i class="fas fa-sync fa-spin fa-2x"></i>
+                                            <span>Spin</span>
+                                        </div>
+                                        <div class="variation-item">
+                                            <i class="fas fa-cog fa-spin fa-2x"></i>
+                                            <span>Spin</span>
+                                        </div>
+                                        <div class="variation-item">
+                                            <i class="fas fa-spinner fa-pulse fa-2x"></i>
+                                            <span>Pulse</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stacked Icons -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Stacked Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="stacked-demo">
+                                        <div class="stacked-item">
+                                            <span class="fa-stack fa-2x">
+                                                <i class="far fa-square fa-stack-2x"></i>
+                                                <i class="fab fa-x-twitter fa-stack-1x"></i>
+                                            </span>
+                                            <span class="stacked-label">X on Square</span>
+                                        </div>
+                                        <div class="stacked-item">
+                                            <span class="fa-stack fa-2x">
+                                                <i class="fas fa-circle fa-stack-2x"></i>
+                                                <i class="fas fa-flag fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            <span class="stacked-label">Flag on Circle</span>
+                                        </div>
+                                        <div class="stacked-item">
+                                            <span class="fa-stack fa-2x">
+                                                <i class="fas fa-square fa-stack-2x"></i>
+                                                <i class="fas fa-terminal fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                            <span class="stacked-label">Terminal on Square</span>
+                                        </div>
+                                        <div class="stacked-item">
+                                            <span class="fa-stack fa-2x">
+                                                <i class="fas fa-camera fa-stack-1x"></i>
+                                                <i class="fas fa-ban fa-stack-2x text-danger"></i>
+                                            </span>
+                                            <span class="stacked-label">Ban on Camera</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Icon Buttons -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Icon Buttons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="icon-button-demo mb-3">
+                                        <button class="btn btn-primary"><i class="fas fa-download"></i> Download</button>
+                                        <button class="btn btn-success"><i class="fas fa-check"></i> Success</button>
+                                        <button class="btn btn-info"><i class="fas fa-info-circle"></i> Info</button>
+                                        <button class="btn btn-warning"><i class="fas fa-warning"></i> Warning</button>
+                                        <button class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
+                                        <button class="btn btn-secondary"><i class="fas fa-cog"></i> Settings</button>
+                                    </div>
+                                    <div class="icon-button-demo">
+                                        <button class="btn btn-outline-primary"><i class="fas fa-star"></i> Star</button>
+                                        <button class="btn btn-outline-success"><i class="fas fa-heart"></i> Like</button>
+                                        <button class="btn btn-outline-info"><i class="fas fa-share"></i> Share</button>
+                                        <button class="btn btn-outline-dark"><i class="fas fa-print"></i> Print</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web Application Icons -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Web Application Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="icon-grid" id="webApplicationIcons">
+                                        <div class="icon-box" onclick="copyIcon('fas fa-adjust')">
+                                            <i class="fas fa-adjust"></i>
+                                            <span class="icon-name">fa-adjust</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-anchor')">
+                                            <i class="fas fa-anchor"></i>
+                                            <span class="icon-name">fa-anchor</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-archive')">
+                                            <i class="fas fa-archive"></i>
+                                            <span class="icon-name">fa-archive</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-chart-area')">
+                                            <i class="fas fa-chart-area"></i>
+                                            <span class="icon-name">fa-chart-area</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-arrows-alt')">
+                                            <i class="fas fa-arrows-alt"></i>
+                                            <span class="icon-name">fa-arrows-alt</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-arrows-alt-h')">
+                                            <i class="fas fa-arrows-alt-h"></i>
+                                            <span class="icon-name">fa-arrows-alt-h</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-arrows-alt-v')">
+                                            <i class="fas fa-arrows-alt-v"></i>
+                                            <span class="icon-name">fa-arrows-alt-v</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-asterisk')">
+                                            <i class="fas fa-asterisk"></i>
+                                            <span class="icon-name">fa-asterisk</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-at')">
+                                            <i class="fas fa-at"></i>
+                                            <span class="icon-name">fa-at</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-balance-scale')">
+                                            <i class="fas fa-balance-scale"></i>
+                                            <span class="icon-name">fa-balance-scale</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-ban')">
+                                            <i class="fas fa-ban"></i>
+                                            <span class="icon-name">fa-ban</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-chart-bar')">
+                                            <i class="fas fa-chart-bar"></i>
+                                            <span class="icon-name">fa-chart-bar</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-barcode')">
+                                            <i class="fas fa-barcode"></i>
+                                            <span class="icon-name">fa-barcode</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-bars')">
+                                            <i class="fas fa-bars"></i>
+                                            <span class="icon-name">fa-bars</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-battery-full')">
+                                            <i class="fas fa-battery-full"></i>
+                                            <span class="icon-name">fa-battery-full</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-bell')">
+                                            <i class="fas fa-bell"></i>
+                                            <span class="icon-name">fa-bell</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-bolt')">
+                                            <i class="fas fa-bolt"></i>
+                                            <span class="icon-name">fa-bolt</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-book')">
+                                            <i class="fas fa-book"></i>
+                                            <span class="icon-name">fa-book</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-bookmark')">
+                                            <i class="fas fa-bookmark"></i>
+                                            <span class="icon-name">fa-bookmark</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-briefcase')">
+                                            <i class="fas fa-briefcase"></i>
+                                            <span class="icon-name">fa-briefcase</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-bug')">
+                                            <i class="fas fa-bug"></i>
+                                            <span class="icon-name">fa-bug</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-building')">
+                                            <i class="fas fa-building"></i>
+                                            <span class="icon-name">fa-building</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-bullhorn')">
+                                            <i class="fas fa-bullhorn"></i>
+                                            <span class="icon-name">fa-bullhorn</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-calculator')">
+                                            <i class="fas fa-calculator"></i>
+                                            <span class="icon-name">fa-calculator</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-calendar')">
+                                            <i class="fas fa-calendar"></i>
+                                            <span class="icon-name">fa-calendar</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-camera')">
+                                            <i class="fas fa-camera"></i>
+                                            <span class="icon-name">fa-camera</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-cart-plus')">
+                                            <i class="fas fa-cart-plus"></i>
+                                            <span class="icon-name">fa-cart-plus</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-certificate')">
+                                            <i class="fas fa-certificate"></i>
+                                            <span class="icon-name">fa-certificate</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-check')">
+                                            <i class="fas fa-check"></i>
+                                            <span class="icon-name">fa-check</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('far fa-clock')">
+                                            <i class="far fa-clock"></i>
+                                            <span class="icon-name">fa-clock</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-clone')">
+                                            <i class="fas fa-clone"></i>
+                                            <span class="icon-name">fa-clone</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-cloud')">
+                                            <i class="fas fa-cloud"></i>
+                                            <span class="icon-name">fa-cloud</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-code')">
+                                            <i class="fas fa-code"></i>
+                                            <span class="icon-name">fa-code</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-cog')">
+                                            <i class="fas fa-cog"></i>
+                                            <span class="icon-name">fa-cog</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-comment')">
+                                            <i class="fas fa-comment"></i>
+                                            <span class="icon-name">fa-comment</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-compass')">
+                                            <i class="fas fa-compass"></i>
+                                            <span class="icon-name">fa-compass</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-copy')">
+                                            <i class="fas fa-copy"></i>
+                                            <span class="icon-name">fa-copy</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-credit-card')">
+                                            <i class="fas fa-credit-card"></i>
+                                            <span class="icon-name">fa-credit-card</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-crop')">
+                                            <i class="fas fa-crop"></i>
+                                            <span class="icon-name">fa-crop</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-crosshairs')">
+                                            <i class="fas fa-crosshairs"></i>
+                                            <span class="icon-name">fa-crosshairs</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hand Icons -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Hand Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="icon-grid" id="handIcons">
+                                        <div class="icon-box" onclick="copyIcon('far fa-hand-rock')">
+                                            <i class="far fa-hand-rock"></i>
+                                            <span class="icon-name">fa-hand-rock</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('far fa-hand-paper')">
+                                            <i class="far fa-hand-paper"></i>
+                                            <span class="icon-name">fa-hand-paper</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('far fa-hand-scissors')">
+                                            <i class="far fa-hand-scissors"></i>
+                                            <span class="icon-name">fa-hand-scissors</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('far fa-hand-lizard')">
+                                            <i class="far fa-hand-lizard"></i>
+                                            <span class="icon-name">fa-hand-lizard</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('far fa-hand-spock')">
+                                            <i class="far fa-hand-spock"></i>
+                                            <span class="icon-name">fa-hand-spock</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('far fa-hand-pointer')">
+                                            <i class="far fa-hand-pointer"></i>
+                                            <span class="icon-name">fa-hand-pointer</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('far fa-hand-peace')">
+                                            <i class="far fa-hand-peace"></i>
+                                            <span class="icon-name">fa-hand-peace</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-thumbs-up')">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <span class="icon-name">fa-thumbs-up</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-thumbs-down')">
+                                            <i class="fas fa-thumbs-down"></i>
+                                            <span class="icon-name">fa-thumbs-down</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-hand-point-up')">
+                                            <i class="fas fa-hand-point-up"></i>
+                                            <span class="icon-name">fa-hand-point-up</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-hand-point-down')">
+                                            <i class="fas fa-hand-point-down"></i>
+                                            <span class="icon-name">fa-hand-point-down</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-hand-point-left')">
+                                            <i class="fas fa-hand-point-left"></i>
+                                            <span class="icon-name">fa-hand-point-left</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-hand-point-right')">
+                                            <i class="fas fa-hand-point-right"></i>
+                                            <span class="icon-name">fa-hand-point-right</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-handshake')">
+                                            <i class="fas fa-handshake"></i>
+                                            <span class="icon-name">fa-handshake</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transportation Icons -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Transportation Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="icon-grid" id="transportationIcons">
+                                        <div class="icon-box" onclick="copyIcon('fas fa-ambulance')">
+                                            <i class="fas fa-ambulance"></i>
+                                            <span class="icon-name">fa-ambulance</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-car')">
+                                            <i class="fas fa-car"></i>
+                                            <span class="icon-name">fa-car</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-bicycle')">
+                                            <i class="fas fa-bicycle"></i>
+                                            <span class="icon-name">fa-bicycle</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-bus')">
+                                            <i class="fas fa-bus"></i>
+                                            <span class="icon-name">fa-bus</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-car-alt')">
+                                            <i class="fas fa-car-alt"></i>
+                                            <span class="icon-name">fa-car-alt</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-fighter-jet')">
+                                            <i class="fas fa-fighter-jet"></i>
+                                            <span class="icon-name">fa-fighter-jet</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-motorcycle')">
+                                            <i class="fas fa-motorcycle"></i>
+                                            <span class="icon-name">fa-motorcycle</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-plane')">
+                                            <i class="fas fa-plane"></i>
+                                            <span class="icon-name">fa-plane</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-rocket')">
+                                            <i class="fas fa-rocket"></i>
+                                            <span class="icon-name">fa-rocket</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-ship')">
+                                            <i class="fas fa-ship"></i>
+                                            <span class="icon-name">fa-ship</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-space-shuttle')">
+                                            <i class="fas fa-space-shuttle"></i>
+                                            <span class="icon-name">fa-space-shuttle</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-subway')">
+                                            <i class="fas fa-subway"></i>
+                                            <span class="icon-name">fa-subway</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-taxi')">
+                                            <i class="fas fa-taxi"></i>
+                                            <span class="icon-name">fa-taxi</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-train')">
+                                            <i class="fas fa-train"></i>
+                                            <span class="icon-name">fa-train</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-truck')">
+                                            <i class="fas fa-truck"></i>
+                                            <span class="icon-name">fa-truck</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-wheelchair')">
+                                            <i class="fas fa-wheelchair"></i>
+                                            <span class="icon-name">fa-wheelchair</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Type Icons -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">File Type Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="icon-grid" id="fileTypeIcons">
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file')">
+                                            <i class="fas fa-file"></i>
+                                            <span class="icon-name">fa-file</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-archive')">
+                                            <i class="fas fa-file-archive"></i>
+                                            <span class="icon-name">fa-file-archive</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-audio')">
+                                            <i class="fas fa-file-audio"></i>
+                                            <span class="icon-name">fa-file-audio</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-code')">
+                                            <i class="fas fa-file-code"></i>
+                                            <span class="icon-name">fa-file-code</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-excel')">
+                                            <i class="fas fa-file-excel"></i>
+                                            <span class="icon-name">fa-file-excel</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-image')">
+                                            <i class="fas fa-file-image"></i>
+                                            <span class="icon-name">fa-file-image</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-pdf')">
+                                            <i class="fas fa-file-pdf"></i>
+                                            <span class="icon-name">fa-file-pdf</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-powerpoint')">
+                                            <i class="fas fa-file-powerpoint"></i>
+                                            <span class="icon-name">fa-file-powerpoint</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-alt')">
+                                            <i class="fas fa-file-alt"></i>
+                                            <span class="icon-name">fa-file-alt</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-video')">
+                                            <i class="fas fa-file-video"></i>
+                                            <span class="icon-name">fa-file-video</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-word')">
+                                            <i class="fas fa-file-word"></i>
+                                            <span class="icon-name">fa-file-word</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fas fa-file-csv')">
+                                            <i class="fas fa-file-csv"></i>
+                                            <span class="icon-name">fa-file-csv</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brand Icons -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Brand Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="icon-grid" id="brandIcons">
+                                        <div class="icon-box" onclick="copyIcon('fab fa-amazon')">
+                                            <i class="fab fa-amazon"></i>
+                                            <span class="icon-name">fa-amazon</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-android')">
+                                            <i class="fab fa-android"></i>
+                                            <span class="icon-name">fa-android</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-apple')">
+                                            <i class="fab fa-apple"></i>
+                                            <span class="icon-name">fa-apple</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-behance')">
+                                            <i class="fab fa-behance"></i>
+                                            <span class="icon-name">fa-behance</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-bitbucket')">
+                                            <i class="fab fa-bitbucket"></i>
+                                            <span class="icon-name">fa-bitbucket</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-chrome')">
+                                            <i class="fab fa-chrome"></i>
+                                            <span class="icon-name">fa-chrome</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-codepen')">
+                                            <i class="fab fa-codepen"></i>
+                                            <span class="icon-name">fa-codepen</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-css3')">
+                                            <i class="fab fa-css3"></i>
+                                            <span class="icon-name">fa-css3</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-discord')">
+                                            <i class="fab fa-discord"></i>
+                                            <span class="icon-name">fa-discord</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-docker')">
+                                            <i class="fab fa-docker"></i>
+                                            <span class="icon-name">fa-docker</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-dribbble')">
+                                            <i class="fab fa-dribbble"></i>
+                                            <span class="icon-name">fa-dribbble</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-dropbox')">
+                                            <i class="fab fa-dropbox"></i>
+                                            <span class="icon-name">fa-dropbox</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-facebook')">
+                                            <i class="fab fa-facebook"></i>
+                                            <span class="icon-name">fa-facebook</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-facebook-f')">
+                                            <i class="fab fa-facebook-f"></i>
+                                            <span class="icon-name">fa-facebook-f</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-figma')">
+                                            <i class="fab fa-figma"></i>
+                                            <span class="icon-name">fa-figma</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-firefox')">
+                                            <i class="fab fa-firefox"></i>
+                                            <span class="icon-name">fa-firefox</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-git')">
+                                            <i class="fab fa-git"></i>
+                                            <span class="icon-name">fa-git</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-github')">
+                                            <i class="fab fa-github"></i>
+                                            <span class="icon-name">fa-github</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-gitlab')">
+                                            <i class="fab fa-gitlab"></i>
+                                            <span class="icon-name">fa-gitlab</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-google')">
+                                            <i class="fab fa-google"></i>
+                                            <span class="icon-name">fa-google</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-html5')">
+                                            <i class="fab fa-html5"></i>
+                                            <span class="icon-name">fa-html5</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-instagram')">
+                                            <i class="fab fa-instagram"></i>
+                                            <span class="icon-name">fa-instagram</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-js')">
+                                            <i class="fab fa-js"></i>
+                                            <span class="icon-name">fa-js</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-linkedin')">
+                                            <i class="fab fa-linkedin"></i>
+                                            <span class="icon-name">fa-linkedin</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-medium')">
+                                            <i class="fab fa-medium"></i>
+                                            <span class="icon-name">fa-medium</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-microsoft')">
+                                            <i class="fab fa-microsoft"></i>
+                                            <span class="icon-name">fa-microsoft</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-npm')">
+                                            <i class="fab fa-npm"></i>
+                                            <span class="icon-name">fa-npm</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-pinterest')">
+                                            <i class="fab fa-pinterest"></i>
+                                            <span class="icon-name">fa-pinterest</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-python')">
+                                            <i class="fab fa-python"></i>
+                                            <span class="icon-name">fa-python</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-react')">
+                                            <i class="fab fa-react"></i>
+                                            <span class="icon-name">fa-react</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-reddit')">
+                                            <i class="fab fa-reddit"></i>
+                                            <span class="icon-name">fa-reddit</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-sass')">
+                                            <i class="fab fa-sass"></i>
+                                            <span class="icon-name">fa-sass</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-sketch')">
+                                            <i class="fab fa-sketch"></i>
+                                            <span class="icon-name">fa-sketch</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-skype')">
+                                            <i class="fab fa-skype"></i>
+                                            <span class="icon-name">fa-skype</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-slack')">
+                                            <i class="fab fa-slack"></i>
+                                            <span class="icon-name">fa-slack</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-snapchat')">
+                                            <i class="fab fa-snapchat"></i>
+                                            <span class="icon-name">fa-snapchat</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-spotify')">
+                                            <i class="fab fa-spotify"></i>
+                                            <span class="icon-name">fa-spotify</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-stack-overflow')">
+                                            <i class="fab fa-stack-overflow"></i>
+                                            <span class="icon-name">fa-stack-overflow</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-telegram')">
+                                            <i class="fab fa-telegram"></i>
+                                            <span class="icon-name">fa-telegram</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-tiktok')">
+                                            <i class="fab fa-tiktok"></i>
+                                            <span class="icon-name">fa-tiktok</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-x-twitter')">
+                                            <i class="fab fa-x-twitter"></i>
+                                            <span class="icon-name">fa-x-twitter</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-ubuntu')">
+                                            <i class="fab fa-ubuntu"></i>
+                                            <span class="icon-name">fa-ubuntu</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-vimeo')">
+                                            <i class="fab fa-vimeo"></i>
+                                            <span class="icon-name">fa-vimeo</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-vuejs')">
+                                            <i class="fab fa-vuejs"></i>
+                                            <span class="icon-name">fa-vuejs</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-whatsapp')">
+                                            <i class="fab fa-whatsapp"></i>
+                                            <span class="icon-name">fa-whatsapp</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-windows')">
+                                            <i class="fab fa-windows"></i>
+                                            <span class="icon-name">fa-windows</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-wordpress')">
+                                            <i class="fab fa-wordpress"></i>
+                                            <span class="icon-name">fa-wordpress</span>
+                                        </div>
+                                        <div class="icon-box" onclick="copyIcon('fab fa-youtube')">
+                                            <i class="fab fa-youtube"></i>
+                                            <span class="icon-name">fa-youtube</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Copy Notification -->
+    <div class="copy-notification" id="copyNotification">
+        <i class="fas fa-check-circle"></i> Icon class copied to clipboard!
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Copy icon class to clipboard
+        function copyIcon(iconClass) {
+            // Create temporary input
+            const tempInput = document.createElement('input');
+            tempInput.value = iconClass;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            // Show notification
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+        
+        // Icon search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('iconSearch');
+            const iconBoxes = document.querySelectorAll('.icon-box');
+            const cards = document.querySelectorAll('.card');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                // Reset all cards visibility
+                cards.forEach(card => {
+                    card.style.display = 'block';
+                });
+                
+                // Filter icons
+                iconBoxes.forEach(box => {
+                    const iconName = box.querySelector('.icon-name').textContent.toLowerCase();
+                    if (iconName.includes(searchTerm)) {
+                        box.style.display = 'block';
+                    } else {
+                        box.style.display = 'none';
+                    }
+                });
+                
+                // Hide cards that have no visible icons
+                cards.forEach(card => {
+                    const iconGrid = card.querySelector('.icon-grid');
+                    if (iconGrid) {
+                        const visibleIcons = iconGrid.querySelectorAll('.icon-box:not([style*="display: none"])');
+                        if (visibleIcons.length === 0 && searchTerm !== '') {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/font-fontawesome-legacy-DLxAec9d.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

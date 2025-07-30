@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Basic Tables - Sufee Admin</title>
+    <meta name="description" content="Basic Table Examples - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+  <script type="module" crossorigin src="/assets/tables-basic-Cn3NxpfL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="tables-basic">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Basic Tables" data-breadcrumb-path="Tables|Basic Tables"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Basic Table -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Basic Table</h5>
+                            <small class="text-muted">Basic Bootstrap table with <code>.table</code> class</small>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Role</th>
+                                        <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>John Doe</td>
+                                        <td>john@example.com</td>
+                                        <td>Administrator</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jane Smith</td>
+                                        <td>jane@example.com</td>
+                                        <td>Editor</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Bob Johnson</td>
+                                        <td>bob@example.com</td>
+                                        <td>Author</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>Alice Brown</td>
+                                        <td>alice@example.com</td>
+                                        <td>Subscriber</td>
+                                        <td><span class="badge bg-danger">Inactive</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Striped Table -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Striped Table</h5>
+                            <small class="text-muted">Use <code>.table-striped</code> to add zebra-striping</small>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Stock</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1001</th>
+                                        <td>Laptop Pro</td>
+                                        <td>Electronics</td>
+                                        <td>$1,299.00</td>
+                                        <td>23</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">1002</th>
+                                        <td>Wireless Mouse</td>
+                                        <td>Accessories</td>
+                                        <td>$29.99</td>
+                                        <td>145</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">1003</th>
+                                        <td>USB-C Hub</td>
+                                        <td>Accessories</td>
+                                        <td>$49.99</td>
+                                        <td>87</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">1004</th>
+                                        <td>Monitor 27"</td>
+                                        <td>Electronics</td>
+                                        <td>$399.00</td>
+                                        <td>12</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Bordered Table -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Bordered Table</h5>
+                            <small class="text-muted">Add borders with <code>.table-bordered</code></small>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" width="10%">Order</th>
+                                        <th scope="col" width="25%">Customer</th>
+                                        <th scope="col" width="25%">Date</th>
+                                        <th scope="col" width="20%">Total</th>
+                                        <th scope="col" width="20%">Payment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">#10234</th>
+                                        <td>Sarah Connor</td>
+                                        <td>Oct 15, 2025</td>
+                                        <td>$234.50</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">#10235</th>
+                                        <td>Mike Wilson</td>
+                                        <td>Oct 16, 2025</td>
+                                        <td>$189.00</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">#10236</th>
+                                        <td>Emma Davis</td>
+                                        <td>Oct 17, 2025</td>
+                                        <td>$456.75</td>
+                                        <td><span class="badge bg-success">Paid</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Hover Table -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Hoverable Rows</h5>
+                            <small class="text-muted">Enable hover state with <code>.table-hover</code></small>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Task ID</th>
+                                        <th scope="col">Task</th>
+                                        <th scope="col">Assigned To</th>
+                                        <th scope="col">Priority</th>
+                                        <th scope="col">Due Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">T-001</th>
+                                        <td>Update Dashboard UI</td>
+                                        <td>John Doe</td>
+                                        <td><span class="badge bg-danger">High</span></td>
+                                        <td>Oct 20, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">T-002</th>
+                                        <td>Fix Login Bug</td>
+                                        <td>Jane Smith</td>
+                                        <td><span class="badge bg-warning">Medium</span></td>
+                                        <td>Oct 22, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">T-003</th>
+                                        <td>Add Export Feature</td>
+                                        <td>Bob Johnson</td>
+                                        <td><span class="badge bg-info">Low</span></td>
+                                        <td>Oct 25, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">T-004</th>
+                                        <td>Security Audit</td>
+                                        <td>Alice Brown</td>
+                                        <td><span class="badge bg-danger">High</span></td>
+                                        <td>Oct 18, 2025</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Small Table -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Small Table</h5>
+                            <small class="text-muted">Make tables more compact with <code>.table-sm</code></small>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Country</th>
+                                        <th scope="col">Capital</th>
+                                        <th scope="col">Population</th>
+                                        <th scope="col">Area (km²)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>United States</td>
+                                        <td>Washington D.C.</td>
+                                        <td>331.9M</td>
+                                        <td>9,833,520</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Canada</td>
+                                        <td>Ottawa</td>
+                                        <td>38.2M</td>
+                                        <td>9,984,670</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Mexico</td>
+                                        <td>Mexico City</td>
+                                        <td>128.9M</td>
+                                        <td>1,964,375</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>Brazil</td>
+                                        <td>Brasília</td>
+                                        <td>214.3M</td>
+                                        <td>8,515,767</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>Argentina</td>
+                                        <td>Buenos Aires</td>
+                                        <td>45.8M</td>
+                                        <td>2,780,400</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Table Variants -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Table Variants</h5>
+                            <small class="text-muted">Contextual classes to color tables, rows, or cells</small>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Class</th>
+                                        <th scope="col">Heading</th>
+                                        <th scope="col">Heading</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Default</th>
+                                        <td>Cell</td>
+                                        <td>Cell</td>
+                                    </tr>
+                                    <tr class="table-primary">
+                                        <th scope="row">Primary</th>
+                                        <td>Cell</td>
+                                        <td>Cell</td>
+                                    </tr>
+                                    <tr class="table-secondary">
+                                        <th scope="row">Secondary</th>
+                                        <td>Cell</td>
+                                        <td>Cell</td>
+                                    </tr>
+                                    <tr class="table-success">
+                                        <th scope="row">Success</th>
+                                        <td>Cell</td>
+                                        <td>Cell</td>
+                                    </tr>
+                                    <tr class="table-danger">
+                                        <th scope="row">Danger</th>
+                                        <td>Cell</td>
+                                        <td>Cell</td>
+                                    </tr>
+                                    <tr class="table-warning">
+                                        <th scope="row">Warning</th>
+                                        <td>Cell</td>
+                                        <td>Cell</td>
+                                    </tr>
+                                    <tr class="table-info">
+                                        <th scope="row">Info</th>
+                                        <td>Cell</td>
+                                        <td>Cell</td>
+                                    </tr>
+                                    <tr class="table-light">
+                                        <th scope="row">Light</th>
+                                        <td>Cell</td>
+                                        <td>Cell</td>
+                                    </tr>
+                                    <tr class="table-dark">
+                                        <th scope="row">Dark</th>
+                                        <td>Cell</td>
+                                        <td>Cell</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Responsive Table -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Responsive Table</h5>
+                            <small class="text-muted">Wrap table in <code>.table-responsive</code> for horizontal scrolling</small>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Invoice</th>
+                                            <th scope="col">Client</th>
+                                            <th scope="col">Company</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">INV-001</th>
+                                            <td>Michael Scott</td>
+                                            <td>Dunder Mifflin</td>
+                                            <td>mscott@dundermifflin.com</td>
+                                            <td>(570) 555-0123</td>
+                                            <td>1725 Slough Avenue, Scranton, PA</td>
+                                            <td>$2,450.00</td>
+                                            <td><span class="badge bg-success">Paid</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-info"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">INV-002</th>
+                                            <td>Jim Halpert</td>
+                                            <td>Athlead</td>
+                                            <td>jhalpert@athlead.com</td>
+                                            <td>(215) 555-0199</td>
+                                            <td>123 Market Street, Philadelphia, PA</td>
+                                            <td>$1,850.00</td>
+                                            <td><span class="badge bg-warning">Pending</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-info"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">INV-003</th>
+                                            <td>Pam Beesly</td>
+                                            <td>Pratt Institute</td>
+                                            <td>pbeesly@pratt.edu</td>
+                                            <td>(718) 555-0144</td>
+                                            <td>200 Willoughby Ave, Brooklyn, NY</td>
+                                            <td>$3,200.00</td>
+                                            <td><span class="badge bg-success">Paid</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary"><i class="fas fa-eye"></i></button>
+                                                <button class="btn btn-sm btn-info"><i class="fas fa-edit"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Table with Actions -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Table with Actions</h5>
+                            <small class="text-muted">Example with action buttons and checkboxes</small>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="checkAll">
+                                            </div>
+                                        </th>
+                                        <th scope="col">User</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Role</th>
+                                        <th scope="col">Joined</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col" class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://via.placeholder.com/32" alt="Avatar" class="rounded-circle me-2">
+                                                <span>David Martinez</span>
+                                            </div>
+                                        </td>
+                                        <td>david@example.com</td>
+                                        <td><span class="badge bg-primary">Admin</span></td>
+                                        <td>Jan 15, 2025</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-sm btn-outline-primary" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-outline-info" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger" title="Delete">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://via.placeholder.com/32" alt="Avatar" class="rounded-circle me-2">
+                                                <span>Lisa Chen</span>
+                                            </div>
+                                        </td>
+                                        <td>lisa@example.com</td>
+                                        <td><span class="badge bg-info">Editor</span></td>
+                                        <td>Feb 20, 2025</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-sm btn-outline-primary" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-outline-info" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger" title="Delete">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <img src="https://via.placeholder.com/32" alt="Avatar" class="rounded-circle me-2">
+                                                <span>Robert Taylor</span>
+                                            </div>
+                                        </td>
+                                        <td>robert@example.com</td>
+                                        <td><span class="badge bg-secondary">User</span></td>
+                                        <td>Mar 10, 2025</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn btn-sm btn-outline-primary" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-outline-info" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-sm btn-outline-danger" title="Delete">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Simple check all functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkAll = document.getElementById('checkAll');
+            if (checkAll) {
+                checkAll.addEventListener('change', function() {
+                    const checkboxes = document.querySelectorAll('tbody .form-check-input');
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = this.checked;
+                    });
+                });
+            }
+        });
+    </script>
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/tables-basic-legacy-DLxAec9d.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

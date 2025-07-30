@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Typography - Sufee Admin</title>
+    <meta name="description" content="Typography Components - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+</head>
+
+<body class="sufee-dashboard" data-page="ui-typography">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Typography" data-breadcrumb-path="UI Elements|Components|Typography"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Left Column -->
+                        <div class="col-lg-6">
+                            <!-- Headings -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Headings</h5>
+                                    <small class="text-muted">All HTML headings, <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code></small>
+                                </div>
+                                <div class="card-body">
+                                    <h1>h1. Bootstrap heading</h1>
+                                    <h2>h2. Bootstrap heading</h2>
+                                    <h3>h3. Bootstrap heading</h3>
+                                    <h4>h4. Bootstrap heading</h4>
+                                    <h5>h5. Bootstrap heading</h5>
+                                    <h6>h6. Bootstrap heading</h6>
+                                </div>
+                            </div>
+
+                            <!-- Display Headings -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Display Headings</h5>
+                                    <small class="text-muted">Larger, slightly more opinionated heading styles</small>
+                                </div>
+                                <div class="card-body">
+                                    <h1 class="display-1">Display 1</h1>
+                                    <h1 class="display-2">Display 2</h1>
+                                    <h1 class="display-3">Display 3</h1>
+                                    <h1 class="display-4">Display 4</h1>
+                                    <h1 class="display-5">Display 5</h1>
+                                    <h1 class="display-6">Display 6</h1>
+                                </div>
+                            </div>
+
+                            <!-- Lead Text -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Lead Text</h5>
+                                    <small class="text-muted">Make a paragraph stand out with <code>.lead</code></small>
+                                </div>
+                                <div class="card-body">
+                                    <p class="lead">
+                                        This is a lead paragraph. It stands out from regular paragraphs with larger font size and weight.
+                                    </p>
+                                    <p>
+                                        This is a regular paragraph for comparison. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Inline Text Elements -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Inline Text Elements</h5>
+                                    <small class="text-muted">Common inline HTML5 elements</small>
+                                </div>
+                                <div class="card-body">
+                                    <p>You can use the mark tag to <mark>highlight</mark> text.</p>
+                                    <p><del>This line of text is meant to be treated as deleted text.</del></p>
+                                    <p><s>This line of text is meant to be treated as no longer accurate.</s></p>
+                                    <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+                                    <p><u>This line of text will render as underlined.</u></p>
+                                    <p><small>This line of text is meant to be treated as fine print.</small></p>
+                                    <p><strong>This line rendered as bold text.</strong></p>
+                                    <p><em>This line rendered as italicized text.</em></p>
+                                </div>
+                            </div>
+
+                            <!-- Abbreviations -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Abbreviations</h5>
+                                    <small class="text-muted">Stylized implementation of HTML's <code>&lt;abbr&gt;</code> element</small>
+                                </div>
+                                <div class="card-body">
+                                    <p><abbr title="attribute">attr</abbr></p>
+                                    <p><abbr title="HyperText Markup Language" class="initialism">HTML</abbr></p>
+                                </div>
+                            </div>
+
+                            <!-- Blockquotes -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Blockquotes</h5>
+                                    <small class="text-muted">For quoting blocks of content from another source</small>
+                                </div>
+                                <div class="card-body">
+                                    <blockquote class="blockquote">
+                                        <p>A well-known quote, contained in a blockquote element.</p>
+                                    </blockquote>
+                                    
+                                    <blockquote class="blockquote">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="col-lg-6">
+                            <!-- Text Utilities -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Text Utilities</h5>
+                                    <small class="text-muted">Text alignment and transformation utilities</small>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-start">Start aligned text on all viewport sizes.</p>
+                                    <p class="text-center">Center aligned text on all viewport sizes.</p>
+                                    <p class="text-end">End aligned text on all viewport sizes.</p>
+                                    
+                                    <hr>
+                                    
+                                    <p class="text-lowercase">Lowercased text.</p>
+                                    <p class="text-uppercase">Uppercased text.</p>
+                                    <p class="text-capitalize">CapiTaliZed text.</p>
+                                </div>
+                            </div>
+
+                            <!-- Font Weight and Italics -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Font Weight and Italics</h5>
+                                    <small class="text-muted">Font weight and style utilities</small>
+                                </div>
+                                <div class="card-body">
+                                    <p class="fw-bold">Bold text.</p>
+                                    <p class="fw-bolder">Bolder weight text (relative to the parent element).</p>
+                                    <p class="fw-semibold">Semibold weight text.</p>
+                                    <p class="fw-medium">Medium weight text.</p>
+                                    <p class="fw-normal">Normal weight text.</p>
+                                    <p class="fw-light">Light weight text.</p>
+                                    <p class="fw-lighter">Lighter weight text (relative to the parent element).</p>
+                                    <p class="fst-italic">Italic text.</p>
+                                    <p class="fst-normal">Text with normal font style</p>
+                                </div>
+                            </div>
+
+                            <!-- Text Colors -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Text Colors</h5>
+                                    <small class="text-muted">Contextual text colors with semantic classes</small>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-primary">Primary text color</p>
+                                    <p class="text-secondary">Secondary text color</p>
+                                    <p class="text-success">Success text color</p>
+                                    <p class="text-danger">Danger text color</p>
+                                    <p class="text-warning">Warning text color</p>
+                                    <p class="text-info">Info text color</p>
+                                    <p class="text-light bg-dark">Light text color</p>
+                                    <p class="text-dark">Dark text color</p>
+                                    <p class="text-body">Body text color</p>
+                                    <p class="text-muted">Muted text color</p>
+                                    <p class="text-white bg-dark">White text color</p>
+                                    <p class="text-black-50">Black text with 50% opacity</p>
+                                    <p class="text-white-50 bg-dark">White text with 50% opacity</p>
+                                </div>
+                            </div>
+
+                            <!-- Lists -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Lists</h5>
+                                    <small class="text-muted">Unstyled and inline lists</small>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h6>Default List</h6>
+                                            <ul>
+                                                <li>Lorem ipsum dolor sit amet</li>
+                                                <li>Consectetur adipiscing elit</li>
+                                                <li>Integer molestie lorem at massa</li>
+                                                <li>Facilisis in pretium nisl aliquet</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-6">
+                                            <h6>Unstyled List</h6>
+                                            <ul class="list-unstyled">
+                                                <li>Lorem ipsum dolor sit amet</li>
+                                                <li>Consectetur adipiscing elit</li>
+                                                <li>Integer molestie lorem at massa</li>
+                                                <li>Facilisis in pretium nisl aliquet</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <h6>Inline List</h6>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">Lorem ipsum</li>
+                                        <li class="list-inline-item">Phasellus iaculis</li>
+                                        <li class="list-inline-item">Nulla volutpat</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Description Lists -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Description Lists</h5>
+                                    <small class="text-muted">Definition lists for terms and descriptions</small>
+                                </div>
+                                <div class="card-body">
+                                    <dl class="row">
+                                        <dt class="col-sm-3">Description lists</dt>
+                                        <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+
+                                        <dt class="col-sm-3">Euismod</dt>
+                                        <dd class="col-sm-9">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</p>
+                                        </dd>
+
+                                        <dt class="col-sm-3">Malesuada porta</dt>
+                                        <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
+
+                                        <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
+                                        <dd class="col-sm-9">This can be useful when space is tight.</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Full Width Cards -->
+                    <div class="row">
+                        <!-- Code and Preformatted Text -->
+                        <div class="col-12">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Code and Preformatted Text</h5>
+                                    <small class="text-muted">Code snippets and keyboard input</small>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6>Inline Code</h6>
+                                            <p>For example, <code>&lt;section&gt;</code> should be wrapped as inline.</p>
+                                            
+                                            <h6 class="mt-3">User Input</h6>
+                                            <p>To switch directories, type <kbd>cd</kbd> followed by the name of the directory.</p>
+                                            <p>To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd></p>
+                                            
+                                            <h6 class="mt-3">Variables</h6>
+                                            <p><var>y</var> = <var>m</var><var>x</var> + <var>b</var></p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Sample Output</h6>
+                                            <p><samp>This text is meant to be treated as sample output from a computer program.</samp></p>
+                                            
+                                            <h6 class="mt-3">Code Block</h6>
+                                            <pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
+&lt;p&gt;And another line of sample text here...&lt;/p&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+</body>
+</html>

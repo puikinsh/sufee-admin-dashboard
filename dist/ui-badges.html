@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Badges - Sufee Admin</title>
+    <meta name="description" content="Badge Components - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+  <script type="module" crossorigin src="/assets/ui-badges-Cn3NxpfL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="ui-badges">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Badges" data-breadcrumb-path="UI Elements|Components|Badges"></div>
+
+            <!-- Content Area -->
+            <section class="content-area p-4">
+                <div class="container-fluid">
+                    <div class="row">
+                        <!-- Left Column -->
+                        <div class="col-md-6">
+                            <!-- Basic Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Basic Badges</h5>
+                                    <small class="text-muted">Use class <code>.badge</code> with contextual classes</small>
+                                </div>
+                                <div class="card-body">
+                                    <span class="badge bg-primary me-2 mb-2">Primary</span>
+                                    <span class="badge bg-secondary me-2 mb-2">Secondary</span>
+                                    <span class="badge bg-success me-2 mb-2">Success</span>
+                                    <span class="badge bg-danger me-2 mb-2">Danger</span>
+                                    <span class="badge bg-warning text-dark me-2 mb-2">Warning</span>
+                                    <span class="badge bg-info me-2 mb-2">Info</span>
+                                    <span class="badge bg-light text-dark me-2 mb-2">Light</span>
+                                    <span class="badge bg-dark me-2 mb-2">Dark</span>
+                                </div>
+                            </div>
+
+                            <!-- Badges with Buttons -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Badges in Buttons</h5>
+                                    <small class="text-muted">Add badges to buttons for counters or notifications</small>
+                                </div>
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-primary me-2 mb-2">
+                                        Notifications <span class="badge bg-secondary">4</span>
+                                    </button>
+                                    <button type="button" class="btn btn-success me-2 mb-2">
+                                        Messages <span class="badge bg-light text-dark">12</span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger me-2 mb-2">
+                                        Alerts <span class="badge bg-warning text-dark">3</span>
+                                    </button>
+                                    <button type="button" class="btn btn-info me-2 mb-2">
+                                        Tasks <span class="badge bg-dark">8</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Positioned Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Positioned Badges</h5>
+                                    <small class="text-muted">Position badges on buttons or other elements</small>
+                                </div>
+                                <div class="card-body">
+                                    <button type="button" class="btn btn-primary position-relative me-3 mb-3">
+                                        Inbox
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            99+
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                    </button>
+                                    
+                                    <button type="button" class="btn btn-secondary position-relative me-3 mb-3">
+                                        Profile
+                                        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                            <span class="visually-hidden">New alerts</span>
+                                        </span>
+                                    </button>
+
+                                    <div class="position-relative d-inline-block me-3 mb-3">
+                                        <i class="fas fa-bell fs-3 text-muted"></i>
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+                                            5
+                                            <span class="visually-hidden">notifications</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="position-relative d-inline-block me-3 mb-3">
+                                        <i class="fas fa-envelope fs-3 text-muted"></i>
+                                        <span class="position-absolute top-0 start-100 translate-middle badge bg-warning text-dark rounded-pill">
+                                            New
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Badges with Icons -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Badges with Icons</h5>
+                                    <small class="text-muted">Add icons to make badges more meaningful</small>
+                                </div>
+                                <div class="card-body">
+                                    <span class="badge bg-primary me-2 mb-2">
+                                        <i class="fas fa-user me-1"></i> 125 Users
+                                    </span>
+                                    <span class="badge bg-success me-2 mb-2">
+                                        <i class="fas fa-check me-1"></i> Completed
+                                    </span>
+                                    <span class="badge bg-danger me-2 mb-2">
+                                        <i class="fas fa-times me-1"></i> Failed
+                                    </span>
+                                    <span class="badge bg-warning text-dark me-2 mb-2">
+                                        <i class="fas fa-exclamation-triangle me-1"></i> Warning
+                                    </span>
+                                    <span class="badge bg-info me-2 mb-2">
+                                        <i class="fas fa-info-circle me-1"></i> Info
+                                    </span>
+                                    <span class="badge bg-dark me-2 mb-2">
+                                        <i class="fas fa-cog me-1"></i> Settings
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Pill Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Pill Badges</h5>
+                                    <small class="text-muted">Use <code>.rounded-pill</code> for rounded badges</small>
+                                </div>
+                                <div class="card-body">
+                                    <span class="badge bg-primary rounded-pill me-2 mb-2">Primary</span>
+                                    <span class="badge bg-secondary rounded-pill me-2 mb-2">Secondary</span>
+                                    <span class="badge bg-success rounded-pill me-2 mb-2">Success</span>
+                                    <span class="badge bg-danger rounded-pill me-2 mb-2">Danger</span>
+                                    <span class="badge bg-warning text-dark rounded-pill me-2 mb-2">Warning</span>
+                                    <span class="badge bg-info rounded-pill me-2 mb-2">Info</span>
+                                    <span class="badge bg-light text-dark rounded-pill me-2 mb-2">Light</span>
+                                    <span class="badge bg-dark rounded-pill me-2 mb-2">Dark</span>
+                                </div>
+                            </div>
+
+                            <!-- Link Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Link Badges</h5>
+                                    <small class="text-muted">Use badges as links with hover effects</small>
+                                </div>
+                                <div class="card-body">
+                                    <a href="#" class="badge bg-primary text-decoration-none me-2 mb-2">Primary Link</a>
+                                    <a href="#" class="badge bg-secondary text-decoration-none me-2 mb-2">Secondary Link</a>
+                                    <a href="#" class="badge bg-success text-decoration-none me-2 mb-2">Success Link</a>
+                                    <a href="#" class="badge bg-danger text-decoration-none me-2 mb-2">Danger Link</a>
+                                    <a href="#" class="badge bg-warning text-dark text-decoration-none me-2 mb-2">Warning Link</a>
+                                    <a href="#" class="badge bg-info text-decoration-none me-2 mb-2">Info Link</a>
+                                    <a href="#" class="badge bg-dark text-decoration-none me-2 mb-2">Dark Link</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="col-md-6">
+                            <!-- Badge Sizes -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Badge Sizes</h5>
+                                    <small class="text-muted">Different badge sizes using font-size utilities</small>
+                                </div>
+                                <div class="card-body d-flex align-items-center flex-wrap gap-2">
+                                    <span class="badge bg-primary" style="font-size: 0.6rem;">Extra Small</span>
+                                    <span class="badge bg-secondary" style="font-size: 0.75rem;">Small</span>
+                                    <span class="badge bg-success">Normal</span>
+                                    <span class="badge bg-danger" style="font-size: 1.1rem;">Large</span>
+                                    <span class="badge bg-warning text-dark" style="font-size: 1.25rem;">Extra Large</span>
+                                </div>
+                            </div>
+
+                            <!-- Status Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Status Badges</h5>
+                                    <small class="text-muted">Common status indicators</small>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <strong>User Status:</strong>
+                                        <span class="badge bg-success ms-2">Online</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Payment Status:</strong>
+                                        <span class="badge bg-warning text-dark ms-2">Pending</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Order Status:</strong>
+                                        <span class="badge bg-info ms-2">Processing</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Project Status:</strong>
+                                        <span class="badge bg-primary ms-2">In Progress</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Task Status:</strong>
+                                        <span class="badge bg-success ms-2">Completed</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <strong>Issue Status:</strong>
+                                        <span class="badge bg-danger ms-2">Critical</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Badge with Close Button -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Dismissible Badges</h5>
+                                    <small class="text-muted">Badges with close buttons</small>
+                                </div>
+                                <div class="card-body">
+                                    <span class="badge bg-primary me-2 mb-2" id="badge1">
+                                        JavaScript
+                                        <button type="button" class="btn-close btn-close-white ms-2" aria-label="Close" onclick="this.parentElement.remove()"></button>
+                                    </span>
+                                    <span class="badge bg-success me-2 mb-2" id="badge2">
+                                        React
+                                        <button type="button" class="btn-close btn-close-white ms-2" aria-label="Close" onclick="this.parentElement.remove()"></button>
+                                    </span>
+                                    <span class="badge bg-info me-2 mb-2" id="badge3">
+                                        Bootstrap
+                                        <button type="button" class="btn-close btn-close-white ms-2" aria-label="Close" onclick="this.parentElement.remove()"></button>
+                                    </span>
+                                    <span class="badge bg-warning text-dark me-2 mb-2" id="badge4">
+                                        HTML5
+                                        <button type="button" class="btn-close ms-2" aria-label="Close" onclick="this.parentElement.remove()"></button>
+                                    </span>
+                                    <span class="badge bg-secondary me-2 mb-2" id="badge5">
+                                        CSS3
+                                        <button type="button" class="btn-close btn-close-white ms-2" aria-label="Close" onclick="this.parentElement.remove()"></button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Counter Badges -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Counter Badges</h5>
+                                    <small class="text-muted">Numeric counters and statistics</small>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row text-center">
+                                        <div class="col-4 mb-3">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <i class="fas fa-users fs-2 text-primary mb-2"></i>
+                                                <span class="badge bg-primary rounded-pill">1,432</span>
+                                                <small class="text-muted mt-1">Users</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 mb-3">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <i class="fas fa-shopping-cart fs-2 text-success mb-2"></i>
+                                                <span class="badge bg-success rounded-pill">856</span>
+                                                <small class="text-muted mt-1">Orders</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 mb-3">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <i class="fas fa-dollar-sign fs-2 text-warning mb-2"></i>
+                                                <span class="badge bg-warning text-dark rounded-pill">$24,560</span>
+                                                <small class="text-muted mt-1">Revenue</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Badge List -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Badge Lists</h5>
+                                    <small class="text-muted">Badges in list groups</small>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            Inbox
+                                            <span class="badge bg-primary rounded-pill">14</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            Sent
+                                            <span class="badge bg-secondary rounded-pill">7</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            Drafts
+                                            <span class="badge bg-warning text-dark rounded-pill">2</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            Spam
+                                            <span class="badge bg-danger rounded-pill">99+</span>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                                            Trash
+                                            <span class="badge bg-dark rounded-pill">3</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Custom Badge Styles -->
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Custom Badge Styles</h5>
+                                    <small class="text-muted">Creative badge variations</small>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Gradient Badges -->
+                                    <span class="badge me-2 mb-2" style="background: linear-gradient(45deg, #007bff, #6610f2);">Gradient Blue</span>
+                                    <span class="badge me-2 mb-2" style="background: linear-gradient(45deg, #28a745, #20c997);">Gradient Green</span>
+                                    <span class="badge me-2 mb-2" style="background: linear-gradient(45deg, #dc3545, #fd7e14);">Gradient Red</span>
+                                    <br>
+                                    <!-- Outlined Badges -->
+                                    <span class="badge border border-primary text-primary bg-transparent me-2 mb-2">Outlined Primary</span>
+                                    <span class="badge border border-success text-success bg-transparent me-2 mb-2">Outlined Success</span>
+                                    <span class="badge border border-danger text-danger bg-transparent me-2 mb-2">Outlined Danger</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/ui-badges-legacy-DLxAec9d.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Data Tables - Sufee Admin</title>
+    <meta name="description" content="DataTables Examples - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+  <script type="module" crossorigin src="/assets/tables-data-uYWvt035.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="tables-data">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Data Tables" data-breadcrumb-path="Tables|Data Tables"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Basic DataTable -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Basic DataTable</h5>
+                            <small class="text-muted">DataTables with search, pagination, and sorting</small>
+                        </div>
+                        <div class="card-body">
+                            <table id="basicDataTable" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Office</th>
+                                        <th>Age</th>
+                                        <th>Start date</th>
+                                        <th>Salary</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>2011/04/25</td>
+                                        <td>$320,800</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Garrett Winters</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>63</td>
+                                        <td>2011/07/25</td>
+                                        <td>$170,750</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ashton Cox</td>
+                                        <td>Junior Technical Author</td>
+                                        <td>San Francisco</td>
+                                        <td>66</td>
+                                        <td>2009/01/12</td>
+                                        <td>$86,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cedric Kelly</td>
+                                        <td>Senior Javascript Developer</td>
+                                        <td>Edinburgh</td>
+                                        <td>22</td>
+                                        <td>2012/03/29</td>
+                                        <td>$433,060</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Airi Satou</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>33</td>
+                                        <td>2008/11/28</td>
+                                        <td>$162,700</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Brielle Williamson</td>
+                                        <td>Integration Specialist</td>
+                                        <td>New York</td>
+                                        <td>61</td>
+                                        <td>2012/12/02</td>
+                                        <td>$372,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Herrod Chandler</td>
+                                        <td>Sales Assistant</td>
+                                        <td>San Francisco</td>
+                                        <td>59</td>
+                                        <td>2012/08/06</td>
+                                        <td>$137,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rhona Davidson</td>
+                                        <td>Integration Specialist</td>
+                                        <td>Tokyo</td>
+                                        <td>55</td>
+                                        <td>2010/10/14</td>
+                                        <td>$327,900</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Colleen Hurst</td>
+                                        <td>Javascript Developer</td>
+                                        <td>San Francisco</td>
+                                        <td>39</td>
+                                        <td>2009/09/15</td>
+                                        <td>$205,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sonya Frost</td>
+                                        <td>Software Engineer</td>
+                                        <td>Edinburgh</td>
+                                        <td>23</td>
+                                        <td>2008/12/13</td>
+                                        <td>$103,600</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jena Gaines</td>
+                                        <td>Office Manager</td>
+                                        <td>London</td>
+                                        <td>30</td>
+                                        <td>2008/12/19</td>
+                                        <td>$90,560</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quinn Flynn</td>
+                                        <td>Support Lead</td>
+                                        <td>Edinburgh</td>
+                                        <td>22</td>
+                                        <td>2013/03/03</td>
+                                        <td>$342,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Advanced DataTable with Buttons -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">DataTable with Export Buttons</h5>
+                            <small class="text-muted">Export data to Excel, PDF, CSV and more</small>
+                        </div>
+                        <div class="card-body">
+                            <table id="exportDataTable" class="table table-hover" style="width:100%">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Stock</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>MacBook Pro 16"</td>
+                                        <td>Laptops</td>
+                                        <td>$2,399</td>
+                                        <td>15</td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>iPhone 15 Pro</td>
+                                        <td>Smartphones</td>
+                                        <td>$999</td>
+                                        <td>42</td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>iPad Air</td>
+                                        <td>Tablets</td>
+                                        <td>$599</td>
+                                        <td>8</td>
+                                        <td><span class="badge bg-warning">Low Stock</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>AirPods Pro</td>
+                                        <td>Audio</td>
+                                        <td>$249</td>
+                                        <td>0</td>
+                                        <td><span class="badge bg-danger">Out of Stock</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apple Watch Series 9</td>
+                                        <td>Wearables</td>
+                                        <td>$399</td>
+                                        <td>23</td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Magic Keyboard</td>
+                                        <td>Accessories</td>
+                                        <td>$299</td>
+                                        <td>18</td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Studio Display</td>
+                                        <td>Monitors</td>
+                                        <td>$1,599</td>
+                                        <td>6</td>
+                                        <td><span class="badge bg-warning">Low Stock</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mac Mini</td>
+                                        <td>Desktops</td>
+                                        <td>$599</td>
+                                        <td>31</td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Responsive DataTable -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Responsive DataTable</h5>
+                            <small class="text-muted">Automatically adjusts columns based on screen size</small>
+                        </div>
+                        <div class="card-body">
+                            <table id="responsiveDataTable" class="table table-striped nowrap" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Customer</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ORD-001</td>
+                                        <td>Jennifer Wilson</td>
+                                        <td>jwilson@email.com</td>
+                                        <td>(555) 123-4567</td>
+                                        <td>Laptop Pro</td>
+                                        <td>1</td>
+                                        <td>$1,299.00</td>
+                                        <td>2025-01-15</td>
+                                        <td><span class="badge bg-success">Delivered</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-002</td>
+                                        <td>Michael Brown</td>
+                                        <td>mbrown@email.com</td>
+                                        <td>(555) 234-5678</td>
+                                        <td>Wireless Mouse</td>
+                                        <td>2</td>
+                                        <td>$59.98</td>
+                                        <td>2025-01-16</td>
+                                        <td><span class="badge bg-info">Shipped</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-003</td>
+                                        <td>Sarah Davis</td>
+                                        <td>sdavis@email.com</td>
+                                        <td>(555) 345-6789</td>
+                                        <td>USB-C Hub</td>
+                                        <td>1</td>
+                                        <td>$49.99</td>
+                                        <td>2025-01-17</td>
+                                        <td><span class="badge bg-warning">Processing</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-004</td>
+                                        <td>David Martinez</td>
+                                        <td>dmartinez@email.com</td>
+                                        <td>(555) 456-7890</td>
+                                        <td>4K Monitor</td>
+                                        <td>1</td>
+                                        <td>$399.00</td>
+                                        <td>2025-01-18</td>
+                                        <td><span class="badge bg-success">Delivered</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-005</td>
+                                        <td>Lisa Anderson</td>
+                                        <td>landerson@email.com</td>
+                                        <td>(555) 567-8901</td>
+                                        <td>Mechanical Keyboard</td>
+                                        <td>1</td>
+                                        <td>$149.99</td>
+                                        <td>2025-01-19</td>
+                                        <td><span class="badge bg-danger">Cancelled</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-006</td>
+                                        <td>Robert Taylor</td>
+                                        <td>rtaylor@email.com</td>
+                                        <td>(555) 678-9012</td>
+                                        <td>Webcam HD</td>
+                                        <td>1</td>
+                                        <td>$79.99</td>
+                                        <td>2025-01-20</td>
+                                        <td><span class="badge bg-info">Shipped</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-007</td>
+                                        <td>Emily Johnson</td>
+                                        <td>ejohnson@email.com</td>
+                                        <td>(555) 789-0123</td>
+                                        <td>External SSD</td>
+                                        <td>2</td>
+                                        <td>$299.98</td>
+                                        <td>2025-01-21</td>
+                                        <td><span class="badge bg-success">Delivered</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>ORD-008</td>
+                                        <td>James Miller</td>
+                                        <td>jmiller@email.com</td>
+                                        <td>(555) 890-1234</td>
+                                        <td>Graphics Card</td>
+                                        <td>1</td>
+                                        <td>$699.00</td>
+                                        <td>2025-01-22</td>
+                                        <td><span class="badge bg-warning">Processing</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- DataTable with Column Filters -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">DataTable with Column Filters</h5>
+                            <small class="text-muted">Individual column searching with select dropdowns</small>
+                        </div>
+                        <div class="card-body">
+                            <table id="filterDataTable" class="table table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Position</th>
+                                        <th>Location</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Smith</td>
+                                        <td>IT</td>
+                                        <td>Senior Developer</td>
+                                        <td>New York</td>
+                                        <td>Active</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sarah Johnson</td>
+                                        <td>HR</td>
+                                        <td>HR Manager</td>
+                                        <td>London</td>
+                                        <td>Active</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mike Davis</td>
+                                        <td>Sales</td>
+                                        <td>Sales Executive</td>
+                                        <td>Tokyo</td>
+                                        <td>Active</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Emily Brown</td>
+                                        <td>Marketing</td>
+                                        <td>Marketing Director</td>
+                                        <td>San Francisco</td>
+                                        <td>Active</td>
+                                    </tr>
+                                    <tr>
+                                        <td>David Wilson</td>
+                                        <td>IT</td>
+                                        <td>Junior Developer</td>
+                                        <td>New York</td>
+                                        <td>Active</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lisa Anderson</td>
+                                        <td>Finance</td>
+                                        <td>Accountant</td>
+                                        <td>London</td>
+                                        <td>On Leave</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tom Martinez</td>
+                                        <td>IT</td>
+                                        <td>DevOps Engineer</td>
+                                        <td>Tokyo</td>
+                                        <td>Active</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jennifer Taylor</td>
+                                        <td>Sales</td>
+                                        <td>Sales Manager</td>
+                                        <td>San Francisco</td>
+                                        <td>Active</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Robert Lee</td>
+                                        <td>HR</td>
+                                        <td>Recruiter</td>
+                                        <td>New York</td>
+                                        <td>Inactive</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Maria Garcia</td>
+                                        <td>Marketing</td>
+                                        <td>Content Writer</td>
+                                        <td>London</td>
+                                        <td>Active</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Department</th>
+                                        <th>Position</th>
+                                        <th>Location</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/tables-data-legacy-FsWaE15e.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

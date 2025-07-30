@@ -5,6 +5,7 @@ import './styles/main.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import 'flag-icons/css/flag-icons.min.css'
+// Themify icons are loaded via link tag in head-common.html partial
 
 // Bootstrap 5 JavaScript imports
 import * as bootstrap from 'bootstrap'

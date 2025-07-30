@@ -13,12 +13,14 @@ export class Navigation {
   }
 
   init() {
-    // Look for new Bootstrap 5 structure elements
-    this.menuToggle = document.getElementById('sidebarToggleDesktop') || document.getElementById('sidebarToggle')
+    // Look for new Bootstrap 5 structure elements with correct IDs
+    this.menuToggle = document.getElementById('sidebarToggleDesktop') || 
+                     document.getElementById('sidebarToggle') ||
+                     document.getElementById('sidebarToggleMobile')
     this.sidebar = document.getElementById('sidebar') || document.querySelector('.sidebar')
     
     if (!this.menuToggle || !this.sidebar) {
-      console.warn('Navigation elements not found - sidebar functionality may be limited')
+      // Elements not found, but don't warn since app.js handles sidebar toggles now
       return
     }
 

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Switches - Sufee Admin</title>
+    <meta name="description" content="Bootstrap 5 Switch Components - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Custom switch styles for additional variants */
+        .form-switch-lg {
+            padding-left: 3rem;
+        }
+        .form-switch-lg .form-check-input {
+            width: 2.5rem;
+            height: 1.25rem;
+            border-radius: 0.75rem;
+        }
+        .form-switch-sm {
+            padding-left: 2rem;
+        }
+        .form-switch-sm .form-check-input {
+            width: 1.5rem;
+            height: 0.75rem;
+            border-radius: 0.5rem;
+        }
+        
+        /* Colored switches */
+        .form-switch-success .form-check-input:checked {
+            background-color: var(--bs-success);
+            border-color: var(--bs-success);
+        }
+        .form-switch-warning .form-check-input:checked {
+            background-color: var(--bs-warning);
+            border-color: var(--bs-warning);
+        }
+        .form-switch-info .form-check-input:checked {
+            background-color: var(--bs-info);
+            border-color: var(--bs-info);
+        }
+        .form-switch-danger .form-check-input:checked {
+            background-color: var(--bs-danger);
+            border-color: var(--bs-danger);
+        }
+        .form-switch-secondary .form-check-input:checked {
+            background-color: var(--bs-secondary);
+            border-color: var(--bs-secondary);
+        }
+        .form-switch-dark .form-check-input:checked {
+            background-color: var(--bs-dark);
+            border-color: var(--bs-dark);
+        }
+        
+        /* Switch with icons */
+        .switch-with-icons {
+            position: relative;
+        }
+        .switch-with-icons .switch-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            color: #6c757d;
+            transition: all 0.15s ease-in-out;
+        }
+        .switch-with-icons .switch-icon-left {
+            left: 0.25rem;
+        }
+        .switch-with-icons .switch-icon-right {
+            right: 0.25rem;
+        }
+        .switch-with-icons .form-check-input:checked ~ .switch-icon-left {
+            color: white;
+        }
+        .switch-with-icons .form-check-input:not(:checked) ~ .switch-icon-right {
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="sufee-dashboard" data-page="ui-switches">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Switches" data-breadcrumb-path="UI Elements|Components|Switches"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h1 class="h3 mb-3">Bootstrap 5 Switches</h1>
+                            <p class="text-muted mb-0">Create consistent cross-browser and cross-device switches with our custom switch component, built on top of Bootstrap's form controls.</p>
+                        </div>
+                    </div>
+
+                    <!-- Basic Switches -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Basic Switches</h5>
+                                    <span class="badge bg-primary">Default</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">A switch has the markup of a custom checkbox but uses the <code>.form-switch</code> class to render a toggle switch.</p>
+                                    
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="basicSwitch1">
+                                                <label class="form-check-label" for="basicSwitch1">Default switch checkbox input</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="basicSwitch2" checked>
+                                                <label class="form-check-label" for="basicSwitch2">Checked switch checkbox input</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="basicSwitch3" disabled>
+                                                <label class="form-check-label" for="basicSwitch3">Disabled switch checkbox input</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="basicSwitch4" disabled checked>
+                                                <label class="form-check-label" for="basicSwitch4">Disabled checked switch</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Switch Sizes -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Switch Sizes</h5>
+                                    <span class="badge bg-info">Sizing</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Use custom CSS classes to create different sized switches for various use cases.</p>
+                                    
+                                    <div class="row g-4">
+                                        <div class="col-md-4">
+                                            <h6>Large Switch</h6>
+                                            <div class="form-check form-switch form-switch-lg">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="largeSwitch" checked>
+                                                <label class="form-check-label" for="largeSwitch">Large switch</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h6>Default Switch</h6>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="defaultSwitch" checked>
+                                                <label class="form-check-label" for="defaultSwitch">Default switch</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h6>Small Switch</h6>
+                                            <div class="form-check form-switch form-switch-sm">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="smallSwitch" checked>
+                                                <label class="form-check-label" for="smallSwitch">Small switch</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Colored Switches -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Colored Switches</h5>
+                                    <span class="badge bg-success">Custom Colors</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Custom colored switches using Bootstrap's color palette.</p>
+                                    
+                                    <div class="row g-3">
+                                        <div class="col-lg-6">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="primarySwitch" checked>
+                                                <label class="form-check-label" for="primarySwitch">Primary Switch</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-check form-switch form-switch-secondary">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="secondarySwitch" checked>
+                                                <label class="form-check-label" for="secondarySwitch">Secondary Switch</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-check form-switch form-switch-success">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="successSwitch" checked>
+                                                <label class="form-check-label" for="successSwitch">Success Switch</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-check form-switch form-switch-warning">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="warningSwitch" checked>
+                                                <label class="form-check-label" for="warningSwitch">Warning Switch</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-check form-switch form-switch-info">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="infoSwitch" checked>
+                                                <label class="form-check-label" for="infoSwitch">Info Switch</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-check form-switch form-switch-danger">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="dangerSwitch" checked>
+                                                <label class="form-check-label" for="dangerSwitch">Danger Switch</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Switch Groups -->
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Settings Panel</h5>
+                                    <span class="badge bg-dark">Configuration</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Use switches in forms and settings panels for better user experience.</p>
+                                    
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <h6 class="mb-1">Email Notifications</h6>
+                                                <small class="text-muted">Receive email updates about your account</small>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="emailNotifications" checked>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <h6 class="mb-1">Push Notifications</h6>
+                                                <small class="text-muted">Get push notifications on your device</small>
+                                            </div>
+                                            <div class="form-check form-switch form-switch-success">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="pushNotifications">
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <h6 class="mb-1">SMS Notifications</h6>
+                                                <small class="text-muted">Receive SMS alerts for important updates</small>
+                                            </div>
+                                            <div class="form-check form-switch form-switch-info">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="smsNotifications" checked>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <h6 class="mb-1">Marketing Emails</h6>
+                                                <small class="text-muted">Receive promotional content and offers</small>
+                                            </div>
+                                            <div class="form-check form-switch form-switch-warning">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="marketingEmails">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Privacy Settings</h5>
+                                    <span class="badge bg-warning">Security</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Control your privacy and security preferences.</p>
+                                    
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <h6 class="mb-1">Profile Visibility</h6>
+                                                <small class="text-muted">Make your profile visible to others</small>
+                                            </div>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="profileVisibility" checked>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <h6 class="mb-1">Two-Factor Authentication</h6>
+                                                <small class="text-muted">Add an extra layer of security</small>
+                                            </div>
+                                            <div class="form-check form-switch form-switch-success">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="twoFactor" checked>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <h6 class="mb-1">Activity Tracking</h6>
+                                                <small class="text-muted">Allow us to track your activity</small>
+                                            </div>
+                                            <div class="form-check form-switch form-switch-danger">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="activityTracking">
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                            <div>
+                                                <h6 class="mb-1">Data Analytics</h6>
+                                                <small class="text-muted">Share anonymous usage data</small>
+                                            </div>
+                                            <div class="form-check form-switch form-switch-secondary">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="dataAnalytics" checked>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Switch with Icons -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Switches with Icons</h5>
+                                    <span class="badge bg-secondary">Enhanced</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Enhanced switches with icon indicators for better visual feedback.</p>
+                                    
+                                    <div class="row g-4">
+                                        <div class="col-md-6">
+                                            <h6>Dark Mode Toggle</h6>
+                                            <div class="form-check form-switch switch-with-icons">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch">
+                                                <i class="fas fa-sun switch-icon switch-icon-left"></i>
+                                                <i class="fas fa-moon switch-icon switch-icon-right"></i>
+                                                <label class="form-check-label ms-3" for="darkModeSwitch">Dark Mode</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>WiFi Connection</h6>
+                                            <div class="form-check form-switch switch-with-icons form-switch-success">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="wifiSwitch" checked>
+                                                <i class="fas fa-wifi-slash switch-icon switch-icon-left"></i>
+                                                <i class="fas fa-wifi switch-icon switch-icon-right"></i>
+                                                <label class="form-check-label ms-3" for="wifiSwitch">WiFi Enabled</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Sound Control</h6>
+                                            <div class="form-check form-switch switch-with-icons form-switch-warning">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="soundSwitch" checked>
+                                                <i class="fas fa-volume-mute switch-icon switch-icon-left"></i>
+                                                <i class="fas fa-volume-up switch-icon switch-icon-right"></i>
+                                                <label class="form-check-label ms-3" for="soundSwitch">Sound Enabled</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Location Services</h6>
+                                            <div class="form-check form-switch switch-with-icons form-switch-info">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="locationSwitch">
+                                                <i class="fas fa-location-slash switch-icon switch-icon-left"></i>
+                                                <i class="fas fa-map-marker-alt switch-icon switch-icon-right"></i>
+                                                <label class="form-check-label ms-3" for="locationSwitch">Location Access</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Integration -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Form Integration</h5>
+                                    <span class="badge bg-success">Forms</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Use switches in forms for better user experience and clear yes/no options.</p>
+                                    
+                                    <form class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="userName" class="form-label">Username</label>
+                                            <input type="text" class="form-control" id="userName" value="johndoe">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="userEmail" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="userEmail" value="john@example.com">
+                                        </div>
+                                        <div class="col-12">
+                                            <hr>
+                                            <h6>Account Preferences</h6>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="accountActive" checked>
+                                                <label class="form-check-label" for="accountActive">Account Active</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check form-switch form-switch-success">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="emailVerified" checked>
+                                                <label class="form-check-label" for="emailVerified">Email Verified</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check form-switch form-switch-warning">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="publicProfile">
+                                                <label class="form-check-label" for="publicProfile">Public Profile</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check form-switch form-switch-info">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="newsletter" checked>
+                                                <label class="form-check-label" for="newsletter">Newsletter Subscription</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <hr>
+                                            <div class="d-flex justify-content-end gap-2">
+                                                <button type="button" class="btn btn-outline-secondary">Cancel</button>
+                                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Switch States & Events -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Interactive Examples</h5>
+                                    <span class="badge bg-danger">JavaScript</span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Switches with JavaScript event handlers and state management.</p>
+                                    
+                                    <div class="row g-4">
+                                        <div class="col-md-6">
+                                            <div class="card bg-light">
+                                                <div class="card-body">
+                                                    <h6>Status Indicator</h6>
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="checkbox" role="switch" id="statusSwitch">
+                                                            <label class="form-check-label" for="statusSwitch">System Status</label>
+                                                        </div>
+                                                        <span class="badge bg-danger" id="statusBadge">Offline</span>
+                                                    </div>
+                                                    <small class="text-muted">Toggle to change system status</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card bg-light">
+                                                <div class="card-body">
+                                                    <h6>Feature Toggle</h6>
+                                                    <div class="d-flex align-items-center justify-content-between">
+                                                        <div class="form-check form-switch form-switch-success">
+                                                            <input class="form-check-input" type="checkbox" role="switch" id="featureSwitch" checked>
+                                                            <label class="form-check-label" for="featureSwitch">Premium Features</label>
+                                                        </div>
+                                                        <i class="fas fa-crown text-warning" id="premiumIcon"></i>
+                                                    </div>
+                                                    <div id="featureList">
+                                                        <small class="text-success">✓ Advanced Analytics</small><br>
+                                                        <small class="text-success">✓ Priority Support</small><br>
+                                                        <small class="text-success">✓ Custom Themes</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script>
+        // Interactive switch examples
+        document.addEventListener('DOMContentLoaded', function() {
+            // Status switch
+            const statusSwitch = document.getElementById('statusSwitch');
+            const statusBadge = document.getElementById('statusBadge');
+            
+            statusSwitch.addEventListener('change', function() {
+                if (this.checked) {
+                    statusBadge.textContent = 'Online';
+                    statusBadge.className = 'badge bg-success';
+                } else {
+                    statusBadge.textContent = 'Offline';
+                    statusBadge.className = 'badge bg-danger';
+                }
+            });
+
+            // Feature switch
+            const featureSwitch = document.getElementById('featureSwitch');
+            const featureList = document.getElementById('featureList');
+            const premiumIcon = document.getElementById('premiumIcon');
+            
+            featureSwitch.addEventListener('change', function() {
+                if (this.checked) {
+                    featureList.innerHTML = `
+                        <small class="text-success">✓ Advanced Analytics</small><br>
+                        <small class="text-success">✓ Priority Support</small><br>
+                        <small class="text-success">✓ Custom Themes</small>
+                    `;
+                    premiumIcon.style.display = 'block';
+                } else {
+                    featureList.innerHTML = `
+                        <small class="text-muted">✗ Advanced Analytics</small><br>
+                        <small class="text-muted">✗ Priority Support</small><br>
+                        <small class="text-muted">✗ Custom Themes</small>
+                    `;
+                    premiumIcon.style.display = 'none';
+                }
+            });
+
+            // Dark mode switch (demo)
+            const darkModeSwitch = document.getElementById('darkModeSwitch');
+            darkModeSwitch.addEventListener('change', function() {
+                if (this.checked) {
+                    document.documentElement.setAttribute('data-bs-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-bs-theme', 'light');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

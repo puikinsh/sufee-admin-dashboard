@@ -289,7 +289,7 @@ export class WidgetManager {
 
     try {
       const worldMap = new WorldMap('worldMap', {
-        height: 300,
+        height: 320,
         showCountryNames: true,
         backgroundColor: 'white'
       })

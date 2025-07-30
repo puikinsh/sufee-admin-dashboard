@@ -1,7 +1,5 @@
 // Main Application Class - Modern Sufee Admin Dashboard
 
-import { Navigation } from './components/navigation.js'
-import { Search } from './components/search.js'
 import { UserMenu } from './components/user-menu.js'
 import { ThemeManager } from './components/theme-manager.js'
 import { DOM } from './utils/dom.js'
@@ -11,28 +9,33 @@ export class App {
     this.components = new Map()
     this.initialized = false
     this.isCollapsed = false
-    this.isMobile = window.innerWidth < 992
+    this.isMobile = window.innerWidth <= 991.98
+    this.sidebarControlsInitialized = false
   }
 
   init() {
     if (this.initialized) {
-      console.warn('App already initialized')
       return
     }
 
     this.initializeComponents()
     this.setupEventListeners()
-    this.setupSidebarControls()
     this.handleResponsive()
     this.initialized = true
 
-    console.log('Sufee Admin Dashboard v2.0 initialized')
+    // Listen for header loaded to setup sidebar controls
+    document.addEventListener('partialLoaded', (event) => {
+      if (event.detail.partialName === 'header') {
+        // Small delay to ensure DOM is fully updated
+        setTimeout(() => {
+          this.setupSidebarControlsOnce()
+        }, 100)
+      }
+    })
   }
 
   initializeComponents() {
-    // Core navigation
-    this.components.set('navigation', new Navigation())
-    this.components.set('search', new Search())
+    // Initialize user menu and theme (these don't depend on partials)
     this.components.set('userMenu', new UserMenu())
     this.components.set('theme', new ThemeManager())
 
@@ -41,12 +44,14 @@ export class App {
 
     // Load page-specific components
     this.loadPageComponents()
+
+    // Note: Navigation and Search functionality is handled by partials-loader.js
+    // after the partials are loaded to prevent timing conflicts
   }
 
   initializeBootstrapComponents() {
     // Wait for Bootstrap to be available
     if (typeof window.bootstrap === 'undefined') {
-      console.warn('Bootstrap not available, skipping component initialization')
       return
     }
 
@@ -63,8 +68,6 @@ export class App {
     popoverTriggerList.forEach(popoverTriggerEl => {
       new window.bootstrap.Popover(popoverTriggerEl)
     })
-
-    console.log('Bootstrap components initialized')
   }
 
   disableBootstrapCollapse() {
@@ -108,7 +111,7 @@ export class App {
       const { WidgetManager } = await import('./components/widgets.js')
       this.components.set('widgets', new WidgetManager())
     } catch (error) {
-      console.error('Failed to load dashboard components:', error)
+      // Silently fail
     }
   }
 
@@ -117,7 +120,7 @@ export class App {
       const { ChartManager } = await import('./components/charts.js')
       this.components.set('charts', new ChartManager())
     } catch (error) {
-      console.error('Failed to load chart components:', error)
+      // Silently fail
     }
   }
 
@@ -131,7 +134,7 @@ export class App {
         this.components.set(`table-${index}`, new DataTable(table))
       })
     } catch (error) {
-      console.error('Failed to load table components:', error)
+      // Silently fail
     }
   }
 
@@ -145,7 +148,7 @@ export class App {
         this.components.set(`form-${index}`, new FormValidator(form))
       })
     } catch (error) {
-      console.error('Failed to load form components:', error)
+      // Silently fail
     }
   }
 
@@ -166,24 +169,40 @@ export class App {
     window.addEventListener('popstate', this.handlePopState.bind(this))
   }
 
-  setupSidebarControls() {
+  setupSidebarControlsOnce() {
+    // Prevent multiple event listener attachment
+    if (this.sidebarControlsInitialized) {
+      return
+    }
+
     // Desktop sidebar toggle (collapse/expand)
     const sidebarToggleDesktop = document.getElementById('sidebarToggleDesktop')
     if (sidebarToggleDesktop) {
-      sidebarToggleDesktop.addEventListener('click', (e) => {
+      // Remove any existing listeners first
+      sidebarToggleDesktop.replaceWith(sidebarToggleDesktop.cloneNode(true))
+      const newDesktopToggle = document.getElementById('sidebarToggleDesktop')
+      
+      newDesktopToggle.addEventListener('click', (e) => {
         e.preventDefault()
         this.toggleSidebarCollapse()
       })
     }
 
     // Mobile sidebar toggle (show/hide)
-    const sidebarToggleMobile = document.getElementById('sidebarToggle')
+    const sidebarToggleMobile = document.getElementById('sidebarToggleMobile')
     if (sidebarToggleMobile) {
-      sidebarToggleMobile.addEventListener('click', (e) => {
+      // Remove any existing listeners first
+      sidebarToggleMobile.replaceWith(sidebarToggleMobile.cloneNode(true))
+      const newMobileToggle = document.getElementById('sidebarToggleMobile')
+      
+      newMobileToggle.addEventListener('click', (e) => {
         e.preventDefault()
         this.toggleMobileSidebar()
       })
     }
+
+    // Mark as initialized
+    this.sidebarControlsInitialized = true
 
     // Search toggle functionality
     this.setupSearchToggle()
@@ -192,10 +211,10 @@ export class App {
     document.addEventListener('click', (e) => {
       if (this.isMobile) {
         const sidebar = document.getElementById('sidebar')
-        const sidebarToggle = document.getElementById('sidebarToggle')
+        const sidebarToggleMobile = document.getElementById('sidebarToggleMobile')
         
         if (sidebar && sidebar.classList.contains('show')) {
-          if (!sidebar.contains(e.target) && !sidebarToggle?.contains(e.target)) {
+          if (!sidebar.contains(e.target) && !sidebarToggleMobile?.contains(e.target)) {
             this.closeMobileSidebar()
           }
         }
@@ -251,9 +270,15 @@ export class App {
   }
 
   toggleMobileSidebar() {
-    if (!this.isMobile) return
+    if (!this.isMobile) {
+      return
+    }
     
     const sidebar = document.getElementById('sidebar')
+    if (!sidebar) {
+      return
+    }
+    
     if (sidebar.classList.contains('show')) {
       this.closeMobileSidebar()
     } else {
@@ -265,8 +290,20 @@ export class App {
     const sidebar = document.getElementById('sidebar')
     const backdrop = this.getOrCreateBackdrop()
     
-    sidebar.classList.add('show')
-    backdrop.classList.add('show')
+    if (sidebar) {
+      sidebar.classList.add('show')
+      // Force the transform style directly
+      sidebar.style.transform = 'translateX(0)'
+      sidebar.style.position = 'fixed'
+      sidebar.style.top = '0'
+      sidebar.style.left = '0'
+      sidebar.style.zIndex = '1050'
+    }
+    
+    if (backdrop) {
+      backdrop.classList.add('show')
+    }
+    
     document.body.style.overflow = 'hidden'
   }
 
@@ -274,21 +311,31 @@ export class App {
     const sidebar = document.getElementById('sidebar')
     const backdrop = document.querySelector('.sidebar-backdrop')
     
-    sidebar.classList.remove('show')
+    if (sidebar) {
+      sidebar.classList.remove('show')
+      // Force the transform style directly for close
+      sidebar.style.transform = 'translateX(-100%)'
+    }
+    
     if (backdrop) {
       backdrop.classList.remove('show')
     }
+    
     document.body.style.overflow = ''
   }
 
   getOrCreateBackdrop() {
     let backdrop = document.querySelector('.sidebar-backdrop')
+    
     if (!backdrop) {
       backdrop = document.createElement('div')
       backdrop.className = 'sidebar-backdrop'
-      backdrop.addEventListener('click', () => this.closeMobileSidebar())
+      backdrop.addEventListener('click', () => {
+        this.closeMobileSidebar()
+      })
       document.body.appendChild(backdrop)
     }
+    
     return backdrop
   }
 
@@ -304,7 +351,7 @@ export class App {
 
   handleResponsive() {
     const wasMobile = this.isMobile
-    this.isMobile = window.innerWidth < 992
+    this.isMobile = window.innerWidth <= 991.98
     
     // If switching from desktop to mobile
     if (!wasMobile && this.isMobile) {
@@ -367,7 +414,6 @@ export class App {
 
   handlePopState(event) {
     // Handle browser navigation if needed
-    console.log('Navigation state changed', event.state)
   }
 
   // Public API methods

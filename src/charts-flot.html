@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Advanced Charts - Sufee Admin</title>
+    <meta name="description" content="Advanced Charts - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Chart container styles */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        
+        .chart-container-tall {
+            height: 400px;
+        }
+        
+        .chart-container-small {
+            height: 250px;
+        }
+        
+        /* Real-time chart styles */
+        .real-time-info {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            z-index: 10;
+        }
+        
+        .real-time-value {
+            font-weight: bold;
+            color: var(--bs-primary);
+        }
+        
+        /* Chart controls */
+        .chart-controls {
+            margin-bottom: 20px;
+        }
+        
+        .chart-control-btn {
+            margin-right: 10px;
+        }
+        
+        /* Chart legend */
+        .custom-legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        
+        /* Tooltip styling */
+        .chart-tooltip {
+            background: rgba(0, 0, 0, 0.8) !important;
+            color: white !important;
+            border-radius: 4px !important;
+            padding: 8px 12px !important;
+        }
+        
+        /* Interactive features */
+        .interactive-info {
+            background: var(--bs-light);
+            padding: 15px;
+            border-radius: 0.375rem;
+            margin-top: 15px;
+        }
+        
+        .interactive-info h6 {
+            margin-bottom: 10px;
+            color: var(--bs-primary);
+        }
+        
+        .data-point {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 0.875rem;
+        }
+        
+        .data-point strong {
+            color: var(--bs-dark);
+        }
+    </style>
+</head>
+
+<body class="sufee-dashboard" data-page="charts-flot">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Advanced Charts" data-breadcrumb-path="Charts|Advanced Charts"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h1 class="h3 mb-3">Advanced Chart Examples</h1>
+                            <p class="text-muted mb-0">Real-time updates, interactive features, and advanced visualizations using Chart.js</p>
+                        </div>
+                    </div>
+
+                    <!-- Real-time and Line Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Real-time CPU Load</h5>
+                                    <div class="real-time-info">
+                                        Current: <span class="real-time-value" id="cpuValue">0%</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="cpuLoadChart"></canvas>
+                                    </div>
+                                    <div class="chart-controls text-center">
+                                        <button class="btn btn-sm btn-primary chart-control-btn" onclick="toggleRealTime()">
+                                            <i class="fas fa-play"></i> <span id="toggleText">Pause</span>
+                                        </button>
+                                        <button class="btn btn-sm btn-secondary chart-control-btn" onclick="resetChart()">
+                                            <i class="fas fa-refresh"></i> Reset
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Smooth Line Chart</h5>
+                                    <span class="badge bg-info">Interactive</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="smoothLineChart"></canvas>
+                                    </div>
+                                    <div class="interactive-info">
+                                        <h6>Hover over the chart to see values</h6>
+                                        <div id="lineChartInfo">
+                                            <span class="data-point">Click on legend items to toggle datasets</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pie and Advanced Line Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Interactive Pie Chart</h5>
+                                    <span class="badge bg-success">Animated</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="interactivePieChart"></canvas>
+                                    </div>
+                                    <div class="custom-legend" id="pieLegend"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Multi-axis Line Chart</h5>
+                                    <span class="badge bg-warning">Dual Y-Axis</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="multiAxisChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bar Charts with Different Styles -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Gradient Bar Chart</h5>
+                                    <span class="badge bg-primary">Stylized</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="gradientBarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Curved Area Chart</h5>
+                                    <span class="badge bg-secondary">Smooth</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="curvedAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Visualizations -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Time Series Chart</h5>
+                                    <span class="badge bg-info">Zoomable</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container chart-container-tall">
+                                        <canvas id="timeSeriesChart"></canvas>
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <small class="text-muted">Scroll to zoom, drag to pan</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Combined Chart Types</h5>
+                                    <span class="badge bg-danger">Mixed</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container chart-container-tall">
+                                        <canvas id="combinedChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Advanced Charts -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Stacked Area Chart with Annotations</h5>
+                                    <div>
+                                        <button class="btn btn-sm btn-outline-primary me-2" onclick="addAnnotation()">
+                                            <i class="fas fa-plus"></i> Add Event
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="clearAnnotations()">
+                                            <i class="fas fa-times"></i> Clear Events
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container chart-container-tall">
+                                        <canvas id="stackedAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script type="module">
+        import Chart from 'chart.js/auto';
+        
+        // Chart instances
+        let cpuChart, realTimeInterval;
+        let isRealTimeActive = true;
+        
+        // Real-time CPU Load Chart
+        function initCpuLoadChart() {
+            const ctx = document.getElementById('cpuLoadChart').getContext('2d');
+            
+            cpuChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array(20).fill(''),
+                    datasets: [{
+                        label: 'CPU Load',
+                        data: Array(20).fill(0),
+                        borderColor: '#dc3545',
+                        backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 150
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        x: {
+                            display: false
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return 'CPU: ' + context.parsed.y.toFixed(1) + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Start real-time updates
+            startRealTimeUpdates();
+        }
+        
+        function startRealTimeUpdates() {
+            realTimeInterval = setInterval(() => {
+                if (isRealTimeActive) {
+                    // Generate random CPU value
+                    const newValue = Math.random() * 30 + 20 + Math.sin(Date.now() / 1000) * 20;
+                    
+                    // Update chart data
+                    cpuChart.data.datasets[0].data.shift();
+                    cpuChart.data.datasets[0].data.push(newValue);
+                    
+                    // Update display value
+                    document.getElementById('cpuValue').textContent = newValue.toFixed(1) + '%';
+                    
+                    cpuChart.update('none');
+                }
+            }, 500);
+        }
+        
+        // Smooth Line Chart
+        function initSmoothLineChart() {
+            const ctx = document.getElementById('smoothLineChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Sales',
+                        data: [45, 55, 42, 60, 58, 75, 69, 85, 82, 95, 88, 105],
+                        borderColor: '#20c997',
+                        backgroundColor: 'rgba(32, 201, 151, 0.1)',
+                        tension: 0.4,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#20c997',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }, {
+                        label: 'Revenue',
+                        data: [28, 35, 32, 45, 42, 55, 52, 68, 65, 78, 72, 88],
+                        borderColor: '#007bff',
+                        backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                        tension: 0.4,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#007bff',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            borderColor: '#ddd',
+                            borderWidth: 1,
+                            titleFont: {
+                                size: 14
+                            },
+                            bodyFont: {
+                                size: 13
+                            },
+                            padding: 10,
+                            displayColors: true,
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': $';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y + 'k';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Interactive Pie Chart
+        function initInteractivePieChart() {
+            const ctx = document.getElementById('interactivePieChart').getContext('2d');
+            
+            const data = {
+                labels: ['Desktop', 'Mobile', 'Tablet', 'Smart TV', 'Others'],
+                datasets: [{
+                    data: [45, 30, 15, 7, 3],
+                    backgroundColor: [
+                        '#007bff',
+                        '#28a745',
+                        '#ffc107',
+                        '#17a2b8',
+                        '#6c757d'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            };
+            
+            const pieChart = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return label + ': ' + percentage + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Create custom legend
+            const legendContainer = document.getElementById('pieLegend');
+            data.labels.forEach((label, index) => {
+                const legendItem = document.createElement('div');
+                legendItem.className = 'legend-item';
+                legendItem.innerHTML = `
+                    <div class="legend-color" style="background-color: ${data.datasets[0].backgroundColor[index]}"></div>
+                    <span>${label}: ${data.datasets[0].data[index]}%</span>
+                `;
+                legendItem.style.cursor = 'pointer';
+                legendItem.onclick = () => {
+                    const meta = pieChart.getDatasetMeta(0);
+                    meta.data[index].hidden = !meta.data[index].hidden;
+                    pieChart.update();
+                };
+                legendContainer.appendChild(legendItem);
+            });
+        }
+        
+        // Multi-axis Chart
+        function initMultiAxisChart() {
+            const ctx = document.getElementById('multiAxisChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [{
+                        label: 'Revenue ($)',
+                        data: [120000, 150000, 180000, 220000],
+                        borderColor: '#007bff',
+                        backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                        yAxisID: 'y',
+                        tension: 0.3
+                    }, {
+                        label: 'Units Sold',
+                        data: [1200, 1400, 1650, 1900],
+                        borderColor: '#dc3545',
+                        backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                        yAxisID: 'y1',
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Revenue ($)'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Units Sold'
+                            },
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                        },
+                    }
+                }
+            });
+        }
+        
+        // Gradient Bar Chart
+        function initGradientBarChart() {
+            const ctx = document.getElementById('gradientBarChart').getContext('2d');
+            
+            // Create gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+            gradient.addColorStop(0, 'rgba(75, 192, 192, 1)');
+            gradient.addColorStop(1, 'rgba(75, 192, 192, 0.2)');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Daily Sales',
+                        data: [65, 59, 80, 81, 56, 95, 78],
+                        backgroundColor: gradient,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        borderRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Curved Area Chart
+        function initCurvedAreaChart() {
+            const ctx = document.getElementById('curvedAreaChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
+                    datasets: [{
+                        label: 'Network Traffic',
+                        data: [30, 25, 45, 85, 70, 60, 35],
+                        borderColor: '#6f42c1',
+                        backgroundColor: 'rgba(111, 66, 193, 0.2)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 3,
+                        pointRadius: 0,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + ' MB/s';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Time Series Chart
+        function initTimeSeriesChart() {
+            const ctx = document.getElementById('timeSeriesChart').getContext('2d');
+            
+            // Generate time series data
+            const labels = [];
+            const data = [];
+            const now = new Date();
+            
+            for (let i = 30; i >= 0; i--) {
+                const date = new Date(now);
+                date.setDate(date.getDate() - i);
+                labels.push(date.toLocaleDateString());
+                data.push(Math.random() * 50 + 50 + Math.sin(i / 5) * 20);
+            }
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Stock Price',
+                        data: data,
+                        borderColor: '#28a745',
+                        backgroundColor: 'rgba(40, 167, 69, 0.1)',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        zoom: {
+                            zoom: {
+                                wheel: {
+                                    enabled: true,
+                                },
+                                pinch: {
+                                    enabled: true
+                                },
+                                mode: 'x',
+                            },
+                            pan: {
+                                enabled: true,
+                                mode: 'x',
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Combined Chart
+        function initCombinedChart() {
+            const ctx = document.getElementById('combinedChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Sales',
+                        data: [12000, 19000, 15000, 25000, 22000, 30000],
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1,
+                        order: 2
+                    }, {
+                        label: 'Profit Margin',
+                        data: [15, 18, 12, 22, 20, 25],
+                        type: 'line',
+                        borderColor: '#dc3545',
+                        backgroundColor: 'rgba(220, 53, 69, 0.1)',
+                        borderWidth: 3,
+                        yAxisID: 'y1',
+                        order: 1,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Sales ($)'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Margin (%)'
+                            },
+                            grid: {
+                                drawOnChartArea: false,
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Stacked Area Chart
+        let stackedChart;
+        function initStackedAreaChart() {
+            const ctx = document.getElementById('stackedAreaChart').getContext('2d');
+            
+            stackedChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
+                    datasets: [{
+                        label: 'Product A',
+                        data: [20, 30, 25, 35, 30, 40, 35, 45],
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        fill: true
+                    }, {
+                        label: 'Product B',
+                        data: [15, 25, 20, 30, 25, 35, 30, 40],
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                        borderColor: 'rgb(54, 162, 235)',
+                        fill: true
+                    }, {
+                        label: 'Product C',
+                        data: [10, 15, 15, 20, 20, 25, 25, 30],
+                        backgroundColor: 'rgba(255, 206, 86, 0.5)',
+                        borderColor: 'rgb(255, 206, 86)',
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            display: true
+                        },
+                        y: {
+                            stacked: true,
+                            display: true
+                        }
+                    },
+                    plugins: {
+                        annotation: {
+                            annotations: {}
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Control functions
+        window.toggleRealTime = function() {
+            isRealTimeActive = !isRealTimeActive;
+            document.getElementById('toggleText').textContent = isRealTimeActive ? 'Pause' : 'Play';
+        };
+        
+        window.resetChart = function() {
+            cpuChart.data.datasets[0].data = Array(20).fill(0);
+            cpuChart.update();
+        };
+        
+        let annotationCount = 0;
+        window.addAnnotation = function() {
+            const weekIndex = Math.floor(Math.random() * 8);
+            const annotationId = 'event' + annotationCount++;
+            
+            if (!stackedChart.options.plugins.annotation) {
+                stackedChart.options.plugins.annotation = { annotations: {} };
+            }
+            
+            stackedChart.options.plugins.annotation.annotations[annotationId] = {
+                type: 'line',
+                xMin: weekIndex,
+                xMax: weekIndex,
+                borderColor: 'rgb(255, 99, 132)',
+                borderWidth: 2,
+                label: {
+                    content: 'Event',
+                    enabled: true,
+                    position: 'top'
+                }
+            };
+            
+            stackedChart.update();
+        };
+        
+        window.clearAnnotations = function() {
+            if (stackedChart.options.plugins.annotation) {
+                stackedChart.options.plugins.annotation.annotations = {};
+                stackedChart.update();
+            }
+            annotationCount = 0;
+        };
+        
+        // Initialize all charts
+        document.addEventListener('DOMContentLoaded', function() {
+            initCpuLoadChart();
+            initSmoothLineChart();
+            initInteractivePieChart();
+            initMultiAxisChart();
+            initGradientBarChart();
+            initCurvedAreaChart();
+            initTimeSeriesChart();
+            initCombinedChart();
+            initStackedAreaChart();
+        });
+        
+        // Cleanup on page unload
+        window.addEventListener('beforeunload', function() {
+            if (realTimeInterval) {
+                clearInterval(realTimeInterval);
+            }
+        });
+    </script>
+</body>
+</html>

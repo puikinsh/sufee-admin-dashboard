@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Tabs - Sufee Admin</title>
+    <meta name="description" content="Tab Components - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+  <script type="module" crossorigin src="/assets/ui-tabs-Cn3NxpfL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="ui-tabs">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Tabs" data-breadcrumb-path="UI Elements|Components|Tabs"></div>
+
+            <!-- Content Area -->
+            <section class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Basic Navigation Examples -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Basic Tab Navigation</h5>
+                                    <small class="text-muted">Standard horizontal tabs with content panels</small>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="nav nav-tabs mb-4" id="basicTabs" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">
+                                                <i class="fas fa-chart-line me-2"></i>Overview
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="analytics-tab" data-bs-toggle="tab" data-bs-target="#analytics" type="button" role="tab" aria-controls="analytics" aria-selected="false">
+                                                <i class="fas fa-analytics me-2"></i>Analytics
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab" aria-controls="users" aria-selected="false">
+                                                <i class="fas fa-users me-2"></i>Users
+                                                <span class="badge bg-primary rounded-pill ms-2">24</span>
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">
+                                                <i class="fas fa-cog me-2"></i>Settings
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" type="button" role="tab" aria-selected="false" disabled>
+                                                <i class="fas fa-ban me-2"></i>Disabled
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    
+                                    <div class="tab-content" id="basicTabsContent">
+                                        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                                            <div class="row g-4">
+                                                <div class="col-md-8">
+                                                    <h6 class="fw-bold mb-3">Dashboard Overview</h6>
+                                                    <p class="mb-4">Welcome to your comprehensive dashboard overview. Here you can monitor key metrics and performance indicators.</p>
+                                                    
+                                                    <div class="row g-3">
+                                                        <div class="col-6 col-lg-3">
+                                                            <div class="card border-0 bg-primary text-white">
+                                                                <div class="card-body text-center p-3">
+                                                                    <i class="fas fa-users fs-2 mb-2"></i>
+                                                                    <h4 class="mb-0">1,432</h4>
+                                                                    <small>Total Users</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-lg-3">
+                                                            <div class="card border-0 bg-success text-white">
+                                                                <div class="card-body text-center p-3">
+                                                                    <i class="fas fa-shopping-cart fs-2 mb-2"></i>
+                                                                    <h4 class="mb-0">856</h4>
+                                                                    <small>Orders</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-lg-3">
+                                                            <div class="card border-0 bg-warning text-white">
+                                                                <div class="card-body text-center p-3">
+                                                                    <i class="fas fa-dollar-sign fs-2 mb-2"></i>
+                                                                    <h4 class="mb-0">$24.5K</h4>
+                                                                    <small>Revenue</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-lg-3">
+                                                            <div class="card border-0 bg-info text-white">
+                                                                <div class="card-body text-center p-3">
+                                                                    <i class="fas fa-chart-bar fs-2 mb-2"></i>
+                                                                    <h4 class="mb-0">95%</h4>
+                                                                    <small>Growth</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h6 class="fw-bold mb-3">Recent Activity</h6>
+                                                    <div class="list-group list-group-flush">
+                                                        <div class="list-group-item border-0 px-0 py-2">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar bg-primary rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                                                    <i class="fas fa-user text-white" style="font-size: 12px;"></i>
+                                                                </div>
+                                                                <div class="flex-grow-1">
+                                                                    <div class="fw-semibold">New user registered</div>
+                                                                    <small class="text-muted">2 minutes ago</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-group-item border-0 px-0 py-2">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar bg-success rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                                                    <i class="fas fa-shopping-cart text-white" style="font-size: 12px;"></i>
+                                                                </div>
+                                                                <div class="flex-grow-1">
+                                                                    <div class="fw-semibold">Order completed</div>
+                                                                    <small class="text-muted">5 minutes ago</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-group-item border-0 px-0 py-2">
+                                                            <div class="d-flex align-items-center">
+                                                                <div class="avatar bg-warning rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                                                    <i class="fas fa-exclamation-triangle text-white" style="font-size: 12px;"></i>
+                                                                </div>
+                                                                <div class="flex-grow-1">
+                                                                    <div class="fw-semibold">System alert</div>
+                                                                    <small class="text-muted">10 minutes ago</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="tab-pane fade" id="analytics" role="tabpanel" aria-labelledby="analytics-tab">
+                                            <h6 class="fw-bold mb-3">Analytics & Reports</h6>
+                                            <div class="row g-4">
+                                                <div class="col-md-6">
+                                                    <div class="card border-0 shadow-sm">
+                                                        <div class="card-body">
+                                                            <h6 class="card-title">Website Traffic</h6>
+                                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                                <span>Visitors</span>
+                                                                <span class="fw-bold">24,567</span>
+                                                            </div>
+                                                            <div class="progress mb-2" style="height: 8px;">
+                                                                <div class="progress-bar bg-primary" style="width: 75%"></div>
+                                                            </div>
+                                                            <small class="text-muted">75% increase from last month</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card border-0 shadow-sm">
+                                                        <div class="card-body">
+                                                            <h6 class="card-title">Conversion Rate</h6>
+                                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                                <span>Conversions</span>
+                                                                <span class="fw-bold">3.2%</span>
+                                                            </div>
+                                                            <div class="progress mb-2" style="height: 8px;">
+                                                                <div class="progress-bar bg-success" style="width: 32%"></div>
+                                                            </div>
+                                                            <small class="text-success">+0.5% from last week</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mt-4">
+                                                <h6 class="fw-bold mb-3">Traffic Sources</h6>
+                                                <div class="table-responsive">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Source</th>
+                                                                <th>Visitors</th>
+                                                                <th>Bounce Rate</th>
+                                                                <th>Conversion</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><i class="fab fa-google me-2 text-danger"></i>Google</td>
+                                                                <td>12,340</td>
+                                                                <td>45.2%</td>
+                                                                <td><span class="badge bg-success">High</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fab fa-facebook me-2 text-primary"></i>Facebook</td>
+                                                                <td>8,921</td>
+                                                                <td>52.1%</td>
+                                                                <td><span class="badge bg-warning text-dark">Medium</span></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><i class="fas fa-link me-2 text-secondary"></i>Direct</td>
+                                                                <td>3,306</td>
+                                                                <td>38.7%</td>
+                                                                <td><span class="badge bg-success">High</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                                <h6 class="fw-bold mb-0">User Management</h6>
+                                                <div>
+                                                    <button class="btn btn-primary btn-sm me-2">
+                                                        <i class="fas fa-plus me-1"></i>Add User
+                                                    </button>
+                                                    <button class="btn btn-outline-secondary btn-sm">
+                                                        <i class="fas fa-download me-1"></i>Export
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row g-3 mb-4">
+                                                <div class="col-sm-6 col-lg-3">
+                                                    <div class="card text-center border-0 bg-light">
+                                                        <div class="card-body py-3">
+                                                            <i class="fas fa-users text-primary fs-2 mb-2"></i>
+                                                            <h5 class="mb-0">1,432</h5>
+                                                            <small class="text-muted">Total Users</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-lg-3">
+                                                    <div class="card text-center border-0 bg-light">
+                                                        <div class="card-body py-3">
+                                                            <i class="fas fa-user-check text-success fs-2 mb-2"></i>
+                                                            <h5 class="mb-0">1,289</h5>
+                                                            <small class="text-muted">Active Users</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-lg-3">
+                                                    <div class="card text-center border-0 bg-light">
+                                                        <div class="card-body py-3">
+                                                            <i class="fas fa-user-plus text-info fs-2 mb-2"></i>
+                                                            <h5 class="mb-0">24</h5>
+                                                            <small class="text-muted">New Today</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-lg-3">
+                                                    <div class="card text-center border-0 bg-light">
+                                                        <div class="card-body py-3">
+                                                            <i class="fas fa-user-times text-warning fs-2 mb-2"></i>
+                                                            <h5 class="mb-0">143</h5>
+                                                            <small class="text-muted">Inactive</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="list-group">
+                                                <div class="list-group-item">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-auto">
+                                                            <img src="images/admin.jpg" alt="User" class="rounded-circle" width="40" height="40">
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="fw-semibold">John Doe</div>
+                                                            <small class="text-muted">john.doe@example.com</small>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <span class="badge bg-success">Active</span>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                                                                    Actions
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>View</a></li>
+                                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Edit</a></li>
+                                                                    <li><hr class="dropdown-divider"></li>
+                                                                    <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="list-group-item">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-auto">
+                                                            <img src="images/admin.jpg" alt="User" class="rounded-circle" width="40" height="40">
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="fw-semibold">Jane Smith</div>
+                                                            <small class="text-muted">jane.smith@example.com</small>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <span class="badge bg-primary">Online</span>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                                                                    Actions
+                                                                </button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-eye me-2"></i>View</a></li>
+                                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Edit</a></li>
+                                                                    <li><hr class="dropdown-divider"></li>
+                                                                    <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Delete</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                                            <h6 class="fw-bold mb-4">Application Settings</h6>
+                                            <div class="row g-4">
+                                                <div class="col-md-6">
+                                                    <div class="card border-0 shadow-sm">
+                                                        <div class="card-body">
+                                                            <h6 class="card-title">General Settings</h6>
+                                                            <div class="mb-3">
+                                                                <label for="appName" class="form-label">Application Name</label>
+                                                                <input type="text" class="form-control" id="appName" value="Sufee Admin Dashboard">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="appUrl" class="form-label">Application URL</label>
+                                                                <input type="url" class="form-control" id="appUrl" value="https://example.com">
+                                                            </div>
+                                                            <div class="form-check form-switch mb-3">
+                                                                <input class="form-check-input" type="checkbox" id="maintenanceMode">
+                                                                <label class="form-check-label" for="maintenanceMode">
+                                                                    Maintenance Mode
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check form-switch mb-3">
+                                                                <input class="form-check-input" type="checkbox" id="debugMode" checked>
+                                                                <label class="form-check-label" for="debugMode">
+                                                                    Debug Mode
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card border-0 shadow-sm">
+                                                        <div class="card-body">
+                                                            <h6 class="card-title">Notification Settings</h6>
+                                                            <div class="form-check form-switch mb-3">
+                                                                <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
+                                                                <label class="form-check-label" for="emailNotifications">
+                                                                    Email Notifications
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check form-switch mb-3">
+                                                                <input class="form-check-input" type="checkbox" id="pushNotifications">
+                                                                <label class="form-check-label" for="pushNotifications">
+                                                                    Push Notifications
+                                                                </label>
+                                                            </div>
+                                                            <div class="form-check form-switch mb-3">
+                                                                <input class="form-check-input" type="checkbox" id="smsNotifications">
+                                                                <label class="form-check-label" for="smsNotifications">
+                                                                    SMS Notifications
+                                                                </label>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="notificationFreq" class="form-label">Notification Frequency</label>
+                                                                <select class="form-select" id="notificationFreq">
+                                                                    <option>Immediately</option>
+                                                                    <option selected>Daily Digest</option>
+                                                                    <option>Weekly Summary</option>
+                                                                    <option>Never</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-4">
+                                                <button class="btn btn-primary me-2">Save Settings</button>
+                                                <button class="btn btn-outline-secondary">Reset to Defaults</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Navigation Examples -->
+                    <div class="row mb-4">
+                        <!-- Pills Navigation -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Pills Navigation</h5>
+                                    <small class="text-muted">Rounded pill-style navigation tabs</small>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="nav nav-pills mb-3" id="pillTabs" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="pills-inbox-tab" data-bs-toggle="pill" data-bs-target="#pills-inbox" type="button" role="tab">
+                                                <i class="fas fa-inbox me-1"></i>Inbox
+                                                <span class="badge bg-danger rounded-pill ms-2">5</span>
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="pills-sent-tab" data-bs-toggle="pill" data-bs-target="#pills-sent" type="button" role="tab">
+                                                <i class="fas fa-paper-plane me-1"></i>Sent
+                                            </button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="pills-drafts-tab" data-bs-toggle="pill" data-bs-target="#pills-drafts" type="button" role="tab">
+                                                <i class="fas fa-edit me-1"></i>Drafts
+                                                <span class="badge bg-warning text-dark rounded-pill ms-2">2</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="pillTabContent">
+                                        <div class="tab-pane fade show active" id="pills-inbox" role="tabpanel" aria-labelledby="pills-inbox-tab">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <h6 class="mb-0">Inbox Messages</h6>
+                                                <span class="badge bg-primary">5 unread</span>
+                                            </div>
+                                            <div class="list-group list-group-flush">
+                                                <div class="list-group-item d-flex justify-content-between align-items-start px-0">
+                                                    <div class="ms-2 me-auto">
+                                                        <div class="fw-bold">Meeting Reminder</div>
+                                                        <div class="small text-muted">Team meeting at 3 PM today</div>
+                                                    </div>
+                                                    <span class="badge bg-primary rounded-pill">New</span>
+                                                </div>
+                                                <div class="list-group-item d-flex justify-content-between align-items-start px-0">
+                                                    <div class="ms-2 me-auto">
+                                                        <div class="fw-bold">Project Update</div>
+                                                        <div class="small text-muted">Latest status report available</div>
+                                                    </div>
+                                                    <span class="badge bg-secondary rounded-pill">Read</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-sent" role="tabpanel" aria-labelledby="pills-sent-tab">
+                                            <h6 class="mb-3">Sent Messages</h6>
+                                            <div class="text-center py-4">
+                                                <i class="fas fa-paper-plane fs-1 text-muted mb-3"></i>
+                                                <p class="text-muted mb-0">No sent messages yet</p>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-drafts" role="tabpanel" aria-labelledby="pills-drafts-tab">
+                                            <h6 class="mb-3">Draft Messages</h6>
+                                            <div class="list-group list-group-flush">
+                                                <div class="list-group-item px-0">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <div class="fw-semibold">Welcome Email Template</div>
+                                                            <small class="text-muted">Last edited 2 hours ago</small>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-outline-primary">Continue</button>
+                                                    </div>
+                                                </div>
+                                                <div class="list-group-item px-0">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <div class="fw-semibold">Newsletter Draft</div>
+                                                            <small class="text-muted">Last edited yesterday</small>
+                                                        </div>
+                                                        <button class="btn btn-sm btn-outline-primary">Continue</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Vertical Pills -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Vertical Pills</h5>
+                                    <small class="text-muted">Vertical navigation for sidebar-style layouts</small>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                <button class="nav-link active mb-2" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile">
+                                                    <i class="fas fa-user me-2"></i>Profile
+                                                </button>
+                                                <button class="nav-link mb-2" id="v-pills-security-tab" data-bs-toggle="pill" data-bs-target="#v-pills-security">
+                                                    <i class="fas fa-shield-alt me-2"></i>Security
+                                                </button>
+                                                <button class="nav-link mb-2" id="v-pills-billing-tab" data-bs-toggle="pill" data-bs-target="#v-pills-billing">
+                                                    <i class="fas fa-credit-card me-2"></i>Billing
+                                                </button>
+                                                <button class="nav-link mb-2" id="v-pills-notifications-tab" data-bs-toggle="pill" data-bs-target="#v-pills-notifications">
+                                                    <i class="fas fa-bell me-2"></i>Notifications
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="tab-content" id="v-pills-tabContent">
+                                                <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel">
+                                                    <h6 class="fw-bold mb-3">Profile Settings</h6>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Full Name</label>
+                                                        <input type="text" class="form-control form-control-sm" value="John Doe">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Email</label>
+                                                        <input type="email" class="form-control form-control-sm" value="john@example.com">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Bio</label>
+                                                        <textarea class="form-control form-control-sm" rows="2" placeholder="Tell us about yourself"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-security" role="tabpanel">
+                                                    <h6 class="fw-bold mb-3">Security Settings</h6>
+                                                    <div class="form-check form-switch mb-3">
+                                                        <input class="form-check-input" type="checkbox" id="twoFactor" checked>
+                                                        <label class="form-check-label" for="twoFactor">
+                                                            Two-factor authentication
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-switch mb-3">
+                                                        <input class="form-check-input" type="checkbox" id="loginAlerts">
+                                                        <label class="form-check-label" for="loginAlerts">
+                                                            Login alerts
+                                                        </label>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-outline-danger">Change Password</button>
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-billing" role="tabpanel">
+                                                    <h6 class="fw-bold mb-3">Billing Information</h6>
+                                                    <div class="card border-0 bg-light mb-3">
+                                                        <div class="card-body p-3">
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <div>
+                                                                    <div class="fw-semibold">Pro Plan</div>
+                                                                    <small class="text-muted">$29/month</small>
+                                                                </div>
+                                                                <span class="badge bg-success">Active</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-outline-primary">Manage Subscription</button>
+                                                </div>
+                                                <div class="tab-pane fade" id="v-pills-notifications" role="tabpanel">
+                                                    <h6 class="fw-bold mb-3">Notification Preferences</h6>
+                                                    <div class="form-check form-switch mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="emailNews" checked>
+                                                        <label class="form-check-label" for="emailNews">Email newsletters</label>
+                                                    </div>
+                                                    <div class="form-check form-switch mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="pushNews">
+                                                        <label class="form-check-label" for="pushNews">Push notifications</label>
+                                                    </div>
+                                                    <div class="form-check form-switch mb-2">
+                                                        <input class="form-check-input" type="checkbox" id="smsNews">
+                                                        <label class="form-check-label" for="smsNews">SMS updates</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Tab Features -->
+                    <div class="row mb-4">
+                        <!-- Justified & Fill Tabs -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Justified & Fill Tabs</h5>
+                                    <small class="text-muted">Tabs that fill the full width equally</small>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="nav nav-tabs nav-justified mb-3" id="justifiedTabs" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="sales-tab" data-bs-toggle="tab" data-bs-target="#sales">Sales</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing">Marketing</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="support-tab" data-bs-toggle="tab" data-bs-target="#support">Support</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="justifiedTabsContent">
+                                        <div class="tab-pane fade show active" id="sales" role="tabpanel">
+                                            <div class="row text-center g-3">
+                                                <div class="col-4">
+                                                    <div class="border rounded p-3">
+                                                        <i class="fas fa-chart-line text-success fs-2 mb-2"></i>
+                                                        <div class="fw-bold">$125K</div>
+                                                        <small class="text-muted">Revenue</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="border rounded p-3">
+                                                        <i class="fas fa-shopping-cart text-primary fs-2 mb-2"></i>
+                                                        <div class="fw-bold">1,543</div>
+                                                        <small class="text-muted">Orders</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="border rounded p-3">
+                                                        <i class="fas fa-percentage text-warning fs-2 mb-2"></i>
+                                                        <div class="fw-bold">12.5%</div>
+                                                        <small class="text-muted">Growth</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="marketing" role="tabpanel">
+                                            <div class="row text-center g-3">
+                                                <div class="col-6">
+                                                    <div class="border rounded p-3">
+                                                        <i class="fas fa-eye text-info fs-2 mb-2"></i>
+                                                        <div class="fw-bold">24,567</div>
+                                                        <small class="text-muted">Page Views</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="border rounded p-3">
+                                                        <i class="fas fa-mouse-pointer text-danger fs-2 mb-2"></i>
+                                                        <div class="fw-bold">3.2%</div>
+                                                        <small class="text-muted">CTR</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="support" role="tabpanel">
+                                            <div class="row text-center g-3">
+                                                <div class="col-6">
+                                                    <div class="border rounded p-3">
+                                                        <i class="fas fa-ticket-alt text-secondary fs-2 mb-2"></i>
+                                                        <div class="fw-bold">42</div>
+                                                        <small class="text-muted">Open Tickets</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="border rounded p-3">
+                                                        <i class="fas fa-clock text-warning fs-2 mb-2"></i>
+                                                        <div class="fw-bold">2.1h</div>
+                                                        <small class="text-muted">Avg Response</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab with Dropdown -->
+                        <div class="col-lg-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Tabs with Dropdown</h5>
+                                    <small class="text-muted">Advanced tab navigation with dropdown menus</small>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="nav nav-tabs mb-3" id="dropdownTabs" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard">
+                                                <i class="fas fa-home me-1"></i>Dashboard
+                                            </button>
+                                        </li>
+                                        <li class="nav-item dropdown" role="presentation">
+                                            <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" type="button">
+                                                <i class="fas fa-chart-bar me-1"></i>Reports
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="tab" data-bs-target="#monthly">Monthly Report</a></li>
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="tab" data-bs-target="#quarterly">Quarterly Report</a></li>
+                                                <li><a class="dropdown-item" href="#" data-bs-toggle="tab" data-bs-target="#annual">Annual Report</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link" id="tools-tab" data-bs-toggle="tab" data-bs-target="#tools">
+                                                <i class="fas fa-tools me-1"></i>Tools
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="dropdownTabsContent">
+                                        <div class="tab-pane fade show active" id="dashboard" role="tabpanel">
+                                            <h6 class="fw-bold mb-3">Dashboard Overview</h6>
+                                            <div class="alert alert-info" role="alert">
+                                                <i class="fas fa-info-circle me-2"></i>
+                                                Welcome to your dashboard! Use the dropdown above to access different reports.
+                                            </div>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar bg-success" style="width: 75%"></div>
+                                            </div>
+                                            <small class="text-muted">Overall performance: 75%</small>
+                                        </div>
+                                        <div class="tab-pane fade" id="monthly" role="tabpanel">
+                                            <h6 class="fw-bold mb-3">Monthly Report</h6>
+                                            <p>This month's performance summary and key metrics.</p>
+                                            <div class="row g-2">
+                                                <div class="col-6">
+                                                    <div class="card border-0 bg-light text-center p-2">
+                                                        <div class="fw-bold text-primary">$12,450</div>
+                                                        <small>Revenue</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="card border-0 bg-light text-center p-2">
+                                                        <div class="fw-bold text-success">245</div>
+                                                        <small>Orders</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="quarterly" role="tabpanel">
+                                            <h6 class="fw-bold mb-3">Quarterly Report</h6>
+                                            <p>Three-month performance analysis and trends.</p>
+                                            <div class="progress mb-2">
+                                                <div class="progress-bar bg-warning" style="width: 60%"></div>
+                                            </div>
+                                            <small class="text-muted">Quarterly target: 60% achieved</small>
+                                        </div>
+                                        <div class="tab-pane fade" id="annual" role="tabpanel">
+                                            <h6 class="fw-bold mb-3">Annual Report</h6>
+                                            <p>Yearly overview and comprehensive analysis.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span>Annual Growth</span>
+                                                <span class="badge bg-success fs-6">+25%</span>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tools" role="tabpanel">
+                                            <h6 class="fw-bold mb-3">Tools & Utilities</h6>
+                                            <div class="row g-2">
+                                                <div class="col-6">
+                                                    <button class="btn btn-outline-primary btn-sm w-100">
+                                                        <i class="fas fa-download me-1"></i>Export Data
+                                                    </button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn btn-outline-secondary btn-sm w-100">
+                                                        <i class="fas fa-upload me-1"></i>Import Data
+                                                    </button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn btn-outline-info btn-sm w-100">
+                                                        <i class="fas fa-sync me-1"></i>Sync
+                                                    </button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <button class="btn btn-outline-warning btn-sm w-100">
+                                                        <i class="fas fa-cog me-1"></i>Settings
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modern Tab Styles -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Custom Tab Styles</h5>
+                                    <small class="text-muted">Enhanced tab designs with custom styling</small>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Underline Style Tabs -->
+                                    <div class="mb-4">
+                                        <h6 class="fw-bold mb-3">Underline Style</h6>
+                                        <ul class="nav nav-underline mb-3" id="underlineTabs" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="home-underline-tab" data-bs-toggle="tab" data-bs-target="#home-underline">Home</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="about-underline-tab" data-bs-toggle="tab" data-bs-target="#about-underline">About</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="contact-underline-tab" data-bs-toggle="tab" data-bs-target="#contact-underline">Contact</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="underlineTabsContent">
+                                            <div class="tab-pane fade show active" id="home-underline" role="tabpanel">
+                                                <p class="mb-0">This is the home tab content with underline styling. The active tab has a clean underline indicator.</p>
+                                            </div>
+                                            <div class="tab-pane fade" id="about-underline" role="tabpanel">
+                                                <p class="mb-0">About section content goes here. Underline tabs provide a minimal and modern appearance.</p>
+                                            </div>
+                                            <div class="tab-pane fade" id="contact-underline" role="tabpanel">
+                                                <p class="mb-0">Contact information and forms would be displayed in this tab panel.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Colored Tabs -->
+                                    <div class="mb-4">
+                                        <h6 class="fw-bold mb-3">Colored Tab Variations</h6>
+                                        <ul class="nav nav-pills mb-3" id="coloredTabs" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active bg-primary" id="primary-tab" data-bs-toggle="pill" data-bs-target="#primary-content">Primary</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link bg-success text-white" id="success-tab" data-bs-toggle="pill" data-bs-target="#success-content">Success</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link bg-warning text-dark" id="warning-tab" data-bs-toggle="pill" data-bs-target="#warning-content">Warning</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link bg-danger text-white" id="danger-tab" data-bs-toggle="pill" data-bs-target="#danger-content">Danger</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="coloredTabsContent">
+                                            <div class="tab-pane fade show active" id="primary-content" role="tabpanel">
+                                                <div class="alert alert-primary" role="alert">
+                                                    <strong>Primary:</strong> This tab demonstrates primary color styling with matching alert.
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="success-content" role="tabpanel">
+                                                <div class="alert alert-success" role="alert">
+                                                    <strong>Success:</strong> This tab shows success color styling with corresponding content.
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="warning-content" role="tabpanel">
+                                                <div class="alert alert-warning" role="alert">
+                                                    <strong>Warning:</strong> This tab uses warning colors to highlight important information.
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="danger-content" role="tabpanel">
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>Danger:</strong> This tab uses danger styling for critical or error-related content.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/ui-tabs-legacy-DLxAec9d.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

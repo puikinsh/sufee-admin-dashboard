@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Chart.js - Sufee Admin</title>
+    <meta name="description" content="Chart.js Examples - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Chart container styles */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 20px;
+        }
+        
+        .chart-container-tall {
+            height: 400px;
+        }
+        
+        .chart-container-small {
+            height: 200px;
+        }
+        
+        /* Chart card styles */
+        .chart-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .chart-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Legend customization */
+        .chart-legend {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 0.375rem;
+        }
+        
+        /* Stats display */
+        .chart-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        
+        .chart-stat {
+            text-align: center;
+        }
+        
+        .chart-stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--bs-primary);
+        }
+        
+        .chart-stat-label {
+            font-size: 0.875rem;
+            color: var(--bs-secondary);
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/charts-chartjs-D72DZTwI.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="charts-chartjs">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Chart.js" data-breadcrumb-path="Charts|Chart.js"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h1 class="h3 mb-3">Chart.js Examples</h1>
+                            <p class="text-muted mb-0">Beautiful and responsive charts using Chart.js library with various chart types and configurations.</p>
+                        </div>
+                    </div>
+
+                    <!-- Line and Bar Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Line Chart</h5>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-cog"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" onclick="updateLineChart('week')">Last Week</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateLineChart('month')">Last Month</a></li>
+                                            <li><a class="dropdown-item" href="#" onclick="updateLineChart('year')">Last Year</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-stats">
+                                        <div class="chart-stat">
+                                            <div class="chart-stat-value">$12,345</div>
+                                            <div class="chart-stat-label">Total Revenue</div>
+                                        </div>
+                                        <div class="chart-stat">
+                                            <div class="chart-stat-value">+23%</div>
+                                            <div class="chart-stat-label">Growth</div>
+                                        </div>
+                                        <div class="chart-stat">
+                                            <div class="chart-stat-value">1,234</div>
+                                            <div class="chart-stat-label">Orders</div>
+                                        </div>
+                                    </div>
+                                    <div class="chart-container">
+                                        <canvas id="lineChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Bar Chart</h5>
+                                    <span class="badge bg-primary">Monthly Sales</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="barChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pie and Doughnut Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Pie Chart</h5>
+                                    <span class="badge bg-success">Categories</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="pieChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Doughnut Chart</h5>
+                                    <span class="badge bg-info">Market Share</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="doughnutChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Radar and Polar Area Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Radar Chart</h5>
+                                    <span class="badge bg-warning">Skills</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="radarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Polar Area Chart</h5>
+                                    <span class="badge bg-danger">Distribution</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="polarAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mixed and Area Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Mixed Chart</h5>
+                                    <span class="badge bg-secondary">Revenue vs Orders</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container chart-container-tall">
+                                        <canvas id="mixedChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Area Chart</h5>
+                                    <span class="badge bg-dark">Traffic</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container chart-container-tall">
+                                        <canvas id="areaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bubble and Scatter Charts -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Bubble Chart</h5>
+                                    <span class="badge bg-primary">Data Points</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="bubbleChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Scatter Chart</h5>
+                                    <span class="badge bg-success">Correlation</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container">
+                                        <canvas id="scatterChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Bar and Stacked Charts -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Horizontal Bar Chart</h5>
+                                    <span class="badge bg-info">Rankings</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container chart-container-tall">
+                                        <canvas id="horizontalBarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card chart-card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Stacked Bar Chart</h5>
+                                    <span class="badge bg-warning">Breakdown</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-container chart-container-tall">
+                                        <canvas id="stackedBarChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/charts-chartjs-legacy-hkTgeO9j.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

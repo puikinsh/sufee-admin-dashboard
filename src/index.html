@@ -222,15 +222,15 @@
                     </div>
 
                     <!-- Traffic Chart & World Map Row -->
-                    <div class="row g-4 mb-4">
+                    <div class="row g-4 mb-4 align-items-stretch">
                         <!-- World Map - Left Side -->
                         <div class="col-xl-4 col-lg-6">
-                            <div class="card" style="height: 500px;">
+                            <div class="card" style="min-height: 500px; height: auto;">
                                 <div class="card-header">
                                     <h5 class="card-title mb-0">World Map</h5>
                                     <small class="text-muted">Global Visitor Statistics</small>
                                 </div>
-                                <div class="card-body p-0">
+                                <div class="card-body p-0" style="position: relative;">
                                     <div id="worldMap" style="height: 320px; width: 100%;" class="d-flex align-items-center justify-content-center bg-light">
                                         <p class="text-muted mb-0">Interactive world map will load here</p>
                                     </div>
@@ -259,7 +259,7 @@
 
                         <!-- Traffic Chart - Center, Taller -->
                         <div class="col-xl-5 col-lg-6">
-                            <div class="card" style="height: 500px;">
+                            <div class="card" style="min-height: 500px; height: auto;">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <div>
                                         <h5 class="card-title mb-0">Traffic</h5>
@@ -285,24 +285,27 @@
                                     <canvas id="trafficChart" height="280"></canvas>
                                 </div>
                                 <div class="card-footer">
-                                    <div class="row text-center">
-                                        <div class="col">
+                                    <div class="row text-center g-3">
+                                        <div class="col-12 col-sm-4">
                                             <div class="text-muted small">Visits</div>
-                                            <strong>29,703 Users (40%)</strong>
+                                            <strong class="d-block text-nowrap">29,703 Users</strong>
+                                            <small class="text-muted">(40%)</small>
                                             <div class="progress mt-2" style="height: 4px;">
                                                 <div class="progress-bar bg-success" style="width: 40%"></div>
                                             </div>
                                         </div>
-                                        <div class="col">
+                                        <div class="col-12 col-sm-4">
                                             <div class="text-muted small">Unique</div>
-                                            <strong>24,093 Users (20%)</strong>
+                                            <strong class="d-block text-nowrap">24,093 Users</strong>
+                                            <small class="text-muted">(20%)</small>
                                             <div class="progress mt-2" style="height: 4px;">
                                                 <div class="progress-bar bg-info" style="width: 20%"></div>
                                             </div>
                                         </div>
-                                        <div class="col">
+                                        <div class="col-12 col-sm-4">
                                             <div class="text-muted small">Pageviews</div>
-                                            <strong>78,706 Views (60%)</strong>
+                                            <strong class="d-block text-nowrap">78,706 Views</strong>
+                                            <small class="text-muted">(60%)</small>
                                             <div class="progress mt-2" style="height: 4px;">
                                                 <div class="progress-bar bg-warning" style="width: 60%"></div>
                                             </div>
@@ -314,7 +317,7 @@
 
                         <!-- Profile Card & Stats - Right Side -->
                         <div class="col-xl-3">
-                            <div class="row g-3" style="height: 500px;">
+                            <div class="row g-3" style="min-height: 500px;">
                                 <!-- Profile Card -->
                                 <div class="col-12">
                                     <div class="card x-card">
@@ -385,7 +388,7 @@
                                                 <div class="card-body d-flex align-items-center">
                                                     <div class="me-3">
                                                         <div class="icon-circle bg-primary">
-                                                            <i class="fa fa-user text-white"></i>
+                                                            <i class="fas fa-user text-white"></i>
                                                         </div>
                                                     </div>
                                                     <div>

@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Widgets - Sufee Admin</title>
+    <meta name="description" content="Widget Components - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Widget specific styles */
+        .widget-chart {
+            position: relative;
+            height: 70px;
+        }
+        
+        /* Font size utilities */
+        .font-2xl {
+            font-size: 2rem !important;
+        }
+        
+        .stat-widget-one .stat-icon,
+        .stat-widget-four .stat-icon {
+            font-size: 2.5rem;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+        }
+        
+        .stat-widget-one .stat-content {
+            margin-left: 85px;
+        }
+        
+        .stat-widget-four {
+            display: flex;
+            align-items: center;
+        }
+        
+        .stat-widget-four .stat-content {
+            margin-left: 20px;
+        }
+        
+        .social-box {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-box i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .social-box ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .social-box.facebook { background-color: #3b5998; }
+        .social-box.twitter { background-color: #1da1f2; }
+        .social-box.linkedin { background-color: #0077b5; }
+        .social-box.youtube { background-color: #ff0000; }
+        
+        .profile-nav .user-header {
+            padding: 30px 20px;
+        }
+        
+        .twt-feed {
+            padding: 30px 20px;
+            position: relative;
+            color: white;
+        }
+        
+        .blue-bg {
+            background-color: #1da1f2;
+        }
+        
+        .corner-ribon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .wtt-mark {
+            position: absolute;
+            font-size: 10rem;
+            opacity: 0.1;
+            right: 20px;
+            bottom: 20px;
+        }
+        
+        .weather-category {
+            background: #f8f9fa;
+            padding: 0;
+        }
+        
+        .weather-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        
+        .weather-category li {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            border-right: 1px solid #dee2e6;
+        }
+        
+        .weather-category li:last-child {
+            border-right: none;
+        }
+        
+        .weather-category li.active {
+            background: #e9ecef;
+        }
+        
+        .twt-write {
+            padding: 15px;
+            background: #f8f9fa;
+        }
+        
+        .twt-footer {
+            padding: 15px;
+            background: #e9ecef;
+            font-size: 0.875rem;
+        }
+        
+        /* Progress widget styles */
+        .progress-widget {
+            position: relative;
+        }
+        
+        .progress-widget .progress {
+            height: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        
+        /* Count animation */
+        .count {
+            font-weight: bold;
+        }
+        
+        /* Flat colors for backgrounds */
+        .bg-flat-color-1 { background: #5c6bc0; }
+        .bg-flat-color-2 { background: #42a5f5; }
+        .bg-flat-color-3 { background: #26a69a; }
+        .bg-flat-color-4 { background: #66bb6a; }
+        .bg-flat-color-5 { background: #ef5350; }
+    </style>
+</head>
+
+<body class="sufee-dashboard" data-page="widgets">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Widgets" data-breadcrumb-path="Dashboard|Widgets"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Chart Widgets Row -->
+                    <div class="row mb-4">
+                        <!-- Widget 1 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card text-white bg-flat-color-1">
+                                <div class="card-body pb-0">
+                                    <div class="dropdown float-end">
+                                        <button class="btn bg-transparent dropdown-toggle text-light border-0" type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-cog"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="mb-0">
+                                        <span class="count">10468</span>
+                                    </h4>
+                                    <p class="text-light">Members online</p>
+                                    <div class="widget-chart px-0">
+                                        <canvas id="widgetChart1"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Widget 2 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card text-white bg-flat-color-2">
+                                <div class="card-body pb-0">
+                                    <div class="dropdown float-end">
+                                        <button class="btn bg-transparent dropdown-toggle text-light border-0" type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-cog"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="mb-0">
+                                        <span class="count">385</span>
+                                    </h4>
+                                    <p class="text-light">New Users</p>
+                                    <div class="widget-chart px-0">
+                                        <canvas id="widgetChart2"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Widget 3 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card text-white bg-flat-color-3">
+                                <div class="card-body pb-0">
+                                    <div class="dropdown float-end">
+                                        <button class="btn bg-transparent dropdown-toggle text-light border-0" type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-cog"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="mb-0">
+                                        <span class="count">1238</span>
+                                    </h4>
+                                    <p class="text-light">Products sold</p>
+                                    <div class="widget-chart px-0">
+                                        <canvas id="widgetChart3"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Widget 4 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card text-white bg-flat-color-4">
+                                <div class="card-body pb-0">
+                                    <div class="dropdown float-end">
+                                        <button class="btn bg-transparent dropdown-toggle text-light border-0" type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-cog"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="mb-0">
+                                        <span class="count">2781</span>
+                                    </h4>
+                                    <p class="text-light">Total Revenue</p>
+                                    <div class="widget-chart px-0">
+                                        <canvas id="widgetChart4"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stat Widgets Row -->
+                    <div class="row mb-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="stat-widget-one">
+                                        <div class="stat-icon dib">
+                                            <i class="fas fa-dollar-sign text-success border border-success"></i>
+                                        </div>
+                                        <div class="stat-content dib">
+                                            <div class="stat-text">Total Profit</div>
+                                            <div class="stat-digit">1,012</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="stat-widget-one">
+                                        <div class="stat-icon dib">
+                                            <i class="fas fa-user text-primary border border-primary"></i>
+                                        </div>
+                                        <div class="stat-content dib">
+                                            <div class="stat-text">New Customer</div>
+                                            <div class="stat-digit">961</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="stat-widget-one">
+                                        <div class="stat-icon dib">
+                                            <i class="fas fa-th text-warning border border-warning"></i>
+                                        </div>
+                                        <div class="stat-content dib">
+                                            <div class="stat-text">Active Projects</div>
+                                            <div class="stat-digit">770</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="stat-widget-one">
+                                        <div class="stat-icon dib">
+                                            <i class="fas fa-link text-danger border border-danger"></i>
+                                        </div>
+                                        <div class="stat-content dib">
+                                            <div class="stat-text">Referrals</div>
+                                            <div class="stat-digit">2,781</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stat Widget Four Row -->
+                    <div class="row mb-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="stat-widget-four">
+                                        <div class="stat-icon dib">
+                                            <i class="fas fa-server text-muted"></i>
+                                        </div>
+                                        <div class="stat-content">
+                                            <div class="text-start dib">
+                                                <div class="stat-heading">Database</div>
+                                                <div class="stat-text">Total: 765</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="stat-widget-four">
+                                        <div class="stat-icon dib">
+                                            <i class="fas fa-user text-muted"></i>
+                                        </div>
+                                        <div class="stat-content">
+                                            <div class="text-start dib">
+                                                <div class="stat-heading">Users</div>
+                                                <div class="stat-text">Total: 24720</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="stat-widget-four">
+                                        <div class="stat-icon dib">
+                                            <i class="fas fa-chart-line text-muted"></i>
+                                        </div>
+                                        <div class="stat-content">
+                                            <div class="text-start dib">
+                                                <div class="stat-heading">Daily Sales</div>
+                                                <div class="stat-text">Total: $76,58,714</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="stat-widget-four">
+                                        <div class="stat-icon dib">
+                                            <i class="fas fa-heartbeat text-muted"></i>
+                                        </div>
+                                        <div class="stat-content">
+                                            <div class="text-start dib">
+                                                <div class="stat-heading">Bandwidth</div>
+                                                <div class="stat-text">Total: 4TB</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Widgets Row -->
+                    <div class="row mb-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card bg-flat-color-1 text-light">
+                                <div class="card-body">
+                                    <div class="h4 m-0">89.9%</div>
+                                    <div>Server Load</div>
+                                    <div class="progress bg-light mt-2 mb-2" style="height: 5px;">
+                                        <div class="progress-bar bg-light" style="width: 89.9%;"></div>
+                                    </div>
+                                    <small class="text-light">Current server load percentage</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card bg-flat-color-3 text-light">
+                                <div class="card-body">
+                                    <div class="h4 m-0">12.124</div>
+                                    <div>Visitors Today</div>
+                                    <div class="progress bg-light mt-2 mb-2" style="height: 5px;">
+                                        <div class="progress-bar bg-light" style="width: 70%;"></div>
+                                    </div>
+                                    <small class="text-light">70% of daily target reached</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card bg-flat-color-4 text-light">
+                                <div class="card-body">
+                                    <div class="h4 m-0">$98,111.00</div>
+                                    <div>Total Revenue</div>
+                                    <div class="progress bg-light mt-2 mb-2" style="height: 5px;">
+                                        <div class="progress-bar bg-light" style="width: 85%;"></div>
+                                    </div>
+                                    <small class="text-light">85% of monthly target</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card bg-flat-color-2 text-light">
+                                <div class="card-body">
+                                    <div class="h4 m-0">1,238</div>
+                                    <div>Orders Today</div>
+                                    <div class="progress bg-light mt-2 mb-2" style="height: 5px;">
+                                        <div class="progress-bar bg-light" style="width: 95%;"></div>
+                                    </div>
+                                    <small class="text-light">95% increase from yesterday</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Icon Widgets Row -->
+                    <div class="row mb-4">
+                        <div class="col-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix">
+                                        <i class="fas fa-cog bg-flat-color-5 p-3 font-2xl me-3 float-start text-light rounded"></i>
+                                        <div class="h5 text-secondary mb-0 mt-1">$4,999.50</div>
+                                        <div class="text-muted text-uppercase fw-bold small">Income</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix">
+                                        <i class="fas fa-desktop bg-info p-3 font-2xl me-3 float-start text-light rounded"></i>
+                                        <div class="h5 text-secondary mb-0 mt-1">$2,599.00</div>
+                                        <div class="text-muted text-uppercase fw-bold small">Sales</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix">
+                                        <i class="fas fa-lightbulb bg-warning p-3 font-2xl me-3 float-start text-light rounded"></i>
+                                        <div class="h5 text-secondary mb-0 mt-1">$1,199.00</div>
+                                        <div class="text-muted text-uppercase fw-bold small">Profit</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix">
+                                        <i class="fas fa-bell bg-danger p-3 font-2xl me-3 float-start text-light rounded"></i>
+                                        <div class="h5 text-secondary mb-0 mt-1">47</div>
+                                        <div class="text-muted text-uppercase fw-bold small">Alerts</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Icon Widgets with Footer Row -->
+                    <div class="row mb-4">
+                        <div class="col-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix">
+                                        <i class="fas fa-cog bg-flat-color-5 p-3 font-2xl me-3 float-start text-light rounded"></i>
+                                        <div class="h5 text-secondary mb-0 mt-1">$4,999.50</div>
+                                        <div class="text-muted text-uppercase fw-bold small">Income</div>
+                                    </div>
+                                    <hr>
+                                    <div class="more-info pt-2">
+                                        <a class="fw-bold btn-link text-muted small" href="#">View More <i class="fas fa-angle-right float-end"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix">
+                                        <i class="fas fa-desktop bg-info p-3 font-2xl me-3 float-start text-light rounded"></i>
+                                        <div class="h5 text-secondary mb-0 mt-1">$2,599.00</div>
+                                        <div class="text-muted text-uppercase fw-bold small">Sales</div>
+                                    </div>
+                                    <hr>
+                                    <div class="more-info pt-2">
+                                        <a class="fw-bold btn-link text-muted small" href="#">View More <i class="fas fa-angle-right float-end"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix">
+                                        <i class="fas fa-lightbulb bg-warning p-3 font-2xl me-3 float-start text-light rounded"></i>
+                                        <div class="h5 text-secondary mb-0 mt-1">$1,199.00</div>
+                                        <div class="text-muted text-uppercase fw-bold small">Profit</div>
+                                    </div>
+                                    <hr>
+                                    <div class="more-info pt-2">
+                                        <a class="fw-bold btn-link text-muted small" href="#">View More <i class="fas fa-angle-right float-end"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="clearfix">
+                                        <i class="fas fa-bell bg-danger p-3 font-2xl me-3 float-start text-light rounded"></i>
+                                        <div class="h5 text-secondary mb-0 mt-1">47</div>
+                                        <div class="text-muted text-uppercase fw-bold small">Alerts</div>
+                                    </div>
+                                    <hr>
+                                    <div class="more-info pt-2">
+                                        <a class="fw-bold btn-link text-muted small" href="#">View More <i class="fas fa-angle-right float-end"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Borderless Icon Widgets Row -->
+                    <div class="row mb-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card border-0">
+                                <div class="card-body p-0 clearfix">
+                                    <i class="fas fa-cog bg-primary p-4 font-2xl me-3 float-start text-light"></i>
+                                    <div class="h5 text-primary mb-0 pt-3">$1,999.50</div>
+                                    <div class="text-muted text-uppercase fw-bold small">Income</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card border-0">
+                                <div class="card-body p-0 clearfix">
+                                    <i class="fas fa-desktop bg-info p-4 font-2xl me-3 float-start text-light"></i>
+                                    <div class="h5 text-info mb-0 pt-3">$1,999.50</div>
+                                    <div class="text-muted text-uppercase fw-bold small">Sales</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card border-0">
+                                <div class="card-body p-0 clearfix">
+                                    <i class="fas fa-lightbulb bg-warning p-4 font-2xl me-3 float-start text-light"></i>
+                                    <div class="h5 text-warning mb-0 pt-3">$1,999.50</div>
+                                    <div class="text-muted text-uppercase fw-bold small">Profit</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card border-0">
+                                <div class="card-body p-0 clearfix">
+                                    <i class="fas fa-bell bg-danger p-4 font-2xl me-3 float-start text-light"></i>
+                                    <div class="h5 text-danger mb-0 pt-3">$1,999.50</div>
+                                    <div class="text-muted text-uppercase fw-bold small">Alerts</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Widgets Row -->
+                    <div class="row mb-4">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="social-box facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <ul>
+                                        <li>
+                                            <strong><span class="count">40</span> k</strong>
+                                            <span>friends</span>
+                                        </li>
+                                        <li>
+                                            <strong><span class="count">450</span></strong>
+                                            <span>feeds</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="social-box twitter">
+                                    <i class="fab fa-x-twitter"></i>
+                                    <ul>
+                                        <li>
+                                            <strong><span class="count">30</span> k</strong>
+                                            <span>followers</span>
+                                        </li>
+                                        <li>
+                                            <strong><span class="count">450</span></strong>
+                                            <span>tweets</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="social-box linkedin">
+                                    <i class="fab fa-linkedin-in"></i>
+                                    <ul>
+                                        <li>
+                                            <strong><span class="count">40</span> +</strong>
+                                            <span>contacts</span>
+                                        </li>
+                                        <li>
+                                            <strong><span class="count">250</span></strong>
+                                            <span>feeds</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="social-box youtube">
+                                    <i class="fab fa-youtube"></i>
+                                    <ul>
+                                        <li>
+                                            <strong><span class="count">894</span> k</strong>
+                                            <span>subscribers</span>
+                                        </li>
+                                        <li>
+                                            <strong><span class="count">92</span></strong>
+                                            <span>videos</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card Group Widget -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card-group">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="h1 text-muted text-end mb-4">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div class="h4 mb-0">
+                                            <span class="count">87500</span>
+                                        </div>
+                                        <small class="text-muted text-uppercase fw-bold">Visitors</small>
+                                        <div class="progress mt-3 mb-0" style="height: 5px;">
+                                            <div class="progress-bar bg-flat-color-1" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="h1 text-muted text-end mb-4">
+                                            <i class="fas fa-user-plus"></i>
+                                        </div>
+                                        <div class="h4 mb-0">
+                                            <span class="count">385</span>
+                                        </div>
+                                        <small class="text-muted text-uppercase fw-bold">New Clients</small>
+                                        <div class="progress mt-3 mb-0" style="height: 5px;">
+                                            <div class="progress-bar bg-flat-color-2" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="h1 text-muted text-end mb-4">
+                                            <i class="fas fa-cart-plus"></i>
+                                        </div>
+                                        <div class="h4 mb-0">
+                                            <span class="count">1238</span>
+                                        </div>
+                                        <small class="text-muted text-uppercase fw-bold">Products sold</small>
+                                        <div class="progress mt-3 mb-0" style="height: 5px;">
+                                            <div class="progress-bar bg-flat-color-3" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="h1 text-muted text-end mb-4">
+                                            <i class="fas fa-chart-pie"></i>
+                                        </div>
+                                        <div class="h4 mb-0">
+                                            <span class="count">28</span>%
+                                        </div>
+                                        <small class="text-muted text-uppercase fw-bold">Returning Visitors</small>
+                                        <div class="progress mt-3 mb-0" style="height: 5px;">
+                                            <div class="progress-bar bg-flat-color-4" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="h1 text-muted text-end mb-4">
+                                            <i class="far fa-clock"></i>
+                                        </div>
+                                        <div class="h4 mb-0">5:34:11</div>
+                                        <small class="text-muted text-uppercase fw-bold">Avg. Time</small>
+                                        <div class="progress mt-3 mb-0" style="height: 5px;">
+                                            <div class="progress-bar bg-flat-color-5" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="h1 text-muted text-end mb-4">
+                                            <i class="far fa-comments"></i>
+                                        </div>
+                                        <div class="h4 mb-0">
+                                            <span class="count">972</span>
+                                        </div>
+                                        <small class="text-muted text-uppercase fw-bold">Comments</small>
+                                        <div class="progress mt-3 mb-0" style="height: 5px;">
+                                            <div class="progress-bar bg-flat-color-1" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Colored Card Group Widget -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card-group">
+                                <div class="card bg-flat-color-1 text-light border-0">
+                                    <div class="card-body">
+                                        <div class="h1 text-end mb-4">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div class="h4 mb-0">
+                                            <span class="count">87500</span>
+                                        </div>
+                                        <small class="text-uppercase fw-bold">Visitors</small>
+                                        <div class="progress progress-xs mt-3 mb-0 bg-light" style="height: 5px;">
+                                            <div class="progress-bar bg-light" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card bg-flat-color-2 text-light border-0">
+                                    <div class="card-body">
+                                        <div class="h1 text-end mb-4">
+                                            <i class="fas fa-user-plus"></i>
+                                        </div>
+                                        <div class="h4 mb-0">
+                                            <span class="count">385</span>
+                                        </div>
+                                        <small class="text-uppercase fw-bold">New Clients</small>
+                                        <div class="progress progress-xs mt-3 mb-0 bg-light" style="height: 5px;">
+                                            <div class="progress-bar bg-light" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card bg-flat-color-3 text-light border-0">
+                                    <div class="card-body">
+                                        <div class="h1 text-end mb-4">
+                                            <i class="fas fa-cart-plus"></i>
+                                        </div>
+                                        <div class="h4 mb-0">
+                                            <span class="count">1238</span>
+                                        </div>
+                                        <small class="text-uppercase fw-bold">Products sold</small>
+                                        <div class="progress progress-xs mt-3 mb-0 bg-light" style="height: 5px;">
+                                            <div class="progress-bar bg-light" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card bg-flat-color-5 text-light border-0">
+                                    <div class="card-body">
+                                        <div class="h1 text-end mb-4">
+                                            <i class="fas fa-chart-pie"></i>
+                                        </div>
+                                        <div class="h4 mb-0">
+                                            <span class="count">28</span>%
+                                        </div>
+                                        <small class="text-uppercase fw-bold">Returning Visitors</small>
+                                        <div class="progress progress-xs mt-3 mb-0 bg-light" style="height: 5px;">
+                                            <div class="progress-bar bg-light" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card bg-flat-color-4 text-light border-0">
+                                    <div class="card-body">
+                                        <div class="h1 text-end mb-4">
+                                            <i class="far fa-clock"></i>
+                                        </div>
+                                        <div class="h4 mb-0">5:34:11</div>
+                                        <small class="text-uppercase fw-bold">Avg. Time</small>
+                                        <div class="progress progress-xs mt-3 mb-0 bg-light" style="height: 5px;">
+                                            <div class="progress-bar bg-light" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card bg-flat-color-1 text-light border-0">
+                                    <div class="card-body">
+                                        <div class="h1 text-end mb-4">
+                                            <i class="far fa-comments"></i>
+                                        </div>
+                                        <div class="h4 mb-0">
+                                            <span class="count">972</span>
+                                        </div>
+                                        <small class="text-uppercase fw-bold">Comments</small>
+                                        <div class="progress progress-xs mt-3 mb-0 bg-light" style="height: 5px;">
+                                            <div class="progress-bar bg-light" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Widgets Row -->
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <aside class="profile-nav alt">
+                                <div class="card">
+                                    <div class="card-header user-header alt bg-dark">
+                                        <div class="d-flex align-items-center">
+                                            <img class="align-self-center rounded-circle me-3" style="width:85px; height:85px;" alt="" src="images/admin.jpg">
+                                            <div class="flex-grow-1">
+                                                <h2 class="text-light h4 mb-0">Jim Doe</h2>
+                                                <p class="text-light mb-0">Project Manager</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <a href="#" class="d-flex justify-content-between align-items-center text-decoration-none"> 
+                                                <span><i class="far fa-envelope"></i> Mail Inbox</span>
+                                                <span class="badge bg-primary rounded-pill">10</span>
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#" class="d-flex justify-content-between align-items-center text-decoration-none"> 
+                                                <span><i class="fas fa-tasks"></i> Recent Activity</span>
+                                                <span class="badge bg-danger rounded-pill">15</span>
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#" class="d-flex justify-content-between align-items-center text-decoration-none"> 
+                                                <span><i class="far fa-bell"></i> Notification</span>
+                                                <span class="badge bg-success rounded-pill">11</span>
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#" class="d-flex justify-content-between align-items-center text-decoration-none"> 
+                                                <span><i class="far fa-comments"></i> Message</span>
+                                                <span class="badge bg-warning rounded-pill">03</span>
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#" class="text-decoration-none"> <i class="fas fa-cog"></i> Settings</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </aside>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title mb-3">Profile Card</strong>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mx-auto d-block text-center">
+                                        <img class="rounded-circle mx-auto d-block mb-3" style="width: 120px; height: 120px;" src="images/admin.jpg" alt="Card image cap">
+                                        <h5 class="text-center mt-2 mb-1">Steven Lee</h5>
+                                        <div class="location text-center text-muted"><i class="fas fa-map-marker-alt"></i> California, United States</div>
+                                    </div>
+                                    <hr>
+                                    <div class="card-text text-center">
+                                        <a href="#" class="text-primary me-2"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                        <a href="#" class="text-info me-2"><i class="fab fa-x-twitter fa-lg"></i></a>
+                                        <a href="#" class="text-primary me-2"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                                        <a href="#" class="text-danger"><i class="fab fa-pinterest fa-lg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card">
+                                <div class="twt-feed blue-bg">
+                                    <div class="corner-ribon black-ribon">
+                                        <i class="fab fa-x-twitter"></i>
+                                    </div>
+                                    <i class="fab fa-x-twitter wtt-mark"></i>
+                                    
+                                    <div class="d-flex align-items-center">
+                                        <img class="align-self-center rounded-circle me-3" style="width:85px; height:85px;" alt="" src="images/admin.jpg">
+                                        <div class="flex-grow-1">
+                                            <h2 class="text-white h4 mb-0">Jim Doe</h2>
+                                            <p class="text-light mb-0">Project Manager</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="weather-category twt-category">
+                                    <ul>
+                                        <li class="active">
+                                            <h5>750</h5>
+                                            Tweets
+                                        </li>
+                                        <li>
+                                            <h5>865</h5>
+                                            Following
+                                        </li>
+                                        <li>
+                                            <h5>3645</h5>
+                                            Followers
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="twt-write col-12">
+                                    <textarea placeholder="Write your Tweet and Enter" rows="1" class="form-control"></textarea>
+                                </div>
+                                
+                                <footer class="twt-footer d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <a href="#" class="me-2"><i class="fas fa-camera"></i></a>
+                                        <a href="#"><i class="fas fa-map-marker-alt"></i></a>
+                                        <span class="ms-1">New Castle, UK</span>
+                                    </div>
+                                    <span>32</span>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script>
+        // Widget Chart initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample data for widget charts
+            const chartOptions = {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    x: {
+                        display: false
+                    },
+                    y: {
+                        display: false
+                    }
+                }
+            };
+            
+            // Widget Chart 1
+            const ctx1 = document.getElementById('widgetChart1');
+            if (ctx1) {
+                new Chart(ctx1, {
+                    type: 'line',
+                    data: {
+                        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+                        datasets: [{
+                            data: [78, 81, 80, 85, 86, 78, 83],
+                            borderColor: 'rgba(255,255,255,0.8)',
+                            backgroundColor: 'rgba(255,255,255,0.2)',
+                            borderWidth: 2,
+                            tension: 0.4
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
+            
+            // Widget Chart 2
+            const ctx2 = document.getElementById('widgetChart2');
+            if (ctx2) {
+                new Chart(ctx2, {
+                    type: 'line',
+                    data: {
+                        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+                        datasets: [{
+                            data: [10, 18, 14, 24, 16, 18, 24],
+                            borderColor: 'rgba(255,255,255,0.8)',
+                            backgroundColor: 'rgba(255,255,255,0.2)',
+                            borderWidth: 2,
+                            tension: 0.4
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
+            
+            // Widget Chart 3
+            const ctx3 = document.getElementById('widgetChart3');
+            if (ctx3) {
+                new Chart(ctx3, {
+                    type: 'line',
+                    data: {
+                        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+                        datasets: [{
+                            data: [65, 59, 84, 84, 51, 55, 40],
+                            borderColor: 'rgba(255,255,255,0.8)',
+                            backgroundColor: 'rgba(255,255,255,0.2)',
+                            borderWidth: 2,
+                            tension: 0.4
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
+            
+            // Widget Chart 4
+            const ctx4 = document.getElementById('widgetChart4');
+            if (ctx4) {
+                new Chart(ctx4, {
+                    type: 'bar',
+                    data: {
+                        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+                        datasets: [{
+                            data: [78, 81, 80, 65, 58, 75, 60],
+                            backgroundColor: 'rgba(255,255,255,0.3)',
+                            borderColor: 'rgba(255,255,255,0.8)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: chartOptions
+                });
+            }
+            
+            // Count animation
+            const countElements = document.querySelectorAll('.count');
+            countElements.forEach(element => {
+                const target = parseInt(element.innerText);
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.innerText = Math.floor(current).toLocaleString();
+                }, 10);
+            });
+        });
+    </script>
+</body>
+</html>

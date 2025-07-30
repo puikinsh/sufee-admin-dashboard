@@ -459,12 +459,20 @@ body {
     background: linear-gradient(135deg, #00aced, #1dcaff);
   }
   
+  &.social-x {
+    background: linear-gradient(135deg, #000000, #333333);
+  }
+  
   &.social-linkedin {
     background: linear-gradient(135deg, #4875b4, #5a87c7);
   }
   
   &.social-google {
     background: linear-gradient(135deg, #d34836, #e05d4e);
+  }
+  
+  &.social-instagram {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d);
   }
 }
 
@@ -522,11 +530,34 @@ body {
   }
 }
 
+// X (formerly Twitter) icon styling
+.x-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.x-icon {
+  color: white;
+  fill: currentColor;
+}
+
+.x-icon-small {
+  color: white;
+  fill: currentColor;
+}
+
+.x-card {
+  .card-header {
+    background: #000000 !important;
+  }
+}
+
 // Mobile responsiveness
 @media (max-width: 991.98px) {
   .sidebar {
     position: fixed;
-    left: -#{var(--sufee-sidebar-width)};
+    left: calc(-1 * var(--sufee-sidebar-width));
     transition: left 0.3s ease;
     
     &.show {
@@ -902,3 +933,4 @@ canvas {
 @import "components/forms";
 @import "components/tables";
 @import "components/charts";
+@import "components/leaflet-overrides";

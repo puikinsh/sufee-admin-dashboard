@@ -32,7 +32,6 @@ export class PartialsLoader {
             this.cache.set(name, html);
             return html;
         } catch (error) {
-            console.error(`Error loading partial ${name}:`, error);
             return '';
         }
     }
@@ -46,14 +45,19 @@ export class PartialsLoader {
     async insertPartial(partialName, selector, options = {}) {
         const container = document.querySelector(selector);
         if (!container) {
-            console.error(`Container not found: ${selector}`);
             return;
         }
 
         const html = await this.loadPartial(partialName);
         
         if (options.replace) {
-            container.outerHTML = html;
+            // Check if element has a parent before trying to replace
+            if (container.parentNode) {
+                container.outerHTML = html;
+            } else {
+                // Fallback to innerHTML replacement
+                container.innerHTML = html;
+            }
         } else if (options.prepend) {
             container.insertAdjacentHTML('afterbegin', html);
         } else if (options.append) {
@@ -69,6 +73,41 @@ export class PartialsLoader {
     }
 
     /**
+     * Insert a partial directly into an element
+     * @param {string} partialName - Name of the partial
+     * @param {Element} element - The DOM element to update
+     * @param {Object} options - Options for insertion
+     */
+    async insertPartialElement(partialName, element, options = {}) {
+        if (!element) {
+            return;
+        }
+
+        const html = await this.loadPartial(partialName);
+        
+        if (options.replace) {
+            // Check if element has a parent before trying to replace
+            if (element.parentNode) {
+                element.outerHTML = html;
+            } else {
+                // Fallback to innerHTML replacement
+                element.innerHTML = html;
+            }
+        } else if (options.prepend) {
+            element.insertAdjacentHTML('afterbegin', html);
+        } else if (options.append) {
+            element.insertAdjacentHTML('beforeend', html);
+        } else {
+            element.innerHTML = html;
+        }
+
+        // Trigger custom event after insertion
+        document.dispatchEvent(new CustomEvent('partialLoaded', {
+            detail: { partialName, element }
+        }));
+    }
+
+    /**
      * Load multiple partials based on data attributes
      * Elements with data-partial attribute will have their content replaced
      */
@@ -76,7 +115,7 @@ export class PartialsLoader {
         const elements = document.querySelectorAll('[data-partial]');
         const promises = [];
 
-        elements.forEach(element => {
+        elements.forEach((element, index) => {
             const partialName = element.dataset.partial;
             const options = {
                 replace: element.dataset.partialReplace === 'true',
@@ -84,8 +123,11 @@ export class PartialsLoader {
                 append: element.dataset.partialAppend === 'true'
             };
 
+            // Add unique identifier to avoid selector conflicts
+            element.setAttribute('data-partial-id', index);
+            
             promises.push(
-                this.insertPartial(partialName, `[data-partial="${partialName}"]`, options)
+                this.insertPartialElement(partialName, element, options)
             );
         });
 
@@ -179,16 +221,8 @@ export class PartialsLoader {
                     }
                 }
 
-                // Initialize sidebar toggle
-                const sidebarToggle = document.getElementById('sidebarToggleDesktop');
-                const sidebar = document.getElementById('sidebar');
-
-                if (sidebarToggle && sidebar) {
-                    sidebarToggle.addEventListener('click', () => {
-                        sidebar.classList.toggle('collapsed');
-                        document.body.classList.toggle('sidebar-collapsed');
-                    });
-                }
+                // Note: Sidebar toggle functionality is handled by app.js
+                // This prevents conflicts and duplicate event listeners
             }
         });
     }

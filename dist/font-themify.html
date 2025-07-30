@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Themify Icons - Sufee Admin</title>
+    <meta name="description" content="Themify Icons - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Icon showcase styles */
+        .icon-box {
+            text-align: center;
+            padding: 20px 10px;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+        }
+        
+        .icon-box:hover {
+            background: var(--bs-light);
+            transform: translateY(-2px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+        
+        .icon-box i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--bs-info);
+        }
+        
+        .icon-box:hover i {
+            color: var(--bs-dark);
+        }
+        
+        .icon-name {
+            font-size: 0.75rem;
+            color: var(--bs-secondary);
+            word-break: break-all;
+            display: block;
+            margin-top: 5px;
+        }
+        
+        /* Search box */
+        .icon-search {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--bs-border-color);
+        }
+        
+        .icon-search input {
+            font-size: 1.125rem;
+            padding: 0.75rem 1.25rem;
+        }
+        
+        /* Category header */
+        .category-header {
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--bs-info);
+        }
+        
+        .category-header h4 {
+            color: var(--bs-info);
+            font-weight: 600;
+        }
+        
+        /* Icon variations demo */
+        .icon-demo-section {
+            background: var(--bs-light);
+            padding: 30px;
+            border-radius: 0.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .icon-demo-item {
+            display: inline-flex;
+            align-items: center;
+            margin: 10px 20px 10px 0;
+        }
+        
+        .icon-demo-item i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        /* Copy notification */
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--bs-success);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 0.375rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 1050;
+        }
+        
+        .copy-notification.show {
+            display: block;
+            animation: slideInUp 0.3s ease;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Icon usage examples */
+        .usage-example {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 0.375rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            margin-top: 10px;
+        }
+        
+        /* Icon size demos */
+        .size-demo {
+            display: flex;
+            align-items: flex-end;
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 0.375rem;
+        }
+        
+        .size-demo-item {
+            text-align: center;
+        }
+        
+        .size-demo-item span {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.875rem;
+            color: var(--bs-secondary);
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/font-themify-Cn3NxpfL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="font-themify">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Themify Icons" data-breadcrumb-path="Icons|Themify Icons"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h1 class="h3 mb-3">Themify Icons</h1>
+                            <p class="text-muted mb-0">A complete set of 320+ icons inspired by iOS 7 style icons.</p>
+                        </div>
+                    </div>
+
+                    <!-- Search Box -->
+                    <div class="icon-search">
+                        <div class="row">
+                            <div class="col-lg-6 mx-auto">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="ti-search"></i></span>
+                                    <input type="text" class="form-control" id="iconSearch" placeholder="Search icons... (e.g., 'arrow', 'user', 'heart')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Icon Usage Examples -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Using Themify Icons</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>To use an icon, simply use the icon class on an <code>&lt;i&gt;</code> tag:</p>
+                                    <div class="usage-example">
+                                        &lt;i class="ti-heart"&gt;&lt;/i&gt;
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="icon-demo-item">
+                                            <i class="ti-heart text-danger"></i>
+                                            <span>Result</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Icon Sizes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Control icon size using font-size or transform scale:</p>
+                                    <div class="size-demo">
+                                        <div class="size-demo-item">
+                                            <i class="ti-star" style="font-size: 1rem;"></i>
+                                            <span>1rem</span>
+                                        </div>
+                                        <div class="size-demo-item">
+                                            <i class="ti-star" style="font-size: 1.5rem;"></i>
+                                            <span>1.5rem</span>
+                                        </div>
+                                        <div class="size-demo-item">
+                                            <i class="ti-star" style="font-size: 2rem;"></i>
+                                            <span>2rem</span>
+                                        </div>
+                                        <div class="size-demo-item">
+                                            <i class="ti-star" style="font-size: 3rem;"></i>
+                                            <span>3rem</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Icon Examples in Context -->
+                    <div class="row mb-5">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Icons in Context</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <h6>Buttons with Icons</h6>
+                                            <button class="btn btn-primary me-2"><i class="ti-download"></i> Download</button>
+                                            <button class="btn btn-success me-2"><i class="ti-check"></i> Success</button>
+                                            <button class="btn btn-warning me-2"><i class="ti-alert"></i> Warning</button>
+                                            <button class="btn btn-danger"><i class="ti-trash"></i> Delete</button>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <h6>List with Icons</h6>
+                                            <ul class="list-unstyled">
+                                                <li><i class="ti-check text-success"></i> Completed task</li>
+                                                <li><i class="ti-time text-warning"></i> Pending task</li>
+                                                <li><i class="ti-close text-danger"></i> Failed task</li>
+                                                <li><i class="ti-reload text-info"></i> In progress</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrows & Direction Icons -->
+                    <div class="category-header">
+                        <h4>Arrows & Direction Icons</h4>
+                    </div>
+                    <div class="row mb-5" id="arrowIcons">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrow-up')">
+                                <i class="ti-arrow-up"></i>
+                                <span class="icon-name">ti-arrow-up</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrow-right')">
+                                <i class="ti-arrow-right"></i>
+                                <span class="icon-name">ti-arrow-right</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrow-left')">
+                                <i class="ti-arrow-left"></i>
+                                <span class="icon-name">ti-arrow-left</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrow-down')">
+                                <i class="ti-arrow-down"></i>
+                                <span class="icon-name">ti-arrow-down</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrows-vertical')">
+                                <i class="ti-arrows-vertical"></i>
+                                <span class="icon-name">ti-arrows-vertical</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrows-horizontal')">
+                                <i class="ti-arrows-horizontal"></i>
+                                <span class="icon-name">ti-arrows-horizontal</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-angle-up')">
+                                <i class="ti-angle-up"></i>
+                                <span class="icon-name">ti-angle-up</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-angle-right')">
+                                <i class="ti-angle-right"></i>
+                                <span class="icon-name">ti-angle-right</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-angle-left')">
+                                <i class="ti-angle-left"></i>
+                                <span class="icon-name">ti-angle-left</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-angle-down')">
+                                <i class="ti-angle-down"></i>
+                                <span class="icon-name">ti-angle-down</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-angle-double-up')">
+                                <i class="ti-angle-double-up"></i>
+                                <span class="icon-name">ti-angle-double-up</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-angle-double-right')">
+                                <i class="ti-angle-double-right"></i>
+                                <span class="icon-name">ti-angle-double-right</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-angle-double-left')">
+                                <i class="ti-angle-double-left"></i>
+                                <span class="icon-name">ti-angle-double-left</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-angle-double-down')">
+                                <i class="ti-angle-double-down"></i>
+                                <span class="icon-name">ti-angle-double-down</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-move')">
+                                <i class="ti-move"></i>
+                                <span class="icon-name">ti-move</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-fullscreen')">
+                                <i class="ti-fullscreen"></i>
+                                <span class="icon-name">ti-fullscreen</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrow-top-right')">
+                                <i class="ti-arrow-top-right"></i>
+                                <span class="icon-name">ti-arrow-top-right</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrow-top-left')">
+                                <i class="ti-arrow-top-left"></i>
+                                <span class="icon-name">ti-arrow-top-left</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrow-circle-up')">
+                                <i class="ti-arrow-circle-up"></i>
+                                <span class="icon-name">ti-arrow-circle-up</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrow-circle-right')">
+                                <i class="ti-arrow-circle-right"></i>
+                                <span class="icon-name">ti-arrow-circle-right</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrow-circle-left')">
+                                <i class="ti-arrow-circle-left"></i>
+                                <span class="icon-name">ti-arrow-circle-left</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrow-circle-down')">
+                                <i class="ti-arrow-circle-down"></i>
+                                <span class="icon-name">ti-arrow-circle-down</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-arrows-corner')">
+                                <i class="ti-arrows-corner"></i>
+                                <span class="icon-name">ti-arrows-corner</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-split-v')">
+                                <i class="ti-split-v"></i>
+                                <span class="icon-name">ti-split-v</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Web App Icons -->
+                    <div class="category-header">
+                        <h4>Web Application Icons</h4>
+                    </div>
+                    <div class="row mb-5" id="webAppIcons">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-home')">
+                                <i class="ti-home"></i>
+                                <span class="icon-name">ti-home</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-pencil')">
+                                <i class="ti-pencil"></i>
+                                <span class="icon-name">ti-pencil</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-pencil-alt')">
+                                <i class="ti-pencil-alt"></i>
+                                <span class="icon-name">ti-pencil-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-marker')">
+                                <i class="ti-marker"></i>
+                                <span class="icon-name">ti-marker</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-marker-alt')">
+                                <i class="ti-marker-alt"></i>
+                                <span class="icon-name">ti-marker-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-eraser')">
+                                <i class="ti-eraser"></i>
+                                <span class="icon-name">ti-eraser</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-lock')">
+                                <i class="ti-lock"></i>
+                                <span class="icon-name">ti-lock</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-unlock')">
+                                <i class="ti-unlock"></i>
+                                <span class="icon-name">ti-unlock</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-calendar')">
+                                <i class="ti-calendar"></i>
+                                <span class="icon-name">ti-calendar</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-cloud')">
+                                <i class="ti-cloud"></i>
+                                <span class="icon-name">ti-cloud</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-cloud-up')">
+                                <i class="ti-cloud-up"></i>
+                                <span class="icon-name">ti-cloud-up</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-cloud-down')">
+                                <i class="ti-cloud-down"></i>
+                                <span class="icon-name">ti-cloud-down</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-file')">
+                                <i class="ti-file"></i>
+                                <span class="icon-name">ti-file</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-folder')">
+                                <i class="ti-folder"></i>
+                                <span class="icon-name">ti-folder</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-envelope')">
+                                <i class="ti-envelope"></i>
+                                <span class="icon-name">ti-envelope</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-dashboard')">
+                                <i class="ti-dashboard"></i>
+                                <span class="icon-name">ti-dashboard</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-heart')">
+                                <i class="ti-heart"></i>
+                                <span class="icon-name">ti-heart</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-star')">
+                                <i class="ti-star"></i>
+                                <span class="icon-name">ti-star</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-heart-broken')">
+                                <i class="ti-heart-broken"></i>
+                                <span class="icon-name">ti-heart-broken</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-comment')">
+                                <i class="ti-comment"></i>
+                                <span class="icon-name">ti-comment</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-comment-alt')">
+                                <i class="ti-comment-alt"></i>
+                                <span class="icon-name">ti-comment-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-thought')">
+                                <i class="ti-thought"></i>
+                                <span class="icon-name">ti-thought</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-bell')">
+                                <i class="ti-bell"></i>
+                                <span class="icon-name">ti-bell</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-bookmark')">
+                                <i class="ti-bookmark"></i>
+                                <span class="icon-name">ti-bookmark</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-bookmark-alt')">
+                                <i class="ti-bookmark-alt"></i>
+                                <span class="icon-name">ti-bookmark-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-settings')">
+                                <i class="ti-settings"></i>
+                                <span class="icon-name">ti-settings</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-search')">
+                                <i class="ti-search"></i>
+                                <span class="icon-name">ti-search</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-zoom-in')">
+                                <i class="ti-zoom-in"></i>
+                                <span class="icon-name">ti-zoom-in</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-zoom-out')">
+                                <i class="ti-zoom-out"></i>
+                                <span class="icon-name">ti-zoom-out</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-cut')">
+                                <i class="ti-cut"></i>
+                                <span class="icon-name">ti-cut</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Control Icons -->
+                    <div class="category-header">
+                        <h4>Control Icons</h4>
+                    </div>
+                    <div class="row mb-5" id="controlIcons">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-control-stop')">
+                                <i class="ti-control-stop"></i>
+                                <span class="icon-name">ti-control-stop</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-control-shuffle')">
+                                <i class="ti-control-shuffle"></i>
+                                <span class="icon-name">ti-control-shuffle</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-control-play')">
+                                <i class="ti-control-play"></i>
+                                <span class="icon-name">ti-control-play</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-control-pause')">
+                                <i class="ti-control-pause"></i>
+                                <span class="icon-name">ti-control-pause</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-control-forward')">
+                                <i class="ti-control-forward"></i>
+                                <span class="icon-name">ti-control-forward</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-control-backward')">
+                                <i class="ti-control-backward"></i>
+                                <span class="icon-name">ti-control-backward</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-volume')">
+                                <i class="ti-volume"></i>
+                                <span class="icon-name">ti-volume</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-control-skip-forward')">
+                                <i class="ti-control-skip-forward"></i>
+                                <span class="icon-name">ti-control-skip-forward</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-control-skip-backward')">
+                                <i class="ti-control-skip-backward"></i>
+                                <span class="icon-name">ti-control-skip-backward</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-control-record')">
+                                <i class="ti-control-record"></i>
+                                <span class="icon-name">ti-control-record</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-control-eject')">
+                                <i class="ti-control-eject"></i>
+                                <span class="icon-name">ti-control-eject</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Device Icons -->
+                    <div class="category-header">
+                        <h4>Device Icons</h4>
+                    </div>
+                    <div class="row mb-5" id="deviceIcons">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-mobile')">
+                                <i class="ti-mobile"></i>
+                                <span class="icon-name">ti-mobile</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-laptop')">
+                                <i class="ti-laptop"></i>
+                                <span class="icon-name">ti-laptop</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-desktop')">
+                                <i class="ti-desktop"></i>
+                                <span class="icon-name">ti-desktop</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-tablet')">
+                                <i class="ti-tablet"></i>
+                                <span class="icon-name">ti-tablet</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-server')">
+                                <i class="ti-server"></i>
+                                <span class="icon-name">ti-server</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-camera')">
+                                <i class="ti-camera"></i>
+                                <span class="icon-name">ti-camera</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-headphone')">
+                                <i class="ti-headphone"></i>
+                                <span class="icon-name">ti-headphone</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-headphone-alt')">
+                                <i class="ti-headphone-alt"></i>
+                                <span class="icon-name">ti-headphone-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-microphone')">
+                                <i class="ti-microphone"></i>
+                                <span class="icon-name">ti-microphone</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-printer')">
+                                <i class="ti-printer"></i>
+                                <span class="icon-name">ti-printer</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-mouse')">
+                                <i class="ti-mouse"></i>
+                                <span class="icon-name">ti-mouse</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-mouse-alt')">
+                                <i class="ti-mouse-alt"></i>
+                                <span class="icon-name">ti-mouse-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-harddrive')">
+                                <i class="ti-harddrive"></i>
+                                <span class="icon-name">ti-harddrive</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-harddrives')">
+                                <i class="ti-harddrives"></i>
+                                <span class="icon-name">ti-harddrives</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-game')">
+                                <i class="ti-game"></i>
+                                <span class="icon-name">ti-game</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Layout Icons -->
+                    <div class="category-header">
+                        <h4>Layout Icons</h4>
+                    </div>
+                    <div class="row mb-5" id="layoutIcons">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-sidebar-left')">
+                                <i class="ti-layout-sidebar-left"></i>
+                                <span class="icon-name">ti-layout-sidebar-left</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-sidebar-right')">
+                                <i class="ti-layout-sidebar-right"></i>
+                                <span class="icon-name">ti-layout-sidebar-right</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-sidebar-none')">
+                                <i class="ti-layout-sidebar-none"></i>
+                                <span class="icon-name">ti-layout-sidebar-none</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-sidebar-2')">
+                                <i class="ti-layout-sidebar-2"></i>
+                                <span class="icon-name">ti-layout-sidebar-2</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-grid2')">
+                                <i class="ti-layout-grid2"></i>
+                                <span class="icon-name">ti-layout-grid2</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-grid3')">
+                                <i class="ti-layout-grid3"></i>
+                                <span class="icon-name">ti-layout-grid3</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-grid4')">
+                                <i class="ti-layout-grid4"></i>
+                                <span class="icon-name">ti-layout-grid4</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-grid2-alt')">
+                                <i class="ti-layout-grid2-alt"></i>
+                                <span class="icon-name">ti-layout-grid2-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-grid3-alt')">
+                                <i class="ti-layout-grid3-alt"></i>
+                                <span class="icon-name">ti-layout-grid3-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-grid4-alt')">
+                                <i class="ti-layout-grid4-alt"></i>
+                                <span class="icon-name">ti-layout-grid4-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-column2')">
+                                <i class="ti-layout-column2"></i>
+                                <span class="icon-name">ti-layout-column2</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-column3')">
+                                <i class="ti-layout-column3"></i>
+                                <span class="icon-name">ti-layout-column3</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-column4')">
+                                <i class="ti-layout-column4"></i>
+                                <span class="icon-name">ti-layout-column4</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-fullwidth')">
+                                <i class="ti-layout-fullwidth"></i>
+                                <span class="icon-name">ti-layout-fullwidth</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-centerwidth')">
+                                <i class="ti-layout-centerwidth"></i>
+                                <span class="icon-name">ti-layout-centerwidth</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-equalwidth')">
+                                <i class="ti-layout-equalwidth"></i>
+                                <span class="icon-name">ti-layout-equalwidth</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-width-default')">
+                                <i class="ti-layout-width-default"></i>
+                                <span class="icon-name">ti-layout-width-default</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-width-full')">
+                                <i class="ti-layout-width-full"></i>
+                                <span class="icon-name">ti-layout-width-full</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-menu')">
+                                <i class="ti-layout-menu"></i>
+                                <span class="icon-name">ti-layout-menu</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-layout-menu-v')">
+                                <i class="ti-layout-menu-v"></i>
+                                <span class="icon-name">ti-layout-menu-v</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brand Icons -->
+                    <div class="category-header">
+                        <h4>Brand Icons</h4>
+                    </div>
+                    <div class="row mb-5" id="brandIcons">
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-apple')">
+                                <i class="ti-apple"></i>
+                                <span class="icon-name">ti-apple</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-windows')">
+                                <i class="ti-windows"></i>
+                                <span class="icon-name">ti-windows</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-android')">
+                                <i class="ti-android"></i>
+                                <span class="icon-name">ti-android</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-linux')">
+                                <i class="ti-linux"></i>
+                                <span class="icon-name">ti-linux</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-dribbble')">
+                                <i class="ti-dribbble"></i>
+                                <span class="icon-name">ti-dribbble</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-skype')">
+                                <i class="ti-skype"></i>
+                                <span class="icon-name">ti-skype</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-youtube')">
+                                <i class="ti-youtube"></i>
+                                <span class="icon-name">ti-youtube</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-vimeo')">
+                                <i class="ti-vimeo"></i>
+                                <span class="icon-name">ti-vimeo</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-vimeo-alt')">
+                                <i class="ti-vimeo-alt"></i>
+                                <span class="icon-name">ti-vimeo-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-twitter')">
+                                <i class="ti-twitter"></i>
+                                <span class="icon-name">ti-twitter</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-twitter-alt')">
+                                <i class="ti-twitter-alt"></i>
+                                <span class="icon-name">ti-twitter-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-facebook')">
+                                <i class="ti-facebook"></i>
+                                <span class="icon-name">ti-facebook</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-flickr')">
+                                <i class="ti-flickr"></i>
+                                <span class="icon-name">ti-flickr</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-flickr-alt')">
+                                <i class="ti-flickr-alt"></i>
+                                <span class="icon-name">ti-flickr-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-instagram')">
+                                <i class="ti-instagram"></i>
+                                <span class="icon-name">ti-instagram</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-google')">
+                                <i class="ti-google"></i>
+                                <span class="icon-name">ti-google</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-github')">
+                                <i class="ti-github"></i>
+                                <span class="icon-name">ti-github</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-tumblr')">
+                                <i class="ti-tumblr"></i>
+                                <span class="icon-name">ti-tumblr</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-tumblr-alt')">
+                                <i class="ti-tumblr-alt"></i>
+                                <span class="icon-name">ti-tumblr-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-yahoo')">
+                                <i class="ti-yahoo"></i>
+                                <span class="icon-name">ti-yahoo</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-behance')">
+                                <i class="ti-behance"></i>
+                                <span class="icon-name">ti-behance</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-behance-alt')">
+                                <i class="ti-behance-alt"></i>
+                                <span class="icon-name">ti-behance-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-dropbox')">
+                                <i class="ti-dropbox"></i>
+                                <span class="icon-name">ti-dropbox</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-dropbox-alt')">
+                                <i class="ti-dropbox-alt"></i>
+                                <span class="icon-name">ti-dropbox-alt</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-3">
+                            <div class="icon-box" onclick="copyIcon('ti-wordpress')">
+                                <i class="ti-wordpress"></i>
+                                <span class="icon-name">ti-wordpress</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Copy Notification -->
+    <div class="copy-notification" id="copyNotification">
+        <i class="ti-check"></i> Icon class copied to clipboard!
+    </div>
+
+    <!-- Scripts -->
+    <div data-partial="scripts-common"></div>
+    <script>
+        // Copy icon class to clipboard
+        function copyIcon(iconClass) {
+            // Create temporary input
+            const tempInput = document.createElement('input');
+            tempInput.value = iconClass;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            // Show notification
+            const notification = document.getElementById('copyNotification');
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+        
+        // Icon search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('iconSearch');
+            const iconBoxes = document.querySelectorAll('.icon-box');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                iconBoxes.forEach(box => {
+                    const iconName = box.querySelector('.icon-name').textContent.toLowerCase();
+                    if (iconName.includes(searchTerm)) {
+                        box.parentElement.style.display = 'block';
+                    } else {
+                        box.parentElement.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide category headers based on visible icons
+                document.querySelectorAll('.category-header').forEach(header => {
+                    const nextRow = header.nextElementSibling;
+                    const visibleIcons = nextRow.querySelectorAll('.col-lg-2[style="display: block"], .col-lg-2:not([style])');
+                    
+                    if (visibleIcons.length === 0) {
+                        header.style.display = 'none';
+                    } else {
+                        header.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/font-themify-legacy-DLxAec9d.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Forgot Password - Sufee Admin</title>
+    <meta name="description" content="Forgot Password - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Forgot password page specific styles */
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .forgot-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+            margin: 20px;
+        }
+        
+        .forgot-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .forgot-logo {
+            margin-bottom: 20px;
+        }
+        
+        .forgot-logo img {
+            max-height: 60px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .forgot-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .forgot-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+        
+        .forgot-form {
+            padding: 40px 30px;
+        }
+        
+        .forgot-description {
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.875rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .form-floating {
+            margin-bottom: 25px;
+        }
+        
+        .form-floating .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1rem 0.75rem;
+            height: auto;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-floating .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .form-floating label {
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .back-to-login {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .back-to-login p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+        
+        .back-to-login a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-to-login a:hover {
+            color: #5a6fd8;
+            text-decoration: underline;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 0.875rem;
+            display: none;
+        }
+        
+        .success-message .success-icon {
+            color: #28a745;
+            margin-right: 8px;
+        }
+        
+        .resend-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6c757d;
+            display: none;
+        }
+        
+        .resend-timer {
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .btn-resend {
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
+            border-radius: 10px;
+            padding: 8px 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn-resend:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-resend:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .forgot-container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .forgot-header,
+            .forgot-form {
+                padding: 30px 20px;
+            }
+            
+            .forgot-title {
+                font-size: 1.25rem;
+            }
+        }
+        
+        /* Loading animation */
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .btn-submit.loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Enhanced focus styles for accessibility */
+        .btn:focus,
+        .form-control:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+        
+        /* Icon styles */
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .icon-wrapper i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        /* Animation for form inputs */
+        .form-floating .form-control:focus + label,
+        .form-floating .form-control:not(:placeholder-shown) + label {
+            transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+        }
+        
+        /* Validation styles */
+        .is-valid {
+            border-color: #28a745 !important;
+        }
+        
+        .is-invalid {
+            border-color: #dc3545 !important;
+        }
+        
+        .invalid-feedback {
+            font-size: 0.75rem;
+            margin-top: 5px;
+            color: #dc3545;
+            display: block;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/pages-forget-DIaj618b.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body>
+    <div class="forgot-container">
+        <!-- Forgot Password Header -->
+        <div class="forgot-header">
+            <div class="icon-wrapper">
+                <i class="fas fa-key"></i>
+            </div>
+            <div class="forgot-logo">
+                <img src="/images/logo.png" alt="Sufee Admin Logo">
+            </div>
+            <h1 class="forgot-title">Forgot Password?</h1>
+            <p class="forgot-subtitle">No worries, we'll send you reset instructions</p>
+        </div>
+        
+        <!-- Forgot Password Form -->
+        <div class="forgot-form">
+            <div class="forgot-description">
+                Enter your email address and we'll send you a link to reset your password.
+            </div>
+            
+            <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle success-icon"></i>
+                <strong>Email sent!</strong> Check your inbox for password reset instructions.
+            </div>
+            
+            <form id="forgotForm" novalidate>
+                <!-- Email Input -->
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required>
+                    <label for="email">Email address</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                </div>
+                
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-submit">
+                    Send Reset Link
+                </button>
+                
+                <!-- Resend Information -->
+                <div class="resend-info" id="resendInfo">
+                    <p>Didn't receive the email?</p>
+                    <p>You can request a new reset link in <span class="resend-timer" id="resendTimer">60</span> seconds.</p>
+                    <button type="button" class="btn btn-resend" id="resendBtn" disabled>
+                        Resend Email
+                    </button>
+                </div>
+                
+                <!-- Back to Login -->
+                <div class="back-to-login">
+                    <p>
+                        <i class="fas fa-arrow-left me-2"></i>
+                        <a href="/page-login.html">Back to Login</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/pages-forget-legacy-b91x3NYi.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

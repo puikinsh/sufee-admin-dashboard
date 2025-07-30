@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Register - Sufee Admin</title>
+    <meta name="description" content="Register - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Register page specific styles */
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .register-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 450px;
+            width: 100%;
+            margin: 20px;
+        }
+        
+        .register-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 30px;
+            text-align: center;
+        }
+        
+        .register-logo {
+            margin-bottom: 15px;
+        }
+        
+        .register-logo img {
+            max-height: 50px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .register-title {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .register-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            margin-top: 5px;
+        }
+        
+        .register-form {
+            padding: 35px 30px;
+        }
+        
+        .form-floating {
+            margin-bottom: 20px;
+        }
+        
+        .form-floating .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1rem 0.75rem;
+            height: auto;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-floating .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .form-floating label {
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+        
+        .password-strength {
+            margin-top: 5px;
+            font-size: 0.75rem;
+        }
+        
+        .strength-bar {
+            height: 4px;
+            border-radius: 2px;
+            background: #e9ecef;
+            margin: 5px 0;
+            overflow: hidden;
+        }
+        
+        .strength-fill {
+            height: 100%;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .strength-weak { background: #dc3545; width: 25%; }
+        .strength-fair { background: #fd7e14; width: 50%; }
+        .strength-good { background: #ffc107; width: 75%; }
+        .strength-strong { background: #28a745; width: 100%; }
+        
+        .form-check {
+            margin-bottom: 25px;
+        }
+        
+        .form-check-input {
+            border-radius: 4px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .form-check-input:checked {
+            background-color: #667eea;
+            border-color: #667eea;
+        }
+        
+        .form-check-label {
+            font-size: 0.875rem;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+        
+        .form-check-label a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .form-check-label a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn-register {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .social-register {
+            border-top: 1px solid #e9ecef;
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+        
+        .social-title {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6c757d;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .social-title::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e9ecef;
+            z-index: 1;
+        }
+        
+        .social-title span {
+            background: white;
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn-social {
+            border-radius: 10px;
+            padding: 10px 15px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn-facebook {
+            color: #3b5998;
+            border-color: #3b5998;
+            background: transparent;
+        }
+        
+        .btn-facebook:hover {
+            background: #3b5998;
+            color: white;
+        }
+        
+        .btn-twitter {
+            color: #1da1f2;
+            border-color: #1da1f2;
+            background: transparent;
+        }
+        
+        .btn-twitter:hover {
+            background: #1da1f2;
+            color: white;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .login-link p {
+            margin: 0;
+            font-size: 0.875rem;
+            color: #6c757d;
+        }
+        
+        .login-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-link a:hover {
+            color: #5a6fd8;
+            text-decoration: underline;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .register-container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .register-header,
+            .register-form {
+                padding: 25px 20px;
+            }
+            
+            .register-title {
+                font-size: 1.25rem;
+            }
+        }
+        
+        /* Loading animation */
+        .btn-register:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .btn-register.loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Enhanced focus styles for accessibility */
+        .btn:focus,
+        .form-control:focus,
+        .form-check-input:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+        
+        /* Password visibility toggle */
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+            padding: 0;
+            z-index: 5;
+        }
+        
+        .password-toggle:hover {
+            color: #495057;
+        }
+        
+        /* Validation styles */
+        .is-valid {
+            border-color: #28a745 !important;
+        }
+        
+        .is-invalid {
+            border-color: #dc3545 !important;
+        }
+        
+        .valid-feedback,
+        .invalid-feedback {
+            font-size: 0.75rem;
+            margin-top: 5px;
+        }
+        
+        .valid-feedback {
+            color: #28a745;
+        }
+        
+        .invalid-feedback {
+            color: #dc3545;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register-container">
+        <!-- Register Header -->
+        <div class="register-header">
+            <div class="register-logo">
+                <img src="/images/logo.png" alt="Sufee Admin Logo">
+            </div>
+            <h1 class="register-title">Create Account</h1>
+            <p class="register-subtitle">Join us today! It's quick and easy.</p>
+        </div>
+        
+        <!-- Register Form -->
+        <div class="register-form">
+            <form id="registerForm" novalidate>
+                <!-- Username Input -->
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                    <label for="username">Username</label>
+                    <div class="invalid-feedback">
+                        Username is required and must be at least 3 characters.
+                    </div>
+                    <div class="valid-feedback">
+                        Username is available!
+                    </div>
+                </div>
+                
+                <!-- Email Input -->
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required>
+                    <label for="email">Email address</label>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                    <div class="valid-feedback">
+                        Email looks good!
+                    </div>
+                </div>
+                
+                <!-- Password Input -->
+                <div class="form-floating position-relative">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    <label for="password">Password</label>
+                    <button type="button" class="password-toggle" id="togglePassword">
+                        <i class="fas fa-eye" id="toggleIcon"></i>
+                    </button>
+                    <div class="invalid-feedback">
+                        Password must be at least 8 characters with mixed case, numbers, and symbols.
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthBar"></div>
+                        </div>
+                        <small id="strengthText" class="text-muted">Enter a password</small>
+                    </div>
+                </div>
+                
+                <!-- Confirm Password Input -->
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="invalid-feedback">
+                        Passwords do not match.
+                    </div>
+                    <div class="valid-feedback">
+                        Passwords match!
+                    </div>
+                </div>
+                
+                <!-- Terms Agreement -->
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                    <label class="form-check-label" for="agreeTerms">
+                        I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree to the terms and conditions.
+                    </div>
+                </div>
+                
+                <!-- Register Button -->
+                <button type="submit" class="btn btn-primary btn-register">
+                    Create Account
+                </button>
+                
+                <!-- Social Register -->
+                <div class="social-register">
+                    <div class="social-title">
+                        <span>Or register with</span>
+                    </div>
+                    
+                    <button type="button" class="btn btn-facebook btn-social">
+                        <i class="fab fa-facebook-f me-2"></i>
+                        Register with Facebook
+                    </button>
+                    
+                    <button type="button" class="btn btn-twitter btn-social">
+                        <i class="fab fa-twitter me-2"></i>
+                        Register with Twitter
+                    </button>
+                </div>
+                
+                <!-- Login Link -->
+                <div class="login-link">
+                    <p>Already have an account? <a href="/page-login.html">Sign in here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script type="module">
+        // Register form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('registerForm');
+            const usernameInput = document.getElementById('username');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            const agreeTermsCheckbox = document.getElementById('agreeTerms');
+            const togglePassword = document.getElementById('togglePassword');
+            const toggleIcon = document.getElementById('toggleIcon');
+            const strengthBar = document.getElementById('strengthBar');
+            const strengthText = document.getElementById('strengthText');
+            const submitButton = registerForm.querySelector('button[type="submit"]');
+            
+            // Password visibility toggle
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // Toggle eye icon
+                if (type === 'text') {
+                    toggleIcon.classList.remove('fa-eye');
+                    toggleIcon.classList.add('fa-eye-slash');
+                } else {
+                    toggleIcon.classList.remove('fa-eye-slash');
+                    toggleIcon.classList.add('fa-eye');
+                }
+            });
+            
+            // Password strength checker
+            function checkPasswordStrength(password) {
+                let strength = 0;
+                let strengthClass = '';
+                let strengthTextValue = '';
+                
+                if (password.length >= 8) strength++;
+                if (/[a-z]/.test(password)) strength++;
+                if (/[A-Z]/.test(password)) strength++;
+                if (/[0-9]/.test(password)) strength++;
+                if (/[^A-Za-z0-9]/.test(password)) strength++;
+                
+                switch (strength) {
+                    case 0:
+                    case 1:
+                        strengthClass = 'strength-weak';
+                        strengthTextValue = 'Weak password';
+                        break;
+                    case 2:
+                        strengthClass = 'strength-fair';
+                        strengthTextValue = 'Fair password';
+                        break;
+                    case 3:
+                    case 4:
+                        strengthClass = 'strength-good';
+                        strengthTextValue = 'Good password';
+                        break;
+                    case 5:
+                        strengthClass = 'strength-strong';
+                        strengthTextValue = 'Strong password';
+                        break;
+                }
+                
+                return { strength, strengthClass, strengthTextValue };
+            }
+            
+            // Update password strength indicator
+            passwordInput.addEventListener('input', function() {
+                const password = this.value;
+                const result = checkPasswordStrength(password);
+                
+                strengthBar.className = 'strength-fill ' + result.strengthClass;
+                strengthText.textContent = result.strengthTextValue;
+                strengthText.className = result.strengthClass.includes('weak') ? 'text-danger' : 
+                                        result.strengthClass.includes('fair') ? 'text-warning' :
+                                        result.strengthClass.includes('good') ? 'text-info' : 'text-success';
+            });
+            
+            // Validation functions
+            function validateUsername(username) {
+                return username.length >= 3 && /^[a-zA-Z0-9_]+$/.test(username);
+            }
+            
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            function validatePassword(password) {
+                return password.length >= 8 && 
+                       /[a-z]/.test(password) && 
+                       /[A-Z]/.test(password) && 
+                       /[0-9]/.test(password);
+            }
+            
+            function showError(input, message) {
+                input.classList.remove('is-valid');
+                input.classList.add('is-invalid');
+                const feedback = input.parentNode.querySelector('.invalid-feedback');
+                if (feedback) {
+                    feedback.textContent = message;
+                }
+            }
+            
+            function showSuccess(input, message = '') {
+                input.classList.remove('is-invalid');
+                input.classList.add('is-valid');
+                const feedback = input.parentNode.querySelector('.valid-feedback');
+                if (feedback && message) {
+                    feedback.textContent = message;
+                }
+            }
+            
+            // Real-time validation
+            usernameInput.addEventListener('blur', function() {
+                const username = this.value.trim();
+                if (username === '') {
+                    showError(this, 'Username is required.');
+                } else if (!validateUsername(username)) {
+                    showError(this, 'Username must be at least 3 characters and contain only letters, numbers, and underscores.');
+                } else {
+                    showSuccess(this, 'Username is available!');
+                }
+            });
+            
+            emailInput.addEventListener('blur', function() {
+                const email = this.value.trim();
+                if (email === '') {
+                    showError(this, 'Email address is required.');
+                } else if (!validateEmail(email)) {
+                    showError(this, 'Please enter a valid email address.');
+                } else {
+                    showSuccess(this, 'Email looks good!');
+                }
+            });
+            
+            passwordInput.addEventListener('blur', function() {
+                const password = this.value;
+                if (password === '') {
+                    showError(this, 'Password is required.');
+                } else if (!validatePassword(password)) {
+                    showError(this, 'Password must be at least 8 characters with uppercase, lowercase, and numbers.');
+                } else {
+                    showSuccess(this);
+                }
+            });
+            
+            confirmPasswordInput.addEventListener('blur', function() {
+                const password = passwordInput.value;
+                const confirmPassword = this.value;
+                if (confirmPassword === '') {
+                    showError(this, 'Please confirm your password.');
+                } else if (password !== confirmPassword) {
+                    showError(this, 'Passwords do not match.');
+                } else {
+                    showSuccess(this, 'Passwords match!');
+                }
+            });
+            
+            // Clear validation on input
+            [usernameInput, emailInput, passwordInput, confirmPasswordInput].forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('is-invalid')) {
+                        this.classList.remove('is-invalid');
+                    }
+                });
+            });
+            
+            // Form submission
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let isValid = true;
+                
+                // Validate all fields
+                const username = usernameInput.value.trim();
+                const email = emailInput.value.trim();
+                const password = passwordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
+                const agreeTerms = agreeTermsCheckbox.checked;
+                
+                // Username validation
+                if (username === '') {
+                    showError(usernameInput, 'Username is required.');
+                    isValid = false;
+                } else if (!validateUsername(username)) {
+                    showError(usernameInput, 'Username must be at least 3 characters and contain only letters, numbers, and underscores.');
+                    isValid = false;
+                } else {
+                    showSuccess(usernameInput);
+                }
+                
+                // Email validation
+                if (email === '') {
+                    showError(emailInput, 'Email address is required.');
+                    isValid = false;
+                } else if (!validateEmail(email)) {
+                    showError(emailInput, 'Please enter a valid email address.');
+                    isValid = false;
+                } else {
+                    showSuccess(emailInput);
+                }
+                
+                // Password validation
+                if (password === '') {
+                    showError(passwordInput, 'Password is required.');
+                    isValid = false;
+                } else if (!validatePassword(password)) {
+                    showError(passwordInput, 'Password must be at least 8 characters with uppercase, lowercase, and numbers.');
+                    isValid = false;
+                } else {
+                    showSuccess(passwordInput);
+                }
+                
+                // Confirm password validation
+                if (confirmPassword === '') {
+                    showError(confirmPasswordInput, 'Please confirm your password.');
+                    isValid = false;
+                } else if (password !== confirmPassword) {
+                    showError(confirmPasswordInput, 'Passwords do not match.');
+                    isValid = false;
+                } else {
+                    showSuccess(confirmPasswordInput);
+                }
+                
+                // Terms agreement validation
+                if (!agreeTerms) {
+                    agreeTermsCheckbox.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    agreeTermsCheckbox.classList.remove('is-invalid');
+                }
+                
+                if (isValid) {
+                    // Show loading state
+                    submitButton.disabled = true;
+                    submitButton.classList.add('loading');
+                    submitButton.textContent = 'Creating Account...';
+                    
+                    // Simulate registration process
+                    setTimeout(() => {
+                        // In a real application, you would send the data to your server
+                        console.log('Registration attempt:', {
+                            username: username,
+                            email: email,
+                            password: password
+                        });
+                        
+                        // For demo purposes, show success
+                        alert('Registration successful! (This is a demo)');
+                        
+                        // Reset button state
+                        submitButton.disabled = false;
+                        submitButton.classList.remove('loading');
+                        submitButton.textContent = 'Create Account';
+                        
+                        // In a real app, you would redirect to login or dashboard
+                        // window.location.href = '/page-login.html';
+                    }, 2000);
+                }
+            });
+            
+            // Social register buttons
+            document.querySelector('.btn-facebook').addEventListener('click', function() {
+                alert('Facebook registration would be implemented here');
+            });
+            
+            document.querySelector('.btn-twitter').addEventListener('click', function() {
+                alert('Twitter registration would be implemented here');
+            });
+            
+            // Terms checkbox validation
+            agreeTermsCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    this.classList.remove('is-invalid');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

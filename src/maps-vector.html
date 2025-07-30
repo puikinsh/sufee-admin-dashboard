@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Vector Maps - Sufee Admin</title>
+    <meta name="description" content="Interactive Vector Maps - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        /* Map container styles */
+        .map-container {
+            height: 400px;
+            width: 100%;
+            border-radius: 0.375rem;
+            overflow: hidden;
+            position: relative;
+            background: #f8f9fa;
+            min-height: 400px;
+        }
+        
+        .map-container-tall {
+            height: 500px;
+            min-height: 500px;
+        }
+        
+        .map-container-full {
+            height: 600px;
+            min-height: 600px;
+        }
+        
+        /* Map controls */
+        .map-controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+        
+        .map-control-btn {
+            background: white;
+            border: 2px solid rgba(0,0,0,0.2);
+            border-radius: 4px;
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .map-control-btn:hover {
+            background: #f4f4f4;
+        }
+        
+        .map-control-btn.active {
+            background: #0d6efd;
+            color: white;
+        }
+        
+        /* Custom marker styles */
+        .custom-marker {
+            background: #0d6efd;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        /* Info box */
+        .map-info-box {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-size: 12px;
+        }
+        
+        /* Legend */
+        .map-legend {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .map-legend h6 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 3px;
+        }
+        
+        /* Popup styles */
+        .leaflet-popup-content {
+            margin: 10px;
+            min-width: 150px;
+        }
+        
+        .popup-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .popup-content {
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body class="sufee-dashboard" data-page="maps-vector">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Vector Maps" data-breadcrumb-path="Maps|Vector Maps"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h1 class="h3 mb-3">Interactive Vector Maps</h1>
+                                    <p class="text-muted mb-0">Beautiful interactive maps using Leaflet.js with various features and overlays.</p>
+                                </div>
+                                <button class="btn btn-outline-primary" onclick="refreshAllMaps()" title="Refresh all maps if they don't display properly">
+                                    <i class="fas fa-sync-alt"></i> Refresh Maps
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Basic Map -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Basic Interactive Map</h5>
+                                    <span class="badge bg-primary">OpenStreetMap</span>
+                                </div>
+                                <div class="card-body">
+                                    <div id="basicMap" class="map-container"></div>
+                                    <div class="mt-3">
+                                        <p class="text-muted mb-0">Click and drag to pan, scroll to zoom. Double-click to zoom in.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map with Markers -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Map with Custom Markers</h5>
+                                    <span class="badge bg-success">Locations</span>
+                                </div>
+                                <div class="card-body">
+                                    <div id="markerMap" class="map-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Map with Clustering</h5>
+                                    <span class="badge bg-info">Grouped Markers</span>
+                                </div>
+                                <div class="card-body">
+                                    <div id="clusterMap" class="map-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Heatmap and Choropleth -->
+                    <div class="row mb-4">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Heatmap Visualization</h5>
+                                    <span class="badge bg-warning">Density</span>
+                                </div>
+                                <div class="card-body">
+                                    <div id="heatMap" class="map-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Regional Data Map</h5>
+                                    <span class="badge bg-danger">Statistics</span>
+                                </div>
+                                <div class="card-body">
+                                    <div id="dataMap" class="map-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Full Width Map with Controls -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Interactive Map with Controls</h5>
+                                    <div>
+                                        <button class="btn btn-sm btn-outline-primary me-2" onclick="addRandomMarker()">
+                                            <i class="fas fa-map-marker"></i> Add Marker
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-danger" onclick="clearMarkers()">
+                                            <i class="fas fa-trash"></i> Clear All
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="position-relative">
+                                        <div id="controlMap" class="map-container map-container-full"></div>
+                                        <div class="map-controls">
+                                            <button class="map-control-btn" onclick="changeMapStyle('streets')" id="streetBtn">Streets</button>
+                                            <button class="map-control-btn" onclick="changeMapStyle('satellite')" id="satelliteBtn">Satellite</button>
+                                            <button class="map-control-btn" onclick="changeMapStyle('dark')" id="darkBtn">Dark</button>
+                                        </div>
+                                        <div class="map-info-box">
+                                            <strong>Click on the map to add a marker</strong><br>
+                                            <span id="markerCount">Markers: 0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Route Map -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Route Planning Map</h5>
+                                    <span class="badge bg-secondary">Navigation</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label class="form-label">Start Location</label>
+                                            <select class="form-select" id="startLocation">
+                                                <option value="40.7128,-74.0060">New York City</option>
+                                                <option value="51.5074,-0.1278">London</option>
+                                                <option value="48.8566,2.3522">Paris</option>
+                                                <option value="35.6762,139.6503">Tokyo</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label">End Location</label>
+                                            <select class="form-select" id="endLocation">
+                                                <option value="38.9072,-77.0369">Washington DC</option>
+                                                <option value="52.5200,13.4050">Berlin</option>
+                                                <option value="41.9028,12.4964">Rome</option>
+                                                <option value="37.5665,126.9780">Seoul</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4 d-flex align-items-end">
+                                            <button class="btn btn-primary w-100" onclick="drawRoute()">
+                                                <i class="fas fa-route"></i> Show Route
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div id="routeMap" class="map-container map-container-tall"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize maps
+        let maps = {};
+        let markers = [];
+        let currentMapStyle = 'streets';
+        
+        // Map styles
+        const mapStyles = {
+            streets: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            satellite: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+            dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+        };
+        
+        // Initialize basic map
+        function initBasicMap() {
+            const map = L.map('basicMap').setView([40.7128, -74.0060], 13);
+            L.tileLayer(mapStyles.streets, {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            maps.basic = map;
+        }
+        
+        // Initialize marker map
+        function initMarkerMap() {
+            const map = L.map('markerMap').setView([51.505, -0.09], 13);
+            L.tileLayer(mapStyles.streets, {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Add custom markers
+            const locations = [
+                {lat: 51.5, lng: -0.09, name: "Location 1", info: "Central London"},
+                {lat: 51.51, lng: -0.1, name: "Location 2", info: "North London"},
+                {lat: 51.49, lng: -0.08, name: "Location 3", info: "South London"},
+                {lat: 51.505, lng: -0.07, name: "Location 4", info: "East London"},
+                {lat: 51.505, lng: -0.11, name: "Location 5", info: "West London"}
+            ];
+            
+            locations.forEach(loc => {
+                const marker = L.marker([loc.lat, loc.lng]).addTo(map);
+                marker.bindPopup(`<div class="popup-title">${loc.name}</div><div class="popup-content">${loc.info}</div>`);
+            });
+            
+            maps.marker = map;
+        }
+        
+        // Initialize cluster map
+        function initClusterMap() {
+            const map = L.map('clusterMap').setView([51.505, -0.09], 11);
+            L.tileLayer(mapStyles.streets, {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Add many markers to show clustering
+            const bounds = map.getBounds();
+            for (let i = 0; i < 50; i++) {
+                const lat = 51.4 + Math.random() * 0.2;
+                const lng = -0.2 + Math.random() * 0.2;
+                L.circleMarker([lat, lng], {
+                    radius: 8,
+                    fillColor: "#0d6efd",
+                    color: "#fff",
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map);
+            }
+            
+            maps.cluster = map;
+        }
+        
+        // Initialize heat map
+        function initHeatMap() {
+            const map = L.map('heatMap').setView([40.7128, -74.0060], 12);
+            L.tileLayer(mapStyles.streets, {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Simulate heat data with circles
+            const heatData = [];
+            for (let i = 0; i < 30; i++) {
+                const lat = 40.65 + Math.random() * 0.15;
+                const lng = -74.1 + Math.random() * 0.2;
+                const intensity = Math.random();
+                
+                L.circle([lat, lng], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: intensity * 0.5,
+                    radius: 500 + (intensity * 1000)
+                }).addTo(map);
+            }
+            
+            maps.heat = map;
+        }
+        
+        // Initialize data map
+        function initDataMap() {
+            const map = L.map('dataMap').setView([40.7128, -74.0060], 10);
+            L.tileLayer(mapStyles.streets, {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Add colored regions
+            const regions = [
+                {center: [40.7580, -73.9855], value: 85, color: '#0d6efd'},
+                {center: [40.6782, -73.9442], value: 65, color: '#198754'},
+                {center: [40.7282, -73.7949], value: 45, color: '#ffc107'},
+                {center: [40.8448, -73.8648], value: 75, color: '#6f42c1'},
+                {center: [40.5795, -74.1502], value: 55, color: '#dc3545'}
+            ];
+            
+            regions.forEach(region => {
+                const circle = L.circle(region.center, {
+                    color: region.color,
+                    fillColor: region.color,
+                    fillOpacity: 0.5,
+                    radius: 3000
+                }).addTo(map);
+                
+                circle.bindPopup(`<strong>Region Value:</strong> ${region.value}%`);
+            });
+            
+            // Add legend
+            const legend = L.control({position: 'bottomright'});
+            legend.onAdd = function() {
+                const div = L.DomUtil.create('div', 'map-legend');
+                div.innerHTML = `
+                    <h6>Data Values</h6>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #0d6efd"></div>
+                        <span>80-100%</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #198754"></div>
+                        <span>60-80%</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ffc107"></div>
+                        <span>40-60%</span>
+                    </div>
+                `;
+                return div;
+            };
+            legend.addTo(map);
+            
+            maps.data = map;
+        }
+        
+        // Initialize control map
+        function initControlMap() {
+            const map = L.map('controlMap').setView([40.7128, -74.0060], 12);
+            L.tileLayer(mapStyles.streets, {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            // Add click handler
+            map.on('click', function(e) {
+                const marker = L.marker(e.latlng).addTo(map);
+                markers.push(marker);
+                updateMarkerCount();
+                
+                marker.bindPopup(`
+                    <div>
+                        <strong>Custom Marker</strong><br>
+                        Lat: ${e.latlng.lat.toFixed(4)}<br>
+                        Lng: ${e.latlng.lng.toFixed(4)}
+                    </div>
+                `).openPopup();
+            });
+            
+            maps.control = map;
+        }
+        
+        // Initialize route map
+        function initRouteMap() {
+            const map = L.map('routeMap').setView([40.7128, -74.0060], 4);
+            L.tileLayer(mapStyles.streets, {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            maps.route = map;
+        }
+        
+        // Helper functions
+        function updateMarkerCount() {
+            document.getElementById('markerCount').textContent = `Markers: ${markers.length}`;
+        }
+        
+        function addRandomMarker() {
+            const map = maps.control;
+            const bounds = map.getBounds();
+            const lat = bounds.getSouth() + Math.random() * (bounds.getNorth() - bounds.getSouth());
+            const lng = bounds.getWest() + Math.random() * (bounds.getEast() - bounds.getWest());
+            
+            const marker = L.marker([lat, lng]).addTo(map);
+            markers.push(marker);
+            updateMarkerCount();
+            
+            marker.bindPopup('Random Marker').openPopup();
+        }
+        
+        function clearMarkers() {
+            markers.forEach(marker => {
+                maps.control.removeLayer(marker);
+            });
+            markers = [];
+            updateMarkerCount();
+        }
+        
+        function changeMapStyle(style) {
+            const map = maps.control;
+            
+            // Remove all tile layers
+            map.eachLayer(layer => {
+                if (layer instanceof L.TileLayer) {
+                    map.removeLayer(layer);
+                }
+            });
+            
+            // Add new tile layer
+            L.tileLayer(mapStyles[style], {
+                attribution: '© Map contributors'
+            }).addTo(map);
+            
+            // Update button states
+            document.querySelectorAll('.map-control-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(style + 'Btn').classList.add('active');
+        }
+        
+        function drawRoute() {
+            const startCoords = document.getElementById('startLocation').value.split(',').map(Number);
+            const endCoords = document.getElementById('endLocation').value.split(',').map(Number);
+            
+            const map = maps.route;
+            
+            // Clear existing layers
+            map.eachLayer(layer => {
+                if (!(layer instanceof L.TileLayer)) {
+                    map.removeLayer(layer);
+                }
+            });
+            
+            // Add markers
+            const startMarker = L.marker(startCoords).addTo(map);
+            const endMarker = L.marker(endCoords).addTo(map);
+            
+            startMarker.bindPopup('<strong>Start Location</strong>').openPopup();
+            endMarker.bindPopup('<strong>End Location</strong>');
+            
+            // Draw line (simulated route)
+            const route = L.polyline([startCoords, endCoords], {
+                color: '#0d6efd',
+                weight: 4,
+                opacity: 0.7,
+                dashArray: '10, 10'
+            }).addTo(map);
+            
+            // Fit map to show full route
+            map.fitBounds(route.getBounds().pad(0.1));
+        }
+        
+        // Function to invalidate map size
+        function invalidateMapSize(mapKey) {
+            if (maps[mapKey]) {
+                setTimeout(() => {
+                    maps[mapKey].invalidateSize();
+                }, 100);
+            }
+        }
+        
+        // Function to invalidate all maps
+        function invalidateAllMaps() {
+            Object.keys(maps).forEach(key => {
+                if (maps[key]) {
+                    setTimeout(() => {
+                        maps[key].invalidateSize();
+                    }, 100);
+                }
+            });
+        }
+        
+        // Function to completely refresh all maps (for manual retry)
+        function refreshAllMaps() {
+            // Clear existing maps
+            Object.keys(maps).forEach(key => {
+                if (maps[key]) {
+                    maps[key].remove();
+                    delete maps[key];
+                }
+            });
+            
+            // Clear markers array
+            markers = [];
+            updateMarkerCount();
+            
+            // Reinitialize all maps
+            initAllMaps();
+            
+            // Show feedback
+            const btn = event.target.closest('button');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+            }, 2000);
+        }
+        
+        // Initialize maps with proper timing
+        function initAllMaps() {
+            // Use setTimeout to ensure containers are fully rendered
+            setTimeout(() => {
+                initBasicMap();
+                setTimeout(() => invalidateMapSize('basic'), 250);
+            }, 100);
+            
+            setTimeout(() => {
+                initMarkerMap();
+                setTimeout(() => invalidateMapSize('marker'), 250);
+            }, 200);
+            
+            setTimeout(() => {
+                initClusterMap();
+                setTimeout(() => invalidateMapSize('cluster'), 250);
+            }, 300);
+            
+            setTimeout(() => {
+                initHeatMap();
+                setTimeout(() => invalidateMapSize('heat'), 250);
+            }, 400);
+            
+            setTimeout(() => {
+                initDataMap();
+                setTimeout(() => invalidateMapSize('data'), 250);
+            }, 500);
+            
+            setTimeout(() => {
+                initControlMap();
+                setTimeout(() => invalidateMapSize('control'), 250);
+            }, 600);
+            
+            setTimeout(() => {
+                initRouteMap();
+                setTimeout(() => invalidateMapSize('route'), 250);
+            }, 700);
+            
+            // Set default active button
+            setTimeout(() => {
+                document.getElementById('streetBtn').classList.add('active');
+            }, 800);
+        }
+        
+        // Initialize all maps when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            initAllMaps();
+            
+            // Additional invalidation after a delay to ensure proper rendering
+            setTimeout(invalidateAllMaps, 1000);
+            setTimeout(invalidateAllMaps, 2000);
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            setTimeout(invalidateAllMaps, 100);
+        });
+        
+        // Handle visibility change (when switching tabs)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                setTimeout(invalidateAllMaps, 100);
+            }
+        });
+        
+        // Use Intersection Observer to detect when map containers become visible
+        if ('IntersectionObserver' in window) {
+            const mapObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const mapId = entry.target.id;
+                        const mapKey = mapId.replace('Map', '').toLowerCase();
+                        if (mapKey === 'control') {
+                            invalidateMapSize('control');
+                        } else if (mapKey === 'basic') {
+                            invalidateMapSize('basic');
+                        } else if (mapKey === 'marker') {
+                            invalidateMapSize('marker');
+                        } else if (mapKey === 'cluster') {
+                            invalidateMapSize('cluster');
+                        } else if (mapKey === 'heat') {
+                            invalidateMapSize('heat');
+                        } else if (mapKey === 'data') {
+                            invalidateMapSize('data');
+                        } else if (mapKey === 'route') {
+                            invalidateMapSize('route');
+                        }
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px'
+            });
+            
+            // Observe all map containers
+            setTimeout(() => {
+                const mapContainers = document.querySelectorAll('[id$="Map"]');
+                mapContainers.forEach(container => {
+                    mapObserver.observe(container);
+                });
+            }, 100);
+        }
+        
+        // Additional fix: Force resize when containers change size
+        if ('ResizeObserver' in window) {
+            const resizeObserver = new ResizeObserver((entries) => {
+                entries.forEach(entry => {
+                    const mapId = entry.target.id;
+                    const mapKey = mapId.replace('Map', '').toLowerCase();
+                    if (maps[mapKey]) {
+                        setTimeout(() => {
+                            maps[mapKey].invalidateSize();
+                        }, 50);
+                    }
+                });
+            });
+            
+            setTimeout(() => {
+                const mapContainers = document.querySelectorAll('[id$="Map"]');
+                mapContainers.forEach(container => {
+                    resizeObserver.observe(container);
+                });
+            }, 100);
+        }
+    </script>
+</body>
+</html>

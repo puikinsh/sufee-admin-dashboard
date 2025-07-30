@@ -1,0 +1,78 @@
+// Leaflet Map Overrides for Card Integration
+
+// Ensure Leaflet map stays within card boundaries
+.card {
+  .card-body {
+    &#worldMap,
+    #worldMap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      
+      // Remove any default flex styles when map is initialized
+      &.leaflet-container {
+        display: block !important;
+        align-items: initial !important;
+        justify-content: initial !important;
+        background: #fff;
+      }
+      
+      // Ensure map controls stay within bounds
+      .leaflet-control-container {
+        .leaflet-top,
+        .leaflet-bottom {
+          z-index: 800;
+        }
+      }
+      
+      // Attribution styling
+      .leaflet-control-attribution {
+        font-size: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 2px 5px;
+      }
+    }
+  }
+}
+
+// Custom marker styles
+.custom-marker {
+  position: relative;
+  
+  // Ensure flag icons display properly
+  .fi {
+    display: block !important;
+    line-height: 1 !important;
+  }
+}
+
+// Popup styling
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.15);
+  
+  .leaflet-popup-content {
+    margin: 8px;
+    
+    .fi {
+      font-size: 1.2em;
+    }
+  }
+}
+
+// Country mini cards in footer
+.country-mini {
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  padding: 4px !important;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+  }
+  
+  .fi {
+    display: block;
+    line-height: 1;
+  }
+}

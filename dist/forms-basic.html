@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Basic Forms - Sufee Admin</title>
+    <meta name="description" content="Basic Form Components - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Custom styles for form examples */
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        
+        .form-label {
+            font-weight: 500;
+        }
+        
+        .form-text {
+            font-size: 0.875rem;
+        }
+        
+        /* Styled checkboxes and radios */
+        .form-check-input:checked {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+        }
+        
+        /* File input styling */
+        .form-control[type="file"] {
+            cursor: pointer;
+        }
+        
+        /* Credit card icons */
+        .payment-icons {
+            font-size: 2rem;
+            color: #6c757d;
+        }
+        
+        .payment-icons .fa-cc-visa {
+            color: #1a1f71;
+        }
+        
+        .payment-icons .fa-cc-mastercard {
+            color: #eb001b;
+        }
+        
+        .payment-icons .fa-cc-amex {
+            color: #006fcf;
+        }
+        
+        .payment-icons .fa-cc-discover {
+            color: #ff6000;
+        }
+        
+        /* Form validation styles */
+        .was-validated .form-control:valid,
+        .form-control.is-valid {
+            border-color: #198754;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        }
+        
+        .was-validated .form-control:invalid,
+        .form-control.is-invalid {
+            border-color: #dc3545;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/forms-basic-Cn3NxpfL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="forms-basic">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Basic Forms" data-breadcrumb-path="Forms|Basic Forms"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h1 class="h3 mb-3">Basic Form Elements</h1>
+                            <p class="text-muted mb-0">Examples of Bootstrap 5 form controls including inputs, selects, checkboxes, radios, and more.</p>
+                        </div>
+                    </div>
+
+                    <!-- Credit Card Form & Company Form -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Credit Card</strong>
+                                        <small class="text-muted ms-2">Payment Form</small>
+                                    </div>
+                                    <div class="payment-icons">
+                                        <i class="fab fa-cc-visa me-2"></i>
+                                        <i class="fab fa-cc-mastercard me-2"></i>
+                                        <i class="fab fa-cc-amex me-2"></i>
+                                        <i class="fab fa-cc-discover"></i>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="paymentAmount" class="form-label">Payment Amount</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">$</span>
+                                                <input type="number" class="form-control" id="paymentAmount" value="100.00" step="0.01" min="0">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="cardName" class="form-label">Name on Card</label>
+                                            <input type="text" class="form-control" id="cardName" placeholder="John Doe" required>
+                                            <div class="valid-feedback">Looks good!</div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="cardNumber" class="form-label">Card Number</label>
+                                            <input type="text" class="form-control" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                                            <div class="invalid-feedback">Please enter a valid card number.</div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="cardExpiry" class="form-label">Expiration</label>
+                                                    <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY" maxlength="5" required>
+                                                    <div class="invalid-feedback">Please enter expiration date.</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="cardCVC" class="form-label">Security Code</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="cardCVC" placeholder="000" maxlength="4" required>
+                                                        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="The 3 or 4 digit code on the back of your card">
+                                                            <i class="fas fa-question-circle"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                                            <i class="fas fa-lock me-2"></i>
+                                            <span>Pay $100.00</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Company</strong>
+                                    <small class="text-muted ms-2">Registration Form</small>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="companyName" class="form-label">Company Name</label>
+                                            <input type="text" class="form-control" id="companyName" placeholder="Enter your company name">
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="vatNumber" class="form-label">VAT Number</label>
+                                            <input type="text" class="form-control" id="vatNumber" placeholder="DE1234567890">
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="street" class="form-label">Street Address</label>
+                                            <input type="text" class="form-control" id="street" placeholder="Enter street name">
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="mb-3">
+                                                    <label for="city" class="form-label">City</label>
+                                                    <input type="text" class="form-control" id="city" placeholder="Enter your city">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label for="postalCode" class="form-label">Postal Code</label>
+                                                    <input type="text" class="form-control" id="postalCode" placeholder="12345">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label for="country" class="form-label">Country</label>
+                                            <select class="form-select" id="country">
+                                                <option selected>Choose country...</option>
+                                                <option value="US">United States</option>
+                                                <option value="UK">United Kingdom</option>
+                                                <option value="DE">Germany</option>
+                                                <option value="FR">France</option>
+                                                <option value="CA">Canada</option>
+                                                <option value="AU">Australia</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-success">Register Company</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Basic Form Elements -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Basic Form</strong> Elements
+                                </div>
+                                <div class="card-body">
+                                    <form class="row g-3">
+                                        <!-- Static Text -->
+                                        <div class="col-md-12">
+                                            <label class="form-label">Static Text</label>
+                                            <p class="form-control-plaintext">staticuser@example.com</p>
+                                        </div>
+                                        
+                                        <!-- Text Input -->
+                                        <div class="col-md-12">
+                                            <label for="textInput" class="form-label">Text Input</label>
+                                            <input type="text" class="form-control" id="textInput" placeholder="Enter text">
+                                            <div class="form-text">This is a help text for the input field.</div>
+                                        </div>
+                                        
+                                        <!-- Email Input -->
+                                        <div class="col-md-12">
+                                            <label for="emailInput" class="form-label">Email Input</label>
+                                            <input type="email" class="form-control" id="emailInput" placeholder="Enter email">
+                                            <div class="form-text">We'll never share your email with anyone else.</div>
+                                        </div>
+                                        
+                                        <!-- Password Input -->
+                                        <div class="col-md-12">
+                                            <label for="passwordInput" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                                            <div class="form-text">Must be 8-20 characters long.</div>
+                                        </div>
+                                        
+                                        <!-- Disabled Input -->
+                                        <div class="col-md-12">
+                                            <label for="disabledInput" class="form-label">Disabled Input</label>
+                                            <input type="text" class="form-control" id="disabledInput" placeholder="Disabled input" disabled>
+                                        </div>
+                                        
+                                        <!-- Textarea -->
+                                        <div class="col-md-12">
+                                            <label for="textareaInput" class="form-label">Textarea</label>
+                                            <textarea class="form-control" id="textareaInput" rows="3" placeholder="Enter your message..."></textarea>
+                                        </div>
+                                        
+                                        <!-- Submit Button -->
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary">Submit Form</button>
+                                            <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Select</strong> Elements
+                                </div>
+                                <div class="card-body">
+                                    <form class="row g-3">
+                                        <!-- Basic Select -->
+                                        <div class="col-md-12">
+                                            <label for="basicSelect" class="form-label">Basic Select</label>
+                                            <select class="form-select" id="basicSelect">
+                                                <option selected>Please select</option>
+                                                <option value="1">Option #1</option>
+                                                <option value="2">Option #2</option>
+                                                <option value="3">Option #3</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <!-- Large Select -->
+                                        <div class="col-md-12">
+                                            <label for="largeSelect" class="form-label">Large Select</label>
+                                            <select class="form-select form-select-lg" id="largeSelect">
+                                                <option selected>Please select</option>
+                                                <option value="1">Option #1</option>
+                                                <option value="2">Option #2</option>
+                                                <option value="3">Option #3</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <!-- Small Select -->
+                                        <div class="col-md-12">
+                                            <label for="smallSelect" class="form-label">Small Select</label>
+                                            <select class="form-select form-select-sm" id="smallSelect">
+                                                <option selected>Please select</option>
+                                                <option value="1">Option #1</option>
+                                                <option value="2">Option #2</option>
+                                                <option value="3">Option #3</option>
+                                                <option value="4">Option #4</option>
+                                                <option value="5">Option #5</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <!-- Disabled Select -->
+                                        <div class="col-md-12">
+                                            <label for="disabledSelect" class="form-label">Disabled Select</label>
+                                            <select class="form-select" id="disabledSelect" disabled>
+                                                <option selected>Please select</option>
+                                                <option value="1">Option #1</option>
+                                                <option value="2">Option #2</option>
+                                                <option value="3">Option #3</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <!-- Multiple Select -->
+                                        <div class="col-md-12">
+                                            <label for="multipleSelect" class="form-label">Multiple Select</label>
+                                            <select class="form-select" id="multipleSelect" multiple size="5">
+                                                <option value="1">Option #1</option>
+                                                <option value="2">Option #2</option>
+                                                <option value="3">Option #3</option>
+                                                <option value="4">Option #4</option>
+                                                <option value="5">Option #5</option>
+                                                <option value="6">Option #6</option>
+                                                <option value="7">Option #7</option>
+                                                <option value="8">Option #8</option>
+                                                <option value="9">Option #9</option>
+                                                <option value="10">Option #10</option>
+                                            </select>
+                                            <div class="form-text">Hold ctrl/cmd to select multiple options</div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkboxes and Radios -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Checkboxes</strong> & Switches
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="mb-3">Basic Checkboxes</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+                                        <label class="form-check-label" for="checkbox1">
+                                            Default checkbox
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkbox2" checked>
+                                        <label class="form-check-label" for="checkbox2">
+                                            Checked checkbox
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkbox3" disabled>
+                                        <label class="form-check-label" for="checkbox3">
+                                            Disabled checkbox
+                                        </label>
+                                    </div>
+                                    
+                                    <h6 class="mb-3">Inline Checkboxes</h6>
+                                    <div class="mb-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <label class="form-check-label" for="inlineCheckbox1">1</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                            <label class="form-check-label" for="inlineCheckbox2">2</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                            <label class="form-check-label" for="inlineCheckbox3">3</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <h6 class="mb-3">Switches</h6>
+                                    <div class="form-check form-switch mb-2">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="switch1">
+                                        <label class="form-check-label" for="switch1">Default switch</label>
+                                    </div>
+                                    <div class="form-check form-switch mb-2">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="switch2" checked>
+                                        <label class="form-check-label" for="switch2">Checked switch</label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="switch3" disabled>
+                                        <label class="form-check-label" for="switch3">Disabled switch</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Radio</strong> Buttons
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="mb-3">Basic Radios</h6>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="basicRadios" id="radio1" value="option1" checked>
+                                        <label class="form-check-label" for="radio1">
+                                            Default radio
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="radio" name="basicRadios" id="radio2" value="option2">
+                                        <label class="form-check-label" for="radio2">
+                                            Second radio
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="radio" name="basicRadios" id="radio3" value="option3" disabled>
+                                        <label class="form-check-label" for="radio3">
+                                            Disabled radio
+                                        </label>
+                                    </div>
+                                    
+                                    <h6 class="mb-3">Inline Radios</h6>
+                                    <div class="mb-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">1</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                            <label class="form-check-label" for="inlineRadio2">2</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                            <label class="form-check-label" for="inlineRadio3">3</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <h6 class="mb-3">Radio Button Group</h6>
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                                        <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+                                        
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+                                        
+                                        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                                        <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Input and Range -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>File</strong> Input
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label">Default file input</label>
+                                        <input class="form-control" type="file" id="formFile">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="formFileMultiple" class="form-label">Multiple files input</label>
+                                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="formFileDisabled" class="form-label">Disabled file input</label>
+                                        <input class="form-control" type="file" id="formFileDisabled" disabled>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="formFileSm" class="form-label">Small file input</label>
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file">
+                                    </div>
+                                    
+                                    <div>
+                                        <label for="formFileLg" class="form-label">Large file input</label>
+                                        <input class="form-control form-control-lg" id="formFileLg" type="file">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Range</strong> & Color
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label for="customRange1" class="form-label">Basic Range</label>
+                                        <input type="range" class="form-range" id="customRange1">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="customRange2" class="form-label">Range with Steps</label>
+                                        <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange2">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="customRange3" class="form-label">Range with Min/Max</label>
+                                        <input type="range" class="form-range" min="0" max="100" id="customRange3">
+                                        <div class="d-flex justify-content-between">
+                                            <small>0</small>
+                                            <small>100</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="exampleColorInput" class="form-label">Color picker</label>
+                                        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Color picker with preview</label>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <input type="color" class="form-control form-control-color" id="colorWithPreview" value="#0d6efd">
+                                            <input type="text" class="form-control" id="colorHexValue" value="#0d6efd" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Layouts -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Horizontal</strong> Form
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="row mb-3">
+                                            <label for="horizontalEmail" class="col-sm-3 col-form-label">Email</label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" id="horizontalEmail">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="horizontalPassword" class="col-sm-3 col-form-label">Password</label>
+                                            <div class="col-sm-9">
+                                                <input type="password" class="form-control" id="horizontalPassword">
+                                            </div>
+                                        </div>
+                                        <fieldset class="row mb-3">
+                                            <legend class="col-form-label col-sm-3 pt-0">Radios</legend>
+                                            <div class="col-sm-9">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                                    <label class="form-check-label" for="gridRadios1">
+                                                        First radio
+                                                    </label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                                    <label class="form-check-label" for="gridRadios2">
+                                                        Second radio
+                                                    </label>
+                                                </div>
+                                                <div class="form-check disabled">
+                                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+                                                    <label class="form-check-label" for="gridRadios3">
+                                                        Third disabled radio
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <div class="row mb-3">
+                                            <div class="col-sm-9 offset-sm-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                                    <label class="form-check-label" for="gridCheck1">
+                                                        Remember me
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Sign in</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Inline</strong> Form
+                                </div>
+                                <div class="card-body">
+                                    <form class="row row-cols-lg-auto g-3 align-items-center mb-3">
+                                        <div class="col-12">
+                                            <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
+                                            <div class="input-group">
+                                                <div class="input-group-text">@</div>
+                                                <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-12">
+                                            <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+                                            <select class="form-select" id="inlineFormSelectPref">
+                                                <option selected>Choose...</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                                                <label class="form-check-label" for="inlineFormCheck">
+                                                    Remember me
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </form>
+                                    
+                                    <hr>
+                                    
+                                    <h6 class="mb-3">Floating Labels</h6>
+                                    <form>
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                            <label for="floatingInput">Email address</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                            <label for="floatingPassword">Password</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                                <option selected>Open this select menu</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                            <label for="floatingSelect">Works with selects</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                            <label for="floatingTextarea">Comments</label>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Validation -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Form</strong> Validation
+                                </div>
+                                <div class="card-body">
+                                    <form class="row g-3 needs-validation" novalidate>
+                                        <div class="col-md-4">
+                                            <label for="validationCustom01" class="form-label">First name</label>
+                                            <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="validationCustom02" class="form-label">Last name</label>
+                                            <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="validationCustomUsername" class="form-label">Username</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                                                <div class="invalid-feedback">
+                                                    Please choose a username.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="validationCustom03" class="form-label">City</label>
+                                            <input type="text" class="form-control" id="validationCustom03" required>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid city.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="validationCustom04" class="form-label">State</label>
+                                            <select class="form-select" id="validationCustom04" required>
+                                                <option selected disabled value="">Choose...</option>
+                                                <option>California</option>
+                                                <option>New York</option>
+                                                <option>Texas</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please select a valid state.
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="validationCustom05" class="form-label">Zip</label>
+                                            <input type="text" class="form-control" id="validationCustom05" required>
+                                            <div class="invalid-feedback">
+                                                Please provide a valid zip.
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                                <label class="form-check-label" for="invalidCheck">
+                                                    Agree to terms and conditions
+                                                </label>
+                                                <div class="invalid-feedback">
+                                                    You must agree before submitting.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary" type="submit">Submit form</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Credit card formatting
+            const cardNumber = document.getElementById('cardNumber');
+            if (cardNumber) {
+                cardNumber.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                    e.target.value = formattedValue;
+                });
+            }
+            
+            // Expiry date formatting
+            const cardExpiry = document.getElementById('cardExpiry');
+            if (cardExpiry) {
+                cardExpiry.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+            
+            // Color picker sync
+            const colorWithPreview = document.getElementById('colorWithPreview');
+            const colorHexValue = document.getElementById('colorHexValue');
+            if (colorWithPreview && colorHexValue) {
+                colorWithPreview.addEventListener('input', function() {
+                    colorHexValue.value = this.value;
+                });
+            }
+            
+            // Form validation
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+            
+            // Initialize tooltips
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        });
+    </script>
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/forms-basic-legacy-DLxAec9d.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>

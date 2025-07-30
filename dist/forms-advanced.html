@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>Advanced Forms - Sufee Admin</title>
+    <meta name="description" content="Bootstrap 5 Advanced Form Components - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        /* Custom styles for advanced form elements */
+        .form-select-lg {
+            height: calc(3.5rem + 2px);
+            padding: 0.5rem 1rem;
+            font-size: 1.25rem;
+        }
+        
+        .input-group-text {
+            min-width: 45px;
+            justify-content: center;
+        }
+        
+        .custom-file-button input[type=file] {
+            margin-left: -2px !important;
+        }
+        
+        .custom-file-button input[type=file]::-webkit-file-upload-button {
+            display: none;
+        }
+        
+        .custom-file-button input[type=file]::file-selector-button {
+            display: none;
+        }
+        
+        .custom-file-button:hover label {
+            background-color: #0a58ca;
+            cursor: pointer;
+        }
+        
+        /* Color picker custom style */
+        .color-preview {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            cursor: pointer;
+        }
+        
+        /* Tag input style */
+        .tag-input-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            min-height: 45px;
+        }
+        
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            background-color: #0d6efd;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .tag .remove-tag {
+            margin-left: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .tag-input {
+            border: none;
+            outline: none;
+            flex: 1;
+            min-width: 100px;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/forms-advanced-Cn3NxpfL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/main-DOS6yo2o.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CYzxxQk5.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+
+<body class="sufee-dashboard" data-page="forms-advanced">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <!-- Sidebar -->
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <!-- Top Header -->
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Advanced Forms" data-breadcrumb-path="Forms|Advanced Forms"></div>
+
+            <!-- Content Area -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    
+                    <!-- Page Header -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h1 class="h3 mb-3">Advanced Form Components</h1>
+                            <p class="text-muted mb-0">Examples of advanced form components including input masks, multi-select, date pickers, color pickers, and more.</p>
+                        </div>
+                    </div>
+
+                    <!-- Input Groups & Addons -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Input Groups</h5>
+                                    <span class="badge bg-primary">Enhanced Inputs</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Price Input</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">$</span>
+                                            <input type="text" class="form-control" placeholder="0.00">
+                                            <span class="input-group-text">.00</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Email with Domain</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="username">
+                                            <span class="input-group-text">@example.com</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">URL Input</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">https://</span>
+                                            <input type="text" class="form-control" placeholder="yoursite.com">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">With Icon & Button</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                            <input type="text" class="form-control" placeholder="Search...">
+                                            <button class="btn btn-primary" type="button">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Input Sizes</h5>
+                                    <span class="badge bg-info">Responsive</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Large Input</label>
+                                        <input type="text" class="form-control form-control-lg" placeholder="Large input">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Default Input</label>
+                                        <input type="text" class="form-control" placeholder="Default input">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Small Input</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Small input">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Input Group Sizes</label>
+                                        <div class="input-group input-group-lg mb-2">
+                                            <span class="input-group-text">@</span>
+                                            <input type="text" class="form-control" placeholder="Large">
+                                        </div>
+                                        <div class="input-group input-group-sm">
+                                            <span class="input-group-text">@</span>
+                                            <input type="text" class="form-control" placeholder="Small">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Selects -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Multi-Select</h5>
+                                    <span class="badge bg-success">Native HTML5</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Basic Multi-Select</label>
+                                        <select class="form-select" multiple size="5">
+                                            <option>Option 1</option>
+                                            <option>Option 2</option>
+                                            <option>Option 3</option>
+                                            <option selected>Option 4</option>
+                                            <option>Option 5</option>
+                                            <option selected>Option 6</option>
+                                            <option>Option 7</option>
+                                            <option>Option 8</option>
+                                        </select>
+                                        <div class="form-text">Hold ctrl/cmd to select multiple options</div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Select with Search (datalist)</label>
+                                        <input class="form-control" list="countriesDatalist" placeholder="Type to search...">
+                                        <datalist id="countriesDatalist">
+                                            <option value="United States">
+                                            <option value="United Kingdom">
+                                            <option value="Canada">
+                                            <option value="Australia">
+                                            <option value="Germany">
+                                            <option value="France">
+                                            <option value="Japan">
+                                            <option value="China">
+                                            <option value="India">
+                                            <option value="Brazil">
+                                        </datalist>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Select with Groups</h5>
+                                    <span class="badge bg-warning">Organized</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Grouped Options</label>
+                                        <select class="form-select" size="8">
+                                            <optgroup label="Frontend">
+                                                <option>HTML</option>
+                                                <option>CSS</option>
+                                                <option>JavaScript</option>
+                                                <option>React</option>
+                                                <option>Vue</option>
+                                            </optgroup>
+                                            <optgroup label="Backend">
+                                                <option>Node.js</option>
+                                                <option>PHP</option>
+                                                <option>Python</option>
+                                                <option>Java</option>
+                                                <option>C#</option>
+                                            </optgroup>
+                                            <optgroup label="Database">
+                                                <option>MySQL</option>
+                                                <option>PostgreSQL</option>
+                                                <option>MongoDB</option>
+                                                <option>Redis</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Date & Time Inputs -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Date & Time Inputs</h5>
+                                    <span class="badge bg-secondary">HTML5</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Date Input</label>
+                                        <input type="date" class="form-control" value="2024-07-29">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Time Input</label>
+                                        <input type="time" class="form-control" value="14:30">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">DateTime Local</label>
+                                        <input type="datetime-local" class="form-control" value="2024-07-29T14:30">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Week Input</label>
+                                        <input type="week" class="form-control" value="2024-W30">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Month Input</label>
+                                        <input type="month" class="form-control" value="2024-07">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Color & Range Inputs</h5>
+                                    <span class="badge bg-danger">Interactive</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Color Picker</label>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <input type="color" class="form-control form-control-color" id="colorPicker" value="#0d6efd">
+                                            <input type="text" class="form-control" id="colorValue" value="#0d6efd" readonly>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Range Slider</label>
+                                        <input type="range" class="form-range" id="rangeSlider" min="0" max="100" value="50">
+                                        <div class="d-flex justify-content-between">
+                                            <small>0</small>
+                                            <small>Value: <span id="rangeValue">50</span></small>
+                                            <small>100</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Custom Color Palette</label>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <div class="color-preview" style="background-color: #0d6efd;" data-color="#0d6efd"></div>
+                                            <div class="color-preview" style="background-color: #6610f2;" data-color="#6610f2"></div>
+                                            <div class="color-preview" style="background-color: #6f42c1;" data-color="#6f42c1"></div>
+                                            <div class="color-preview" style="background-color: #d63384;" data-color="#d63384"></div>
+                                            <div class="color-preview" style="background-color: #dc3545;" data-color="#dc3545"></div>
+                                            <div class="color-preview" style="background-color: #fd7e14;" data-color="#fd7e14"></div>
+                                            <div class="color-preview" style="background-color: #ffc107;" data-color="#ffc107"></div>
+                                            <div class="color-preview" style="background-color: #198754;" data-color="#198754"></div>
+                                            <div class="color-preview" style="background-color: #20c997;" data-color="#20c997"></div>
+                                            <div class="color-preview" style="background-color: #0dcaf0;" data-color="#0dcaf0"></div>
+                                        </div>
+                                        <input type="hidden" id="selectedColor" value="#0d6efd">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File Upload & Tags -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">File Upload</h5>
+                                    <span class="badge bg-info">Enhanced</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Basic File Input</label>
+                                        <input type="file" class="form-control">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Multiple Files</label>
+                                        <input type="file" class="form-control" multiple>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Custom File Button</label>
+                                        <div class="custom-file-button">
+                                            <label for="customFile" class="btn btn-primary">
+                                                <i class="fas fa-upload me-2"></i>Choose Files
+                                            </label>
+                                            <input type="file" id="customFile" class="d-none" multiple>
+                                            <div id="fileList" class="mt-2"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Drag & Drop Area</label>
+                                        <div class="border-2 border-dashed border-secondary rounded p-4 text-center" id="dropZone">
+                                            <i class="fas fa-cloud-upload-alt fa-3x text-muted mb-3"></i>
+                                            <p class="mb-2">Drag and drop files here or click to browse</p>
+                                            <input type="file" class="d-none" id="dropZoneInput" multiple>
+                                            <button type="button" class="btn btn-outline-primary" onclick="document.getElementById('dropZoneInput').click()">
+                                                Browse Files
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Tag Input</h5>
+                                    <span class="badge bg-success">Dynamic</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Enter Tags</label>
+                                        <div class="tag-input-wrapper" id="tagInputWrapper">
+                                            <input type="text" class="tag-input" id="tagInput" placeholder="Type and press Enter">
+                                        </div>
+                                        <div class="form-text">Press Enter to add tags</div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Predefined Tags</label>
+                                        <div class="d-flex flex-wrap gap-2 mb-2">
+                                            <button type="button" class="btn btn-sm btn-outline-primary add-tag" data-tag="HTML">HTML</button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary add-tag" data-tag="CSS">CSS</button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary add-tag" data-tag="JavaScript">JavaScript</button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary add-tag" data-tag="Bootstrap">Bootstrap</button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary add-tag" data-tag="React">React</button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary add-tag" data-tag="Vue">Vue</button>
+                                        </div>
+                                        <div class="tag-input-wrapper" id="predefinedTagsWrapper"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Masks -->
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Input Masks</h5>
+                                    <span class="badge bg-warning">Formatted</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Phone Number</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                            <input type="tel" class="form-control" id="phoneInput" placeholder="(555) 555-5555">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Credit Card</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
+                                            <input type="text" class="form-control" id="creditCardInput" placeholder="0000 0000 0000 0000">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Date (MM/DD/YYYY)</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                            <input type="text" class="form-control" id="dateInput" placeholder="MM/DD/YYYY">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Time (HH:MM)</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                                            <input type="text" class="form-control" id="timeInput" placeholder="HH:MM">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Advanced Validation</h5>
+                                    <span class="badge bg-danger">Real-time</span>
+                                </div>
+                                <div class="card-body">
+                                    <form class="needs-validation" novalidate>
+                                        <div class="mb-3">
+                                            <label class="form-label">Email with Pattern</label>
+                                            <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="form-label">Password Strength</label>
+                                            <input type="password" class="form-control" id="passwordInput" required minlength="8">
+                                            <div class="progress mt-2" style="height: 5px;">
+                                                <div class="progress-bar" id="passwordStrength" role="progressbar" style="width: 0%"></div>
+                                            </div>
+                                            <small class="form-text text-muted">Minimum 8 characters</small>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="form-label">Confirm Password</label>
+                                            <input type="password" class="form-control" id="confirmPasswordInput" required>
+                                            <div class="invalid-feedback">Passwords do not match.</div>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary">Submit Form</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Complete Form Example -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0">Complete Advanced Form</h5>
+                                    <span class="badge bg-dark">All Features</span>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label">First Name</label>
+                                                <input type="text" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Last Name</label>
+                                                <input type="text" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Email</label>
+                                                <input type="email" class="form-control" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Phone</label>
+                                                <input type="tel" class="form-control" placeholder="(555) 555-5555">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Country</label>
+                                                <select class="form-select">
+                                                    <option selected>Choose...</option>
+                                                    <option>United States</option>
+                                                    <option>Canada</option>
+                                                    <option>United Kingdom</option>
+                                                    <option>Australia</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">State</label>
+                                                <select class="form-select">
+                                                    <option selected>Choose...</option>
+                                                    <option>California</option>
+                                                    <option>Texas</option>
+                                                    <option>New York</option>
+                                                    <option>Florida</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Zip Code</label>
+                                                <input type="text" class="form-control" pattern="[0-9]{5}">
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Bio</label>
+                                                <textarea class="form-control" rows="3" placeholder="Tell us about yourself..."></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Skills</label>
+                                                <div class="tag-input-wrapper" id="skillsWrapper">
+                                                    <input type="text" class="tag-input" placeholder="Add skills...">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                                                    <label class="form-check-label" for="agreeTerms">
+                                                        I agree to the terms and conditions
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <hr>
+                                                <button type="submit" class="btn btn-primary">Submit Application</button>
+                                                <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Advanced form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Color picker sync
+            const colorPicker = document.getElementById('colorPicker');
+            const colorValue = document.getElementById('colorValue');
+            if (colorPicker) {
+                colorPicker.addEventListener('input', function() {
+                    colorValue.value = this.value;
+                });
+            }
+
+            // Range slider value display
+            const rangeSlider = document.getElementById('rangeSlider');
+            const rangeValue = document.getElementById('rangeValue');
+            if (rangeSlider) {
+                rangeSlider.addEventListener('input', function() {
+                    rangeValue.textContent = this.value;
+                });
+            }
+
+            // Color palette selection
+            document.querySelectorAll('.color-preview').forEach(preview => {
+                preview.addEventListener('click', function() {
+                    const color = this.dataset.color;
+                    document.getElementById('selectedColor').value = color;
+                    document.querySelectorAll('.color-preview').forEach(p => p.classList.remove('border-3', 'border-dark'));
+                    this.classList.add('border-3', 'border-dark');
+                });
+            });
+
+            // File upload display
+            const customFile = document.getElementById('customFile');
+            const fileList = document.getElementById('fileList');
+            if (customFile) {
+                customFile.addEventListener('change', function() {
+                    const files = Array.from(this.files);
+                    fileList.innerHTML = files.map(file => `
+                        <div class="d-flex align-items-center justify-content-between mt-2 p-2 bg-light rounded">
+                            <span><i class="fas fa-file me-2"></i>${file.name}</span>
+                            <small class="text-muted">${(file.size / 1024).toFixed(2)} KB</small>
+                        </div>
+                    `).join('');
+                });
+            }
+
+            // Tag input functionality
+            function setupTagInput(wrapperId, inputId) {
+                const wrapper = document.getElementById(wrapperId);
+                const input = wrapper?.querySelector('.tag-input') || document.getElementById(inputId);
+                
+                if (input) {
+                    input.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                            const tag = this.value.trim();
+                            if (tag) {
+                                addTag(wrapper, tag);
+                                this.value = '';
+                            }
+                        }
+                    });
+                }
+            }
+
+            function addTag(wrapper, tagText) {
+                const tag = document.createElement('span');
+                tag.className = 'tag';
+                tag.innerHTML = `${tagText} <span class="remove-tag">&times;</span>`;
+                
+                tag.querySelector('.remove-tag').addEventListener('click', function() {
+                    tag.remove();
+                });
+                
+                wrapper.insertBefore(tag, wrapper.querySelector('.tag-input'));
+            }
+
+            setupTagInput('tagInputWrapper', 'tagInput');
+            setupTagInput('predefinedTagsWrapper');
+            setupTagInput('skillsWrapper');
+
+            // Predefined tags
+            document.querySelectorAll('.add-tag').forEach(button => {
+                button.addEventListener('click', function() {
+                    const tag = this.dataset.tag;
+                    const wrapper = document.getElementById('predefinedTagsWrapper');
+                    addTag(wrapper, tag);
+                });
+            });
+
+            // Input masks
+            function addInputMask(inputId, pattern, placeholder) {
+                const input = document.getElementById(inputId);
+                if (!input) return;
+
+                input.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    let formatted = '';
+                    let valueIndex = 0;
+
+                    for (let i = 0; i < pattern.length && valueIndex < value.length; i++) {
+                        if (pattern[i] === '0') {
+                            formatted += value[valueIndex];
+                            valueIndex++;
+                        } else {
+                            formatted += pattern[i];
+                        }
+                    }
+
+                    e.target.value = formatted;
+                });
+            }
+
+            addInputMask('phoneInput', '(000) 000-0000');
+            addInputMask('creditCardInput', '0000 0000 0000 0000');
+            addInputMask('dateInput', '00/00/0000');
+            addInputMask('timeInput', '00:00');
+
+            // Password strength meter
+            const passwordInput = document.getElementById('passwordInput');
+            const passwordStrength = document.getElementById('passwordStrength');
+            if (passwordInput) {
+                passwordInput.addEventListener('input', function() {
+                    const password = this.value;
+                    let strength = 0;
+                    
+                    if (password.length >= 8) strength += 25;
+                    if (password.match(/[a-z]+/)) strength += 25;
+                    if (password.match(/[A-Z]+/)) strength += 25;
+                    if (password.match(/[0-9]+/)) strength += 25;
+                    
+                    passwordStrength.style.width = strength + '%';
+                    passwordStrength.className = 'progress-bar';
+                    
+                    if (strength <= 25) passwordStrength.classList.add('bg-danger');
+                    else if (strength <= 50) passwordStrength.classList.add('bg-warning');
+                    else if (strength <= 75) passwordStrength.classList.add('bg-info');
+                    else passwordStrength.classList.add('bg-success');
+                });
+            }
+
+            // Password confirmation
+            const confirmPasswordInput = document.getElementById('confirmPasswordInput');
+            if (confirmPasswordInput) {
+                confirmPasswordInput.addEventListener('input', function() {
+                    if (this.value !== passwordInput.value) {
+                        this.setCustomValidity('Passwords do not match');
+                    } else {
+                        this.setCustomValidity('');
+                    }
+                });
+            }
+
+            // Form validation
+            const forms = document.querySelectorAll('.needs-validation');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                });
+            });
+
+            // Drag and drop
+            const dropZone = document.getElementById('dropZone');
+            const dropZoneInput = document.getElementById('dropZoneInput');
+            
+            if (dropZone) {
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    dropZone.addEventListener(eventName, preventDefaults, false);
+                });
+
+                function preventDefaults(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    dropZone.addEventListener(eventName, highlight, false);
+                });
+
+                ['dragleave', 'drop'].forEach(eventName => {
+                    dropZone.addEventListener(eventName, unhighlight, false);
+                });
+
+                function highlight(e) {
+                    dropZone.classList.add('bg-light');
+                }
+
+                function unhighlight(e) {
+                    dropZone.classList.remove('bg-light');
+                }
+
+                dropZone.addEventListener('drop', handleDrop, false);
+
+                function handleDrop(e) {
+                    const dt = e.dataTransfer;
+                    const files = dt.files;
+                    handleFiles(files);
+                }
+
+                function handleFiles(files) {
+                    console.log('Files dropped:', files);
+                    // Handle file upload here
+                }
+            }
+        });
+    </script>
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-CCyzv5uj.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/forms-advanced-legacy-DLxAec9d.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>
