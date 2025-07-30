@@ -1,0 +1,301 @@
+<!-- Sidebar -->
+<nav class="sidebar bg-dark text-white position-fixed d-flex flex-column" id="sidebar">
+    <!-- Brand -->
+    <div class="sidebar-brand d-flex align-items-center justify-content-center py-3 border-bottom border-secondary">
+        <img src="images/sufee-logo.svg" alt="Sufee Admin" class="logo-full" height="32">
+        <img src="images/sufee-logo-mini.svg" alt="SA" class="logo-mini d-none" height="32">
+    </div>
+
+    <!-- Navigation -->
+    <div class="sidebar-nav flex-grow-1 overflow-auto py-3">
+        <ul class="nav flex-column">
+            <!-- Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html" data-page="dashboard" title="Dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="nav-text ms-2">Dashboard</span>
+                </a>
+            </li>
+
+            <!-- UI Elements Section -->
+            <li class="nav-header mt-3 mb-2">
+                <span class="small fw-bold text-uppercase text-light opacity-75">UI Elements</span>
+            </li>
+
+            <!-- Components -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#componentsSubmenu" aria-expanded="false" title="Components">
+                    <i class="fas fa-laptop"></i>
+                    <span class="nav-text ms-2">Components</span>
+                    <i class="fas fa-chevron-down ms-auto nav-arrow"></i>
+                </a>
+                <div class="collapse" id="componentsSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-buttons.html" data-page="ui-buttons">
+                                <i class="fas fa-puzzle-piece text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Buttons</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-badges.html" data-page="ui-badges">
+                                <i class="fas fa-id-badge text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Badges</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-tabs.html" data-page="ui-tabs">
+                                <i class="fas fa-bars text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Tabs</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-social-buttons.html" data-page="ui-social-buttons">
+                                <i class="fas fa-share-square text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Social Buttons</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-cards.html" data-page="ui-cards">
+                                <i class="fas fa-id-card text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Cards</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-alerts.html" data-page="ui-alerts">
+                                <i class="fas fa-exclamation-triangle text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Alerts</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-progressbar.html" data-page="ui-progressbar">
+                                <i class="fas fa-spinner text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Progress Bars</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-modals.html" data-page="ui-modals">
+                                <i class="fas fa-fire text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Modals</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-switches.html" data-page="ui-switches">
+                                <i class="fas fa-book text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Switches</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-grids.html" data-page="ui-grids">
+                                <i class="fas fa-th text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Grids</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ui-typography.html" data-page="ui-typography">
+                                <i class="fas fa-file-word text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Typography</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#tablesSubmenu" aria-expanded="false" title="Tables">
+                    <i class="fas fa-table"></i>
+                    <span class="nav-text ms-2">Tables</span>
+                    <i class="fas fa-chevron-down ms-auto nav-arrow"></i>
+                </a>
+                <div class="collapse" id="tablesSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="tables-basic.html" data-page="tables-basic">
+                                <i class="fas fa-table text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Basic Table</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tables-data.html" data-page="tables-data">
+                                <i class="fas fa-table text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Data Table</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Forms -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#formsSubmenu" aria-expanded="false" title="Forms">
+                    <i class="fas fa-edit"></i>
+                    <span class="nav-text ms-2">Forms</span>
+                    <i class="fas fa-chevron-down ms-auto nav-arrow"></i>
+                </a>
+                </div>
+                <div class="collapse" id="formsSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="forms-basic.html" data-page="forms-basic">
+                                <i class="fas fa-edit text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Basic Form</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="forms-advanced.html" data-page="forms-advanced">
+                                <i class="fas fa-edit text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Advanced Form</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Icons Section -->
+            <li class="nav-header mt-3 mb-2">
+                <span class="small fw-bold text-uppercase text-light opacity-75">Icons</span>
+            </li>
+
+            <!-- Icons -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#iconsSubmenu" aria-expanded="false" title="Icons">
+                    <i class="fas fa-tasks"></i>
+                    <span class="nav-text ms-2">Icons</span>
+                    <i class="fas fa-chevron-down ms-auto nav-arrow"></i>
+                </a>
+                    <div class="nav-link"><i class="fab fa-fort-awesome text-light opacity-75"></i><span class="nav-text">Font Awesome</span></div>
+                    <div class="nav-link"><i class="fas fa-icons text-light opacity-75"></i><span class="nav-text">Themify Icons</span></div>
+                </div>
+                <div class="collapse" id="iconsSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="font-fontawesome.html" data-page="font-fontawesome">
+                                <i class="fab fa-fort-awesome text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Font Awesome</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="font-themify.html" data-page="font-themify">
+                                <i class="fas fa-icons text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Themify Icons</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Widgets -->
+            <li class="nav-item">
+                <a class="nav-link" href="widgets.html" data-page="widgets" title="Widgets">
+                    <i class="fas fa-th-large"></i>
+                    <span class="nav-text ms-2">Widgets</span>
+                </a>
+            </li>
+
+            <!-- Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#chartsSubmenu" aria-expanded="false" title="Charts">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="nav-text ms-2">Charts</span>
+                    <i class="fas fa-chevron-down ms-auto nav-arrow"></i>
+                </a>
+                    <div class="nav-link"><i class="fas fa-chart-line text-light opacity-75"></i><span class="nav-text">Chart JS</span></div>
+                    <div class="nav-link"><i class="fas fa-chart-area text-light opacity-75"></i><span class="nav-text">Flot Chart</span></div>
+                    <div class="nav-link"><i class="fas fa-chart-pie text-light opacity-75"></i><span class="nav-text">Peity Chart</span></div>
+                </div>
+                <div class="collapse" id="chartsSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="charts-chartjs.html" data-page="charts-chartjs">
+                                <i class="fas fa-chart-line text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Chart JS</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="charts-flot.html" data-page="charts-flot">
+                                <i class="fas fa-chart-area text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Flot Chart</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="charts-peity.html" data-page="charts-peity">
+                                <i class="fas fa-chart-pie text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Peity Chart</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Maps -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#mapsSubmenu" aria-expanded="false" title="Maps">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span class="nav-text ms-2">Maps</span>
+                    <i class="fas fa-chevron-down ms-auto nav-arrow"></i>
+                </a>
+                    <div class="nav-link"><i class="fas fa-map text-light opacity-75"></i><span class="nav-text">Google Maps</span></div>
+                    <div class="nav-link"><i class="fas fa-street-view text-light opacity-75"></i><span class="nav-text">Vector Maps</span></div>
+                </div>
+                <div class="collapse" id="mapsSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="maps-gmap.html" data-page="maps-gmap">
+                                <i class="fas fa-map text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Google Maps</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="maps-vector.html" data-page="maps-vector">
+                                <i class="fas fa-street-view text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Vector Maps</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Extras Section -->
+            <li class="nav-header mt-3 mb-2">
+                <span class="small fw-bold text-uppercase text-light opacity-75">Extras</span>
+            </li>
+
+            <!-- Pages -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#pagesSubmenu" aria-expanded="false" title="Pages">
+                    <i class="fas fa-glass-martini"></i>
+                    <span class="nav-text ms-2">Pages</span>
+                    <i class="fas fa-chevron-down ms-auto nav-arrow"></i>
+                </a>
+                    <div class="nav-link"><i class="fas fa-sign-in-alt text-light opacity-75"></i><span class="nav-text">Login</span></div>
+                    <div class="nav-link"><i class="fas fa-user-plus text-light opacity-75"></i><span class="nav-text">Register</span></div>
+                    <div class="nav-link"><i class="fas fa-paper-plane text-light opacity-75"></i><span class="nav-text">Forget Pass</span></div>
+                </div>
+                <div class="collapse" id="pagesSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="page-login.html" data-page="page-login">
+                                <i class="fas fa-sign-in-alt text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Login</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="page-register.html" data-page="page-register">
+                                <i class="fas fa-user-plus text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Register</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages-forget.html" data-page="pages-forget">
+                                <i class="fas fa-paper-plane text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Forget Pass</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- End Sidebar -->

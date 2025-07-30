@@ -1,495 +1,261 @@
-// CSS Variables for sidebar layout
+// Bootstrap 5 Sidebar - Modern Implementation
 :root {
   --sidebar-width: 280px;
   --sidebar-collapsed-width: 70px;
-  --menu-bg: #272c33;
-  --menu-color: #c8c9ce;
-  --text-primary: #272c33;
-  --text-secondary: #868e96;
-  --color-flat-1: #20a8d8;
-  --color-flat-2: #f86c6b;
-  --color-flat-3: #ffc107;
-  --color-flat-4: #20c997;
-  --color-flat-5: #6610f2;
-  --sidebar-active-bg: rgba(32, 168, 216, 0.1);
-  --sidebar-active-color: #20a8d8;
+  --sidebar-bg: #272c33;
+  --sidebar-text: #c8c9ce;
+  --sidebar-text-active: #ffffff;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.05);
+  --sidebar-active-bg: rgba(255, 255, 255, 0.1);
 }
 
-// Sidebar Component Styles - Original exact replica
-aside.left-panel {
-  background: var(--menu-bg);
-  display: table-cell;
-  height: 100vh;
-  min-height: 100%;
-  padding: 0 25px;
-  transition: width 0.3s ease;
-  vertical-align: top;
-  width: var(--sidebar-width);
-
-  .navbar {
-    background: #272c33;
-    border-radius: 0;
-    border: none;
-    display: block;
-    margin: 0 0 100px;
-    padding: 0;
-
-    .navbar-header {
-      float: none;
-      text-align: center;
-      width: 100%;
-    }
-
-    .navbar-brand {
-      border-bottom: 1px solid #4e4e52;
-      color: #f1f2f7 !important;
-      font-family: 'Open Sans';
-      font-size: 22px;
-      line-height: 50px;
-      margin: 0;
-      text-align: left;
-      text-transform: capitalize;
-      display: inline-block;
-      height: 69px;
-      padding: 0;
-      position: relative;
-      cursor: pointer;
-      text-decoration: none;
-      width: 100%;
-
-      span {
-        font-weight: 600;
-      }
-
-      img {
-        max-width: 160px;
-      }
-
-      &.hidden {
-        display: none;
-      }
-    }
-
-    .menu-title {
-      border-bottom: 1px solid #4e4e52;
-      color: #9496a1;
-      clear: both;
-      display: block;
-      font-family: 'Open Sans';
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 50px;
-      padding: 15px 0 0;
-      text-transform: uppercase;
-      width: 100%;
-    }
-
-    .navbar-nav {
-      float: none;
-      position: relative;
-
-      li {
-        width: 100%;
-
-        &.active .menu-icon,
-        &:hover .toggle_nav_button:before,
-        .toggle_nav_button.nav-open:before {
-          color: #fff !important;
-        }
-
-        .dropdown-toggle:after {
-          display: none;
-        }
-
-        > a {
-          background: none !important;
-          color: #c8c9ce !important;
-          display: inline-block;
-          font-family: 'Open Sans';
-          font-size: 14px;
-          line-height: 50px;
-          padding: 0;
-          position: relative;
-          width: 100%;
-          text-decoration: none;
-
-          &:hover,
-          &:hover .menu-icon {
-            color: #fff !important;
-          }
-
-          .menu-icon {
-            color: #8b939b;
-            float: left;
-            margin-top: 8px;
-            width: 55px;
-          }
-
-          .menu-title-text {
-            font-size: 14px;
-            display: inline-block;
-            vertical-align: middle;
-          }
-
-          .badge {
-            border-radius: 0;
-            font-family: 'Open Sans';
-            font-weight: 600;
-            padding: 0.4em 0.5em;
-            margin-left: auto;
-          }
-        }
-
-        &.menu-item-has-children {
-          position: relative;
-
-          > a {
-            &::after {
-              content: "\f105";
-              font-family: 'Font Awesome 6 Free';
-              font-weight: 900;
-              color: var(--menu-color);
-              font-size: 16px;
-              margin-left: auto;
-              transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            &:hover::after {
-              color: #fff;
-            }
-          }
-
-          .sub-menu {
-            background: var(--menu-bg);
-            border: none;
-            box-shadow: none;
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.3s ease;
-            padding-left: 35px;
-            list-style: none;
-            margin: 0;
-            display: block;
-
-            li {
-              position: relative;
-
-              a {
-                padding: 8px 0;
-                font-size: 13px;
-
-                .menu-icon {
-                  margin-right: 10px;
-                  font-size: 12px;
-                  width: 15px;
-                }
-              }
-            }
-          }
-
-          &.show {
-            > a::after {
-              content: "\f107";
-            }
-
-            .sub-menu {
-              max-height: 500px;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-// Collapsed sidebar state - disabled to prevent conflicts
-// This is handled by the new .sidebar.collapsed styles below
-// body.open aside.left-panel { ... }
-
-// Original responsive styles
-@media (max-width: 1024px) {
-  aside.left-panel {
-    padding: 0 20px;
-    width: 200px;
-  }
-  
-  .navbar .navbar-nav li > a .menu-icon {
-    width: 30px;
-  }
-}
-
-@media (max-width: 575.99px) {
-  body {
-    display: block;
-  }
-  
-  aside.left-panel {
-    display: block;
-    height: auto;
-    min-height: inherit;
-    padding: 0 15px;
-    width: 100%;
-  }
-  
-  .menutoggle {
-    display: none;
-  }
-  
-  .right-panel {
-    display: block;
-    
-    header.header {
-      padding: 5px 10px 1px 5px;
-      
-      div[class*="col"] {
-        padding: 0;
-      }
-    }
-  }
-}
-
-// Modern Sidebar Navigation Styles
+// Main sidebar container
 .sidebar {
   width: var(--sidebar-width);
-  transition: all 0.3s ease;
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  transition: width 0.3s ease;
   z-index: 1050;
   
-  // Override Bootstrap collapse to prevent any transitions that cause movement
-  .collapsing {
-    // No height transition - let max-height handle it below
-    overflow: hidden;
-  }
-  
-  .collapse:not(.show) {
-    display: block;
-    height: auto; // Don't use height: 0
-    overflow: hidden;
-  }
-  
-  .collapse.show {
-    display: block;
-    height: auto;
-    overflow: hidden;
-    
-    // Override for sidebar submenus - prevent height:auto jump
-    &.sidebar .collapse.show,
-    .sidebar & {
-      height: unset !important; // Don't override our max-height
-    }
-  }
-  
-  &.collapsed {
-    width: var(--sidebar-collapsed-width);
-    
-    .sidebar-brand .logo-full {
-      display: none;
-    }
-    
-    .sidebar-brand .logo-mini {
-      display: block;
-    }
-    
-    .nav-text {
-      display: none;
-    }
-    
-    .nav-arrow {
-      display: none;
-    }
-    
-    .nav-header {
-      display: none;
-    }
-    
-    // Don't hide collapses, let them animate properly
-    .nav-link {
-      justify-content: center;
-      
-      i {
-        margin-right: 0;
-      }
-    }
-    
-    // Keep submenus as normal dropdowns, not floating
-    .collapse {
-      position: relative !important;
-      width: 100% !important;
-      left: 0 !important;
-      top: 0 !important;
-      
-      .nav-pills {
-        .nav-link {
-          // Match the global submenu padding to prevent resize
-          padding: 8px 16px 8px 36px !important; // Moved slightly left
-          justify-content: flex-start;
-          
-          .nav-text {
-            display: inline;
-          }
-        }
-      }
-    }
-  }
-  
+  // Brand section
   .sidebar-brand {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    
     .logo-mini {
       display: none;
     }
   }
   
-  .nav-pills {
-    .nav-link {
-      color: var(--menu-color);
-      background: transparent;
-      border-radius: 0;
-      padding: 12px 16px;
-      margin-bottom: 2px;
-      border-left: 3px solid transparent;
-      transition: all 0.2s ease;
+  // Navigation section
+  .sidebar-nav {
+    padding: 1rem 0;
+    
+    .nav {
+      padding: 0 1rem;
       
-      &:hover:not(.active) {
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        border-radius: 8px;
-      }
-      
-      &.active {
-        background: rgba(255, 255, 255, 0.08) !important;
-        color: #fff !important;
-        border-left-color: transparent;
-        border-radius: 8px;
-        font-weight: 500;
-        position: relative;
+      // Navigation headers
+      .nav-header {
+        padding: 0.5rem 0;
         
-        i {
-          color: #fff !important;
+        span {
+          color: var(--sidebar-text);
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
         }
       }
       
-      i {
-        width: 20px;
-        text-align: center;
-        margin-right: 8px;
-      }
-    }
-    
-    // Submenu styles - use Bootstrap's native collapse with smooth transitions
-    .collapse {
-      position: relative !important;
-      left: 0 !important;
-      top: 0 !important;
-      width: 100% !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      box-sizing: border-box !important;
-      
-      .nav-pills {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin-top: 8px !important;
-        margin-bottom: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        position: relative !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
+      // Navigation items
+      .nav-item {
+        margin-bottom: 0.25rem;
         
         .nav-link {
-          padding: 8px 16px 8px 36px !important; // Moved slightly left + !important
-          font-size: 0.9em;
-          border-left: 3px solid transparent;
+          display: flex;
+          align-items: center;
+          padding: 0.75rem 1rem;
+          color: var(--sidebar-text);
+          text-decoration: none;
+          border-radius: 0.5rem;
+          transition: all 0.2s ease;
+          position: relative;
           
-          &:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.04);
-            color: #fff;
-            border-radius: 6px;
+          &:hover {
+            color: var(--sidebar-text-active);
+            background-color: var(--sidebar-hover-bg);
           }
           
           &.active {
-            background: rgba(255, 255, 255, 0.08) !important;
-            color: #fff !important;
-            border-left-color: transparent;
-            border-radius: 6px;
+            color: var(--sidebar-text-active);
+            background-color: var(--sidebar-active-bg);
             font-weight: 500;
-            position: relative;
+          }
+          
+          i {
+            width: 1.25rem;
+            text-align: center;
+            font-size: 1rem;
+            
+            &.nav-arrow {
+              width: auto;
+              margin-left: auto;
+              font-size: 0.75rem;
+              transition: transform 0.2s ease;
+            }
+          }
+          
+          .nav-text {
+            margin-left: 0.75rem;
+            font-size: 0.875rem;
+          }
+          
+          // Collapsed state chevron rotation
+          &[aria-expanded="true"] .nav-arrow {
+            transform: rotate(180deg);
+          }
+        }
+      }
+      
+      // Submenu styles
+      .collapse {
+        .nav {
+          padding: 0.5rem 0 0 0;
+          margin-left: 1rem;
+          
+          .nav-item {
+            margin-bottom: 0.125rem;
+            
+            .nav-link {
+              padding: 0.5rem 1rem;
+              font-size: 0.8125rem;
+              border-radius: 0.375rem;
+              
+              i {
+                font-size: 0.75rem;
+                color: var(--sidebar-text);
+              }
+              
+              .nav-text {
+                margin-left: 0.5rem;
+              }
+            }
           }
         }
       }
     }
   }
   
-  // Parent menu toggle button styles
-  .nav-link[data-bs-toggle="collapse"] {
-    .nav-arrow {
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    &[aria-expanded="true"] {
-      .nav-arrow {
-        transform: rotate(90deg);
-      }
-    }
-    
-    &.collapsed {
-      .nav-arrow {
-        transform: rotate(0deg);
-      }
-    }
-  }
 }
 
-// Mobile overlay
-.sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1040;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+// Collapsed sidebar state
+body.sidebar-collapsed {
+  .sidebar {
+    width: var(--sidebar-collapsed-width);
+    
+    .sidebar-brand {
+      .logo-full {
+        display: none;
+      }
+      
+      .logo-mini {
+        display: block;
+      }
+    }
+    
+    .sidebar-nav {
+      .nav {
+        padding: 0; // Remove padding to center icons
+        
+        .nav-header {
+          display: none;
+        }
+        
+        .nav-item {
+          .nav-link {
+            justify-content: center;
+            padding: 0.75rem 0;
+            position: relative;
+            
+            i {
+              margin: 0; // Center icon by removing margins
+            }
+            
+            .nav-text {
+              display: none;
+            }
+            
+            .nav-arrow {
+              display: none;
+            }
+          }
+        }
+        
+        // Hide submenus in collapsed state
+        .collapse {
+          display: none !important;
+        }
+      }
+    }
+    
+  }
   
-  &.show {
-    opacity: 1;
-    visibility: visible;
+  // Hover behavior for collapsed sidebar
+  .sidebar.hover {
+    width: var(--sidebar-width);
+    transition: width 0.2s ease;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    
+    .sidebar-brand {
+      .logo-full {
+        display: block;
+      }
+      
+      .logo-mini {
+        display: none;
+      }
+    }
+    
+    .sidebar-nav {
+      .nav {
+        padding: 0 1rem; // Restore padding on hover
+        
+        .nav-header {
+          display: block;
+        }
+        
+        .nav-item {
+          .nav-link {
+            justify-content: flex-start;
+            padding: 0.75rem 1rem;
+            
+            i {
+              width: 1.25rem;
+              text-align: center;
+              margin-right: 0; // Reset margin
+            }
+            
+            .nav-text {
+              display: inline;
+              margin-left: 0.75rem; // Add margin back
+            }
+            
+            .nav-arrow {
+              display: inline;
+              margin-left: auto; // Push to right
+            }
+          }
+        }
+        
+        // Don't show all collapses automatically
+        .collapse {
+          display: none !important;
+        }
+        
+        // Only show active collapse
+        .collapse.show {
+          display: block !important;
+        }
+      }
+    }
   }
 }
 
-// Mobile sidebar styles
+// Mobile responsive behavior
 @media (max-width: 991.98px) {
-  nav.sidebar,
   .sidebar {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
-    z-index: 1050 !important;
-    transform: translateX(-100%) !important;
-    transition: transform 0.3s ease !important;
-    height: 100vh !important;
-    width: var(--sufee-sidebar-width) !important;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
     
     &.show {
-      transform: translateX(0) !important;
+      transform: translateX(0);
     }
   }
   
-  // Extra specificity for the actual element
-  #sidebar {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    z-index: 1050 !important;
-    transform: translateX(-100%) !important;
-    transition: transform 0.3s ease !important;
-    
-    &.show {
-      transform: translateX(0) !important;
-    }
-  }
-  
-  // Backdrop for mobile sidebar
+  // Mobile backdrop
   .sidebar-backdrop {
     position: fixed;
     top: 0;
@@ -508,232 +274,35 @@ aside.left-panel {
     }
   }
   
-  // Main content adjustment when sidebar is collapsed
+  // Adjust main content for mobile
   .main-content {
-    margin-left: 0;
-    width: 100%;
+    margin-left: 0 !important;
+    width: 100% !important;
   }
 }
 
-// Desktop sidebar styles
+// Desktop layout adjustments
 @media (min-width: 992px) {
-  .main-content {
+  .main-content,
+  .right-panel {
     margin-left: var(--sidebar-width);
     width: calc(100% - var(--sidebar-width));
     transition: all 0.3s ease;
   }
   
-  body.sidebar-collapsed .main-content {
-    margin-left: var(--sidebar-collapsed-width);
-    width: calc(100% - var(--sidebar-collapsed-width));
-  }
-  
-  body.sidebar-collapsed .sidebar {
-    width: var(--sidebar-collapsed-width);
-  }
-}
-
-// Fix for all submenus to prevent jumping and resizing
-.sidebar .collapse,
-.sidebar .collapsing,
-.sidebar .collapse.show {
-  // Force CSS containment to prevent any layout shifts
-  contain: layout style !important;
-  
-  // Lock positioning completely
-  position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: auto !important;
-  bottom: auto !important;
-  
-  // Lock dimensions to prevent resizing
-  box-sizing: border-box !important;
-  width: 100% !important;
-  
-  // Remove any transforms or transitions that might cause micro-movements
-  transform: none !important;
-  transform-origin: top left !important;
-  
-  // Prevent subpixel rendering issues
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-  will-change: auto !important;
-  
-  // Force pixel-perfect positioning
-  translate: 0px 0px !important;
-  rotate: 0deg !important;
-  scale: 1 !important;
-  
-  // Lock the position and prevent any movement
-  .nav-pills {
-    // Complete positioning lock
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: auto !important;
-    bottom: auto !important;
-    
-    // Remove any transforms
-    transform: none !important;
-    transform-origin: top left !important;
-    
-    // Lock margins and dimensions
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    margin-top: 8px !important; // Lock consistent top margin
-    margin-bottom: 0 !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    
-    // Prevent rendering issues
-    backface-visibility: hidden !important;
-    will-change: auto !important;
-    
-    transition: none !important; // Disable any transitions on the container
-    
-    // Lock the list styling
-    list-style: none !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    
-    // Lock nav-item spacing (both li and .nav-item)
-    li,
-    .nav-item {
-      margin: 0 !important;
-      margin-top: 0 !important;
-      margin-bottom: 0 !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-      padding: 0 !important;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-      position: relative !important;
-      list-style: none !important;
-      
-      // Remove any browser default spacing
-      &::before,
-      &::after {
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-    }
-    
-    .nav-link {
-      // Lock positioning completely
-      position: relative !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: auto !important;
-      bottom: auto !important;
-      
-      // Remove any floats and set display
-      float: none !important;
-      clear: both !important;
-      display: flex !important;
-      align-items: center !important;
-      
-      // Ensure consistent padding in all states - moved slightly left
-      padding: 8px 16px 8px 36px !important;
-      margin: 0 !important;
-      margin-bottom: 0 !important; // Explicitly override any inherited margin-bottom
-      transform: none !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
-      font-size: 0.9em !important; // Lock font size
-      line-height: 1.5 !important; // Lock line height
-      min-height: 36px !important; // Lock minimum height
-      height: auto !important;
-      transition: background-color 0.2s ease, color 0.2s ease !important; // Only allow color transitions
-      
-      // Prevent any text alignment changes
-      text-align: left !important;
-      vertical-align: top !important;
-      
-      i {
-        font-size: 12px !important;
-        width: 20px !important;
-        margin-right: 8px !important;
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
-      }
+  body.sidebar-collapsed {
+    .main-content,
+    .right-panel {
+      margin-left: var(--sidebar-collapsed-width);
+      width: calc(100% - var(--sidebar-collapsed-width));
     }
   }
 }
 
-// NUCLEAR OPTION: Completely disable Bootstrap collapse and use pure CSS
-.sidebar {
-  // Override ALL Bootstrap collapse behavior
-  .collapse,
-  .collapsing {
-    // Remove ALL Bootstrap transitions and animations
-    transition: none !important;
-    animation: none !important;
-    height: auto !important;
-    overflow: visible !important;
-    
-    // Lock all positioning
-    position: static !important;
-    display: block !important;
-    
-    // Disable ALL child animations
-    * {
-      transition: none !important;
-      animation: none !important;
-      transform: none !important;
-    }
-  }
-  
-  // Create our own show/hide using pure visibility
-  .collapse:not(.show) {
-    display: none !important;
-  }
-  
-  .collapse.show {
-    display: block !important;
-  }
-}
-
-// Ultimate fix: Override ALL possible conflicting submenu styles
-.sidebar .collapse .nav-pills .nav-link,
-.sidebar .collapsing .nav-pills .nav-link,
-.sidebar .collapse.show .nav-pills .nav-link {
-  // Lock ALL properties that could cause movement
-  padding: 8px 16px 8px 36px !important;
-  margin: 0 !important;
-  position: relative !important;
-  top: 0 !important;
-  left: 0 !important;
-  transform: none !important;
-  transition: background-color 0.2s ease, color 0.2s ease !important;
-  
-  // Lock display and layout
-  display: flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  
-  // Lock font and sizing
-  font-size: 0.9em !important;
-  line-height: 1.5 !important;
-  min-height: 36px !important;
-  
-  // Lock box model
-  box-sizing: border-box !important;
-  width: 100% !important;
-}
-
-// Fix for Components menu toggle
-a[data-bs-target="#componentsSubmenu"] {
-  &[aria-expanded="true"] .nav-arrow {
-    transform: rotate(90deg) !important;
-  }
-  
-  &[aria-expanded="false"] .nav-arrow,
-  &.collapsed .nav-arrow {
-    transform: rotate(0deg) !important;
+// Active page highlighting
+.nav-link[data-page] {
+  &.active {
+    color: var(--sidebar-text-active) !important;
+    background-color: var(--sidebar-active-bg) !important;
   }
 }

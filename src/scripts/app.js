@@ -247,15 +247,86 @@ export class App {
     if (this.isCollapsed) {
       body.classList.add('sidebar-collapsed')
       localStorage.setItem('sufee-sidebar-collapsed', 'true')
+      this.setupCollapsedSidebarHover()
     } else {
       body.classList.remove('sidebar-collapsed')
       localStorage.setItem('sufee-sidebar-collapsed', 'false')
+      this.removeCollapsedSidebarHover()
     }
     
     // Dispatch custom event for components that need to know
     window.dispatchEvent(new CustomEvent('sidebarToggle', {
       detail: { collapsed: this.isCollapsed }
     }))
+  }
+
+  setupCollapsedSidebarHover() {
+    const sidebar = document.getElementById('sidebar')
+    if (!sidebar) return
+    
+    // Remove any existing handlers
+    this.removeCollapsedSidebarHover()
+    
+    // Add hover handlers
+    this.sidebarHoverEnter = () => {
+      if (this.isCollapsed && !this.isMobile) {
+        // Add hover class to sidebar
+        sidebar.classList.add('hover')
+        
+        // Expand all currently active submenus when hovering
+        const activeLink = sidebar.querySelector('.nav-link.active')
+        if (activeLink) {
+          const parentCollapse = activeLink.closest('.collapse')
+          if (parentCollapse) {
+            // Temporarily show the parent collapse
+            parentCollapse.classList.add('show')
+            
+            // Update toggle button state
+            const toggleBtn = sidebar.querySelector(`[data-bs-target="#${parentCollapse.id}"]`)
+            if (toggleBtn) {
+              toggleBtn.setAttribute('aria-expanded', 'true')
+            }
+          }
+        }
+      }
+    }
+    
+    this.sidebarHoverLeave = () => {
+      if (this.isCollapsed && !this.isMobile) {
+        // Remove hover class from sidebar
+        sidebar.classList.remove('hover')
+        
+        // Hide all collapses when not hovering
+        const collapses = sidebar.querySelectorAll('.collapse.show')
+        collapses.forEach(collapse => {
+          collapse.classList.remove('show')
+          
+          // Update toggle button state
+          const toggleBtn = sidebar.querySelector(`[data-bs-target="#${collapse.id}"]`)
+          if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', 'false')
+          }
+        })
+      }
+    }
+    
+    sidebar.addEventListener('mouseenter', this.sidebarHoverEnter)
+    sidebar.addEventListener('mouseleave', this.sidebarHoverLeave)
+  }
+
+  removeCollapsedSidebarHover() {
+    const sidebar = document.getElementById('sidebar')
+    if (!sidebar) return
+    
+    if (this.sidebarHoverEnter) {
+      sidebar.removeEventListener('mouseenter', this.sidebarHoverEnter)
+      this.sidebarHoverEnter = null
+    }
+    
+    if (this.sidebarHoverLeave) {
+      sidebar.removeEventListener('mouseleave', this.sidebarHoverLeave)
+      this.sidebarHoverLeave = null
+    }
   }
 
   toggleMobileSidebar() {
@@ -334,6 +405,7 @@ export class App {
       if (wasCollapsed) {
         document.body.classList.add('sidebar-collapsed')
         this.isCollapsed = true
+        this.setupCollapsedSidebarHover()
       }
     }
   }
