@@ -4,7 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Sufee is a responsive Bootstrap 5 Admin Dashboard Template built with HTML, CSS/SCSS, and JavaScript. It's a static front-end template with no backend components, designed for creating admin interfaces and dashboards. The project has been modernized to use Vite as the build tool and all dependencies are managed through NPM.
+Sufee is a responsive Bootstrap 5 Admin Dashboard Template built with HTML, CSS/SCSS, and JavaScript. Originally a Bootstrap 4 template, it has been completely modernized in v2.0 with Bootstrap 5, Vite build system, and a component-based architecture. It's a static front-end template with no backend components, designed for creating admin interfaces and dashboards.
+
+### Version 2.0 Changes
+- Migrated from Bootstrap 4 to Bootstrap 5
+- Replaced Grunt/Bower with Vite/NPM
+- Added dynamic partials system for code reusability
+- Converted to ES6 modules
+- Removed Internet Explorer support
+- Fixed sidebar animations and navigation issues
+- Improved performance with modern build tools
 
 ## Build System & Commands
 

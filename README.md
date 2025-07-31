@@ -1,37 +1,39 @@
-# Sufee HTML5 Admin Dashboard Template
+# Sufee HTML5 Admin Dashboard Template v2.0
 
-**Sufee** is a responsive Bootstrap 5 Admin Dashboard Template (upgraded from Bootstrap 4). It provides you with a collection of ready to use code snippets and utilities, custom pages, a collection of applications and some useful widgets. The template has been modernized with Vite build tool and includes a dynamic partials system for component reusability.
+**Sufee** is a responsive Bootstrap 5 Admin Dashboard Template. Originally built with Bootstrap 4, this major release brings a complete modernization with Bootstrap 5, Vite build system, and a component-based architecture.
 
-**Key Features:**
-- ✅ **Bootstrap 5** - Latest version with modern utilities
-- ✅ **Vite Build System** - Fast development with HMR
-- ✅ **Partials System** - Reusable components without code duplication
-- ✅ **Modern ES Modules** - Clean JavaScript architecture
-- ✅ **No IE Support** - Streamlined for modern browsers
-- ✅ **Dynamic Navigation** - Auto-highlighting active states
+## What's New in v2.0
 
-# Preview
+### Major Changes
+- **Bootstrap 5 Migration**: Complete upgrade from Bootstrap 4 to Bootstrap 5
+- **Modern Build System**: Replaced Grunt/Bower with Vite and NPM
+- **Component Architecture**: New dynamic partials system for code reusability
+- **ES6 Modules**: Modern JavaScript with proper module imports
+- **Performance**: Optimized build process with code splitting and tree shaking
+- **Developer Experience**: Hot Module Replacement (HMR) for instant updates
 
-### Screenshot
+### Key Features
+- Responsive design that works on all devices
+- Dynamic sidebar with collapsible navigation
+- Reusable components through partials system
+- Modern charting with Chart.js
+- Data tables with sorting and searching
+- Form validation and advanced inputs
+- Multiple dashboard layouts
+- Authentication pages (login, register, forgot password)
+- 100+ UI components and widgets
 
-![Sufee admin dashboard template preview](https://colorlib.com/wp/wp-content/uploads/sites/2/sufee-free-modern-admin-dashboard-template.jpg)
+## Getting Started
 
-### Demo Site: [Here](https://colorlib.com/polygon/sufee/index.html)
+### Requirements
+- Node.js 14.x or higher
+- NPM or Yarn package manager
 
-### TOC
-- [Quick Start](#quick-start)
-- [Partials System](#partials-system)
-- [Development](#development)
-- [Built With](#built-with)
-- [Changelog](#changelog)
-- [Authors](#authors)
-- [License](#license)
-
-## Quick Start
+### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/your-repo/sufee-admin-dashboard.git
    cd sufee-admin-dashboard
    ```
 
@@ -44,19 +46,47 @@
    ```bash
    npm run dev
    ```
+   The development server will start at `http://localhost:3001`
 
 4. **Build for production**
    ```bash
    npm run build
    ```
+   Production files will be generated in the `dist/` directory
 
-## Partials System
+## Project Structure
 
-The template uses a modern partials system that eliminates code duplication across HTML files.
+```
+sufee-admin-dashboard/
+├── src/                    # Source files
+│   ├── partials/          # Reusable HTML components
+│   │   ├── head-common.html
+│   │   ├── header.html
+│   │   ├── sidebar.html
+│   │   └── scripts-common.html
+│   ├── scripts/           # JavaScript modules
+│   │   ├── app.js         # Main application class
+│   │   ├── components/    # UI components
+│   │   └── utils/         # Utility functions
+│   ├── styles/            # SCSS stylesheets
+│   │   ├── main.scss      # Main stylesheet
+│   │   ├── variables.scss # Theme variables
+│   │   └── components/    # Component styles
+│   ├── *.html             # Page templates
+│   └── main.js            # JavaScript entry point
+├── public/                # Static assets
+│   ├── favicon.ico
+│   └── images/           # Image assets
+├── dist/                  # Production build (generated)
+├── package.json           # NPM dependencies
+└── vite.config.js         # Vite configuration
+```
 
-### Using Partials in Your HTML Files
+## Creating Pages
 
-Add these data attributes to load common components:
+### Basic Page Template
+
+Create a new HTML file in the `src/` directory:
 
 ```html
 <!DOCTYPE html>
@@ -64,147 +94,198 @@ Add these data attributes to load common components:
 <head>
     <meta charset="utf-8">
     <title>Your Page - Sufee Admin</title>
-    <meta name="description" content="Your page description">
+    <meta name="description" content="Page description">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Load common head elements -->
     <div data-partial="head-common"></div>
 </head>
 
-<body class="sufee-dashboard" data-page="your-page-name">
+<body class="sufee-dashboard" data-page="your-page-id">
     <div class="d-flex min-vh-100">
-        
-        <!-- Load sidebar -->
+        <!-- Sidebar -->
         <div data-partial="sidebar" data-partial-replace="true"></div>
 
+        <!-- Main Content -->
         <div class="main-content flex-grow-1">
-            <!-- Load header -->
+            <!-- Header -->
             <div data-partial="header" data-partial-replace="true"></div>
 
-            <!-- Dynamic breadcrumbs -->
-            <div data-breadcrumb data-breadcrumb-title="Your Page" data-breadcrumb-path="Section|Subsection|Your Page"></div>
+            <!-- Breadcrumb -->
+            <div data-breadcrumb 
+                 data-breadcrumb-title="Page Title" 
+                 data-breadcrumb-path="Section|Subsection|Page Title">
+            </div>
 
-            <!-- Your page content -->
-            <main class="content-area p-4">
+            <!-- Content -->
+            <section class="content-area p-4">
                 <div class="container-fluid">
                     <!-- Your content here -->
                 </div>
-            </main>
+            </section>
         </div>
     </div>
 
-    <!-- Load common scripts -->
     <script type="module" src="/main.js"></script>
 </body>
 </html>
 ```
 
-### Available Partials
+### Adding to Navigation
 
-- **`head-common`** - Meta tags, Bootstrap CSS, Font Awesome, favicons
-- **`sidebar`** - Left navigation with menu items and active states
-- **`header`** - Top navigation with search, notifications, user menu
-- **`scripts-common`** - Bootstrap JS and other common scripts
+To add your page to the sidebar navigation, edit `src/partials/sidebar.html`:
 
-### Data Attributes
-
-| Attribute | Description | Example |
-|-----------|-------------|---------|
-| `data-partial="name"` | Loads the specified partial | `data-partial="sidebar"` |
-| `data-partial-replace="true"` | Replaces the div (default: appends) | `data-partial-replace="true"` |
-| `data-page="name"` | Sets active sidebar item | `data-page="ui-buttons"` |
-| `data-breadcrumb` | Generates dynamic breadcrumbs | `data-breadcrumb` |
-| `data-breadcrumb-title` | Page title for breadcrumbs | `data-breadcrumb-title="Buttons"` |
-| `data-breadcrumb-path` | Breadcrumb hierarchy | `data-breadcrumb-path="UI\|Components\|Buttons"` |
-
-### Creating New Pages
-
-1. **Copy an existing page** from `src/` directory
-2. **Update the title and meta tags**
-3. **Set the `data-page` attribute** to match your page name
-4. **Update breadcrumbs** with appropriate title and path
-5. **Add your content** in the main content area
-
-The partials system will automatically handle navigation, header, and common elements.
-
-## Development
-
-### File Structure
-
-```
-sufee-admin-dashboard/
-├── src/
-│   ├── partials/          # Reusable HTML components
-│   ├── scripts/           # JavaScript modules
-│   ├── styles/            # SCSS stylesheets
-│   ├── index.html         # Dashboard homepage
-│   ├── ui-*.html          # UI component pages
-│   └── main.js            # Main JavaScript entry point
-├── public/                # Static assets
-├── images/                # Image assets
-├── dist/                  # Production build (generated)
-└── vite.config.js         # Vite configuration
+```html
+<li class="nav-item">
+    <a class="nav-link" href="your-page.html" data-page="your-page-id">
+        <i class="fas fa-icon"></i>
+        <span class="nav-text ms-2">Your Page</span>
+    </a>
+</li>
 ```
 
-### Available Scripts
+## Partials System
 
-- `npm run dev` - Development server with hot reload
-- `npm run build` - Production build
-- `npm run preview` - Preview production build locally
+The partials system automatically loads common components:
 
-### Adding New Components
+| Partial | Description |
+|---------|-------------|
+| `head-common` | Meta tags, CSS imports, favicon |
+| `sidebar` | Navigation sidebar with menu |
+| `header` | Top header with search and user menu |
+| `scripts-common` | Common JavaScript imports |
 
-1. **Create SCSS partial** in `src/styles/components/`
-2. **Import in main.scss**
-3. **Add JavaScript** in `src/scripts/` if needed
-4. **Create HTML example** page if desired
+### Partial Attributes
 
-### Built With
+- `data-partial="name"` - Specifies which partial to load
+- `data-partial-replace="true"` - Replaces the container element
+- `data-page="id"` - Sets active navigation item
+- `data-breadcrumb` - Enables breadcrumb generation
 
-**Core Framework:**
-- [Vite](https://vitejs.dev/) - Modern build tool with HMR
-- [Bootstrap 5](http://getbootstrap.com/) - Latest version
-- [Sass/SCSS](http://sass-lang.com/) - CSS preprocessing
+## Components
 
-**JavaScript Libraries:**
-- [Chart.js](http://www.chartjs.org/) - Modern charting library
-- [jQuery](https://jquery.com/) - DOM manipulation (legacy components)
-- [DataTables](https://datatables.net/) - Table enhancement
-- [Chosen](https://harvesthq.github.io/chosen/) - Select enhancement
-- [Flot Charts](http://www.flotcharts.org/) - Additional charting
-- [gauge.js](http://bernii.github.io/gauge.js/) - Gauge charts
-- [Peity](http://benpickles.github.io/peity/) - Inline charts
-- [JQVMap](https://jqvmap.com/) - Vector maps
-- [GMaps.js](https://hpneo.github.io/gmaps/) - Google Maps integration
+### Charts
+```javascript
+// Chart.js is automatically available
+const ctx = document.getElementById('myChart').getContext('2d');
+const chart = new Chart(ctx, {
+    type: 'line',
+    data: { /* ... */ }
+});
+```
 
-**Icons & Fonts:**
-- [Font Awesome 6](http://fontawesome.io/) - Icon library
-- [Themify Icons](https://themify.me/themify-icons) - Additional icons
-- [Flag Icons](https://flagicons.lipis.dev/) - Country flags
+### Data Tables
+```html
+<table class="table table-striped" data-table>
+    <!-- Table content -->
+</table>
+```
 
-**Animation & UI:**
-- [Animate.css](https://animate.style/) - CSS animations
-- [jQuery Validation](https://jqueryvalidation.org/) - Form validation
+### Forms
+```html
+<form data-validate>
+    <!-- Form fields with validation -->
+</form>
+```
 
+## Customization
 
-### Changelog
+### Theme Variables
 
-#### V 2.0.0 (Bootstrap 5 + Vite Migration)
-- **Major Update**: Migrated from Bootstrap 4 to Bootstrap 5
-- **Build System**: Replaced Grunt with Vite for modern development
-- **Partials System**: Added dynamic HTML partials for component reusability
-- **Modern JavaScript**: Converted to ES6 modules with proper imports
-- **IE Support Removed**: Dropped Internet Explorer compatibility
-- **Performance**: Improved loading times with caching and modern bundling
-- **Active Navigation**: Automatic sidebar highlighting based on current page
-- **Dynamic Breadcrumbs**: Data-driven breadcrumb generation
-- **Dependencies**: Updated all libraries to latest versions
-- **File Structure**: Reorganized for better maintainability
+Edit `src/styles/variables.scss` to customize colors and sizing:
 
-#### V 1.0.0
-Initial Release
-### Authors
-[Colorlib](https://colorlib.com)
-### License
+```scss
+:root {
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 70px;
+  --sidebar-bg: #272c33;
+  --sidebar-text: #c8c9ce;
+  --sidebar-text-active: #ffffff;
+  // Add your custom variables
+}
+```
 
-Sufee is licensed under The MIT License (MIT). Which means that you can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the final products. But you always need to state that Colorlib is the original author of this template.
+### Adding Components
+
+1. Create component file in `src/scripts/components/`
+2. Import in relevant pages or main.js
+3. Add styles in `src/styles/components/`
+
+## Build Configuration
+
+The project uses Vite for building. Configuration is in `vite.config.js`:
+
+- Development server runs on port 3001
+- SCSS is compiled with modern-compiler API
+- Source maps enabled for debugging
+- Legacy browser support available via plugin
+
+## Browser Support
+
+- Chrome (last 2 versions)
+- Firefox (last 2 versions)
+- Safari (last 2 versions)
+- Edge (last 2 versions)
+- No Internet Explorer support
+
+## Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server with HMR |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run linter (when configured) |
+
+## Dependencies
+
+### Core
+- Bootstrap 5.3.x
+- Vite 5.x
+- Sass
+
+### UI Libraries
+- Chart.js 4.x
+- DataTables 1.13.x
+- Font Awesome 6.x
+- Themify Icons
+- Flag Icons
+
+### Utilities
+- jQuery 3.7.x (for legacy components)
+- jQuery Validation
+- Chosen Select
+- Various chart libraries (Flot, Peity, etc.)
+
+## Migration from v1.x
+
+If upgrading from version 1.x:
+
+1. **Bootstrap Classes**: Update Bootstrap 4 classes to Bootstrap 5
+   - `.badge-*` → `.bg-*`
+   - `.font-weight-*` → `.fw-*`
+   - `.text-left/right` → `.text-start/end`
+   - Data attributes: `data-toggle` → `data-bs-toggle`
+
+2. **jQuery**: While still included for compatibility, new code should use vanilla JavaScript
+
+3. **Build Process**: Grunt tasks are replaced with NPM scripts
+
+4. **File Structure**: Move custom code to src/ directory
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+Sufee is licensed under The MIT License (MIT). You can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the final products. But you always need to state that Colorlib is the original author of this template.
+
+## Credits
+
+- Original template by [Colorlib](https://colorlib.com)
+- Bootstrap 5 migration and modernization by contributors
+- Icons by Font Awesome, Themify, and Flag Icons
+- Charts powered by Chart.js and various libraries

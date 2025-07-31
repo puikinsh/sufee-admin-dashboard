@@ -1,7 +1,7 @@
 {
   "name": "sufee-admin-dashboard",
   "version": "2.0.0",
-  "description": "Modern Sufee Admin Dashboard with Vite 7 and Bootstrap 5",
+  "description": "Responsive Bootstrap 5 Admin Dashboard Template with modern build tools",
   "type": "module",
   "main": "src/main.js",
   "scripts": {
@@ -16,12 +16,16 @@
     "url": "git+ssh://git@github.com/sarangaem/sufee-admin-dashboard.git"
   },
   "keywords": [
-    "vite",
+    "admin-template",
+    "dashboard",
     "bootstrap5",
+    "responsive",
+    "vite",
     "admin-dashboard",
-    "modern",
-    "vanilla-js",
-    "responsive"
+    "html-template",
+    "scss",
+    "chart.js",
+    "sufee"
   ],
   "author": "Aigars Silkalns",
   "license": "MIT",
