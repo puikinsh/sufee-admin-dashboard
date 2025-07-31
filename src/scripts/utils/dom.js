@@ -366,7 +366,7 @@ export const DOM = {
 
       return await response.text()
     } catch (error) {
-      console.error('AJAX request failed:', error)
+      // AJAX request failed
       throw error
     }
   }

@@ -84,13 +84,13 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
     justify-content: flex-start !important;
-    padding-left: 25px;
+    padding: 1rem 1rem 1rem 1.75rem;
     position: relative;
     
     .logo-full, .logo-mini {
       transition: all 0.3s ease;
       max-width: 100%;
-      height: auto;
+      height: 26px !important;
     }
     
     .logo-mini {
@@ -592,20 +592,22 @@ body {
     
     .sidebar-brand {
       justify-content: center !important;
-      padding-left: 0;
+      padding: 1rem 0; // Center the mini logo
       
       .logo-full {
         opacity: 0;
+        display: none;
         pointer-events: none;
       }
       
       .logo-mini {
         opacity: 1;
+        display: block;
         pointer-events: auto;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
       }
     }
     

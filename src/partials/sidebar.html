@@ -2,19 +2,36 @@
 <nav class="sidebar bg-dark text-white position-fixed d-flex flex-column" id="sidebar">
     <!-- Brand -->
     <div class="sidebar-brand d-flex align-items-center justify-content-center py-3 border-bottom border-secondary">
-        <img src="images/sufee-logo.svg" alt="Sufee Admin" class="logo-full" height="32">
-        <img src="images/sufee-logo-mini.svg" alt="SA" class="logo-mini d-none" height="32">
+        <img src="images/sufee-logo.svg" alt="Sufee Admin" class="logo-full" height="26">
+        <img src="images/sufee-logo-mini.svg" alt="SA" class="logo-mini" height="26">
     </div>
 
     <!-- Navigation -->
     <div class="sidebar-nav flex-grow-1 overflow-auto py-3">
         <ul class="nav flex-column">
-            <!-- Dashboard -->
+            <!-- Dashboards -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html" data-page="dashboard" title="Dashboard">
+                <a class="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#dashboardsSubmenu" aria-expanded="false" title="Dashboards">
                     <i class="fas fa-tachometer-alt"></i>
-                    <span class="nav-text ms-2">Dashboard</span>
+                    <span class="nav-text ms-2">Dashboards</span>
+                    <i class="fas fa-chevron-down ms-auto nav-arrow"></i>
                 </a>
+                <div class="collapse" id="dashboardsSubmenu">
+                    <ul class="nav flex-column ms-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html" data-page="dashboard">
+                                <i class="fas fa-home text-light opacity-75"></i>
+                                <span class="nav-text ms-2">Main Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard-crm.html" data-page="dashboard-crm">
+                                <i class="fas fa-user-tie text-light opacity-75"></i>
+                                <span class="nav-text ms-2">CRM Dashboard</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
 
             <!-- UI Elements Section -->

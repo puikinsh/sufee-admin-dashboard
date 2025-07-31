@@ -10,7 +10,7 @@ export class WidgetManager {
   }
 
   async init() {
-    console.log('Widget Manager initialized')
+    // Widget Manager initialized
     
     // Load Chart.js first
     await this.loadChartJS()
@@ -31,9 +31,9 @@ export class WidgetManager {
       // Register all Chart.js components
       this.Chart.register(...chartModule.registerables)
       
-      console.log('Chart.js loaded successfully')
+      // Chart.js loaded successfully
     } catch (error) {
-      console.error('Failed to load Chart.js:', error)
+      // Failed to load Chart.js
       throw error
     }
   }
@@ -66,33 +66,33 @@ export class WidgetManager {
 
   async initializeWidgetCharts() {
     if (!this.Chart) {
-      console.warn('Chart.js not loaded, skipping widget charts')
+      // Chart.js not loaded, skipping widget charts
       return
     }
 
     // Find all widget chart canvases
     const chartElements = document.querySelectorAll('[id^="widgetChart"]')
     
-    console.log(`Found ${chartElements.length} widget chart canvases`)
+    // Found widget chart canvases
     
     chartElements.forEach((canvas, index) => {
       try {
         this.createWidgetChart(canvas, index + 1)
       } catch (error) {
-        console.error(`Failed to create widget chart ${index + 1}:`, error)
+        // Failed to create widget chart
       }
     })
   }
 
   createWidgetChart(canvas, index) {
     if (!canvas) {
-      console.warn(`Widget chart canvas ${index} not found`)
+      // Widget chart canvas not found
       return
     }
 
     const ctx = canvas.getContext('2d')
     if (!ctx) {
-      console.warn(`Could not get context for widget chart ${index}`)
+      // Could not get context for widget chart
       return
     }
 
@@ -104,7 +104,7 @@ export class WidgetManager {
     // Generate chart data
     const data = this.generateWidgetChartData(index)
     
-    console.log(`Creating widget chart ${index} with data:`, data)
+    // Creating widget chart
     
     const chart = new this.Chart(ctx, {
       type: 'line',
@@ -156,7 +156,7 @@ export class WidgetManager {
     // Store chart reference
     this.charts.set(canvas.id, chart)
     
-    console.log(`Widget chart ${index} created successfully`)
+    // Widget chart created successfully
   }
 
   generateWidgetChartData(index) {
@@ -265,9 +265,9 @@ export class WidgetManager {
       })
       
       this.charts.set('trafficChart', chart)
-      console.log('Traffic chart created successfully')
+      // Traffic chart created successfully
     } catch (error) {
-      console.error('Failed to initialize traffic chart:', error)
+      // Failed to initialize traffic chart
     }
   }
 
@@ -283,7 +283,7 @@ export class WidgetManager {
   async initializeWorldMap() {
     const worldMapContainer = document.getElementById('worldMap')
     if (!worldMapContainer) {
-      console.warn('World map container not found')
+      // World map container not found
       return
     }
 
@@ -295,9 +295,9 @@ export class WidgetManager {
       })
       
       this.widgets.set('worldMap', worldMap)
-      console.log('World map initialized successfully')
+      // World map initialized successfully
     } catch (error) {
-      console.error('Failed to initialize world map:', error)
+      // Failed to initialize world map
       // Show fallback content
       worldMapContainer.innerHTML = `
         <div class="d-flex align-items-center justify-content-center h-100 bg-light rounded">

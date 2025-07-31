@@ -20,7 +20,7 @@ export class WorldMap {
 
   async init() {
     if (!this.container) {
-      console.error(`World map container with ID '${this.containerId}' not found`)
+      // World map container not found
       return
     }
 
@@ -35,7 +35,7 @@ export class WorldMap {
       this.createMap()
       
     } catch (error) {
-      console.error('Failed to initialize world map:', error)
+      // Failed to initialize world map
       this.showFallback()
     }
   }
@@ -51,7 +51,7 @@ export class WorldMap {
     const L = await import('leaflet')
     this.L = L.default || L
     
-    console.log('Leaflet loaded successfully')
+    // Leaflet loaded successfully
   }
 
   generateSampleData() {
@@ -156,7 +156,7 @@ export class WorldMap {
       this.addDataPoints()
     }
     
-    console.log('Leaflet map created successfully with', this.data.length, 'data points')
+    // Leaflet map created successfully
     
     // Force map to properly size itself after a short delay
     setTimeout(() => {

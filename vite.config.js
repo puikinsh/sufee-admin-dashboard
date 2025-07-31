@@ -11,6 +11,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/index.html'),
+        'dashboard-crm': resolve(__dirname, 'src/dashboard-crm.html'),
         'ui-buttons': resolve(__dirname, 'src/ui-buttons.html'),
         'ui-badges': resolve(__dirname, 'src/ui-badges.html'),
         'ui-tabs': resolve(__dirname, 'src/ui-tabs.html'),

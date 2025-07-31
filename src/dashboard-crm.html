@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>CRM Dashboard - Sufee Admin</title>
+    <meta name="description" content="CRM Dashboard - Sufee Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <div data-partial="head-common"></div>
+    <script type="module" src="./main.js"></script>
+</head>
+
+<body class="sufee-dashboard" data-page="dashboard-crm">
+    <!-- Main Container -->
+    <div class="d-flex min-vh-100">
+        
+        <div data-partial="sidebar" data-partial-replace="true"></div>
+
+        <!-- Main Content Area -->
+        <div class="main-content flex-grow-1">
+            <div data-partial="header" data-partial-replace="true"></div>
+
+            <div data-breadcrumb data-breadcrumb-title="CRM Dashboard" data-breadcrumb-path=""></div>
+
+            <!-- Main Content -->
+            <main class="content-area p-4">
+                <div class="container-fluid">
+                    <!-- Welcome Section with Quick Stats -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-12">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body p-4">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-8">
+                                            <h2 class="h3 mb-1">Welcome back, John!</h2>
+                                            <p class="text-muted mb-0">Here's what's happening with your customers today.</p>
+                                        </div>
+                                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                            <button class="btn btn-primary">
+                                                <i class="fas fa-plus me-2"></i>Add New Lead
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Metrics Cards -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-primary">
+                                <div class="card-body pb-0">
+                                    <div class="dropdown float-end">
+                                        <button class="btn bg-transparent dropdown-toggle text-light border-0 p-0" type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">View Details</a></li>
+                                            <li><a class="dropdown-item" href="#">Export Data</a></li>
+                                            <li><a class="dropdown-item" href="#">Refresh</a></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="mb-0">
+                                        <span class="count">1285</span>
+                                    </h4>
+                                    <p class="text-light">Total Customers</p>
+                                    <div class="widget-chart px-0 pt-2">
+                                        <canvas id="crmWidgetChart1" height="75"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-success">
+                                <div class="card-body pb-0">
+                                    <div class="dropdown float-end">
+                                        <button class="btn bg-transparent dropdown-toggle text-light border-0 p-0" type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">View Details</a></li>
+                                            <li><a class="dropdown-item" href="#">Export Data</a></li>
+                                            <li><a class="dropdown-item" href="#">Refresh</a></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="mb-0">
+                                        $<span class="count">48325</span>
+                                    </h4>
+                                    <p class="text-light">Revenue This Month</p>
+                                    <div class="widget-chart px-0 pt-2">
+                                        <canvas id="crmWidgetChart2" height="75"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-warning">
+                                <div class="card-body pb-0">
+                                    <div class="dropdown float-end">
+                                        <button class="btn bg-transparent dropdown-toggle text-light border-0 p-0" type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">View Details</a></li>
+                                            <li><a class="dropdown-item" href="#">Export Data</a></li>
+                                            <li><a class="dropdown-item" href="#">Refresh</a></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="mb-0">
+                                        <span class="count">142</span>
+                                    </h4>
+                                    <p class="text-light">Active Deals</p>
+                                    <div class="widget-chart px-0 pt-2">
+                                        <canvas id="crmWidgetChart3" height="75"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3">
+                            <div class="card text-white bg-info">
+                                <div class="card-body pb-0">
+                                    <div class="dropdown float-end">
+                                        <button class="btn bg-transparent dropdown-toggle text-light border-0 p-0" type="button" data-bs-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">View Details</a></li>
+                                            <li><a class="dropdown-item" href="#">Export Data</a></li>
+                                            <li><a class="dropdown-item" href="#">Refresh</a></li>
+                                        </ul>
+                                    </div>
+                                    <h4 class="mb-0">
+                                        <span class="count">89</span>%
+                                    </h4>
+                                    <p class="text-light">Customer Satisfaction</p>
+                                    <div class="widget-chart px-0 pt-2">
+                                        <canvas id="crmWidgetChart4" height="75"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions & Stats Row -->
+                    <div class="row g-4 mb-4">
+                        <!-- Quick Actions -->
+                        <div class="col-lg-3">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body text-center py-4">
+                                    <div class="mb-3">
+                                        <i class="fas fa-phone-alt fa-3x text-primary"></i>
+                                    </div>
+                                    <h5 class="card-title">Schedule Call</h5>
+                                    <p class="text-muted small mb-3">23 calls scheduled today</p>
+                                    <button class="btn btn-sm btn-primary">
+                                        <i class="fas fa-plus me-1"></i>New Call
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body text-center py-4">
+                                    <div class="mb-3">
+                                        <i class="fas fa-envelope fa-3x text-success"></i>
+                                    </div>
+                                    <h5 class="card-title">Send Email</h5>
+                                    <p class="text-muted small mb-3">142 emails sent this week</p>
+                                    <button class="btn btn-sm btn-success">
+                                        <i class="fas fa-paper-plane me-1"></i>Compose
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body text-center py-4">
+                                    <div class="mb-3">
+                                        <i class="fas fa-calendar-check fa-3x text-warning"></i>
+                                    </div>
+                                    <h5 class="card-title">Meetings</h5>
+                                    <p class="text-muted small mb-3">5 meetings today</p>
+                                    <button class="btn btn-sm btn-warning">
+                                        <i class="fas fa-video me-1"></i>Schedule
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body text-center py-4">
+                                    <div class="mb-3">
+                                        <i class="fas fa-tasks fa-3x text-info"></i>
+                                    </div>
+                                    <h5 class="card-title">Tasks</h5>
+                                    <p class="text-muted small mb-3">18 pending tasks</p>
+                                    <button class="btn btn-sm btn-info text-white">
+                                        <i class="fas fa-list me-1"></i>View All
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Conversion Rate & Lead Sources -->
+                    <div class="row g-4 mb-4">
+                        <!-- Conversion Rates -->
+                        <div class="col-lg-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0">Conversion Rates</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h6 class="mb-0">Lead to Customer</h6>
+                                            <small class="text-muted">Last 30 days</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <h4 class="mb-0 text-success">23%</h4>
+                                            <small class="text-success"><i class="fas fa-arrow-up"></i> 5%</small>
+                                        </div>
+                                    </div>
+                                    <div class="progress mb-4" style="height: 10px;">
+                                        <div class="progress-bar bg-success" style="width: 23%"></div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h6 class="mb-0">Quote to Sale</h6>
+                                            <small class="text-muted">Last 30 days</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <h4 class="mb-0 text-primary">67%</h4>
+                                            <small class="text-danger"><i class="fas fa-arrow-down"></i> 3%</small>
+                                        </div>
+                                    </div>
+                                    <div class="progress mb-4" style="height: 10px;">
+                                        <div class="progress-bar bg-primary" style="width: 67%"></div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <h6 class="mb-0">Trial to Paid</h6>
+                                            <small class="text-muted">Last 30 days</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <h4 class="mb-0 text-warning">45%</h4>
+                                            <small class="text-success"><i class="fas fa-arrow-up"></i> 12%</small>
+                                        </div>
+                                    </div>
+                                    <div class="progress" style="height: 10px;">
+                                        <div class="progress-bar bg-warning" style="width: 45%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lead Sources -->
+                        <div class="col-lg-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0">Lead Sources</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div style="height: 200px; position: relative;">
+                                        <canvas id="leadSourcesChart"></canvas>
+                                    </div>
+                                    <div class="row text-center mt-3">
+                                        <div class="col-6">
+                                            <div class="d-flex align-items-center justify-content-center mb-2">
+                                                <span class="badge bg-primary me-2" style="width: 12px; height: 12px;"></span>
+                                                <small>Website (35%)</small>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span class="badge bg-success me-2" style="width: 12px; height: 12px;"></span>
+                                                <small>Referral (28%)</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="d-flex align-items-center justify-content-center mb-2">
+                                                <span class="badge bg-warning me-2" style="width: 12px; height: 12px;"></span>
+                                                <small>Social (22%)</small>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span class="badge bg-info me-2" style="width: 12px; height: 12px;"></span>
+                                                <small>Email (15%)</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Today's Schedule -->
+                        <div class="col-lg-4">
+                            <div class="card h-100">
+                                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Today's Schedule</h5>
+                                    <small class="text-muted">Dec 15, 2023</small>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="list-group list-group-flush">
+                                        <div class="list-group-item">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <span class="badge bg-primary rounded-pill">09:00</span>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h6 class="mb-0">Team Standup</h6>
+                                                    <small class="text-muted">Daily sync meeting</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <span class="badge bg-success rounded-pill">11:30</span>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h6 class="mb-0">Client Demo</h6>
+                                                    <small class="text-muted">ABC Corp - Product demo</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <span class="badge bg-warning rounded-pill">14:00</span>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h6 class="mb-0">Sales Review</h6>
+                                                    <small class="text-muted">Q4 performance review</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0">
+                                                    <span class="badge bg-info rounded-pill">16:30</span>
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h6 class="mb-0">Follow-up Calls</h6>
+                                                    <small class="text-muted">5 pending calls</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sales Pipeline & Recent Activities -->
+                    <div class="row g-4 mb-4">
+                        <!-- Sales Pipeline -->
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Sales Pipeline</h5>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <button type="button" class="btn btn-outline-secondary active">Week</button>
+                                        <button type="button" class="btn btn-outline-secondary">Month</button>
+                                        <button type="button" class="btn btn-outline-secondary">Year</button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-3 text-center">
+                                            <h6 class="text-muted mb-2">Lead</h6>
+                                            <h4 class="mb-0">245</h4>
+                                            <small class="text-success">$125,430</small>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <h6 class="text-muted mb-2">Qualified</h6>
+                                            <h4 class="mb-0">87</h4>
+                                            <small class="text-success">$84,200</small>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <h6 class="text-muted mb-2">Proposal</h6>
+                                            <h4 class="mb-0">32</h4>
+                                            <small class="text-success">$45,800</small>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <h6 class="text-muted mb-2">Won</h6>
+                                            <h4 class="mb-0">15</h4>
+                                            <small class="text-success">$28,400</small>
+                                        </div>
+                                    </div>
+                                    <div style="height: 300px; position: relative;">
+                                        <canvas id="pipelineChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activities -->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Recent Activities</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="timeline">
+                                        <div class="d-flex mb-3">
+                                            <div class="flex-shrink-0">
+                                                <div class="bg-primary bg-opacity-10 rounded-circle p-2">
+                                                    <i class="fas fa-phone text-primary"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <h6 class="mb-0">Call with James Miller</h6>
+                                                <small class="text-muted">2 hours ago</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex mb-3">
+                                            <div class="flex-shrink-0">
+                                                <div class="bg-success bg-opacity-10 rounded-circle p-2">
+                                                    <i class="fas fa-check text-success"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <h6 class="mb-0">Deal closed with ABC Corp</h6>
+                                                <small class="text-muted">5 hours ago</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex mb-3">
+                                            <div class="flex-shrink-0">
+                                                <div class="bg-warning bg-opacity-10 rounded-circle p-2">
+                                                    <i class="fas fa-envelope text-warning"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <h6 class="mb-0">Email sent to 5 prospects</h6>
+                                                <small class="text-muted">1 day ago</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex mb-3">
+                                            <div class="flex-shrink-0">
+                                                <div class="bg-info bg-opacity-10 rounded-circle p-2">
+                                                    <i class="fas fa-user-plus text-info"></i>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1 ms-3">
+                                                <h6 class="mb-0">New lead from website</h6>
+                                                <small class="text-muted">2 days ago</small>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-3">
+                                            <a href="#" class="btn btn-sm btn-outline-primary">View All Activities</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Table & Performance Charts -->
+                    <div class="row g-4">
+                        <!-- Recent Customers -->
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Recent Customers</h5>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Customer</th>
+                                                    <th>Company</th>
+                                                    <th>Status</th>
+                                                    <th>Deal Value</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="images/avatar/1.jpg" alt="Avatar" class="rounded-circle me-2" width="32" height="32">
+                                                            <div>
+                                                                <div class="fw-semibold">Sarah Johnson</div>
+                                                                <small class="text-muted">sarah.j@email.com</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Tech Solutions Inc.</td>
+                                                    <td><span class="badge bg-success">Active</span></td>
+                                                    <td>$15,250</td>
+                                                    <td>
+                                                        <div class="btn-group btn-group-sm" role="group">
+                                                            <button class="btn btn-outline-secondary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-outline-secondary" title="Edit"><i class="fas fa-edit"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="images/avatar/2.jpg" alt="Avatar" class="rounded-circle me-2" width="32" height="32">
+                                                            <div>
+                                                                <div class="fw-semibold">Michael Chen</div>
+                                                                <small class="text-muted">m.chen@company.com</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Global Imports LLC</td>
+                                                    <td><span class="badge bg-warning">Pending</span></td>
+                                                    <td>$8,900</td>
+                                                    <td>
+                                                        <div class="btn-group btn-group-sm" role="group">
+                                                            <button class="btn btn-outline-secondary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-outline-secondary" title="Edit"><i class="fas fa-edit"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="images/avatar/3.jpg" alt="Avatar" class="rounded-circle me-2" width="32" height="32">
+                                                            <div>
+                                                                <div class="fw-semibold">Emma Wilson</div>
+                                                                <small class="text-muted">emma.w@design.co</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Creative Agency</td>
+                                                    <td><span class="badge bg-success">Active</span></td>
+                                                    <td>$22,400</td>
+                                                    <td>
+                                                        <div class="btn-group btn-group-sm" role="group">
+                                                            <button class="btn btn-outline-secondary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-outline-secondary" title="Edit"><i class="fas fa-edit"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <img src="images/avatar/4.jpg" alt="Avatar" class="rounded-circle me-2" width="32" height="32">
+                                                            <div>
+                                                                <div class="fw-semibold">Robert Taylor</div>
+                                                                <small class="text-muted">r.taylor@retail.net</small>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>Retail Partners</td>
+                                                    <td><span class="badge bg-danger">Inactive</span></td>
+                                                    <td>$5,600</td>
+                                                    <td>
+                                                        <div class="btn-group btn-group-sm" role="group">
+                                                            <button class="btn btn-outline-secondary" title="View"><i class="fas fa-eye"></i></button>
+                                                            <button class="btn btn-outline-secondary" title="Edit"><i class="fas fa-edit"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Team Performance -->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">Team Performance</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>John Smith</span>
+                                            <span class="fw-bold">92%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-success" style="width: 92%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Lisa Anderson</span>
+                                            <span class="fw-bold">87%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-primary" style="width: 87%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>David Lee</span>
+                                            <span class="fw-bold">78%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-warning" style="width: 78%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span>Maria Garcia</span>
+                                            <span class="fw-bold">95%</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-info" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="text-center mt-4">
+                                        <div style="width: 150px; height: 150px; margin: 0 auto; position: relative;">
+                                            <canvas id="teamPerformanceChart"></canvas>
+                                        </div>
+                                        <h4 class="mt-3 mb-0">86%</h4>
+                                        <p class="text-muted small">Average Team Score</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Widgets Row -->
+                    <div class="row g-4 mb-4">
+                        <!-- Revenue by Product -->
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0">Revenue by Product</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div class="d-flex align-items-center">
+                                                <div class="bg-primary rounded p-2 me-3">
+                                                    <i class="fas fa-box text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0">Enterprise Suite</h6>
+                                                    <small class="text-muted">124 licenses</small>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <h5 class="mb-0">$45,200</h5>
+                                                <small class="text-success">+15%</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-primary" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div class="d-flex align-items-center">
+                                                <div class="bg-success rounded p-2 me-3">
+                                                    <i class="fas fa-cloud text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0">Cloud Services</h6>
+                                                    <small class="text-muted">89 subscriptions</small>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <h5 class="mb-0">$32,100</h5>
+                                                <small class="text-danger">-5%</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-success" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div class="d-flex align-items-center">
+                                                <div class="bg-warning rounded p-2 me-3">
+                                                    <i class="fas fa-mobile-alt text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0">Mobile App</h6>
+                                                    <small class="text-muted">320 downloads</small>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <h5 class="mb-0">$18,400</h5>
+                                                <small class="text-success">+22%</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-warning" style="width: 40%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div class="d-flex align-items-center">
+                                                <div class="bg-info rounded p-2 me-3">
+                                                    <i class="fas fa-cog text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0">Support Plans</h6>
+                                                    <small class="text-muted">56 contracts</small>
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <h5 class="mb-0">$12,800</h5>
+                                                <small class="text-success">+8%</small>
+                                            </div>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-info" style="width: 25%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Feedback -->
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Recent Feedback</h5>
+                                    <span class="badge bg-primary">New</span>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3 pb-3 border-bottom">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <h6 class="mb-0">Sarah Williams</h6>
+                                            <div>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-muted small mb-0">"Excellent customer service! The team went above and beyond to help us implement the solution."</p>
+                                        <small class="text-muted">2 hours ago</small>
+                                    </div>
+
+                                    <div class="mb-3 pb-3 border-bottom">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <h6 class="mb-0">Tech Solutions Inc.</h6>
+                                            <div>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="far fa-star text-warning"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-muted small mb-0">"Great product, but the onboarding process could be smoother. Overall happy with the purchase."</p>
+                                        <small class="text-muted">1 day ago</small>
+                                    </div>
+
+                                    <div>
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <h6 class="mb-0">Global Imports LLC</h6>
+                                            <div>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                                <i class="fas fa-star text-warning"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-muted small mb-0">"The ROI has been incredible. We've seen a 40% increase in efficiency since implementation."</p>
+                                        <small class="text-muted">3 days ago</small>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-light">
+                                    <a href="#" class="btn btn-sm btn-outline-primary w-100">View All Feedback</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Final Stats Row -->
+                    <div class="row g-4">
+                        <!-- Support Tickets -->
+                        <div class="col-lg-3">
+                            <div class="card border-start border-4 border-danger">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h6 class="text-muted mb-0">Open Tickets</h6>
+                                        <i class="fas fa-ticket-alt text-danger"></i>
+                                    </div>
+                                    <h3 class="mb-2">27</h3>
+                                    <p class="text-muted small mb-0">
+                                        <span class="text-danger">5 urgent</span> • 
+                                        <span>12 high</span> • 
+                                        <span>10 normal</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Average Deal Size -->
+                        <div class="col-lg-3">
+                            <div class="card border-start border-4 border-success">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h6 class="text-muted mb-0">Avg Deal Size</h6>
+                                        <i class="fas fa-chart-line text-success"></i>
+                                    </div>
+                                    <h3 class="mb-2">$8,450</h3>
+                                    <p class="text-muted small mb-0">
+                                        <i class="fas fa-arrow-up text-success me-1"></i>
+                                        12% increase from last month
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Response Time -->
+                        <div class="col-lg-3">
+                            <div class="card border-start border-4 border-warning">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h6 class="text-muted mb-0">Avg Response Time</h6>
+                                        <i class="fas fa-clock text-warning"></i>
+                                    </div>
+                                    <h3 class="mb-2">2.5 hrs</h3>
+                                    <p class="text-muted small mb-0">
+                                        <i class="fas fa-arrow-down text-success me-1"></i>
+                                        30 min faster than target
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Churn Rate -->
+                        <div class="col-lg-3">
+                            <div class="card border-start border-4 border-info">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <h6 class="text-muted mb-0">Churn Rate</h6>
+                                        <i class="fas fa-user-minus text-info"></i>
+                                    </div>
+                                    <h3 class="mb-2">3.2%</h3>
+                                    <p class="text-muted small mb-0">
+                                        <i class="fas fa-arrow-down text-success me-1"></i>
+                                        Below industry average
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div data-partial="scripts-common"></div>
+    
+    <script type="module">
+        // Initialize charts when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Widget Charts for Key Metrics
+            // CRM Widget Chart 1 - Total Customers
+            const crmWidget1Ctx = document.getElementById('crmWidgetChart1').getContext('2d');
+            new Chart(crmWidget1Ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+                    datasets: [{
+                        data: [820, 932, 901, 934, 1090, 1230, 1285],
+                        borderColor: 'rgba(255, 255, 255, 0.8)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 3,
+                        pointBackgroundColor: 'rgba(255, 255, 255, 0.8)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            display: false
+                        }
+                    },
+                    elements: {
+                        line: {
+                            borderJoinStyle: 'round'
+                        }
+                    }
+                }
+            });
+
+            // CRM Widget Chart 2 - Revenue
+            const crmWidget2Ctx = document.getElementById('crmWidgetChart2').getContext('2d');
+            new Chart(crmWidget2Ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+                    datasets: [{
+                        data: [7800, 5900, 8200, 6300, 8900, 7200, 9100],
+                        backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                        borderColor: 'rgba(255, 255, 255, 0.8)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // CRM Widget Chart 3 - Active Deals
+            const crmWidget3Ctx = document.getElementById('crmWidgetChart3').getContext('2d');
+            new Chart(crmWidget3Ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        data: [150, 145, 148, 142, 145, 141, 142],
+                        borderColor: 'rgba(255, 255, 255, 0.8)',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        pointRadius: 3,
+                        pointBackgroundColor: 'rgba(255, 255, 255, 0.8)',
+                        pointBorderColor: 'transparent'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // CRM Widget Chart 4 - Customer Satisfaction
+            const crmWidget4Ctx = document.getElementById('crmWidgetChart4').getContext('2d');
+            new Chart(crmWidget4Ctx, {
+                type: 'line',
+                data: {
+                    labels: ['1', '2', '3', '4', '5', '6', '7'],
+                    datasets: [{
+                        data: [85, 86, 84, 87, 85, 88, 89],
+                        borderColor: 'rgba(255, 255, 255, 0.8)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 4,
+                        pointBackgroundColor: 'rgba(255, 255, 255, 0.8)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            display: false,
+                            min: 80,
+                            max: 90
+                        }
+                    },
+                    elements: {
+                        line: {
+                            borderJoinStyle: 'round'
+                        }
+                    }
+                }
+            });
+
+            // Sales Pipeline Chart
+            const pipelineCtx = document.getElementById('pipelineChart').getContext('2d');
+            new Chart(pipelineCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    datasets: [{
+                        label: 'Lead',
+                        data: [65, 59, 80, 81],
+                        backgroundColor: '#0d6efd'
+                    }, {
+                        label: 'Qualified',
+                        data: [28, 48, 40, 19],
+                        backgroundColor: '#198754'
+                    }, {
+                        label: 'Proposal',
+                        data: [12, 20, 15, 22],
+                        backgroundColor: '#ffc107'
+                    }, {
+                        label: 'Won',
+                        data: [8, 12, 10, 15],
+                        backgroundColor: '#0dcaf0'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Lead Sources Pie Chart
+            const leadSourcesCtx = document.getElementById('leadSourcesChart').getContext('2d');
+            new Chart(leadSourcesCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Website', 'Referral', 'Social', 'Email'],
+                    datasets: [{
+                        data: [35, 28, 22, 15],
+                        backgroundColor: ['#0d6efd', '#198754', '#ffc107', '#0dcaf0'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Team Performance Doughnut Chart
+            const teamCtx = document.getElementById('teamPerformanceChart').getContext('2d');
+            new Chart(teamCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Achieved', 'Remaining'],
+                    datasets: [{
+                        data: [86, 14],
+                        backgroundColor: ['#198754', '#e9ecef'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    cutout: '80%'
+                }
+            });
+        });
+    </script>
+</body>
+</html>

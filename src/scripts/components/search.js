@@ -20,7 +20,7 @@ export class Search {
     this.searchInput = document.querySelector('.search-form input[type="search"]') || document.querySelector('.search-form input[type="text"]')
     
     if (!this.searchTrigger || !this.searchForm) {
-      console.warn('Search elements not found - search functionality may be limited')
+      // Search elements not found - search functionality may be limited
       return
     }
 
@@ -130,7 +130,7 @@ export class Search {
 
     // You can implement actual search logic here
     // For now, we'll just show a simple alert
-    console.log('Searching for:', query)
+    // Searching for: query
     
     // Example: Redirect to search results page
     // window.location.href = `/search?q=${encodeURIComponent(query)}`

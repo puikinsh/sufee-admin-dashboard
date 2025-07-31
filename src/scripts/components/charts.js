@@ -12,10 +12,10 @@ export class ChartManager {
       const { Chart, registerables } = await import('chart.js')
       Chart.register(...registerables)
       
-      console.log('Chart Manager initialized')
+      // Chart Manager initialized
       this.initializePageCharts()
     } catch (error) {
-      console.error('Failed to load Chart.js:', error)
+      // Failed to load Chart.js
     }
   }
 

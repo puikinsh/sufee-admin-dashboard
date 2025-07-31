@@ -7,6 +7,7 @@
   --sidebar-text-active: #ffffff;
   --sidebar-hover-bg: rgba(255, 255, 255, 0.05);
   --sidebar-active-bg: rgba(255, 255, 255, 0.1);
+  --sidebar-transition-duration: 0.35s;
 }
 
 // Main sidebar container
@@ -19,7 +20,7 @@
   
   // Brand section
   .sidebar-brand {
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 1.75rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     
     .logo-mini {
@@ -50,6 +51,7 @@
       // Navigation items
       .nav-item {
         margin-bottom: 0.25rem;
+        position: relative; // Ensure proper stacking context
         
         .nav-link {
           display: flex;
@@ -123,6 +125,51 @@
           }
         }
       }
+      
+      // Fix for collapse animation jump
+      .collapsing {
+        transition: height var(--sidebar-transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        position: relative; // Prevent layout shift
+        
+        .nav {
+          // Smooth fade-in animation
+          opacity: 0;
+          transform: translateY(-5px);
+          transition: opacity 0.2s ease 0.1s, transform 0.2s ease 0.1s;
+        }
+      }
+      
+      .collapse {
+        overflow: hidden; // Prevent content overflow during transition
+        
+        &.show {
+          overflow: visible; // Allow normal overflow when expanded
+          
+          .nav {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+          }
+        }
+      }
+      
+      // Prevent parent item from jumping
+      .nav-item:has(.collapsing),
+      .nav-item:has(.collapse.show) {
+        margin-bottom: 0.25rem; // Maintain consistent spacing
+      }
+      
+      // Additional fix for animating state
+      .collapse.animating {
+        position: relative;
+        height: auto !important; // Override Bootstrap's inline height
+        
+        .nav {
+          position: relative;
+          will-change: transform, opacity;
+        }
+      }
     }
   }
   
@@ -134,6 +181,9 @@ body.sidebar-collapsed {
     width: var(--sidebar-collapsed-width);
     
     .sidebar-brand {
+      padding: 1rem 0; // Center the mini logo
+      justify-content: center;
+      
       .logo-full {
         display: none;
       }
@@ -187,6 +237,9 @@ body.sidebar-collapsed {
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
     
     .sidebar-brand {
+      padding: 1rem 1rem 1rem 1.75rem; // Restore padding on hover
+      justify-content: flex-start;
+      
       .logo-full {
         display: block;
       }
@@ -227,6 +280,51 @@ body.sidebar-collapsed {
           }
         }
         
+        // Make submenu styling identical to expanded state
+        .collapse,
+        .collapsing {
+          // Use the same styling as the expanded sidebar
+          .nav {
+            padding: 0.5rem 0 0 0;
+            margin-left: 1rem;
+            background: transparent; // No background
+            border: none; // No border/frame
+            box-shadow: none; // No shadow
+            
+            .nav-item {
+              margin-bottom: 0.125rem;
+              
+              .nav-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.8125rem;
+                border-radius: 0.375rem;
+                background: transparent; // Ensure no background
+                
+                i {
+                  font-size: 0.75rem;
+                  color: var(--sidebar-text);
+                }
+                
+                .nav-text {
+                  margin-left: 0.5rem;
+                }
+                
+                // Same hover effects as expanded state
+                &:hover {
+                  color: var(--sidebar-text-active);
+                  background-color: var(--sidebar-hover-bg);
+                }
+                
+                &.active {
+                  color: var(--sidebar-text-active);
+                  background-color: var(--sidebar-active-bg);
+                  font-weight: 500;
+                }
+              }
+            }
+          }
+        }
+        
         // Don't show all collapses automatically
         .collapse {
           display: none !important;
@@ -235,6 +333,28 @@ body.sidebar-collapsed {
         // Only show active collapse
         .collapse.show {
           display: block !important;
+          position: static !important; // Keep in document flow
+          width: 100%; // Full width
+          background: transparent !important; // No background
+          border: none !important; // No border
+          
+          .nav {
+            position: static !important; // Keep submenu items in normal flow
+            width: 100%;
+          }
+        }
+        
+        // Keep smooth animations in hover state
+        .collapsing {
+          transition: height var(--sidebar-transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
+          overflow: hidden;
+          position: relative;
+          
+          .nav {
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: opacity 0.2s ease 0.1s, transform 0.2s ease 0.1s;
+          }
         }
       }
     }
@@ -304,5 +424,32 @@ body.sidebar-collapsed {
   &.active {
     color: var(--sidebar-text-active) !important;
     background-color: var(--sidebar-active-bg) !important;
+  }
+}
+
+// Ensure no dropdown/popover styles affect sidebar submenus
+.sidebar {
+  .dropdown-menu,
+  .popover {
+    display: none !important; // Sidebar doesn't use dropdown menus
+  }
+  
+  // Override any potential absolute positioning or backgrounds
+  .collapse,
+  .collapse.show,
+  .collapsing {
+    position: static !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    
+    // Keep only the nav padding/margin
+    > .nav {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
   }
 }
