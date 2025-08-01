@@ -8,7 +8,8 @@ import { initializeBreadcrumb } from './breadcrumb-helper.js';
 export class PartialsLoader {
     constructor() {
         this.cache = new Map();
-        this.basePath = '/partials/';
+        // Use relative path to support subfolder deployments
+        this.basePath = './partials/';
     }
 
     /**

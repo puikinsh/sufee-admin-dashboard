@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import legacy from '@vitejs/plugin-legacy'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
   root: 'src',
@@ -61,6 +62,14 @@ export default defineConfig({
   plugins: [
     legacy({
       targets: ['defaults', 'not IE 11']
+    }),
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'partials',
+          dest: ''
+        }
+      ]
     })
   ],
   resolve: {
