@@ -250,10 +250,10 @@ The project uses Vite for building. Configuration is in `vite.config.js`:
 - Flag Icons
 
 ### Utilities
-- jQuery 3.7.x (for legacy components)
-- jQuery Validation
-- Chosen Select
-- Various chart libraries (Flot, Peity, etc.)
+- NO jQuery - 100% vanilla JavaScript
+- Native HTML5 form validation
+- Modern ES6+ JavaScript modules
+- Various chart libraries (Chart.js, etc.)
 
 ## Migration from v1.x
 
@@ -265,7 +265,7 @@ If upgrading from version 1.x:
    - `.text-left/right` → `.text-start/end`
    - Data attributes: `data-toggle` → `data-bs-toggle`
 
-2. **jQuery**: While still included for compatibility, new code should use vanilla JavaScript
+2. **jQuery**: Completely removed in v2.0. All code now uses vanilla JavaScript
 
 3. **Build Process**: Grunt tasks are replaced with NPM scripts
 

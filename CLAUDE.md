@@ -38,7 +38,7 @@ This project uses Vite for build automation and development:
 ### Dependency Management
 
 All dependencies are now managed through NPM. The project has migrated from Bower/Grunt to Vite.
-Key dependencies include Bootstrap 5, jQuery, Chart.js, DataTables, and various visualization libraries.
+Key dependencies include Bootstrap 5, Chart.js, and various visualization libraries. The project is 100% jQuery-free, using modern vanilla JavaScript throughout.
 
 ## Architecture & Structure
 
@@ -78,14 +78,14 @@ The main stylesheet (`src/styles/main.scss`) imports:
 ### Key Libraries & Dependencies
 
 - Bootstrap 5 (UI framework)
-- jQuery (DOM manipulation for legacy components)
+- NO jQuery - 100% vanilla JavaScript
 - Chart.js v4 (modern charting library)
 - DataTables with Bootstrap 5 integration
 - Font Awesome 6 (icons)
 - Themify Icons (additional icons)
 - Flag Icons (country flags)
 - Various visualization libraries (Flot, Peity, JQVMap, GaugeJS)
-- Form validation (jQuery Validation)
+- Form validation (native HTML5 validation)
 - Animation library (Animate.css)
 - Select enhancement (Chosen.js)
 - Maps integration (GMaps.js)
@@ -110,7 +110,7 @@ The main stylesheet (`src/styles/main.scss`) imports:
 - Main entry point is `src/main.js` which imports all dependencies
 - Component scripts are in `src/scripts/`
 - All vendor libraries are imported as ES modules
-- jQuery plugins are made available globally after import
+- All JavaScript is modern ES6+ modules with no jQuery dependency
 
 ### Browser Support
 

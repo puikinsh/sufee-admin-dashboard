@@ -61,7 +61,7 @@ Thank you for your interest in contributing to Sufee Admin Dashboard! This docum
 
 ##### JavaScript
 - Use ES6+ features
-- Prefer vanilla JavaScript over jQuery for new code
+- Use vanilla JavaScript only - jQuery has been completely removed
 - Add JSDoc comments for functions
 - Handle errors appropriately
 

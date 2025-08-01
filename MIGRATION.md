@@ -57,8 +57,7 @@ npm install
         <!-- Content -->
     </div>
     
-    <!-- Manual script imports -->
-    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Manual script imports (jQuery removed in v2.0) -->
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
@@ -140,11 +139,11 @@ npm install
 | `data-dismiss` | `data-bs-dismiss` |
 | `data-placement` | `data-bs-placement` |
 
-### 5. Update JavaScript
+### 5. Update JavaScript (jQuery Removed)
 
-#### Old jQuery Code:
+#### Old jQuery Code (v1.x):
 ```javascript
-// Toggle sidebar
+// jQuery was used extensively in v1.x
 $('#menuToggle').on('click', function(event) {
     $('body').toggleClass('open');
 });
@@ -157,7 +156,7 @@ var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {...});
 ```
 
-#### New ES6 Code:
+#### New Vanilla JavaScript (v2.0 - NO jQuery):
 ```javascript
 // Import what you need
 import { Chart } from 'chart.js/auto';
@@ -218,8 +217,8 @@ npm run dev
 
 ### 8. Common Issues and Solutions
 
-#### Issue: jQuery plugins not working
-**Solution**: Many jQuery plugins have vanilla JS alternatives in Bootstrap 5. For legacy plugins, ensure jQuery is loaded before the plugin.
+#### Issue: jQuery code not working
+**Solution**: jQuery has been completely removed in v2.0. All code must be converted to vanilla JavaScript. See the JavaScript examples above for common conversions.
 
 #### Issue: Icons not showing
 **Solution**: Font Awesome has been updated from v4 to v6. Update icon classes:
@@ -230,7 +229,7 @@ npm run dev
 **Solution**: Bootstrap 5 has redesigned forms. Update form classes and structure according to Bootstrap 5 documentation.
 
 #### Issue: JavaScript errors
-**Solution**: Check browser console for specific errors. Most likely due to jQuery syntax - convert to vanilla JavaScript.
+**Solution**: Check browser console for specific errors. All jQuery syntax must be converted to vanilla JavaScript as jQuery is no longer included.
 
 ## Features No Longer Supported
 
