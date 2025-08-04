@@ -1,6 +1,10 @@
 # Sufee HTML5 Admin Dashboard Template v2.0
 
+[![Sufee Admin Dashboard](./sufee-admin-dashboard.png)](https://colorlib.com/polygon/sufee/index.html)
+
 **Sufee** is a responsive Bootstrap 5 Admin Dashboard Template. Originally built with Bootstrap 4, this major release brings a complete modernization with Bootstrap 5, Vite build system, and a component-based architecture.
+
+[View Live Demo →](https://colorlib.com/polygon/sufee/index.html)
 
 ## What's New in v2.0
 

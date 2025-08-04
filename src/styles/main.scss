@@ -83,17 +83,28 @@ body {
     height: 70px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
-    justify-content: flex-start !important;
     padding: 1rem 1rem 1rem 1.75rem;
     position: relative;
+    display: flex;
+    align-items: center;
     
     .logo-full, .logo-mini {
       transition: all 0.3s ease;
-      max-width: 100%;
-      height: 26px !important;
+      height: 26px;
+      width: auto;
+      display: block;
+      
+      // Safari SVG baseline fix
+      vertical-align: middle;
+      
+      // Safari-specific fix for SVG text elements
+      @supports (-webkit-appearance: none) and (not (-webkit-touch-callout: none)) {
+        transform: translateY(0);
+      }
     }
     
     .logo-mini {
+      display: none;
       opacity: 0;
       position: absolute;
       top: 50%;
@@ -601,13 +612,12 @@ body {
       }
       
       .logo-mini {
-        opacity: 1;
         display: block;
-        pointer-events: auto;
+        opacity: 1;
         position: relative;
+        transform: none;
         top: auto;
         left: auto;
-        transform: none;
       }
     }
     
