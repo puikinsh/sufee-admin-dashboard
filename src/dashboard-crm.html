@@ -859,10 +859,14 @@
     </div>
 
     <div data-partial="scripts-common"></div>
+    <script type="module" src="/main.js"></script>
     
     <script type="module">
-        // Initialize charts when DOM is ready
-        document.addEventListener('DOMContentLoaded', () => {
+        // Import Chart.js
+        import Chart from 'chart.js/auto';
+        
+        // Initialize charts when DOM is ready AND partials are loaded
+        function initializeCharts() {
             // Widget Charts for Key Metrics
             // CRM Widget Chart 1 - Total Customers
             const crmWidget1Ctx = document.getElementById('crmWidgetChart1').getContext('2d');
@@ -1123,7 +1127,32 @@
                     cutout: '80%'
                 }
             });
-        });
+        }
+
+        // Wait for partials to be loaded
+        function waitForPartials() {
+            // Check if all required chart elements exist
+            const requiredElements = [
+                'crmWidgetChart1', 'crmWidgetChart2', 'crmWidgetChart3', 'crmWidgetChart4',
+                'leadSourcesChart', 'pipelineChart', 'teamPerformanceChart'
+            ];
+            
+            const allElementsExist = requiredElements.every(id => document.getElementById(id));
+            
+            if (allElementsExist) {
+                initializeCharts();
+            } else {
+                // Wait a bit and try again
+                setTimeout(waitForPartials, 100);
+            }
+        }
+
+        // Start checking when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', waitForPartials);
+        } else {
+            waitForPartials();
+        }
     </script>
 </body>
 </html>

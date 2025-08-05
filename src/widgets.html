@@ -1038,9 +1038,12 @@
 
     <!-- Scripts -->
     <script type="module" src="/main.js"></script>
-    <script>
+    <script type="module">
+        // Import Chart.js
+        import Chart from 'chart.js/auto';
+        
         // Widget Chart initialization
-        document.addEventListener('DOMContentLoaded', function() {
+        function initializeWidgets() {
             // Sample data for widget charts
             const chartOptions = {
                 maintainAspectRatio: false,
@@ -1150,7 +1153,31 @@
                     element.innerText = Math.floor(current).toLocaleString();
                 }, 10);
             });
-        });
+        }
+
+        // Wait for partials to be loaded
+        function waitForPartials() {
+            // Check if all required chart elements exist
+            const requiredElements = [
+                'widgetChart1', 'widgetChart2', 'widgetChart3', 'widgetChart4'
+            ];
+            
+            const allElementsExist = requiredElements.every(id => document.getElementById(id));
+            
+            if (allElementsExist) {
+                initializeWidgets();
+            } else {
+                // Wait a bit and try again
+                setTimeout(waitForPartials, 100);
+            }
+        }
+
+        // Start checking when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', waitForPartials);
+        } else {
+            waitForPartials();
+        }
     </script>
 </body>
 </html>

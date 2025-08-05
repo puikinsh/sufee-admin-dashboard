@@ -236,15 +236,4 @@ export class PartialsLoader {
 // Export a singleton instance
 export const partialsLoader = new PartialsLoader();
 
-// Auto-initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    partialsLoader.loadAllPartials();
-    partialsLoader.initializeSidebarActiveState();
-    partialsLoader.initializeHeader();
-  });
-} else {
-  partialsLoader.loadAllPartials();
-  partialsLoader.initializeSidebarActiveState();
-  partialsLoader.initializeHeader();
-}
+// Note: Initialization is handled by main.js to avoid conflicts

@@ -164,9 +164,9 @@
         .bg-flat-color-4 { background: #66bb6a; }
         .bg-flat-color-5 { background: #ef5350; }
     </style>
-  <script type="module" crossorigin src="./assets/widgets-DvbpgQIy.js"></script>
+  <script type="module" crossorigin src="./assets/widgets-BzUFsFqF.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
-  <link rel="modulepreload" crossorigin href="./assets/main-Bj1uTnVO.js">
+  <link rel="modulepreload" crossorigin href="./assets/main-Df3-XsBO.js">
   <link rel="stylesheet" crossorigin href="./assets/main-DZub1fmD.css">
   <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();window.__vite_is_modern_browser=true</script>
   <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
@@ -1043,122 +1043,8 @@
     </div>
 
     <!-- Scripts -->
-    <script>
-        // Widget Chart initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            // Sample data for widget charts
-            const chartOptions = {
-                maintainAspectRatio: false,
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    x: {
-                        display: false
-                    },
-                    y: {
-                        display: false
-                    }
-                }
-            };
-            
-            // Widget Chart 1
-            const ctx1 = document.getElementById('widgetChart1');
-            if (ctx1) {
-                new Chart(ctx1, {
-                    type: 'line',
-                    data: {
-                        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-                        datasets: [{
-                            data: [78, 81, 80, 85, 86, 78, 83],
-                            borderColor: 'rgba(255,255,255,0.8)',
-                            backgroundColor: 'rgba(255,255,255,0.2)',
-                            borderWidth: 2,
-                            tension: 0.4
-                        }]
-                    },
-                    options: chartOptions
-                });
-            }
-            
-            // Widget Chart 2
-            const ctx2 = document.getElementById('widgetChart2');
-            if (ctx2) {
-                new Chart(ctx2, {
-                    type: 'line',
-                    data: {
-                        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-                        datasets: [{
-                            data: [10, 18, 14, 24, 16, 18, 24],
-                            borderColor: 'rgba(255,255,255,0.8)',
-                            backgroundColor: 'rgba(255,255,255,0.2)',
-                            borderWidth: 2,
-                            tension: 0.4
-                        }]
-                    },
-                    options: chartOptions
-                });
-            }
-            
-            // Widget Chart 3
-            const ctx3 = document.getElementById('widgetChart3');
-            if (ctx3) {
-                new Chart(ctx3, {
-                    type: 'line',
-                    data: {
-                        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-                        datasets: [{
-                            data: [65, 59, 84, 84, 51, 55, 40],
-                            borderColor: 'rgba(255,255,255,0.8)',
-                            backgroundColor: 'rgba(255,255,255,0.2)',
-                            borderWidth: 2,
-                            tension: 0.4
-                        }]
-                    },
-                    options: chartOptions
-                });
-            }
-            
-            // Widget Chart 4
-            const ctx4 = document.getElementById('widgetChart4');
-            if (ctx4) {
-                new Chart(ctx4, {
-                    type: 'bar',
-                    data: {
-                        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-                        datasets: [{
-                            data: [78, 81, 80, 65, 58, 75, 60],
-                            backgroundColor: 'rgba(255,255,255,0.3)',
-                            borderColor: 'rgba(255,255,255,0.8)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: chartOptions
-                });
-            }
-            
-            // Count animation
-            const countElements = document.querySelectorAll('.count');
-            countElements.forEach(element => {
-                const target = parseInt(element.innerText);
-                let current = 0;
-                const increment = target / 100;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    element.innerText = Math.floor(current).toLocaleString();
-                }, 10);
-            });
-        });
-    </script>
   <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
   <script nomodule crossorigin id="vite-legacy-polyfill" src="./assets/polyfills-legacy-ChY__WoK.js"></script>
-  <script nomodule crossorigin id="vite-legacy-entry" data-src="./assets/widgets-legacy-_ZKKfm6y.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="./assets/widgets-legacy-Bwn7lPoG.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
 </body>
 </html>
