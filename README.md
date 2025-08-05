@@ -1,10 +1,24 @@
-# Sufee HTML5 Admin Dashboard Template v2.0
+# Sufee HTML5 Admin Dashboard Template v2.1
 
 [![Sufee Admin Dashboard](./sufee-admin-dashboard.png)](https://colorlib.com/polygon/sufee/index.html)
 
-**Sufee** is a responsive Bootstrap 5 Admin Dashboard Template. Originally built with Bootstrap 4, this major release brings a complete modernization with Bootstrap 5, Vite build system, and a component-based architecture.
+**Sufee** is a responsive Bootstrap 5 Admin Dashboard Template. Originally built with Bootstrap 4, this major release brings a complete modernization with Bootstrap 5, Vite build system, component-based architecture, and professional error handling.
 
 [View Live Demo →](https://colorlib.com/polygon/sufee/index.html)
+
+## What's New in v2.1
+
+### Code Quality & Developer Experience
+- **ESLint & Prettier Integration**: Professional code quality tools with automatic formatting
+- **Error Handling System**: Custom 404/500 pages with user-friendly messaging and error reporting
+- **Self-Hosted Fonts**: Privacy-focused local font hosting eliminating Google Fonts CDN
+- **Enhanced Build Process**: Optimized Vite configuration with error page integration
+
+### Key Improvements
+- **Professional Error Pages**: Beautiful, branded error pages with helpful navigation
+- **Global Error Handler**: Automatic error capture and user-friendly notifications
+- **GDPR Compliance**: Eliminated external CDN dependencies for better privacy
+- **Development Tools**: Enhanced debugging with toast notifications and error tracking
 
 ## What's New in v2.0
 
@@ -17,15 +31,18 @@
 - **Developer Experience**: Hot Module Replacement (HMR) for instant updates
 
 ### Key Features
-- Responsive design that works on all devices
-- Dynamic sidebar with collapsible navigation
-- Reusable components through partials system
-- Modern charting with Chart.js
-- Data tables with sorting and searching
-- Form validation and advanced inputs
-- Multiple dashboard layouts
-- Authentication pages (login, register, forgot password)
-- 100+ UI components and widgets
+- **Professional Error Handling**: Custom 404/500 pages with user-friendly messaging
+- **Code Quality Tools**: ESLint & Prettier integration for consistent, high-quality code
+- **Self-Hosted Fonts**: Privacy-focused local font hosting (no external CDN dependencies)
+- **Responsive Design**: Works flawlessly on all devices and screen sizes
+- **Dynamic Sidebar**: Collapsible navigation with smooth animations
+- **Reusable Components**: Partials system eliminates code duplication
+- **Modern Charting**: Chart.js integration with interactive visualizations
+- **Data Tables**: Advanced tables with sorting, searching, and pagination
+- **Form Validation**: Built-in validation with user-friendly error messages
+- **Multiple Layouts**: Various dashboard configurations and page templates
+- **Authentication Pages**: Login, register, and password reset pages
+- **100+ UI Components**: Comprehensive widget and component library
 
 ## Getting Started
 
@@ -237,7 +254,9 @@ The project uses Vite for building. Configuration is in `vite.config.js`:
 | `npm run dev` | Start development server with HMR |
 | `npm run build` | Build for production |
 | `npm run preview` | Preview production build |
-| `npm run lint` | Run linter (when configured) |
+| `npm run lint` | Lint and auto-fix JavaScript code |
+| `npm run format` | Format all files with Prettier |
+| `npm run quality:fix` | Run both linting and formatting |
 
 ## Dependencies
 
@@ -286,6 +305,36 @@ If upgrading from version 1.x:
 ## License
 
 Sufee is licensed under The MIT License (MIT). You can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the final products. But you always need to state that Colorlib is the original author of this template.
+
+## Related Resources
+
+### Colorlib Admin Dashboard Articles
+- [42 Free Bootstrap Admin Dashboard Templates 2025](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/)
+- [42 Best Free HTML5 Admin Dashboard Templates 2025](https://colorlib.com/wp/free-html5-admin-dashboard-templates/)
+- [39 Best Free & Responsive Admin Templates 2025](https://colorlib.com/wp/free-admin-templates/)
+- [42 Best Free Dashboard Templates For Admins 2025](https://colorlib.com/wp/free-dashboard-templates/)
+
+### Premium Dashboard Solutions
+
+**[DashboardPack.com](https://dashboardpack.com)** offers premium admin dashboard templates and UI kits for multiple frameworks:
+
+**Popular Templates:**
+- **[ArchitectUI](https://dashboardpack.com/theme-details/architectui-dashboard/)** - Multi-purpose Bootstrap admin template (HTML, React, Angular versions)
+- **[Marketing Dashboard](https://dashboardpack.com/theme-details/marketing-dashboard/)** - Conversion funnel focused dashboard
+- **[Sales Dashboard](https://dashboardpack.com/theme-details/sales-dashboard/)** - Sales and finance data visualization
+- **[Adminty HTML Dashboard](https://dashboardpack.com/theme-details/adminty-html-dashboard/)** - Modern Bootstrap-based admin panel
+
+**Available Frameworks:**
+- HTML5 & Bootstrap 5 themes
+- React (with Reactstrap)
+- Angular (with @ng-bootstrap)
+- Vue.js templates
+
+**Key Features:**
+- Multiple layout arrangements (3+ per theme)
+- 10+ pre-defined color schemes
+- Unlimited customization options
+- Personal and Developer licensing
 
 ## Credits
 

@@ -1,0 +1,33 @@
+# Build outputs
+dist/
+node_modules/
+coverage/
+
+# Static assets that shouldn't be formatted
+public/
+*.min.js
+*.min.css
+
+# Generated files
+*.d.ts
+package-lock.json
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation that has specific formatting
+CHANGELOG.md
+LICENSE

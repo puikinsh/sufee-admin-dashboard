@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
-import legacy from '@vitejs/plugin-legacy'
-import { viteStaticCopy } from 'vite-plugin-static-copy'
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
+import legacy from '@vitejs/plugin-legacy';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
   root: 'src',
@@ -29,7 +29,7 @@ export default defineConfig({
         'tables-data': resolve(__dirname, 'src/tables-data.html'),
         'forms-advanced': resolve(__dirname, 'src/forms-advanced.html'),
         'forms-basic': resolve(__dirname, 'src/forms-basic.html'),
-        'widgets': resolve(__dirname, 'src/widgets.html'),
+        widgets: resolve(__dirname, 'src/widgets.html'),
         'charts-chartjs': resolve(__dirname, 'src/charts-chartjs.html'),
         'charts-flot': resolve(__dirname, 'src/charts-flot.html'),
         'charts-peity': resolve(__dirname, 'src/charts-peity.html'),
@@ -40,7 +40,9 @@ export default defineConfig({
         'page-login': resolve(__dirname, 'src/page-login.html'),
         'page-register': resolve(__dirname, 'src/page-register.html'),
         'pages-forget': resolve(__dirname, 'src/pages-forget.html'),
-        'frame': resolve(__dirname, 'src/frame.html')
+        'error-404': resolve(__dirname, 'src/error-404.html'),
+        'error-500': resolve(__dirname, 'src/error-500.html'),
+        frame: resolve(__dirname, 'src/frame.html')
       }
     },
     assetsDir: 'assets',
@@ -81,9 +83,6 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    include: [
-      'bootstrap',
-      'chart.js'
-    ]
+    include: ['bootstrap', 'chart.js']
   }
-})
+});

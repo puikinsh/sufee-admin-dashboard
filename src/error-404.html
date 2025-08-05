@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>404 - Page Not Found | Sufee Admin</title>
+    <meta name="description" content="Page Not Found - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+        }
+        
+        .error-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .error-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .error-number {
+            font-size: 8rem;
+            font-weight: 800;
+            color: #667eea;
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-error {
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary-error {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary-error:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+        
+        .btn-secondary-error {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn-secondary-error:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .error-illustration {
+            margin-bottom: 2rem;
+            opacity: 0.1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            color: #667eea;
+            z-index: 0;
+        }
+        
+        .error-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .suggestions {
+            text-align: left;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .suggestions h5 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .suggestions ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .suggestions li {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .suggestions a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .suggestions a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .error-number {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 1.5rem;
+            }
+            
+            .error-actions {
+                flex-direction: column;
+            }
+            
+            .btn-error {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body class="error-page">
+    <div class="error-container">
+        <div class="error-illustration">
+            <i class="fas fa-search"></i>
+        </div>
+        
+        <div class="error-content">
+            <div class="error-number">404</div>
+            <h1 class="error-title">Oops! Page Not Found</h1>
+            <p class="error-message">
+                The page you're looking for seems to have vanished into thin air. 
+                Don't worry, it happens to the best of us!
+            </p>
+            
+            <div class="suggestions">
+                <h5><i class="fas fa-lightbulb me-2"></i>Here's what you can try:</h5>
+                <ul>
+                    <li>Check the URL for any typos or spelling mistakes</li>
+                    <li>Go back to the <a href="index.html">dashboard homepage</a></li>
+                    <li>Use the search function to find what you're looking for</li>
+                    <li>Browse through our navigation menu</li>
+                </ul>
+            </div>
+            
+            <div class="error-actions">
+                <a href="index.html" class="btn-error btn-primary-error" id="homeBtn">
+                    <i class="fas fa-home"></i>
+                    Back to Dashboard
+                </a>
+                <button type="button" class="btn-error btn-secondary-error" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i>
+                    Go Back
+                </button>
+                <a href="index.html" class="btn-error btn-secondary-error">
+                    <i class="fas fa-search"></i>
+                    Search Site
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script type="module">
+        // Error page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add loading state to home button
+            const homeBtn = document.getElementById('homeBtn');
+            
+            homeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Add loading state
+                this.classList.add('loading');
+                this.innerHTML = '<i class="fas fa-home"></i> Loading...';
+                
+                // Simulate loading and redirect
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 500);
+            });
+            
+            // Auto-focus on the page for better accessibility
+            document.body.focus();
+            
+            // Track 404 errors (in a real app, you'd send this to your analytics)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_not_found', {
+                    event_category: 'Error',
+                    event_label: window.location.pathname,
+                    value: 1
+                });
+            }
+            
+            // Log error for debugging in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                console.warn('404 Error: Page not found -', window.location.href);
+            }
+        });
+        
+        // Go back function
+        function goBack() {
+            // Check if there's history to go back to
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // Fallback to homepage if no history
+                window.location.href = 'index.html';
+            }
+        }
+        
+        // Make goBack available globally
+        window.goBack = goBack;
+        
+        // Handle keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // ESC key goes back
+            if (e.key === 'Escape') {
+                goBack();
+            }
+            // Enter key on home button
+            if (e.key === 'Enter' && document.activeElement === document.getElementById('homeBtn')) {
+                document.getElementById('homeBtn').click();
+            }
+        });
+        
+        // Progressive enhancement: Add smooth scrolling if supported
+        if ('scrollBehavior' in document.documentElement.style) {
+            document.documentElement.style.scrollBehavior = 'smooth';
+        }
+    </script>
+</body>
+</html>

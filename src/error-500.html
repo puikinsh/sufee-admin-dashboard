@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8">
+    <title>500 - Server Error | Sufee Admin</title>
+    <meta name="description" content="Internal Server Error - Sufee Admin Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div data-partial="head-common"></div>
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            padding: 2rem;
+        }
+        
+        .error-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 3rem;
+            text-align: center;
+            max-width: 650px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .error-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        }
+        
+        .error-number {
+            font-size: 8rem;
+            font-weight: 800;
+            color: #dc3545;
+            line-height: 1;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-error {
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary-error {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary-error:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+            color: white;
+        }
+        
+        .btn-secondary-error {
+            background: transparent;
+            color: #dc3545;
+            border: 2px solid #dc3545;
+        }
+        
+        .btn-secondary-error:hover {
+            background: #dc3545;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .error-illustration {
+            margin-bottom: 2rem;
+            opacity: 0.1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20rem;
+            color: #dc3545;
+            z-index: 0;
+        }
+        
+        .error-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .error-details {
+            text-align: left;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid #dc3545;
+        }
+        
+        .error-details h5 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .error-details p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .error-details .error-id {
+            font-family: 'Courier New', monospace;
+            background: #e9ecef;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        
+        .status-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .status-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        
+        .status-item i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .status-item.checking i {
+            color: #ffc107;
+            animation: pulse 2s infinite;
+        }
+        
+        .status-item.ok i {
+            color: #28a745;
+        }
+        
+        .status-item.error i {
+            color: #dc3545;
+        }
+        
+        .status-label {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @media (max-width: 768px) {
+            .error-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .error-number {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 1.5rem;
+            }
+            
+            .error-actions {
+                flex-direction: column;
+            }
+            
+            .btn-error {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .status-indicators {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body class="error-page">
+    <div class="error-container">
+        <div class="error-illustration">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        
+        <div class="error-content">
+            <div class="error-number">500</div>
+            <h1 class="error-title">Internal Server Error</h1>
+            <p class="error-message">
+                Something went wrong on our end. Our team has been automatically notified 
+                and is working to fix this issue.
+            </p>
+            
+            <div class="error-details">
+                <h5><i class="fas fa-info-circle me-2"></i>Error Details</h5>
+                <p>
+                    <strong>Time:</strong> <span id="errorTime"></span><br>
+                    <strong>Error ID:</strong> <span class="error-id" id="errorId"></span><br>
+                    <strong>Status:</strong> Our team has been notified
+                </p>
+                <p>
+                    If this problem persists, please contact support with the error ID above.
+                </p>
+            </div>
+            
+            <div class="status-indicators">
+                <div class="status-item checking" id="serverStatus">
+                    <i class="fas fa-server"></i>
+                    <div class="status-label">Server Status</div>
+                </div>
+                <div class="status-item checking" id="databaseStatus">
+                    <i class="fas fa-database"></i>
+                    <div class="status-label">Database</div>
+                </div>
+                <div class="status-item checking" id="serviceStatus">
+                    <i class="fas fa-cogs"></i>
+                    <div class="status-label">Services</div>
+                </div>
+            </div>
+            
+            <div class="error-actions">
+                <button type="button" class="btn-error btn-primary-error" onclick="refreshPage()" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i>
+                    Try Again
+                </button>
+                <a href="index.html" class="btn-error btn-secondary-error" id="homeBtn">
+                    <i class="fas fa-home"></i>
+                    Back to Dashboard
+                </a>
+                <button type="button" class="btn-error btn-secondary-error" onclick="reportIssue()">
+                    <i class="fas fa-bug"></i>
+                    Report Issue
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/main.js"></script>
+    <script type="module">
+        // Error page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate error ID and timestamp
+            const errorId = generateErrorId();
+            const errorTime = new Date().toLocaleString();
+            
+            document.getElementById('errorId').textContent = errorId;
+            document.getElementById('errorTime').textContent = errorTime;
+            
+            // Simulate status checks
+            setTimeout(() => checkSystemStatus(), 1000);
+            
+            // Add loading state to home button
+            const homeBtn = document.getElementById('homeBtn');
+            homeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                this.classList.add('loading');
+                this.innerHTML = '<i class="fas fa-home"></i> Loading...';
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 500);
+            });
+            
+            // Track 500 errors (in a real app, you'd send this to your error tracking service)
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'server_error', {
+                    event_category: 'Error',
+                    event_label: '500_internal_server_error',
+                    custom_map: { error_id: errorId }
+                });
+            }
+            
+            // Log error for debugging in development
+            if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                console.error('500 Error: Internal Server Error -', {
+                    errorId: errorId,
+                    timestamp: errorTime,
+                    url: window.location.href
+                });
+            }
+        });
+        
+        // Generate a unique error ID
+        function generateErrorId() {
+            const timestamp = Date.now().toString(36);
+            const randomStr = Math.random().toString(36).substr(2, 5);
+            return `ERR-${timestamp}-${randomStr}`.toUpperCase();
+        }
+        
+        // Simulate system status checks
+        function checkSystemStatus() {
+            const statuses = ['serverStatus', 'databaseStatus', 'serviceStatus'];
+            const outcomes = ['ok', 'ok', 'error']; // Simulate mixed results
+            
+            statuses.forEach((statusId, index) => {
+                setTimeout(() => {
+                    const element = document.getElementById(statusId);
+                    element.classList.remove('checking');
+                    element.classList.add(outcomes[index]);
+                }, (index + 1) * 800);
+            });
+        }
+        
+        // Refresh page function
+        function refreshPage() {
+            const refreshBtn = document.getElementById('refreshBtn');
+            refreshBtn.classList.add('loading');
+            refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refreshing...';
+            
+            // Add a small delay to show the loading state
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        }
+        
+        // Report issue function
+        function reportIssue() {
+            const errorId = document.getElementById('errorId').textContent;
+            const subject = encodeURIComponent('Server Error Report - ' + errorId);
+            const body = encodeURIComponent(`Hello,
+
+I encountered a server error while using the Sufee Admin Dashboard.
+
+Error Details:
+- Error ID: ${errorId}
+- Time: ${document.getElementById('errorTime').textContent}
+- Page: ${window.location.href}
+- User Agent: ${navigator.userAgent}
+
+Please let me know when this issue is resolved.
+
+Thank you!`);
+            
+            // In a real application, you might open a support ticket system
+            // For now, we'll open an email client
+            window.location.href = `mailto:support@example.com?subject=${subject}&body=${body}`;
+        }
+        
+        // Make functions available globally
+        window.refreshPage = refreshPage;
+        window.reportIssue = reportIssue;
+        
+        // Handle keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // R key to refresh
+            if (e.key === 'r' || e.key === 'R') {
+                if (!e.ctrlKey && !e.metaKey) { // Avoid interfering with Ctrl+R
+                    refreshPage();
+                }
+            }
+            // ESC key to go home
+            if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+        
+        // Auto-retry mechanism (optional)
+        let retryCount = 0;
+        const maxRetries = 3;
+        
+        function autoRetry() {
+            if (retryCount < maxRetries) {
+                retryCount++;
+                console.log(`Auto-retry attempt ${retryCount}/${maxRetries}`);
+                
+                // Wait longer between each retry
+                setTimeout(() => {
+                    window.location.reload();
+                }, retryCount * 5000);
+            }
+        }
+        
+        // Uncomment the line below to enable auto-retry
+        // setTimeout(autoRetry, 10000); // Try again after 10 seconds
+    </script>
+</body>
+</html>
