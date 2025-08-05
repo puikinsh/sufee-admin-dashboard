@@ -37,6 +37,7 @@ Sufee Admin Dashboard is a modern, responsive admin template built with Bootstra
 - **Leaflet Maps**: Interactive map integration
 - **Font Awesome 6**: Comprehensive icon library
 - **Themify Icons**: Additional icon set
+- **Self-Hosted Fonts**: Privacy-focused local font hosting
 - **SCSS Architecture**: Modular styling system
 - **ES6 Modules**: Modern JavaScript architecture
 - **No jQuery Required**: Pure JavaScript implementation
@@ -127,6 +128,8 @@ sufee-admin-dashboard/
 │   └── main.js               # JavaScript entry point
 ├── public/                    # Static assets
 │   ├── favicon.ico
+│   ├── fonts/                # Self-hosted web fonts
+│   │   └── open-sans/       # Open Sans font files (woff2)
 │   ├── images/               # Images and logos
 │   └── themify-icons/        # Themify icon fonts
 ├── dist/                      # Production build output
@@ -761,6 +764,8 @@ The `tables-data.html` page demonstrates enhanced table functionality through th
 src/styles/
 ├── main.scss              # Main entry point
 ├── variables.scss         # Theme variables
+├── fonts/                # Font declarations
+│   └── _open-sans.scss   # Open Sans @font-face rules
 └── components/           # Component styles
     ├── buttons.scss      # Button customizations
     ├── cards.scss        # Card styles
@@ -772,6 +777,81 @@ src/styles/
     ├── tables.scss       # Table styles
     └── widgets.scss      # Widget components
 ```
+
+### Font System
+
+Sufee uses **locally hosted fonts** for better performance, privacy, and reliability. The Open Sans font family is self-hosted rather than loaded from Google Fonts CDN.
+
+#### Font Files Location
+
+```
+public/fonts/
+└── open-sans/
+    ├── open-sans-v40-latin-regular.woff2    # 400
+    ├── open-sans-v40-latin-italic.woff2     # 400 italic
+    ├── open-sans-v40-latin-300.woff2        # 300
+    ├── open-sans-v40-latin-300italic.woff2  # 300 italic
+    ├── open-sans-v40-latin-600.woff2        # 600
+    ├── open-sans-v40-latin-600italic.woff2  # 600 italic
+    ├── open-sans-v40-latin-700.woff2        # 700
+    ├── open-sans-v40-latin-700italic.woff2  # 700 italic
+    ├── open-sans-v40-latin-800.woff2        # 800
+    └── open-sans-v40-latin-800italic.woff2  # 800 italic
+```
+
+#### Using Different Font Weights
+
+The template includes multiple font weights that you can use in your styles:
+
+```scss
+// Available font weights
+.text-light { font-weight: 300; }
+.text-normal { font-weight: 400; }  // default
+.text-semibold { font-weight: 600; }
+.text-bold { font-weight: 700; }
+.text-extrabold { font-weight: 800; }
+
+// Using in custom CSS
+.my-heading {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;  // Bold
+  font-style: italic; // Also available in italic
+}
+```
+
+#### Benefits of Local Font Hosting
+
+- **Performance**: No external DNS lookups or additional HTTP requests to Google servers
+- **Privacy**: No user tracking by Google Fonts
+- **Reliability**: Fonts always available, even if Google Fonts is blocked or down
+- **GDPR Compliance**: No data sent to third-party services
+- **Build Optimization**: Fonts are processed through Vite's build pipeline
+
+#### Adding Custom Fonts
+
+To add your own custom fonts:
+
+1. Place font files in `public/fonts/your-font-name/`
+2. Create a new SCSS file in `src/styles/fonts/_your-font.scss`
+3. Add @font-face declarations:
+
+```scss
+@font-face {
+  font-family: 'Your Font Name';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/your-font-name/font-file.woff2') format('woff2');
+}
+```
+
+4. Import in `main.scss`:
+
+```scss
+@import "fonts/your-font";
+```
+
+5. Update the font-family in `variables.scss` if you want to use it globally
 
 ### Theme Variables
 

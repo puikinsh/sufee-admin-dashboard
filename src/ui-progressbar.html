@@ -5,16 +5,7 @@
     <title>Progress Bars - Sufee Admin</title>
     <meta name="description" content="Progress Bar Components - Sufee Admin Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <!-- Themify Icons -->
-    <link rel="stylesheet" href="./themify-icons/css/themify-icons.css">
+    <div data-partial="head-common"></div>
 </head>
 
 <body class="sufee-dashboard" data-page="ui-progressbar">
@@ -29,26 +20,8 @@
             <!-- Header Placeholder -->
             <div data-partial="header" data-partial-replace="true"></div>
 
-            <!-- Breadcrumbs -->
-            <div class="breadcrumb-section bg-light border-bottom py-3">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <h1 class="h4 mb-0">Progress Bars</h1>
-                        </div>
-                        <div class="col-md-6">
-                            <nav aria-label="breadcrumb" class="float-md-end">
-                                <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item">UI Elements</li>
-                                    <li class="breadcrumb-item">Components</li>
-                                    <li class="breadcrumb-item active" aria-current="page">Progress Bars</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Breadcrumb Section -->
+            <div data-breadcrumb data-breadcrumb-title="Progress Bars" data-breadcrumb-path="UI Elements|Components|Progress Bars"></div>
 
             <!-- Main Content -->
             <main class="content-area p-4">
@@ -240,6 +213,6 @@
     <!-- End Main Container -->
 
     <!-- Scripts -->
-    <script type="module" src="main.js"></script>
+    <script type="module" src="/main.js"></script>
 </body>
 </html>

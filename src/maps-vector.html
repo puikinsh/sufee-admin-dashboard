@@ -6,7 +6,6 @@
     <meta name="description" content="Interactive Vector Maps - Sufee Admin Dashboard">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <div data-partial="head-common"></div>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         /* Map container styles */
         .map-container {
@@ -308,8 +307,11 @@
 
     <!-- Scripts -->
     <script type="module" src="/main.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
+    <script type="module">
+        // Import Leaflet
+        import L from 'leaflet';
+        import 'leaflet/dist/leaflet.css';
+        
         // Initialize maps
         let maps = {};
         let markers = [];
