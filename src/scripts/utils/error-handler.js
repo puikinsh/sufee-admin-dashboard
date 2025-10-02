@@ -161,22 +161,16 @@ export class ErrorHandler {
     console.groupEnd();
 
     // Show a non-intrusive notification
-    this.showToast(
-      `Dev Error: ${errorDetails.message}`,
-      'warning',
-      { timeout: 10000 }
-    );
+    this.showToast(`Dev Error: ${errorDetails.message}`, 'warning', { timeout: 10000 });
   }
 
   /**
    * Show offline message
    */
   showOfflineMessage() {
-    this.showToast(
-      'You appear to be offline. Some features may not work.',
-      'warning',
-      { persistent: true }
-    );
+    this.showToast('You appear to be offline. Some features may not work.', 'warning', {
+      persistent: true
+    });
 
     // Listen for when connection is restored
     window.addEventListener('online', () => {

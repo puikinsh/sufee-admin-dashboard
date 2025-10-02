@@ -3,7 +3,7 @@
 .btn {
   border-radius: 0;
   transition: all 0.15s ease-in-out;
-  
+
   &:focus {
     box-shadow: none !important;
     outline: 0;
@@ -17,7 +17,7 @@
   &.btn-info,
   &.btn-dark {
     color: white !important;
-    
+
     &:hover,
     &:focus,
     &:active,
@@ -29,7 +29,7 @@
   // Warning button should have dark text for readability
   &.btn-warning {
     color: #212529 !important;
-    
+
     &:hover,
     &:focus,
     &:active,
@@ -41,7 +41,7 @@
   // Light button should have dark text
   &.btn-light {
     color: #212529 !important;
-    
+
     &:hover,
     &:focus,
     &:active,
@@ -54,14 +54,14 @@
   &:disabled,
   &.disabled {
     &.btn-primary,
-    &.btn-secondary, 
+    &.btn-secondary,
     &.btn-success,
     &.btn-danger,
     &.btn-info,
     &.btn-dark {
       color: rgba(255, 255, 255, 0.5) !important;
     }
-    
+
     &.btn-warning,
     &.btn-light {
       color: rgba(33, 37, 41, 0.5) !important;

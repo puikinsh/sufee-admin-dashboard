@@ -14,7 +14,7 @@ header.header {
     position: relative;
 
     &::after {
-      content: "";
+      content: '';
       display: table;
       clear: both;
     }
@@ -58,7 +58,7 @@ header.header {
 
 // Collapsed state menu toggle
 body.open .menutoggle i:before {
-  content: "\f0a4";
+  content: '\f0a4';
 }
 
 // Search functionality
@@ -78,7 +78,7 @@ body.open .menutoggle i:before {
 // Header dropdowns
 .dropdown {
   display: inline-block;
-  
+
   .dropdown-toggle {
     background: transparent;
     border: none;

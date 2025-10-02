@@ -1,135 +1,135 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-bs-theme="light">
-<head>
-    <meta charset="utf-8">
-    <title>Google Maps - Sufee Admin</title>
-    <meta name="description" content="Google Maps integration - Sufee Admin Dashboard">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8" />
+        <title>Google Maps - Sufee Admin</title>
+        <meta name="description" content="Google Maps integration - Sufee Admin Dashboard" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <div data-partial="head-common"></div>
-</head>
+        <div data-partial="head-common"></div>
+    </head>
 
-<body class="sufee-dashboard" data-page="maps-gmap">
-    <!-- Main Container -->
-    <div class="d-flex min-vh-100">
-        
-        <div data-partial="sidebar" data-partial-replace="true"></div>
+    <body class="sufee-dashboard" data-page="maps-gmap">
+        <!-- Main Container -->
+        <div class="d-flex min-vh-100">
+            <div data-partial="sidebar" data-partial-replace="true"></div>
 
-        <!-- Main Content Area -->
-        <div class="main-content flex-grow-1">
-            <div data-partial="header" data-partial-replace="true"></div>
+            <!-- Main Content Area -->
+            <div class="main-content flex-grow-1">
+                <div data-partial="header" data-partial-replace="true"></div>
 
-            <div data-breadcrumb data-breadcrumb-title="Google Maps" data-breadcrumb-path="Dashboard|Maps"></div>
+                <div data-breadcrumb data-breadcrumb-title="Google Maps" data-breadcrumb-path="Dashboard|Maps"></div>
 
-            <!-- Main Content -->
-            <main class="content-area p-4">
-                <div class="container-fluid">
-                    <div class="row g-4">
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="mb-0">Basic Map</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="map" id="basic-map" style="height: 400px;"></div>
+                <!-- Main Content -->
+                <main class="content-area p-4">
+                    <div class="container-fluid">
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="mb-0">Basic Map</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="map" id="basic-map" style="height: 400px"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="mb-0">Map with Markers</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div id="map-2" class="map" style="height: 400px;"></div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="mb-0">Geometry overlays</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="map" id="map-3" style="height: 400px;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="mb-0">Elevation locations</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div id="map-4" class="map" style="height: 400px;"></div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="mb-0">Map with Markers</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="map-2" class="map" style="height: 400px"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="mb-0">Geolocation</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="map" id="map-5" style="height: 400px;"></div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="mb-0">Geometry overlays</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="map" id="map-3" style="height: 400px"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="mb-0">Styled Map (Night Mode)</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div id="map-6" class="map" style="height: 400px;"></div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="mb-0">Elevation locations</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="map-4" class="map" style="height: 400px"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="mb-0">Traffic & Transit Layers</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="map" id="map-7" style="height: 400px;"></div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="mb-0">Geolocation</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="map" id="map-5" style="height: 400px"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="col-lg-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="mb-0">Map events</h4>
+
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="mb-0">Styled Map (Night Mode)</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="map-6" class="map" style="height: 400px"></div>
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="map" id="map-8" style="height: 400px;"></div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="mb-0">Traffic & Transit Layers</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="map" id="map-7" style="height: 400px"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="mb-0">Map events</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="map" id="map-8" style="height: 400px"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </main>
+                </main>
+            </div>
         </div>
-    </div>
 
-    <div data-partial="scripts-common"></div>
-    
-    <!-- Google Maps initialization -->
-    <script type="module">
-        import GoogleMapsManager from './scripts/components/gmaps.js';
-        
-        // Load Google Maps API
-        const script = document.createElement('script');
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2jlT6C_to6X1mMvR9yRWeRvpIgTXgddM&callback=initGoogleMaps&libraries=geometry,places';
-        script.async = true;
-        script.defer = true;
-        document.head.appendChild(script);
-    </script>
-</body>
+        <div data-partial="scripts-common"></div>
+
+        <!-- Google Maps initialization -->
+        <script type="module">
+            import GoogleMapsManager from './scripts/components/gmaps.js';
+
+            // Load Google Maps API
+            const script = document.createElement('script');
+            script.src =
+                'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2jlT6C_to6X1mMvR9yRWeRvpIgTXgddM&callback=initGoogleMaps&libraries=geometry,places';
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+        </script>
+    </body>
 </html>

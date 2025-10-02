@@ -3,20 +3,20 @@
 .datatable-wrapper {
   .datatable-top {
     margin-bottom: 1rem;
-    
+
     .datatable-search {
       input {
         max-width: 300px;
       }
     }
   }
-  
+
   .datatable-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
-    
+
     .datatable-info {
       font-size: 14px;
       color: #6c757d;
@@ -29,7 +29,7 @@
   &.sort-asc::after {
     content: ' ↑';
   }
-  
+
   &.sort-desc::after {
     content: ' ↓';
   }

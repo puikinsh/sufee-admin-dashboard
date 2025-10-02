@@ -2,13 +2,16 @@
 
 [![Sufee Admin Dashboard](./sufee-admin-dashboard.png)](https://colorlib.com/polygon/sufee/index.html)
 
-**Sufee** is a responsive Bootstrap 5 Admin Dashboard Template. Originally built with Bootstrap 4, this major release brings a complete modernization with Bootstrap 5, Vite build system, component-based architecture, and professional error handling.
+**Sufee** is a responsive Bootstrap 5 Admin Dashboard Template. Originally built with Bootstrap 4,
+this major release brings a complete modernization with Bootstrap 5, Vite build system,
+component-based architecture, and professional error handling.
 
 [View Live Demo →](https://colorlib.com/polygon/sufee/index.html)
 
 ## What's New in v2.2
 
 ### Dependency Updates
+
 - **Bootstrap 5.3.8**: Latest stable release with bug fixes and improvements
 - **Font Awesome 7.1.0**: Major upgrade with new icon library and enhanced features
 - **Vite 7.1.8**: Latest build system with improved performance and HMR
@@ -19,12 +22,14 @@
 ### What's New in v2.1
 
 ### Code Quality & Developer Experience
+
 - **ESLint & Prettier Integration**: Professional code quality tools with automatic formatting
 - **Error Handling System**: Custom 404/500 pages with user-friendly messaging and error reporting
 - **Self-Hosted Fonts**: Privacy-focused local font hosting eliminating Google Fonts CDN
 - **Enhanced Build Process**: Optimized Vite configuration with error page integration
 
 ### Key Improvements
+
 - **Professional Error Pages**: Beautiful, branded error pages with helpful navigation
 - **Global Error Handler**: Automatic error capture and user-friendly notifications
 - **GDPR Compliance**: Eliminated external CDN dependencies for better privacy
@@ -33,6 +38,7 @@
 ## What's New in v2.0
 
 ### Major Changes
+
 - **Bootstrap 5 Migration**: Complete upgrade from Bootstrap 4 to Bootstrap 5
 - **Modern Build System**: Replaced Grunt/Bower with Vite and NPM
 - **Component Architecture**: New dynamic partials system for code reusability
@@ -41,6 +47,7 @@
 - **Developer Experience**: Hot Module Replacement (HMR) for instant updates
 
 ### Key Features
+
 - **Professional Error Handling**: Custom 404/500 pages with user-friendly messaging
 - **Code Quality Tools**: ESLint & Prettier integration for consistent, high-quality code
 - **Self-Hosted Fonts**: Privacy-focused local font hosting (no external CDN dependencies)
@@ -57,26 +64,31 @@
 ## Getting Started
 
 ### Requirements
+
 - Node.js 14.x or higher
 - NPM or Yarn package manager
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-repo/sufee-admin-dashboard.git
    cd sufee-admin-dashboard
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start development server**
+
    ```bash
    npm run dev
    ```
+
    The development server will start at `http://localhost:3001`
 
 4. **Build for production**
@@ -122,41 +134,42 @@ Create a new HTML file in the `src/` directory:
 ```html
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Your Page - Sufee Admin</title>
-    <meta name="description" content="Page description">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <div data-partial="head-common"></div>
-</head>
+  </head>
 
-<body class="sufee-dashboard" data-page="your-page-id">
+  <body class="sufee-dashboard" data-page="your-page-id">
     <div class="d-flex min-vh-100">
-        <!-- Sidebar -->
-        <div data-partial="sidebar" data-partial-replace="true"></div>
+      <!-- Sidebar -->
+      <div data-partial="sidebar" data-partial-replace="true"></div>
 
-        <!-- Main Content -->
-        <div class="main-content flex-grow-1">
-            <!-- Header -->
-            <div data-partial="header" data-partial-replace="true"></div>
+      <!-- Main Content -->
+      <div class="main-content flex-grow-1">
+        <!-- Header -->
+        <div data-partial="header" data-partial-replace="true"></div>
 
-            <!-- Breadcrumb -->
-            <div data-breadcrumb 
-                 data-breadcrumb-title="Page Title" 
-                 data-breadcrumb-path="Section|Subsection|Page Title">
-            </div>
+        <!-- Breadcrumb -->
+        <div
+          data-breadcrumb
+          data-breadcrumb-title="Page Title"
+          data-breadcrumb-path="Section|Subsection|Page Title"
+        ></div>
 
-            <!-- Content -->
-            <section class="content-area p-4">
-                <div class="container-fluid">
-                    <!-- Your content here -->
-                </div>
-            </section>
-        </div>
+        <!-- Content -->
+        <section class="content-area p-4">
+          <div class="container-fluid">
+            <!-- Your content here -->
+          </div>
+        </section>
+      </div>
     </div>
 
     <script type="module" src="/main.js"></script>
-</body>
+  </body>
 </html>
 ```
 
@@ -166,10 +179,10 @@ To add your page to the sidebar navigation, edit `src/partials/sidebar.html`:
 
 ```html
 <li class="nav-item">
-    <a class="nav-link" href="your-page.html" data-page="your-page-id">
-        <i class="fas fa-icon"></i>
-        <span class="nav-text ms-2">Your Page</span>
-    </a>
+  <a class="nav-link" href="your-page.html" data-page="your-page-id">
+    <i class="fas fa-icon"></i>
+    <span class="nav-text ms-2">Your Page</span>
+  </a>
 </li>
 ```
 
@@ -177,12 +190,12 @@ To add your page to the sidebar navigation, edit `src/partials/sidebar.html`:
 
 The partials system automatically loads common components:
 
-| Partial | Description |
-|---------|-------------|
-| `head-common` | Meta tags, CSS imports, favicon |
-| `sidebar` | Navigation sidebar with menu |
-| `header` | Top header with search and user menu |
-| `scripts-common` | Common JavaScript imports |
+| Partial          | Description                          |
+| ---------------- | ------------------------------------ |
+| `head-common`    | Meta tags, CSS imports, favicon      |
+| `sidebar`        | Navigation sidebar with menu         |
+| `header`         | Top header with search and user menu |
+| `scripts-common` | Common JavaScript imports            |
 
 ### Partial Attributes
 
@@ -194,26 +207,31 @@ The partials system automatically loads common components:
 ## Components
 
 ### Charts
+
 ```javascript
 // Chart.js is automatically available
 const ctx = document.getElementById('myChart').getContext('2d');
 const chart = new Chart(ctx, {
-    type: 'line',
-    data: { /* ... */ }
+  type: 'line',
+  data: {
+    /* ... */
+  }
 });
 ```
 
 ### Data Tables
+
 ```html
 <table class="table table-striped" data-table>
-    <!-- Table content -->
+  <!-- Table content -->
 </table>
 ```
 
 ### Forms
+
 ```html
 <form data-validate>
-    <!-- Form fields with validation -->
+  <!-- Form fields with validation -->
 </form>
 ```
 
@@ -259,23 +277,25 @@ The project uses Vite for building. Configuration is in `vite.config.js`:
 
 ## Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server with HMR |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Lint and auto-fix JavaScript code |
-| `npm run format` | Format all files with Prettier |
-| `npm run quality:fix` | Run both linting and formatting |
+| Command               | Description                       |
+| --------------------- | --------------------------------- |
+| `npm run dev`         | Start development server with HMR |
+| `npm run build`       | Build for production              |
+| `npm run preview`     | Preview production build          |
+| `npm run lint`        | Lint and auto-fix JavaScript code |
+| `npm run format`      | Format all files with Prettier    |
+| `npm run quality:fix` | Run both linting and formatting   |
 
 ## Dependencies
 
 ### Core
+
 - Bootstrap 5.3.x
 - Vite 5.x
 - Sass
 
 ### UI Libraries
+
 - Chart.js 4.x
 - DataTables 1.13.x
 - Font Awesome 6.x
@@ -283,6 +303,7 @@ The project uses Vite for building. Configuration is in `vite.config.js`:
 - Flag Icons
 
 ### Utilities
+
 - NO jQuery - 100% vanilla JavaScript
 - Native HTML5 form validation
 - Modern ES6+ JavaScript modules
@@ -314,11 +335,14 @@ If upgrading from version 1.x:
 
 ## License
 
-Sufee is licensed under The MIT License (MIT). You can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the final products. But you always need to state that Colorlib is the original author of this template.
+Sufee is licensed under The MIT License (MIT). You can use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the final products. But you always need to state that
+Colorlib is the original author of this template.
 
 ## Related Resources
 
 ### Colorlib Admin Dashboard Articles
+
 - [42 Free Bootstrap Admin Dashboard Templates 2025](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/)
 - [42 Best Free HTML5 Admin Dashboard Templates 2025](https://colorlib.com/wp/free-html5-admin-dashboard-templates/)
 - [39 Best Free & Responsive Admin Templates 2025](https://colorlib.com/wp/free-admin-templates/)
@@ -326,21 +350,29 @@ Sufee is licensed under The MIT License (MIT). You can use, copy, modify, merge,
 
 ### Premium Dashboard Solutions
 
-**[DashboardPack.com](https://dashboardpack.com)** offers premium admin dashboard templates and UI kits for multiple frameworks:
+**[DashboardPack.com](https://dashboardpack.com)** offers premium admin dashboard templates and UI
+kits for multiple frameworks:
 
 **Popular Templates:**
-- **[ArchitectUI](https://dashboardpack.com/theme-details/architectui-dashboard/)** - Multi-purpose Bootstrap admin template (HTML, React, Angular versions)
-- **[Marketing Dashboard](https://dashboardpack.com/theme-details/marketing-dashboard/)** - Conversion funnel focused dashboard
-- **[Sales Dashboard](https://dashboardpack.com/theme-details/sales-dashboard/)** - Sales and finance data visualization
-- **[Adminty HTML Dashboard](https://dashboardpack.com/theme-details/adminty-html-dashboard/)** - Modern Bootstrap-based admin panel
+
+- **[ArchitectUI](https://dashboardpack.com/theme-details/architectui-dashboard/)** - Multi-purpose
+  Bootstrap admin template (HTML, React, Angular versions)
+- **[Marketing Dashboard](https://dashboardpack.com/theme-details/marketing-dashboard/)** -
+  Conversion funnel focused dashboard
+- **[Sales Dashboard](https://dashboardpack.com/theme-details/sales-dashboard/)** - Sales and
+  finance data visualization
+- **[Adminty HTML Dashboard](https://dashboardpack.com/theme-details/adminty-html-dashboard/)** -
+  Modern Bootstrap-based admin panel
 
 **Available Frameworks:**
+
 - HTML5 & Bootstrap 5 themes
 - React (with Reactstrap)
 - Angular (with @ng-bootstrap)
 - Vue.js templates
 
 **Key Features:**
+
 - Multiple layout arrangements (3+ per theme)
 - 10+ pre-defined color schemes
 - Unlimited customization options

@@ -1,6 +1,7 @@
 # Sufee Admin Dashboard Documentation
 
-Welcome to the official documentation for Sufee Admin Dashboard v2.0 - a responsive Bootstrap 5 admin template with modern build tools.
+Welcome to the official documentation for Sufee Admin Dashboard v2.2 - a responsive Bootstrap 5
+admin template with modern build tools and latest dependencies.
 
 ## Table of Contents
 
@@ -26,21 +27,44 @@ Welcome to the official documentation for Sufee Admin Dashboard v2.0 - a respons
 
 ## Introduction
 
-Sufee Admin Dashboard is a modern, responsive admin template built with Bootstrap 5.3.7 and Vite. Originally created with Bootstrap 4, version 2.0 brings a complete modernization with contemporary build tools and a component-based architecture.
+Sufee Admin Dashboard is a modern, responsive admin template built with Bootstrap 5.3.8 and Vite.
+Originally created with Bootstrap 4, version 2.0 brought a complete modernization with contemporary
+build tools and a component-based architecture. Version 2.2 updates all dependencies to their latest
+versions for improved performance and security.
 
 ### Key Features
 
-- **Bootstrap 5.3.7**: Latest Bootstrap framework
-- **Vite Build System**: Lightning-fast development with HMR
+- **Bootstrap 5.3.8**: Latest Bootstrap framework with bug fixes and improvements
+- **Vite 7.1.8**: Lightning-fast development with HMR and enhanced build performance
 - **Dynamic Partials**: Reusable HTML components system
 - **Chart.js 4.5.0**: Modern charting library
 - **Leaflet Maps**: Interactive map integration
-- **Font Awesome 6**: Comprehensive icon library
+- **Font Awesome 7.1.0**: Comprehensive icon library (major upgrade)
 - **Themify Icons**: Additional icon set
 - **Self-Hosted Fonts**: Privacy-focused local font hosting
-- **SCSS Architecture**: Modular styling system
+- **SCSS Architecture**: Modular styling system with Sass 1.93.2
 - **ES6 Modules**: Modern JavaScript architecture
+- **ESLint & Prettier**: Professional code quality tools
 - **No jQuery Required**: Pure JavaScript implementation
+- **Zero Vulnerabilities**: All dependencies updated with latest security patches
+
+### What's New in v2.2
+
+- **Updated all dependencies** to their latest versions
+- **Bootstrap 5.3.8**: Latest stable release
+- **Font Awesome 7.1.0**: Major version upgrade with new icon library
+- **Vite 7.1.8**: Enhanced build system performance
+- **ESLint 9.36.0**: Improved JavaScript linting
+- **Sass 1.93.2**: Faster SCSS compilation
+- **Zero security vulnerabilities** across all packages
+
+### What's New in v2.1
+
+- **ESLint & Prettier Integration**: Professional code quality and formatting
+- **Error Handling System**: Custom 404/500 pages
+- **Self-Hosted Fonts**: GDPR-compliant local font hosting
+- **Global Error Handler**: User-friendly error notifications
+- **Enhanced Build Process**: Optimized configuration
 
 ### What's New in v2.0
 
@@ -78,6 +102,11 @@ npm run build
 
 # Preview production build
 npm run preview
+
+# Code quality commands
+npm run lint          # Lint and auto-fix JavaScript
+npm run format        # Format all files with Prettier
+npm run quality:fix   # Run both linting and formatting (recommended before commits)
 ```
 
 The development server runs at `http://localhost:3001`
@@ -110,7 +139,8 @@ sufee-admin-dashboard/
 │   │   │   ├── widgets.js    # Dashboard widgets
 │   │   │   └── world-map.js  # Vector maps
 │   │   └── utils/            # Utility functions
-│   │       └── dom.js        # DOM helpers
+│   │       ├── dom.js        # DOM helpers
+│   │       └── error-handler.js # Global error handling
 │   ├── styles/               # SCSS files
 │   │   ├── main.scss         # Main stylesheet
 │   │   ├── variables.scss    # Theme variables
@@ -133,8 +163,13 @@ sufee-admin-dashboard/
 │   ├── images/               # Images and logos
 │   └── themify-icons/        # Themify icon fonts
 ├── dist/                      # Production build output
+├── .editorconfig             # Editor configuration for consistency
+├── .prettierrc.json         # Prettier formatting rules
+├── eslint.config.js         # ESLint linting rules
 ├── package.json              # NPM configuration
 ├── vite.config.js           # Vite configuration
+├── CHANGELOG.md             # Version history
+├── DOCUMENTATION.md         # This file
 └── CLAUDE.md                # AI assistant instructions
 ```
 
@@ -146,23 +181,28 @@ sufee-admin-dashboard/
 
 All dependencies are managed through NPM (package.json):
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `bootstrap` | ^5.3.7 | UI framework |
-| `@fortawesome/fontawesome-free` | ^6.7.2 | Icon library |
-| `chart.js` | ^4.5.0 | Charting library |
-| `leaflet` | ^1.9.4 | Interactive maps |
-| `flag-icons` | ^7.2.3 | Country flag icons |
-| `themify-icons` | ^1.0.0 | Additional icons |
+| Package                         | Version | Purpose                      |
+| ------------------------------- | ------- | ---------------------------- |
+| `bootstrap`                     | ^5.3.8  | UI framework (latest stable) |
+| `@fortawesome/fontawesome-free` | ^7.1.0  | Icon library (major upgrade) |
+| `chart.js`                      | ^4.5.0  | Charting library             |
+| `leaflet`                       | ^1.9.4  | Interactive maps             |
+| `flag-icons`                    | ^7.2.3  | Country flag icons           |
+| `themify-icons`                 | ^1.0.0  | Additional icons             |
 
 ### Development Dependencies
 
-| Package | Version | Purpose |
-|---------|---------|---------|
-| `vite` | ^7.0.6 | Build tool |
-| `sass` | ^1.89.2 | SCSS compiler |
-| `@vitejs/plugin-legacy` | ^7.1.0 | Legacy browser support |
-| `vite-plugin-static-copy` | ^3.1.1 | Copy static files |
+| Package                   | Version | Purpose                           |
+| ------------------------- | ------- | --------------------------------- |
+| `vite`                    | ^7.1.8  | Build tool (enhanced performance) |
+| `sass`                    | ^1.93.2 | SCSS compiler (latest)            |
+| `eslint`                  | ^9.36.0 | JavaScript linting                |
+| `@eslint/js`              | ^9.36.0 | ESLint core rules                 |
+| `prettier`                | ^3.6.2  | Code formatting                   |
+| `eslint-plugin-prettier`  | ^5.5.4  | Prettier integration for ESLint   |
+| `eslint-config-prettier`  | ^10.1.8 | Prettier config for ESLint        |
+| `@vitejs/plugin-legacy`   | ^7.2.1  | Legacy browser support            |
+| `vite-plugin-static-copy` | ^3.1.3  | Copy static files                 |
 
 ---
 
@@ -170,7 +210,8 @@ All dependencies are managed through NPM (package.json):
 
 ### Partials System
 
-The partials system allows you to reuse common HTML components across pages, eliminating code duplication.
+The partials system allows you to reuse common HTML components across pages, eliminating code
+duplication.
 
 #### How It Works
 
@@ -206,53 +247,54 @@ Every Sufee page follows this structure:
 ```html
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>Page Title - Sufee Admin</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <div data-partial="head-common"></div>
-</head>
+  </head>
 
-<body class="sufee-dashboard" data-page="unique-page-id">
+  <body class="sufee-dashboard" data-page="unique-page-id">
     <div class="d-flex min-vh-100">
-        <!-- Sidebar -->
-        <div data-partial="sidebar" data-partial-replace="true"></div>
+      <!-- Sidebar -->
+      <div data-partial="sidebar" data-partial-replace="true"></div>
 
-        <!-- Main Content -->
-        <div class="main-content flex-grow-1">
-            <!-- Header -->
-            <div data-partial="header" data-partial-replace="true"></div>
+      <!-- Main Content -->
+      <div class="main-content flex-grow-1">
+        <!-- Header -->
+        <div data-partial="header" data-partial-replace="true"></div>
 
-            <!-- Breadcrumb -->
-            <div data-breadcrumb 
-                 data-breadcrumb-title="Page Title" 
-                 data-breadcrumb-path="Section|Subsection|Page">
-            </div>
+        <!-- Breadcrumb -->
+        <div
+          data-breadcrumb
+          data-breadcrumb-title="Page Title"
+          data-breadcrumb-path="Section|Subsection|Page"
+        ></div>
 
-            <!-- Content -->
-            <section class="content-area p-4">
-                <div class="container-fluid">
-                    <!-- Your content here -->
-                </div>
-            </section>
-        </div>
+        <!-- Content -->
+        <section class="content-area p-4">
+          <div class="container-fluid">
+            <!-- Your content here -->
+          </div>
+        </section>
+      </div>
     </div>
 
     <script type="module" src="/main.js"></script>
-</body>
+  </body>
 </html>
 ```
 
 ### Data Attributes
 
-| Attribute | Purpose | Example |
-|-----------|---------|---------|
-| `data-page` | Page identifier for active state | `data-page="dashboard"` |
-| `data-partial` | Load HTML partial | `data-partial="sidebar"` |
-| `data-partial-replace` | Replace element with partial | `data-partial-replace="true"` |
-| `data-breadcrumb` | Enable breadcrumb | `data-breadcrumb` |
-| `data-breadcrumb-title` | Breadcrumb title | `data-breadcrumb-title="Dashboard"` |
-| `data-breadcrumb-path` | Breadcrumb path | `data-breadcrumb-path="Home|Dashboard"` |
+| Attribute               | Purpose                          | Example                             |
+| ----------------------- | -------------------------------- | ----------------------------------- | ----------- |
+| `data-page`             | Page identifier for active state | `data-page="dashboard"`             |
+| `data-partial`          | Load HTML partial                | `data-partial="sidebar"`            |
+| `data-partial-replace`  | Replace element with partial     | `data-partial-replace="true"`       |
+| `data-breadcrumb`       | Enable breadcrumb                | `data-breadcrumb`                   |
+| `data-breadcrumb-title` | Breadcrumb title                 | `data-breadcrumb-title="Dashboard"` |
+| `data-breadcrumb-path`  | Breadcrumb path                  | `data-breadcrumb-path="Home         | Dashboard"` |
 
 ---
 
@@ -261,10 +303,12 @@ Every Sufee page follows this structure:
 Sufee includes 30 pre-built pages:
 
 ### Dashboards
+
 - `index.html` - Main dashboard
 - `dashboard-crm.html` - CRM focused dashboard
 
 ### UI Components
+
 - `ui-buttons.html` - Button variations
 - `ui-badges.html` - Badge components
 - `ui-cards.html` - Card layouts
@@ -278,32 +322,44 @@ Sufee includes 30 pre-built pages:
 - `ui-social-buttons.html` - Social media buttons
 
 ### Forms
+
 - `forms-basic.html` - Basic form elements
 - `forms-advanced.html` - Advanced form components
 
 ### Tables
+
 - `tables-basic.html` - Basic table styles
 - `tables-data.html` - DataTable integration
 
 ### Charts
+
 - `charts-chartjs.html` - Chart.js examples
 - `charts-flot.html` - Flot charts (legacy)
 - `charts-peity.html` - Inline sparklines
 
 ### Maps
+
 - `maps-gmap.html` - Google Maps integration
 - `maps-vector.html` - Vector maps with Leaflet
 
 ### Icons
+
 - `font-fontawesome.html` - Font Awesome 6 showcase
 - `font-themify.html` - Themify icons showcase
 
 ### Authentication
+
 - `page-login.html` - Login page
 - `page-register.html` - Registration page
 - `pages-forget.html` - Password reset
 
+### Error Pages
+
+- `error-404.html` - Custom 404 Not Found page
+- `error-500.html` - Custom 500 Server Error page
+
 ### Others
+
 - `widgets.html` - Dashboard widgets showcase
 - `frame.html` - Iframe integration example
 
@@ -328,44 +384,49 @@ The sidebar is the main navigation component located in `src/partials/sidebar.ht
 
 ```html
 <nav class="sidebar bg-dark text-white position-fixed d-flex flex-column" id="sidebar">
-    <!-- Logo Section -->
-    <div class="sidebar-brand">
-        <img src="./images/sufee-logo.svg" alt="Sufee Admin" class="logo-full">
-        <img src="./images/sufee-logo-mini.svg" alt="SA" class="logo-mini">
-    </div>
+  <!-- Logo Section -->
+  <div class="sidebar-brand">
+    <img src="./images/sufee-logo.svg" alt="Sufee Admin" class="logo-full" />
+    <img src="./images/sufee-logo-mini.svg" alt="SA" class="logo-mini" />
+  </div>
 
-    <!-- Navigation -->
-    <div class="sidebar-nav flex-grow-1 overflow-auto py-3">
-        <ul class="nav flex-column">
-            <!-- Simple Link -->
-            <li class="nav-item">
-                <a class="nav-link" href="index.html" data-page="dashboard">
-                    <i class="fas fa-home"></i>
-                    <span class="nav-text ms-2">Dashboard</span>
-                </a>
-            </li>
+  <!-- Navigation -->
+  <div class="sidebar-nav flex-grow-1 overflow-auto py-3">
+    <ul class="nav flex-column">
+      <!-- Simple Link -->
+      <li class="nav-item">
+        <a class="nav-link" href="index.html" data-page="dashboard">
+          <i class="fas fa-home"></i>
+          <span class="nav-text ms-2">Dashboard</span>
+        </a>
+      </li>
 
-            <!-- Dropdown Menu -->
+      <!-- Dropdown Menu -->
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="#"
+          data-bs-toggle="collapse"
+          data-bs-target="#uiSubmenu"
+          aria-expanded="false"
+        >
+          <i class="fas fa-laptop"></i>
+          <span class="nav-text ms-2">UI Elements</span>
+          <i class="fas fa-chevron-down ms-auto nav-arrow"></i>
+        </a>
+        <div class="collapse" id="uiSubmenu">
+          <ul class="nav flex-column ms-3">
             <li class="nav-item">
-                <a class="nav-link" href="#" data-bs-toggle="collapse" 
-                   data-bs-target="#uiSubmenu" aria-expanded="false">
-                    <i class="fas fa-laptop"></i>
-                    <span class="nav-text ms-2">UI Elements</span>
-                    <i class="fas fa-chevron-down ms-auto nav-arrow"></i>
-                </a>
-                <div class="collapse" id="uiSubmenu">
-                    <ul class="nav flex-column ms-3">
-                        <li class="nav-item">
-                            <a class="nav-link" href="ui-buttons.html" data-page="ui-buttons">
-                                <i class="fas fa-puzzle-piece"></i>
-                                <span class="nav-text ms-2">Buttons</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+              <a class="nav-link" href="ui-buttons.html" data-page="ui-buttons">
+                <i class="fas fa-puzzle-piece"></i>
+                <span class="nav-text ms-2">Buttons</span>
+              </a>
             </li>
-        </ul>
-    </div>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
 </nav>
 ```
 
@@ -383,25 +444,25 @@ The header component (`src/partials/header.html`) provides:
 ```html
 <!-- Desktop sidebar toggle -->
 <button class="btn btn-sm btn-danger" id="sidebarToggleDesktop">
-    <i class="fas fa-bars"></i>
+  <i class="fas fa-bars"></i>
 </button>
 
 <!-- Search form -->
 <form class="search-form d-none d-lg-flex">
-    <input type="search" class="form-control" placeholder="Search...">
+  <input type="search" class="form-control" placeholder="Search..." />
 </form>
 
 <!-- User menu -->
 <div class="dropdown">
-    <button class="btn btn-link" data-bs-toggle="dropdown">
-        <img src="./images/admin.jpg" class="rounded-circle" width="32">
-    </button>
-    <ul class="dropdown-menu dropdown-menu-end">
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Logout</a></li>
-    </ul>
+  <button class="btn btn-link" data-bs-toggle="dropdown">
+    <img src="./images/admin.jpg" class="rounded-circle" width="32" />
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><a class="dropdown-item" href="#">Profile</a></li>
+    <li><a class="dropdown-item" href="#">Settings</a></li>
+    <li><hr class="dropdown-divider" /></li>
+    <li><a class="dropdown-item" href="#">Logout</a></li>
+  </ul>
 </div>
 ```
 
@@ -410,22 +471,20 @@ The header component (`src/partials/header.html`) provides:
 Dynamic breadcrumbs are generated automatically:
 
 ```html
-<div data-breadcrumb 
-     data-breadcrumb-title="Dashboard" 
-     data-breadcrumb-path="Home|Dashboard">
-</div>
+<div data-breadcrumb data-breadcrumb-title="Dashboard" data-breadcrumb-path="Home|Dashboard"></div>
 ```
 
 This generates:
+
 ```html
 <div class="breadcrumb-section bg-light py-2 px-3">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-    </nav>
-    <h6 class="mb-0">Dashboard</h6>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+  </nav>
+  <h6 class="mb-0">Dashboard</h6>
 </div>
 ```
 
@@ -477,13 +536,11 @@ Standard Bootstrap 5 buttons with Sufee color scheme:
 <button type="button" class="btn btn-primary btn-sm">Small</button>
 
 <!-- With Icons -->
-<button type="button" class="btn btn-success">
-    <i class="fas fa-check me-2"></i>Save
-</button>
+<button type="button" class="btn btn-success"><i class="fas fa-check me-2"></i>Save</button>
 
 <!-- Social Buttons (from ui-social-buttons.html) -->
 <button type="button" class="btn btn-social btn-facebook">
-    <i class="fab fa-facebook-f me-2"></i>Facebook
+  <i class="fab fa-facebook-f me-2"></i>Facebook
 </button>
 ```
 
@@ -494,27 +551,27 @@ Sufee provides various card styles:
 ```html
 <!-- Basic Card -->
 <div class="card">
-    <div class="card-header">
-        <h5 class="card-title mb-0">Card Title</h5>
-    </div>
-    <div class="card-body">
-        <p class="card-text">Card content goes here.</p>
-    </div>
+  <div class="card-header">
+    <h5 class="card-title mb-0">Card Title</h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text">Card content goes here.</p>
+  </div>
 </div>
 
 <!-- Widget Card -->
 <div class="card text-white bg-primary">
-    <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <h4 class="mb-0">1,234</h4>
-                <p class="mb-0">Total Users</p>
-            </div>
-            <div class="icon-circle bg-white bg-opacity-25">
-                <i class="fas fa-users text-white"></i>
-            </div>
-        </div>
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <h4 class="mb-0">1,234</h4>
+        <p class="mb-0">Total Users</p>
+      </div>
+      <div class="icon-circle bg-white bg-opacity-25">
+        <i class="fas fa-users text-white"></i>
+      </div>
     </div>
+  </div>
 </div>
 ```
 
@@ -523,20 +580,18 @@ Sufee provides various card styles:
 Standard Bootstrap alerts with Sufee styling:
 
 ```html
-<div class="alert alert-primary" role="alert">
-    Primary alert message
-</div>
+<div class="alert alert-primary" role="alert">Primary alert message</div>
 
 <!-- Dismissible Alert -->
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Warning!</strong> Please check your input.
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>Warning!</strong> Please check your input.
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 </div>
 
 <!-- Alert with Icon -->
 <div class="alert alert-success" role="alert">
-    <i class="fas fa-check-circle me-2"></i>
-    Operation completed successfully!
+  <i class="fas fa-check-circle me-2"></i>
+  Operation completed successfully!
 </div>
 ```
 
@@ -545,18 +600,17 @@ Standard Bootstrap alerts with Sufee styling:
 ```html
 <!-- Basic Progress -->
 <div class="progress">
-    <div class="progress-bar" style="width: 25%">25%</div>
+  <div class="progress-bar" style="width: 25%">25%</div>
 </div>
 
 <!-- Colored Progress -->
 <div class="progress">
-    <div class="progress-bar bg-success" style="width: 40%"></div>
+  <div class="progress-bar bg-success" style="width: 40%"></div>
 </div>
 
 <!-- Striped & Animated -->
 <div class="progress">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" 
-         style="width: 60%"></div>
+  <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 60%"></div>
 </div>
 ```
 
@@ -572,33 +626,36 @@ Charts are initialized through the `ChartManager` component:
 
 ```javascript
 // Charts are automatically initialized on pages with data-chart attributes
-<canvas id="myChart" data-chart="line"></canvas>
+<canvas id="myChart" data-chart="line"></canvas>;
 
 // Or manually:
-import { Chart } from 'chart.js'
+import { Chart } from 'chart.js';
 
-const ctx = document.getElementById('myChart').getContext('2d')
+const ctx = document.getElementById('myChart').getContext('2d');
 const chart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-        datasets: [{
-            label: 'Sales',
-            data: [12, 19, 3, 5, 2, 3],
-            borderColor: '#20a8d8',
-            tension: 0.1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false
-    }
-})
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [
+      {
+        label: 'Sales',
+        data: [12, 19, 3, 5, 2, 3],
+        borderColor: '#20a8d8',
+        tension: 0.1
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false
+  }
+});
 ```
 
 ### Available Chart Types
 
 From `charts-chartjs.html`:
+
 - Line Charts
 - Bar Charts
 - Pie/Doughnut Charts
@@ -617,19 +674,17 @@ Sufee includes Leaflet 1.9.4 for interactive maps:
 <div id="leafletMap" style="height: 400px;"></div>
 
 <script type="module">
-import L from 'leaflet'
+  import L from 'leaflet';
 
-const map = L.map('leafletMap').setView([51.505, -0.09], 13)
+  const map = L.map('leafletMap').setView([51.505, -0.09], 13);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
-}).addTo(map)
+  }).addTo(map);
 
-// Add marker
-L.marker([51.5, -0.09]).addTo(map)
-    .bindPopup('A pretty CSS3 popup.')
-    .openPopup()
+  // Add marker
+  L.marker([51.5, -0.09]).addTo(map).bindPopup('A pretty CSS3 popup.').openPopup();
 </script>
 ```
 
@@ -646,34 +701,30 @@ From `forms-basic.html`:
 ```html
 <!-- Text Input -->
 <div class="mb-3">
-    <label for="textInput" class="form-label">Text Input</label>
-    <input type="text" class="form-control" id="textInput">
+  <label for="textInput" class="form-label">Text Input</label>
+  <input type="text" class="form-control" id="textInput" />
 </div>
 
 <!-- Select -->
 <div class="mb-3">
-    <label for="selectInput" class="form-label">Select</label>
-    <select class="form-select" id="selectInput">
-        <option selected>Choose...</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-    </select>
+  <label for="selectInput" class="form-label">Select</label>
+  <select class="form-select" id="selectInput">
+    <option selected>Choose...</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
 </div>
 
 <!-- Checkbox -->
 <div class="form-check">
-    <input class="form-check-input" type="checkbox" id="checkInput">
-    <label class="form-check-label" for="checkInput">
-        Check me out
-    </label>
+  <input class="form-check-input" type="checkbox" id="checkInput" />
+  <label class="form-check-label" for="checkInput"> Check me out </label>
 </div>
 
 <!-- Switch -->
 <div class="form-check form-switch">
-    <input class="form-check-input" type="checkbox" id="switchInput">
-    <label class="form-check-label" for="switchInput">
-        Toggle switch
-    </label>
+  <input class="form-check-input" type="checkbox" id="switchInput" />
+  <label class="form-check-label" for="switchInput"> Toggle switch </label>
 </div>
 ```
 
@@ -699,33 +750,40 @@ From `tables-basic.html`:
 
 ```html
 <table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Office</th>
-            <th>Salary</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Tiger Nixon</td>
-            <td>System Architect</td>
-            <td>Edinburgh</td>
-            <td>$320,800</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>Office</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tiger Nixon</td>
+      <td>System Architect</td>
+      <td>Edinburgh</td>
+      <td>$320,800</td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- Table Variations -->
-<table class="table table-striped">...</table>
-<table class="table table-bordered">...</table>
-<table class="table table-hover">...</table>
+<table class="table table-striped">
+  ...
+</table>
+<table class="table table-bordered">
+  ...
+</table>
+<table class="table table-hover">
+  ...
+</table>
 ```
 
 ### Data Tables
 
-The `tables-data.html` page demonstrates enhanced table functionality through the `datatable.js` component.
+The `tables-data.html` page demonstrates enhanced table functionality through the `datatable.js`
+component.
 
 ---
 
@@ -734,6 +792,7 @@ The `tables-data.html` page demonstrates enhanced table functionality through th
 ### Login Page
 
 `page-login.html` features:
+
 - Floating labels
 - Form validation
 - Social login buttons
@@ -743,6 +802,7 @@ The `tables-data.html` page demonstrates enhanced table functionality through th
 ### Registration Page
 
 `page-register.html` includes:
+
 - Multi-field form
 - Password confirmation
 - Terms acceptance
@@ -751,6 +811,7 @@ The `tables-data.html` page demonstrates enhanced table functionality through th
 ### Password Reset
 
 `pages-forget.html` provides:
+
 - Email input for reset link
 - Simple, focused layout
 
@@ -780,7 +841,8 @@ src/styles/
 
 ### Font System
 
-Sufee uses **locally hosted fonts** for better performance, privacy, and reliability. The Open Sans font family is self-hosted rather than loaded from Google Fonts CDN.
+Sufee uses **locally hosted fonts** for better performance, privacy, and reliability. The Open Sans
+font family is self-hosted rather than loaded from Google Fonts CDN.
 
 #### Font Files Location
 
@@ -805,16 +867,26 @@ The template includes multiple font weights that you can use in your styles:
 
 ```scss
 // Available font weights
-.text-light { font-weight: 300; }
-.text-normal { font-weight: 400; }  // default
-.text-semibold { font-weight: 600; }
-.text-bold { font-weight: 700; }
-.text-extrabold { font-weight: 800; }
+.text-light {
+  font-weight: 300;
+}
+.text-normal {
+  font-weight: 400;
+} // default
+.text-semibold {
+  font-weight: 600;
+}
+.text-bold {
+  font-weight: 700;
+}
+.text-extrabold {
+  font-weight: 800;
+}
 
 // Using in custom CSS
 .my-heading {
   font-family: 'Open Sans', sans-serif;
-  font-weight: 700;  // Bold
+  font-weight: 700; // Bold
   font-style: italic; // Also available in italic
 }
 ```
@@ -848,7 +920,7 @@ To add your own custom fonts:
 4. Import in `main.scss`:
 
 ```scss
-@import "fonts/your-font";
+@import 'fonts/your-font';
 ```
 
 5. Update the font-family in `variables.scss` if you want to use it globally
@@ -898,21 +970,21 @@ The `App` class (`src/scripts/app.js`) manages the application:
 ```javascript
 class App {
   constructor() {
-    this.components = new Map()
-    this.initialized = false
-    this.isCollapsed = false
-    this.isMobile = window.innerWidth <= 991.98
+    this.components = new Map();
+    this.initialized = false;
+    this.isCollapsed = false;
+    this.isMobile = window.innerWidth <= 991.98;
   }
 
   init() {
-    this.initializeComponents()
-    this.setupEventListeners()
-    this.handleResponsive()
+    this.initializeComponents();
+    this.setupEventListeners();
+    this.handleResponsive();
   }
 
   // Component management
   addComponent(name, component) {
-    this.components.set(name, component)
+    this.components.set(name, component);
   }
 
   // Sidebar control
@@ -934,8 +1006,8 @@ Components are loaded dynamically based on page needs:
 ```javascript
 // Charts loaded on chart pages
 if (document.querySelector('[data-chart]')) {
-  const { ChartManager } = await import('./components/charts.js')
-  app.addComponent('charts', new ChartManager())
+  const { ChartManager } = await import('./components/charts.js');
+  app.addComponent('charts', new ChartManager());
 }
 ```
 
@@ -959,6 +1031,15 @@ if (document.querySelector('[data-chart]')) {
 ```bash
 # Start dev server with hot reload
 npm run dev
+
+# Lint JavaScript code
+npm run lint
+
+# Format code with Prettier
+npm run format
+
+# Run both linting and formatting (recommended before commits)
+npm run quality:fix
 ```
 
 ### Production Build
@@ -971,6 +1052,16 @@ npm run build
 # Preview production build
 npm run preview
 ```
+
+### Code Quality
+
+The project includes comprehensive code quality tools:
+
+- **ESLint 9.36.0**: Modern flat configuration with ES6+ rules
+- **Prettier 3.6.2**: Automatic code formatting
+- **EditorConfig**: Consistent editor settings across team members
+
+Run `npm run quality:fix` before committing to ensure code quality.
 
 ### Vite Configuration
 
@@ -994,7 +1085,7 @@ export default defineConfig({
       targets: [{ src: 'partials', dest: '' }]
     })
   ]
-})
+});
 ```
 
 ### Deployment
@@ -1015,9 +1106,11 @@ For subfolder deployment, the `base: './'` configuration ensures all assets use 
 ### Adding New Pages
 
 1. Create HTML file in `src/` following the standard structure
-2. Add menu item to `src/partials/sidebar.html`
-3. Use appropriate `data-page` attribute for active state
-4. Include partials for consistent layout
+2. Add the page to `vite.config.js` in the `rollupOptions.input` object
+3. Add menu item to `src/partials/sidebar.html`
+4. Use appropriate `data-page` attribute for active state
+5. Include partials for consistent layout
+6. Run `npm run quality:fix` to format your code
 
 ### Component Development
 
@@ -1025,6 +1118,8 @@ For subfolder deployment, the `base: './'` configuration ensures all assets use 
 2. Export as ES6 class
 3. Import dynamically when needed
 4. Add destroy method for cleanup
+5. Follow ESLint rules for consistency
+6. Write clean, formatted code (Prettier will auto-format)
 
 ### Styling Guidelines
 
@@ -1032,6 +1127,15 @@ For subfolder deployment, the `base: './'` configuration ensures all assets use 
 2. Follow BEM naming for custom components
 3. Leverage Bootstrap utilities
 4. Keep component styles modular
+5. Follow the formatting rules in `.prettierrc.json`
+
+### Code Quality Best Practices
+
+1. Run `npm run lint` to check for JavaScript errors
+2. Run `npm run format` to auto-format all files
+3. Use `npm run quality:fix` before committing
+4. Follow ESLint rules for modern JavaScript practices
+5. EditorConfig will automatically configure your editor
 
 ### Performance Tips
 
@@ -1039,6 +1143,7 @@ For subfolder deployment, the `base: './'` configuration ensures all assets use 
 2. Lazy load images with `loading="lazy"`
 3. Minimize custom CSS
 4. Leverage browser caching
+5. Latest Vite 7.1.8 provides optimized builds with code splitting
 
 ---
 
@@ -1054,12 +1159,40 @@ For subfolder deployment, the `base: './'` configuration ensures all assets use 
 
 ## License
 
-Sufee is licensed under The MIT License (MIT). You can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the final products. But you always need to state that Colorlib is the original author of this template.
+Sufee is licensed under The MIT License (MIT). You can use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the final products. But you always need to state that
+Colorlib is the original author of this template.
+
+## Version History
+
+### v2.2.0 (2025-10-02)
+
+- Updated all dependencies to latest versions
+- Bootstrap 5.3.8, Font Awesome 7.1.0, Vite 7.1.8
+- Enhanced build performance and security
+- Zero vulnerabilities
+
+### v2.1.0 (2025-08-05)
+
+- ESLint & Prettier integration
+- Professional error pages (404, 500)
+- Self-hosted fonts for GDPR compliance
+- Global error handler
+
+### v2.0.0 (2025-07-31)
+
+- Bootstrap 5 migration
+- Vite build system
+- Dynamic partials system
+- Removed jQuery dependency
+- ES6 modules architecture
 
 ## Credits
 
 - Original template by [Colorlib](https://colorlib.com)
 - Bootstrap 5 migration and modernization in v2.0
-- Icons by Font Awesome and Themify
+- Code quality tools in v2.1
+- Latest dependencies in v2.2
+- Icons by Font Awesome 7 and Themify
 - Charts powered by Chart.js
 - Maps powered by Leaflet

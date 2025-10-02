@@ -1,6 +1,7 @@
 # Contributing to Sufee Admin Dashboard
 
-Thank you for your interest in contributing to Sufee Admin Dashboard! This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing to Sufee Admin Dashboard! This document provides
+guidelines for contributing to the project.
 
 ## How to Contribute
 
@@ -42,24 +43,28 @@ Thank you for your interest in contributing to Sufee Admin Dashboard! This docum
 #### Development Guidelines
 
 ##### Code Style
+
 - Use 2 spaces for indentation
 - Follow existing code patterns
 - Keep lines under 120 characters
 - Use meaningful variable names
 
 ##### HTML
+
 - Use semantic HTML5 elements
 - Follow Bootstrap 5 conventions
 - Include proper ARIA labels for accessibility
 - Use data attributes for JavaScript hooks
 
 ##### CSS/SCSS
+
 - Follow BEM naming convention where applicable
 - Use SCSS variables for colors and spacing
 - Avoid !important unless necessary
 - Mobile-first approach for responsive design
 
 ##### JavaScript
+
 - Use ES6+ features
 - Use vanilla JavaScript only - jQuery has been completely removed
 - Add JSDoc comments for functions
@@ -72,6 +77,7 @@ Thank you for your interest in contributing to Sufee Admin Dashboard! This docum
 - Keep commits focused and atomic
 
 Examples:
+
 ```
 feat: add dark mode toggle to header
 fix: resolve sidebar animation jump on collapse
@@ -82,6 +88,7 @@ style: format code according to guidelines
 #### Pull Request Process
 
 1. **Create a feature branch**:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -98,6 +105,7 @@ style: format code according to guidelines
    - Ensure no console errors
 
 4. **Build for production**:
+
    ```bash
    npm run build
    ```
@@ -131,6 +139,7 @@ src/
 ## Testing
 
 While automated tests are not yet configured, please:
+
 - Manually test all changes
 - Check browser console for errors
 - Verify responsive behavior

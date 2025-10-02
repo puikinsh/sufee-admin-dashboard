@@ -1,53 +1,53 @@
 // Sufee Admin Dashboard - Modern Bootstrap 5 Styles
 
 // Import local fonts
-@import "fonts/open-sans";
+@import 'fonts/open-sans';
 
 // Import variables first
-@import "variables";
+@import 'variables';
 
 // Bootstrap 5 imports
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
 
 // Bootstrap components
-@import "bootstrap/scss/root";
-@import "bootstrap/scss/reboot";
-@import "bootstrap/scss/type";
-@import "bootstrap/scss/images";
-@import "bootstrap/scss/containers";
-@import "bootstrap/scss/grid";
-@import "bootstrap/scss/tables";
-@import "bootstrap/scss/forms";
-@import "bootstrap/scss/buttons";
-@import "bootstrap/scss/transitions";
-@import "bootstrap/scss/dropdown";
-@import "bootstrap/scss/button-group";
-@import "bootstrap/scss/nav";
-@import "bootstrap/scss/navbar";
-@import "bootstrap/scss/card";
-@import "bootstrap/scss/accordion";
-@import "bootstrap/scss/breadcrumb";
-@import "bootstrap/scss/pagination";
-@import "bootstrap/scss/badge";
-@import "bootstrap/scss/alert";
-@import "bootstrap/scss/progress";
-@import "bootstrap/scss/list-group";
-@import "bootstrap/scss/close";
-@import "bootstrap/scss/toasts";
-@import "bootstrap/scss/modal";
-@import "bootstrap/scss/tooltip";
-@import "bootstrap/scss/popover";
-@import "bootstrap/scss/carousel";
-@import "bootstrap/scss/spinners";
-@import "bootstrap/scss/offcanvas";
-@import "bootstrap/scss/placeholders";
-@import "bootstrap/scss/helpers";
-@import "bootstrap/scss/utilities/api";
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/type';
+@import 'bootstrap/scss/images';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/tables';
+@import 'bootstrap/scss/forms';
+@import 'bootstrap/scss/buttons';
+@import 'bootstrap/scss/transitions';
+@import 'bootstrap/scss/dropdown';
+@import 'bootstrap/scss/button-group';
+@import 'bootstrap/scss/nav';
+@import 'bootstrap/scss/navbar';
+@import 'bootstrap/scss/card';
+@import 'bootstrap/scss/accordion';
+@import 'bootstrap/scss/breadcrumb';
+@import 'bootstrap/scss/pagination';
+@import 'bootstrap/scss/badge';
+@import 'bootstrap/scss/alert';
+@import 'bootstrap/scss/progress';
+@import 'bootstrap/scss/list-group';
+@import 'bootstrap/scss/close';
+@import 'bootstrap/scss/toasts';
+@import 'bootstrap/scss/modal';
+@import 'bootstrap/scss/tooltip';
+@import 'bootstrap/scss/popover';
+@import 'bootstrap/scss/carousel';
+@import 'bootstrap/scss/spinners';
+@import 'bootstrap/scss/offcanvas';
+@import 'bootstrap/scss/placeholders';
+@import 'bootstrap/scss/helpers';
+@import 'bootstrap/scss/utilities/api';
 
 // Sufee theme variables
 :root {
@@ -90,22 +90,23 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    
-    .logo-full, .logo-mini {
+
+    .logo-full,
+    .logo-mini {
       transition: all 0.3s ease;
       height: 26px;
       width: auto;
       display: block;
-      
+
       // Safari SVG baseline fix
       vertical-align: middle;
-      
+
       // Safari-specific fix for SVG text elements
       @supports (-webkit-appearance: none) and (not (-webkit-touch-callout: none)) {
         transform: translateY(0);
       }
     }
-    
+
     .logo-mini {
       display: none;
       opacity: 0;
@@ -114,7 +115,7 @@ body {
       left: 50%;
       transform: translate(-50%, -50%);
     }
-    
+
     .logo-full {
       opacity: 1;
       position: relative;
@@ -124,7 +125,7 @@ body {
   // Navigation
   .sidebar-nav {
     padding: 0 25px;
-    
+
     .nav {
       --bs-nav-pills-border-radius: 0;
       --bs-nav-pills-link-active-color: var(--sufee-sidebar-text-active);
@@ -145,7 +146,8 @@ body {
         border: none;
         position: relative;
 
-        &:hover, &.active {
+        &:hover,
+        &.active {
           color: var(--sufee-sidebar-text-active);
           background-color: transparent;
         }
@@ -157,7 +159,8 @@ body {
           transition: color 0.3s ease;
         }
 
-        &:hover i, &.active i {
+        &:hover i,
+        &.active i {
           color: var(--sufee-sidebar-text-active);
         }
 
@@ -166,7 +169,7 @@ body {
           transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        &[aria-expanded="true"] .nav-arrow {
+        &[aria-expanded='true'] .nav-arrow {
           transform: rotate(90deg);
         }
       }
@@ -194,14 +197,14 @@ body {
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       margin: 0;
       padding: 0;
-      
+
       // Override Bootstrap's interfering classes
       &.collapsing {
         display: none !important;
         height: 0 !important;
         transition: none !important;
       }
-      
+
       // Shown state with smooth animation
       &.show {
         display: block;
@@ -210,13 +213,13 @@ body {
         opacity: 1;
         transform: translateY(0) scale(1);
       }
-      
+
       .nav {
         // Fixed dimensions to prevent any layout calculation delays
         margin: 8px 0 0 35px;
         padding: 0;
         width: calc(100% - 35px);
-        
+
         // Each nav item has a fixed height to prevent content jumping
         .nav-item {
           height: 32px; // Fixed height per item
@@ -245,7 +248,7 @@ body {
               align-items: center;
               justify-content: center;
             }
-            
+
             // Fix text positioning
             .nav-text {
               line-height: 16px;
@@ -284,7 +287,7 @@ body {
   // Menu toggle button styling
   #sidebarToggleDesktop {
     transition: all 0.3s ease;
-    
+
     &:hover {
       background-color: var(--sufee-menu-toggle-hover) !important;
       transform: scale(1.05);
@@ -298,15 +301,15 @@ body {
   // Search functionality
   .search-form {
     transition: all 0.3s ease;
-    
+
     &.d-none {
       display: none !important;
     }
-    
+
     .form-control {
       border: 1px solid #e9ecef;
       border-radius: 4px;
-      
+
       &:focus {
         border-color: var(--sufee-brand-primary);
         box-shadow: 0 0 0 0.2rem rgba(32, 168, 216, 0.25);
@@ -318,7 +321,7 @@ body {
   .btn-link {
     border: none;
     text-decoration: none;
-    
+
     &:hover {
       color: var(--sufee-brand-primary) !important;
       transform: scale(1.1);
@@ -334,11 +337,11 @@ body {
     &.bg-danger {
       background-color: var(--sufee-brand-danger) !important;
     }
-    
+
     &.bg-warning {
       background-color: var(--sufee-brand-warning) !important;
     }
-    
+
     &.bg-primary {
       background-color: var(--sufee-brand-primary) !important;
     }
@@ -350,33 +353,34 @@ body {
     border: none;
     margin-top: 8px;
     overflow: hidden;
-    
+
     // Ensure dropdowns don't overflow viewport
     &.dropdown-menu-end {
       --bs-position: end;
     }
-    
+
     .dropdown-item {
       border-radius: 0;
       transition: all 0.2s ease;
-      
-      &:hover, &:focus {
+
+      &:hover,
+      &:focus {
         background-color: #f8f9fa;
         color: var(--sufee-brand-primary);
       }
-      
+
       &:active {
         background-color: var(--sufee-brand-primary);
         color: white;
       }
     }
-    
+
     .dropdown-header {
       border-radius: 0;
       font-size: 14px;
       letter-spacing: 0.5px;
     }
-    
+
     .dropdown-divider {
       margin: 0;
       opacity: 0.2;
@@ -386,7 +390,7 @@ body {
   // Search form smooth transitions
   .search-form {
     transition: all 0.3s ease;
-    
+
     &:not(.d-none) {
       animation: slideInLeft 0.3s ease;
     }
@@ -395,7 +399,7 @@ body {
   // Search trigger smooth hide/show
   #searchToggle {
     transition: all 0.2s ease;
-    
+
     &.d-none {
       opacity: 0;
       transform: scale(0.8);
@@ -404,13 +408,13 @@ body {
 }
 
 @keyframes slideInLeft {
-  from { 
-    opacity: 0; 
-    transform: translateX(-20px); 
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
   }
-  to { 
-    opacity: 1; 
-    transform: translateX(0); 
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -418,15 +422,15 @@ body {
 .breadcrumb-section {
   background-color: white;
   border-bottom: 1px solid #e9ecef;
-  
+
   .breadcrumb {
     background: none;
     padding: 0;
     margin: 0;
-    
+
     .breadcrumb-item {
       font-size: 14px;
-      
+
       &.active {
         color: #6c757d;
       }
@@ -445,19 +449,19 @@ body {
   border: 1px solid #e5e5e5;
   border-radius: 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  
+
   &.bg-primary {
     background-color: var(--sufee-brand-primary) !important;
   }
-  
+
   &.bg-danger {
     background-color: var(--sufee-brand-danger) !important;
   }
-  
+
   &.bg-warning {
     background-color: var(--sufee-brand-warning) !important;
   }
-  
+
   &.bg-success {
     background-color: var(--sufee-brand-success) !important;
   }
@@ -468,23 +472,23 @@ body {
   &.social-facebook {
     background: linear-gradient(135deg, #3b5998, #4e69a2);
   }
-  
+
   &.social-twitter {
     background: linear-gradient(135deg, #00aced, #1dcaff);
   }
-  
+
   &.social-x {
     background: linear-gradient(135deg, #000000, #333333);
   }
-  
+
   &.social-linkedin {
     background: linear-gradient(135deg, #4875b4, #5a87c7);
   }
-  
+
   &.social-google {
     background: linear-gradient(135deg, #d34836, #e05d4e);
   }
-  
+
   &.social-instagram {
     background: linear-gradient(135deg, #833ab4, #fd1d1d);
   }
@@ -503,34 +507,34 @@ body {
   flex-shrink: 0 !important;
   position: relative;
   overflow: hidden;
-  
+
   i {
     font-size: 18px !important;
     color: white !important;
     line-height: 1 !important;
     font-weight: 400 !important;
   }
-  
+
   &.bg-success {
     background-color: var(--sufee-brand-success) !important;
     border: none !important;
   }
-  
+
   &.bg-primary {
     background-color: var(--sufee-brand-primary) !important;
     border: none !important;
   }
-  
+
   &.bg-warning {
     background-color: var(--sufee-brand-warning) !important;
     border: none !important;
   }
-  
+
   &.bg-danger {
     background-color: var(--sufee-brand-danger) !important;
     border: none !important;
   }
-  
+
   &.bg-info {
     background-color: var(--sufee-brand-info) !important;
     border: none !important;
@@ -573,16 +577,16 @@ body {
     position: fixed;
     left: calc(-1 * var(--sufee-sidebar-width));
     transition: left 0.3s ease;
-    
+
     &.show {
       left: 0;
     }
   }
-  
+
   .main-content {
     margin-left: 0;
   }
-  
+
   .sidebar-backdrop {
     position: fixed;
     top: 0;
@@ -592,7 +596,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
     display: none;
-    
+
     &.show {
       display: block;
     }
@@ -603,17 +607,17 @@ body {
 .sidebar-collapsed {
   .sidebar {
     width: var(--sufee-sidebar-collapsed-width);
-    
+
     .sidebar-brand {
       justify-content: center !important;
       padding: 1rem 0; // Center the mini logo
-      
+
       .logo-full {
         opacity: 0;
         display: none;
         pointer-events: none;
       }
-      
+
       .logo-mini {
         display: block;
         opacity: 1;
@@ -623,33 +627,33 @@ body {
         left: auto;
       }
     }
-    
+
     .sidebar-nav {
       padding: 0 15px;
-      
+
       .nav-header {
         display: none;
       }
-      
+
       .nav-item {
         .nav-link {
           justify-content: center;
           padding: 15px 0;
-          
+
           .nav-text {
             display: none;
           }
-          
+
           .nav-arrow {
             display: none;
           }
-          
+
           i {
             margin: 0;
             font-size: 18px;
           }
         }
-        
+
         .collapse {
           position: absolute;
           left: var(--sufee-sidebar-collapsed-width);
@@ -661,15 +665,15 @@ body {
           padding: 10px;
           z-index: 1000;
           display: none;
-          
+
           .nav {
             padding-left: 0;
-            
+
             .nav-item {
               .nav-link {
                 justify-content: flex-start;
                 padding: 8px 15px;
-                
+
                 .nav-text {
                   display: inline;
                 }
@@ -677,14 +681,14 @@ body {
             }
           }
         }
-        
+
         &:hover .collapse {
           display: block;
         }
       }
     }
   }
-  
+
   .main-content {
     margin-left: var(--sufee-sidebar-collapsed-width);
   }
@@ -706,16 +710,16 @@ canvas {
   &::-webkit-scrollbar {
     width: 4px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: rgba(255, 255, 255, 0.1);
   }
-  
+
   &::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.3);
     border-radius: 2px;
   }
-  
+
   &::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.5);
   }
@@ -724,213 +728,213 @@ canvas {
 // Social Media Brand Colors
 .btn-social {
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
-  
+
   // Facebook
   &.btn-facebook {
     background-color: #1877f2;
     border-color: #1877f2;
     color: white;
-    
+
     &:hover {
       background-color: #166fe5;
       border-color: #166fe5;
       color: white;
     }
   }
-  
+
   // X (Twitter)
   &.btn-x,
   &.btn-twitter {
     background-color: #000000;
     border-color: #000000;
     color: white;
-    
+
     &:hover {
       background-color: #333333;
       border-color: #333333;
       color: white;
     }
   }
-  
+
   // LinkedIn
   &.btn-linkedin {
     background-color: #0077b5;
     border-color: #0077b5;
     color: white;
-    
+
     &:hover {
       background-color: #006ba1;
       border-color: #006ba1;
       color: white;
     }
   }
-  
+
   // Instagram
   &.btn-instagram {
     background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
     border: none;
     color: white;
-    
+
     &:hover {
       background: linear-gradient(45deg, #7a349f, #e01a1a, #e39d3e);
       color: white;
     }
   }
-  
+
   // TikTok
   &.btn-tiktok {
     background-color: #000000;
     border-color: #000000;
     color: white;
-    
+
     &:hover {
       background-color: #ff0050;
       border-color: #ff0050;
       color: white;
     }
   }
-  
+
   // YouTube
   &.btn-youtube {
     background-color: #ff0000;
     border-color: #ff0000;
     color: white;
-    
+
     &:hover {
       background-color: #e60000;
       border-color: #e60000;
       color: white;
     }
   }
-  
+
   // Discord
   &.btn-discord {
     background-color: #5865f2;
     border-color: #5865f2;
     color: white;
-    
+
     &:hover {
       background-color: #4752c4;
       border-color: #4752c4;
       color: white;
     }
   }
-  
+
   // Slack
   &.btn-slack {
     background-color: #4a154b;
     border-color: #4a154b;
     color: white;
-    
+
     &:hover {
       background-color: #611f69;
       border-color: #611f69;
       color: white;
     }
   }
-  
+
   // Snapchat
   &.btn-snapchat {
     background-color: #fffc00;
     border-color: #fffc00;
     color: #000000;
-    
+
     &:hover {
       background-color: #e6e300;
       border-color: #e6e300;
       color: #000000;
     }
   }
-  
+
   // WhatsApp
   &.btn-whatsapp {
     background-color: #25d366;
     border-color: #25d366;
     color: white;
-    
+
     &:hover {
       background-color: #20b85a;
       border-color: #20b85a;
       color: white;
     }
   }
-  
+
   // Telegram
   &.btn-telegram {
     background-color: #0088cc;
     border-color: #0088cc;
     color: white;
-    
+
     &:hover {
       background-color: #0077b3;
       border-color: #0077b3;
       color: white;
     }
   }
-  
+
   // Reddit
   &.btn-reddit {
     background-color: #ff4500;
     border-color: #ff4500;
     color: white;
-    
+
     &:hover {
       background-color: #e63e00;
       border-color: #e63e00;
       color: white;
     }
   }
-  
+
   // Pinterest
   &.btn-pinterest {
     background-color: #bd081c;
     border-color: #bd081c;
     color: white;
-    
+
     &:hover {
       background-color: #a40717;
       border-color: #a40717;
       color: white;
     }
   }
-  
+
   // Twitch
   &.btn-twitch {
     background-color: #9146ff;
     border-color: #9146ff;
     color: white;
-    
+
     &:hover {
       background-color: #7c3aed;
       border-color: #7c3aed;
       color: white;
     }
   }
-  
+
   // GitHub
   &.btn-github {
     background-color: #333333;
     border-color: #333333;
     color: white;
-    
+
     &:hover {
       background-color: #24292e;
       border-color: #24292e;
       color: white;
     }
   }
-  
+
   // Spotify
   &.btn-spotify {
     background-color: #1ed760;
     border-color: #1ed760;
     color: #000000;
-    
+
     &:hover {
       background-color: #1bc653;
       border-color: #1bc653;
@@ -940,12 +944,12 @@ canvas {
 }
 
 // Component imports
-@import "components/widgets";
-@import "components/header";
-@import "components/sidebar";
-@import "components/buttons";
-@import "components/cards";
-@import "components/forms";
-@import "components/tables";
-@import "components/charts";
-@import "components/leaflet-overrides";
+@import 'components/widgets';
+@import 'components/header';
+@import 'components/sidebar';
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/tables';
+@import 'components/charts';
+@import 'components/leaflet-overrides';

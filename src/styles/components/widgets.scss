@@ -8,14 +8,15 @@
 }
 
 // Dashboard widget cards with charts
-.widget-card, .card {
-  canvas[id^="widgetChart"] {
+.widget-card,
+.card {
+  canvas[id^='widgetChart'] {
     max-width: 100%;
     width: 100% !important;
     height: 70px !important;
     display: block !important;
   }
-  
+
   // Ensure the container has proper dimensions
   .mt-3 {
     height: 70px;
@@ -29,30 +30,33 @@
     background: linear-gradient(135deg, #3b5998, #4c70ba) !important;
     color: white !important;
   }
-  
+
   &.social-x {
     background: linear-gradient(135deg, #000000, #333333) !important;
     color: white !important;
   }
-  
+
   &.social-linkedin {
     background: linear-gradient(135deg, #0077b5, #00a0dc) !important;
     color: white !important;
   }
-  
+
   &.social-instagram {
     background: linear-gradient(135deg, #e4405f, #ff6b3d) !important;
     color: white !important;
   }
-  
+
   // Ensure all text inside social cards is white
   .card-body {
     color: white !important;
-    
-    h4, p, .text-white, .text-white-50 {
+
+    h4,
+    p,
+    .text-white,
+    .text-white-50 {
       color: white !important;
     }
-    
+
     .text-white-50 {
       opacity: 0.7 !important;
     }
@@ -64,7 +68,8 @@
   color: white;
 }
 
-.x-icon, .x-icon-small {
+.x-icon,
+.x-icon-small {
   color: inherit;
 }
 
@@ -77,7 +82,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  
+
   i {
     font-size: 20px;
   }
@@ -89,7 +94,7 @@
     position: relative;
     background: linear-gradient(135deg, #000000, #333333) !important;
   }
-  
+
   img {
     border: 3px solid rgba(255, 255, 255, 0.3);
   }
@@ -105,7 +110,7 @@
 // Chart wrapper
 .chart-wrapper {
   position: relative;
-  
+
   canvas {
     max-width: 100%;
     height: auto;
@@ -114,7 +119,7 @@
 
 // Social media boxes
 .social-box {
-  background-color: #4267B2;
+  background-color: #4267b2;
   padding: 20px;
   position: relative;
   margin-bottom: 30px;
@@ -122,45 +127,45 @@
   border-radius: 3px;
   display: flex;
   align-items: center;
-  
+
   &.facebook {
-    background-color: #4267B2;
+    background-color: #4267b2;
   }
-  
+
   &.twitter {
-    background-color: #1DA1F2;
+    background-color: #1da1f2;
   }
-  
+
   &.linkedin {
-    background-color: #0077B5;
+    background-color: #0077b5;
   }
-  
+
   &.google-plus {
     background-color: #dd4b39;
   }
-  
+
   i {
     font-size: 48px;
     margin-right: 20px;
     opacity: 0.8;
   }
-  
+
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
     flex-grow: 1;
-    
+
     li {
       display: flex;
       justify-content: space-between;
       margin-bottom: 5px;
-      
+
       .count {
         font-size: 24px;
         font-weight: 600;
       }
-      
+
       span:not(.count) {
         font-size: 14px;
         opacity: 0.8;
@@ -173,10 +178,10 @@
 .stat-widget-one {
   display: flex;
   align-items: center;
-  
+
   .stat-icon {
     margin-right: 15px;
-    
+
     i {
       font-size: 24px;
       padding: 15px;
@@ -189,14 +194,14 @@
       justify-content: center;
     }
   }
-  
+
   .stat-content {
     .stat-text {
       font-size: 14px;
       color: var(--text-secondary);
       margin-bottom: 5px;
     }
-    
+
     .stat-digit {
       font-size: 24px;
       font-weight: 600;
@@ -215,25 +220,25 @@
   position: relative;
   padding: 30px 20px 20px;
   border-radius: 3px 3px 0 0;
-  
+
   &.blue-bg {
-    background: linear-gradient(45deg, #1DA1F2, #0d8bd9);
+    background: linear-gradient(45deg, #1da1f2, #0d8bd9);
   }
-  
+
   .corner-ribon {
     position: absolute;
     top: 15px;
     right: 15px;
-    
+
     &.black-ribon {
       color: rgba(255, 255, 255, 0.7);
     }
-    
+
     i {
       font-size: 18px;
     }
   }
-  
+
   .wtt-mark {
     position: absolute;
     top: 20px;
@@ -241,12 +246,12 @@
     font-size: 100px;
     color: rgba(255, 255, 255, 0.1);
   }
-  
+
   h2 {
     margin-bottom: 5px;
     font-weight: 600;
   }
-  
+
   p {
     margin: 0;
     opacity: 0.8;
@@ -256,23 +261,23 @@
 .twt-category {
   background: #fff;
   padding: 20px;
-  
+
   ul {
     li {
       padding: 10px 0;
       text-align: center;
-      
+
       &.active {
-        border-bottom: 2px solid #1DA1F2;
+        border-bottom: 2px solid #1da1f2;
       }
-      
+
       h5 {
         font-size: 20px;
         font-weight: 600;
         margin-bottom: 5px;
         color: var(--text-primary);
       }
-      
+
       span {
         font-size: 12px;
         color: var(--text-secondary);
@@ -285,12 +290,12 @@
 .twt-write {
   background: #fff;
   border-top: 1px solid #e0e0e0;
-  
+
   .t-text-area {
     border: none;
     resize: none;
     font-size: 14px;
-    
+
     &:focus {
       box-shadow: none;
       border: none;
@@ -303,13 +308,13 @@
   border-top: 1px solid #e0e0e0;
   font-size: 14px;
   color: var(--text-secondary);
-  
+
   a {
     color: var(--text-secondary);
     margin-right: 10px;
-    
+
     &:hover {
-      color: #1DA1F2;
+      color: #1da1f2;
     }
   }
 }
