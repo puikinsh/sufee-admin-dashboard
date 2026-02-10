@@ -61,6 +61,77 @@ component-based architecture, and professional error handling.
 - **Authentication Pages**: Login, register, and password reset pages
 - **100+ UI Components**: Comprehensive widget and component library
 
+## Premium Dashboard Templates
+
+Ready to ship faster? These production-grade templates from [DashboardPack](https://dashboardpack.com/?utm_source=github&utm_medium=readme&utm_campaign=sufee) come with premium support, regular updates, and everything you need for client projects.
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://dashboardpack.com/theme-details/tailpanel/?utm_source=github&utm_medium=readme&utm_campaign=sufee">
+        <img src="screenshots/tailpanel.png" alt="TailPanel — next-gen admin dashboard built with React and Tailwind" width="100%">
+      </a>
+      <br>
+      <a href="https://dashboardpack.com/theme-details/tailpanel/?utm_source=github&utm_medium=readme&utm_campaign=sufee"><strong>TailPanel</strong></a>
+      <br>
+      <sub>React + TypeScript + Tailwind CSS + Vite. 9 dashboard layouts, theme toggle built in.</sub>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://dashboardpack.com/theme-details/admindek-html/?utm_source=github&utm_medium=readme&utm_campaign=sufee">
+        <img src="screenshots/admindek.png" alt="Admindek — full-featured admin panel with analytics views" width="100%">
+      </a>
+      <br>
+      <a href="https://dashboardpack.com/theme-details/admindek-html/?utm_source=github&utm_medium=readme&utm_campaign=sufee"><strong>Admindek</strong></a>
+      <br>
+      <sub>Bootstrap 5 + vanilla JS. 100+ components, light/dark modes, RTL, 10 color presets.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://dashboardpack.com/theme-details/adminty-html-dashboard/?utm_source=github&utm_medium=readme&utm_campaign=sufee">
+        <img src="screenshots/adminty.png" alt="Adminty — extensive admin dashboard with 160+ pre-designed pages" width="100%">
+      </a>
+      <br>
+      <a href="https://dashboardpack.com/theme-details/adminty-html-dashboard/?utm_source=github&utm_medium=readme&utm_campaign=sufee"><strong>Adminty</strong></a>
+      <br>
+      <sub>Bootstrap 5. 160+ pages with a broad component library for any admin scenario.</sub>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/?utm_source=github&utm_medium=readme&utm_campaign=sufee">
+        <img src="screenshots/architectui.png" alt="ArchitectUI — scalable admin framework with 250+ UI components" width="100%">
+      </a>
+      <br>
+      <a href="https://dashboardpack.com/theme-details/architectui-dashboard-html-pro/?utm_source=github&utm_medium=readme&utm_campaign=sufee"><strong>ArchitectUI</strong></a>
+      <br>
+      <sub>Bootstrap 5. 250+ components, scalable modular design, 9 dashboard views.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://dashboardpack.com/theme-details/kero-jquery-html-dashboard-pro/?utm_source=github&utm_medium=readme&utm_campaign=sufee">
+        <img src="screenshots/kero.png" alt="Kero — professional admin template with multiple navigation styles" width="100%">
+      </a>
+      <br>
+      <a href="https://dashboardpack.com/theme-details/kero-jquery-html-dashboard-pro/?utm_source=github&utm_medium=readme&utm_campaign=sufee"><strong>Kero</strong></a>
+      <br>
+      <sub>Bootstrap 5 + Webpack. Switch between horizontal and sidebar layouts, SASS theming.</sub>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://dashboardpack.com/theme-details/cryptocurrency-dashboard/?utm_source=github&utm_medium=readme&utm_campaign=sufee">
+        <img src="screenshots/cryptocurrency.png" alt="Cryptocurrency Dashboard — purpose-built crypto trading admin panel" width="100%">
+      </a>
+      <br>
+      <a href="https://dashboardpack.com/theme-details/cryptocurrency-dashboard/?utm_source=github&utm_medium=readme&utm_campaign=sufee"><strong>Cryptocurrency Dashboard</strong></a>
+      <br>
+      <sub>Bootstrap. Purpose-built for crypto exchanges, ICO platforms, and token management.</sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <a href="https://dashboardpack.com/?utm_source=github&utm_medium=readme&utm_campaign=sufee"><strong>Browse the Premium Collection</strong></a>
+</p>
+
 ## Getting Started
 
 ### Requirements
@@ -347,36 +418,6 @@ Colorlib is the original author of this template.
 - [42 Best Free HTML5 Admin Dashboard Templates 2025](https://colorlib.com/wp/free-html5-admin-dashboard-templates/)
 - [39 Best Free & Responsive Admin Templates 2025](https://colorlib.com/wp/free-admin-templates/)
 - [42 Best Free Dashboard Templates For Admins 2025](https://colorlib.com/wp/free-dashboard-templates/)
-
-### Premium Dashboard Solutions
-
-**[DashboardPack.com](https://dashboardpack.com)** offers premium admin dashboard templates and UI
-kits for multiple frameworks:
-
-**Popular Templates:**
-
-- **[ArchitectUI](https://dashboardpack.com/theme-details/architectui-dashboard/)** - Multi-purpose
-  Bootstrap admin template (HTML, React, Angular versions)
-- **[Marketing Dashboard](https://dashboardpack.com/theme-details/marketing-dashboard/)** -
-  Conversion funnel focused dashboard
-- **[Sales Dashboard](https://dashboardpack.com/theme-details/sales-dashboard/)** - Sales and
-  finance data visualization
-- **[Adminty HTML Dashboard](https://dashboardpack.com/theme-details/adminty-html-dashboard/)** -
-  Modern Bootstrap-based admin panel
-
-**Available Frameworks:**
-
-- HTML5 & Bootstrap 5 themes
-- React (with Reactstrap)
-- Angular (with @ng-bootstrap)
-- Vue.js templates
-
-**Key Features:**
-
-- Multiple layout arrangements (3+ per theme)
-- 10+ pre-defined color schemes
-- Unlimited customization options
-- Personal and Developer licensing
 
 ## Credits
 
