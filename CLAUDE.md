@@ -4,334 +4,116 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Sufee is a responsive Bootstrap 5 Admin Dashboard Template built with HTML, CSS/SCSS, and JavaScript. Originally a Bootstrap 4 template, it has been completely modernized in v2.0 with Bootstrap 5, Vite build system, and a component-based architecture. It's a static front-end template with no backend components, designed for creating admin interfaces and dashboards.
+Sufee is a static, front-end-only Bootstrap 5 admin dashboard template. No backend, no API integrations. Multi-page HTML built with Vite, SCSS, and ES6 modules. 100% vanilla JavaScript (no jQuery).
 
-### Version 2.2 Changes
+Version history lives in `CHANGELOG.md` — don't restate it here.
 
-- Updated all dependencies to their latest versions
-- Bootstrap 5.3.8 (latest stable release)
-- Font Awesome 7.1.0 (major upgrade with new icons)
-- Vite 7.1.8 (enhanced build performance)
-- ESLint 9.36.0, Sass 1.93.2, and other dev tools updated
-- Zero security vulnerabilities across all dependencies
+## Commands
 
-### Version 2.1 Changes
+```bash
+npm run dev          # Vite dev server with HMR (default port 3001, override with VITE_PORT)
+npm run build        # Production build to dist/
+npm run preview      # Preview the production build
+npm run lint         # ESLint with --fix
+npm run lint:check   # ESLint without modifying files
+npm run format       # Prettier --write
+npm run quality:fix  # lint + format (run before committing)
+npm run quality      # lint:check + format:check
+```
 
-- ESLint & Prettier integration for code quality and formatting
-- Professional error handling with custom 404/500 pages
-- Self-hosted fonts for privacy and GDPR compliance
-- Global error handler with user-friendly notifications
-- Enhanced build process with error page integration
+`npm run typecheck` exists but is a stub — TypeScript is not configured.
 
-### Version 2.0 Changes
+## Architecture
 
-- Migrated from Bootstrap 4 to Bootstrap 5
-- Replaced Grunt/Bower with Vite/NPM
-- Added dynamic partials system for code reusability
-- Converted to ES6 modules
-- Removed Internet Explorer support
-- Fixed sidebar animations and navigation issues
-- Improved performance with modern build tools
+### Two partials systems — don't confuse them
 
-## Build System & Commands
+| System | Location | Resolution | Use for |
+| --- | --- | --- | --- |
+| **Build-time** (Handlebars) | `src/components/*.html` | Inlined at build via `vite-plugin-handlebars` | Repeatable UI: cards, widgets — accept props |
+| **Runtime** (fetch + inject) | `src/partials/*.html` | Fetched from `./partials/` after `DOMContentLoaded` | Page chrome shared across every page (head, sidebar, header) |
 
-This project uses Vite for build automation and development:
+Build-time partials are called inline: `{{> stat-card color="primary" value="42" ...}}`. Use `{{prop}}` for HTML-escaped, `{{{prop}}}` for raw HTML (inline SVG, etc.). **Prettier mangles multi-line partial calls** — `.prettierignore` excludes `src/components/` and `src/index.html` for this reason.
 
-### Development Commands
-
-- `npm run dev` - Starts the Vite development server with hot module replacement on port 3001
-- `npm run build` - Builds the project for production
-- `npm run preview` - Previews the production build locally
-- `npm run lint` - Lint and auto-fix JavaScript code with ESLint
-- `npm run lint:check` - Check for linting errors without fixing
-- `npm run format` - Format all files with Prettier
-- `npm run format:check` - Check formatting without modifying files
-- `npm run quality:fix` - Run both linting and formatting (recommended before commits)
-- `npm run quality` - Check both linting and formatting without changes
-
-### Build Pipeline
-
-1. **Development**: Vite dev server with HMR for instant updates
-2. **SCSS Compilation**: Automatic SCSS compilation with modern-compiler API
-3. **Module Resolution**: ES modules with optimized dependency pre-bundling
-4. **Production Build**: Minification, tree-shaking, and code splitting
-5. **Legacy Support**: Optional legacy browser support via @vitejs/plugin-legacy
-
-### Code Quality Tools
-
-The project includes modern code quality tools:
-
-- **ESLint**: JavaScript linting with modern ES6+ rules and best practices
-- **Prettier**: Automatic code formatting with consistent style
-- **Configuration**: Custom rules defined in `eslint.config.js` and `.prettierrc.json`
-- **Pre-commit**: Run `npm run quality:fix` before committing to ensure code quality
-
-### Dependency Management
-
-All dependencies are now managed through NPM. The project has migrated from Bower/Grunt to Vite.
-Key dependencies include Bootstrap 5, Chart.js, and various visualization libraries. The project is 100% jQuery-free, using modern vanilla JavaScript throughout.
-
-## Architecture & Structure
-
-### Core Structure
-
-- **Static HTML Templates**: Multiple HTML pages in src/ directory (index.html, ui-*.html, etc.)
-- **SCSS Architecture**: Modular SCSS with partials in src/styles/
-- **JavaScript Components**: Main entry point in src/main.js with modular components
-- **Vendor Dependencies**: All managed through NPM and imported via Vite
-- **Multi-page Application**: Each HTML file is a separate entry point configured in `vite.config.js`
-
-### Application Architecture
-
-The application follows a component-based architecture:
-
-1. **App Class** (`src/scripts/app.js`): Main application controller
-   - Manages component lifecycle
-   - Handles sidebar state and responsive behavior
-   - Provides global utilities (notifications, keyboard shortcuts)
-   - Dynamically loads page-specific components
-
-2. **Partials Loader** (`src/scripts/partials-loader.js`): Dynamic HTML component system
-   - Loads reusable HTML partials (header, sidebar, etc.)
-   - Manages active navigation states
-   - Generates dynamic breadcrumbs
-
-3. **Component Modules** (`src/scripts/components/`): Self-contained UI components
-   - Charts, DataTables, forms, widgets, etc.
-   - Each component handles its own initialization and cleanup
-   - Lazy-loaded based on page requirements
-
-4. **Utilities** (`src/scripts/utils/`): Shared helper functions
-   - DOM utilities, error handling, etc.
-
-### Key Directories
-
-- `src/` - Source files including HTML templates, styles, and scripts
-- `src/styles/` - SCSS source files with modular architecture
-- `src/scripts/` - JavaScript modules and components
-- `public/` - Static assets served directly (favicons, fonts, etc.)
-- `dist/` - Production build output (generated by Vite)
-- `images/` - Static images and assets
-
-### SCSS Architecture
-
-The main stylesheet (`src/styles/main.scss`) imports:
-
-- `_variables.scss` - Theme variables and configuration
-- `_gauge.scss` - Gauge chart styles
-- `_switches.scss` - Toggle switch components
-- `_widgets.scss` - Dashboard widget styles
-- `_socials.scss` - Social media components
-
-### Layout System
-
-- **Left Panel**: Collapsible sidebar navigation (`aside.left-panel`)
-- **Right Panel**: Main content area (`.right-panel`)
-- **Header**: Top navigation with search and user menu
-- **Responsive**: Mobile-first design with breakpoint-specific styles
-
-### Key Libraries & Dependencies
-
-- Bootstrap 5 (UI framework)
-- NO jQuery - 100% vanilla JavaScript
-- Chart.js v4 (modern charting library)
-- DataTables with Bootstrap 5 integration
-- Font Awesome 6 (icons)
-- Themify Icons (additional icons)
-- Flag Icons (country flags)
-- Various visualization libraries (Flot, Peity, JQVMap, GaugeJS)
-- Form validation (native HTML5 validation)
-- Animation library (Animate.css)
-- Select enhancement (Chosen.js)
-- Maps integration (GMaps.js)
-
-## Development Notes
-
-### Working with Styles
-
-- Always edit SCSS files in `src/styles/`, never directly edit compiled CSS
-- Vite automatically compiles SCSS on save with HMR
-- Source maps are included for debugging in development
-
-### Adding New Components
-
-- Follow existing patterns in the SCSS partial structure
-- Use Bootstrap 5 classes and utilities
-- Maintain the existing color scheme defined in `_variables.scss`
-- Import new dependencies through NPM and configure in Vite
-
-### JavaScript Integration
-
-- Main entry point is `src/main.js` which imports all dependencies and initializes the application
-- Component scripts are organized in `src/scripts/components/`
-- Utility functions are in `src/scripts/utils/`
-- Core application logic is in `src/scripts/app.js` (App class)
-- All vendor libraries are imported as ES modules
-- All JavaScript is modern ES6+ modules with no jQuery dependency
-- Bootstrap, Chart.js, and error handler are exposed globally in development mode for debugging
-
-### Browser Support
-
-- CSS is post-processed for compatibility with last 4 versions of major browsers
-- IE support has been removed as Internet Explorer was discontinued in 2022
-- The `<meta http-equiv="X-UA-Compatible" content="IE=edge">` tag should not be used in any HTML files
-
-### Vite Configuration
-
-The Vite build is configured with:
-
-- **Root directory**: `src/` (all source files)
-- **Multi-page setup**: Each HTML page is a separate entry point in `rollupOptions.input`
-- **Path aliases**: `@`, `@styles`, `@scripts`, `@assets` for clean imports
-- **SCSS**: Modern compiler API for fast compilation
-- **Static copy**: Partials directory copied to build output
-- **Dev server**: Runs on port 3001 with auto-open enabled
-- **Production**: Source maps, code splitting, and minification enabled
-
-When adding new HTML pages, add them to the `rollupOptions.input` object in `vite.config.js`.
-
-This is a front-end only template - no server-side components or API integrations are included.
-
-## Partials System (New)
-
-The template now includes a modern partials system for reusable components, eliminating code duplication across HTML files.
-
-### Key Features
-
-- **Dynamic HTML Loading**: Common components are loaded at runtime
-- **Cache System**: Partials are cached after first load for performance
-- **Active State Management**: Automatic sidebar navigation highlighting
-- **Breadcrumb System**: Dynamic breadcrumb generation
-- **Bootstrap 5 Integration**: Full Bootstrap 5 compatibility
-
-### Core Partials
-
-#### Available Partials
-
-- `head-common.html` - Common meta tags, fonts, and favicon
-- `sidebar.html` - Left navigation sidebar with menu items
-- `header.html` - Top navigation with search, notifications, and user menu
-- `scripts-common.html` - Common JavaScript imports
-
-#### Using Partials in HTML Files
-
-Add these data attributes to div elements where you want partials to load:
+Runtime partials are declared by attribute on a host element:
 
 ```html
-<!-- Load common head elements -->
 <div data-partial="head-common"></div>
-
-<!-- Load and replace with sidebar -->
 <div data-partial="sidebar" data-partial-replace="true"></div>
-
-<!-- Load and replace with header -->
-<div data-partial="header" data-partial-replace="true"></div>
-
-<!-- Dynamic breadcrumbs -->
-<div data-breadcrumb data-breadcrumb-title="Page Title" data-breadcrumb-path="Parent|Child|Current"></div>
+<div data-breadcrumb data-breadcrumb-title="Page" data-breadcrumb-path="Parent|Child|Page"></div>
 ```
 
-#### Data Attributes
+### Entry point and init order (load-bearing)
 
-- `data-partial="name"` - Specifies which partial to load
-- `data-partial-replace="true"` - Replaces the div entirely (default: false, appends content)
-- `data-breadcrumb` - Generates dynamic breadcrumbs
-- `data-breadcrumb-title` - Page title for breadcrumbs
-- `data-breadcrumb-path` - Breadcrumb path separated by |
-- `data-page="page-name"` - Used for sidebar active state highlighting
+`src/main.js` runs on `DOMContentLoaded`:
 
-### Partials Architecture
+1. `new App().init()` — registers components, binds resize/keyboard listeners.
+2. **`await partialsLoader.loadAllPartials()`** — fetches and injects every `[data-partial]` into the DOM. Awaited, not fire-and-forget — this is what makes step 3 deterministic.
+3. `partialsLoader.initializeSidebarActiveState()`, `initializeHeader()`, `app.onPartialsReady()` — these all assume the sidebar/header DOM exists, which is now guaranteed by the await.
+4. Dispatches a `partialsReady` event. User code can subscribe instead of polling.
 
-#### Directory Structure
+There used to be `setTimeout(..., 100)` workarounds and per-partial event listeners to dance around the race condition between partial injection and component setup. Those are gone — keep it that way. If something needs the chrome to exist, await `loadAllPartials()` or subscribe to `partialsReady`.
 
-```text
-src/
-├── partials/
-│   ├── head-common.html      # Common head elements
-│   ├── sidebar.html          # Navigation sidebar
-│   ├── header.html           # Top header
-│   └── scripts-common.html   # Common scripts
-├── scripts/
-│   ├── app.js                # Main application class
-│   ├── partials-loader.js    # Main partials loading system
-│   ├── breadcrumb-helper.js  # Breadcrumb generation
-│   ├── components/           # UI component modules
-│   │   ├── charts.js         # Chart.js integration
-│   │   ├── datatable.js      # DataTables integration
-│   │   ├── navigation.js     # Navigation component
-│   │   ├── theme-manager.js  # Theme switching
-│   │   ├── user-menu.js      # User menu component
-│   │   ├── validation.js     # Form validation
-│   │   ├── widgets.js        # Dashboard widgets
-│   │   └── ...
-│   └── utils/                # Utility functions
-│       ├── dom.js            # DOM utilities
-│       └── error-handler.js  # Global error handling
-└── main.js                   # Entry point with partials initialization
-```
+### Component registration is selector-driven
 
-#### Partials Loader System
+`App.COMPONENT_REGISTRY` (in [src/scripts/app.js](src/scripts/app.js)) is an array of `{ name, selector, load }` entries. On every page, the loader probes each `selector` against the DOM and calls `load()` for matches. Components self-declare what DOM they own:
 
-The `partials-loader.js` module provides:
+| Selector | Component |
+| --- | --- |
+| `[id^="widgetChart"], #trafficChart, #worldMap` | `components/widgets.js` (WidgetManager) |
+| `[data-chart]` | `components/charts.js` (ChartManager) |
+| `[data-table]` | `components/datatable.js` (DataTable) |
+| `form[data-validate]` | `components/validation.js` (FormValidator) |
 
-- **PartialsLoader Class**: Main loader with caching
-- **loadPartial(name)**: Loads individual partials with cache
-- **loadAllPartials()**: Processes all `data-partial` elements
-- **initializeSidebarActiveState()**: Highlights active menu items
-- **initializeHeader()**: Sets up header functionality
+Adding a new component = append one entry to the registry. There's no central `data-page` switch any more — `data-page` is purely for sidebar active-state highlighting.
 
-#### Integration in main.js
+### Build-time HTML entries are auto-discovered
 
-The application initializes in this order:
+`vite.config.js` runs `globSync('src/*.html')` to build the Rollup `input` map at config time. Drop a new `.html` file in `src/`, run `npm run build`, it ships. No config edit needed. (`index.html` is mapped to the `main` chunk for backwards compatibility.)
 
-```javascript
-import { App } from './scripts/app.js'
-import { partialsLoader } from './scripts/partials-loader.js'
+## Layout & styling
 
-// 1. Create and initialize App instance
-const app = new App()
-app.init()
+### Single source of truth for theme colors
 
-// 2. Load all partials (header, sidebar, etc.)
-partialsLoader.loadAllPartials()
-partialsLoader.initializeSidebarActiveState()
-partialsLoader.initializeHeader()
-```
+Theme colors are SCSS variables in [src/styles/variables.scss](src/styles/variables.scss): `$primary`, `$success`, `$danger`, etc. Bootstrap's `_root.scss` auto-generates the matching `--bs-*` CSS custom properties.
 
-The App class handles:
+**Reference colors as `var(--bs-primary)` everywhere** — never hardcode hex, never use a custom `--sufee-*` or `--menu-*` namespace (those used to exist; they're gone). Layout/UI tokens that Bootstrap doesn't generate (`--sidebar-*`, `--content-bg`, `--text-*`, `--header-height`) live in the same file's `:root` block.
 
-- Component lifecycle management
-- Sidebar toggle functionality (desktop collapse, mobile slide)
-- Responsive behavior and state persistence
-- Keyboard shortcuts (Ctrl+K for search, Ctrl+\ for sidebar toggle, Esc to close)
-- Dynamic component loading based on page type
-- Global notification system
+### Critical: do NOT import `bootstrap/dist/css/bootstrap.min.css`
 
-### Creating New Partials
+The themed Bootstrap is compiled from source via `main.scss`. Importing the prebuilt CSS in addition would override our customized values. There used to be exactly this bug — `main.js` imported both, and the compiled `--bs-primary` was Bootstrap's default `#0d6efd` instead of our brand `#20a8d8`. The comment in `main.js` exists to prevent regression.
 
-1. **Create the partial file** in `src/partials/filename.html`
-2. **Add to HTML** using `<div data-partial="filename"></div>`
-3. **No code changes needed** - the system auto-discovers new partials
+### SCSS file map
 
-### Sidebar Active States
+- [src/styles/main.scss](src/styles/main.scss) — entry: Bootstrap source imports + body/layout shell + scrollbar + component imports. ~110 lines.
+- [src/styles/variables.scss](src/styles/variables.scss) — `$primary` etc. (drives Bootstrap) + `--sidebar-*` etc. (custom CSS vars).
+- [src/styles/components/](src/styles/components/) — one file per concern: `sidebar`, `header`, `cards`, `buttons`, `forms`, `tables`, `charts`, `widgets`, `leaflet-overrides`. Component styles live here, not in `main.scss`.
 
-The system automatically highlights active menu items based on the `data-page` attribute on the body element:
+`components/sidebar.scss` is the canonical sidebar styling (450 lines). `components/header.scss` is the canonical header. Don't duplicate styles back into `main.scss`.
 
-```html
-<body class="sufee-dashboard" data-page="ui-buttons">
-```
+## Layout & responsive behaviour
 
-Sidebar menu items with matching `data-page` attributes receive the `active` class.
+- `aside.left-panel` (sidebar) + `.right-panel` (content). Sidebar width via CSS var (280px / 70px collapsed).
+- Desktop collapsed/expanded state persists in `localStorage` under `sufee-sidebar-collapsed`.
+- Mobile breakpoint: `≤ 991.98px`. Below that, sidebar slides in over a backdrop.
+- Keyboard shortcuts: `Ctrl/Cmd+K` (focus search), `Ctrl+\` (toggle sidebar), `Esc` (close mobile sidebar / search).
+- Components that react to sidebar collapse listen for the `sidebarToggle` custom event on `window`.
 
-### Benefits
+## Dependencies (actual, from `package.json`)
 
-- **No Code Duplication**: Write header/sidebar once, use everywhere
-- **Easy Maintenance**: Update one file to change all pages
-- **Performance**: Cached loading after first request
-- **Bootstrap 5 Compatible**: Modern Bootstrap 5 components
-- **SEO Friendly**: Proper semantic HTML structure
-- **IE Support Removed**: Modernized codebase without legacy IE compatibility
+Runtime: `bootstrap@^5.3.8`, `chart.js@^4.5.1`, `@fortawesome/fontawesome-free@^7.2.0`, `leaflet@^1.9.4`, `flag-icons@^7.5.0`, `themify-icons@^1.0.0`.
 
-### Migration from Old System
+Note: `components/gmaps.js` is Google Maps (loads `maps.googleapis.com` from `maps-gmap.html`). `components/world-map.js` is Leaflet-based. There's a demo Google Maps API key hardcoded in `maps-gmap.html` — replace with your own for production.
 
-All HTML files in `src/` have been updated to use the partials system. The old inline header/sidebar code has been replaced with data attributes for dynamic loading.
+In dev mode, `window.bootstrap`, `window.Chart`, `window.sufeeApp`, `window.partialsLoader`, and `window.errorHandler` are exposed for console debugging.
+
+## Browser support
+
+- Targets last 4 versions of major browsers; legacy bundle generated via `@vitejs/plugin-legacy` (`targets: ['defaults', 'not IE 11']`).
+- Internet Explorer is not supported. Do not add `<meta http-equiv="X-UA-Compatible">` or IE shims.
+
+## Conventions
+
+- Add new JS as ES modules under `src/scripts/components/` or `src/scripts/utils/`. Components are self-contained classes with their own init/destroy.
+- `App` exposes `getComponent(name)`, `addComponent(name, component)`, `removeComponent(name)`, and `showNotification(message, type)` for cross-component coordination.
+- Custom Bootstrap link styles need explicit `text-decoration: none` (Bootstrap 5 default).
+- `error-handler.js` is intentionally minimal (~30 lines) — just two `window` listeners that log uncaught errors. Don't reintroduce the toast system or fetch interception that used to live there; if a real backend is added later, wire Sentry/BugSnag into those two listeners.

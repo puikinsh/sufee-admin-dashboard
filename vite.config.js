@@ -1,7 +1,19 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { resolve, basename } from 'path';
+import { globSync } from 'fs';
 import legacy from '@vitejs/plugin-legacy';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
+import handlebars from 'vite-plugin-handlebars';
+
+// Auto-discover every HTML page directly under src/. Adding a new page is
+// drop-in: create the .html file, no config change required.
+// `index.html` is mapped to the `main` chunk for backwards compatibility.
+const htmlEntries = Object.fromEntries(
+  globSync('src/*.html').map(file => {
+    const name = basename(file, '.html');
+    return [name === 'index' ? 'main' : name, resolve(__dirname, file)];
+  })
+);
 
 export default defineConfig({
   root: 'src',
@@ -11,39 +23,7 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true,
     rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'src/index.html'),
-        'dashboard-crm': resolve(__dirname, 'src/dashboard-crm.html'),
-        'ui-buttons': resolve(__dirname, 'src/ui-buttons.html'),
-        'ui-badges': resolve(__dirname, 'src/ui-badges.html'),
-        'ui-tabs': resolve(__dirname, 'src/ui-tabs.html'),
-        'ui-social-buttons': resolve(__dirname, 'src/ui-social-buttons.html'),
-        'ui-cards': resolve(__dirname, 'src/ui-cards.html'),
-        'ui-alerts': resolve(__dirname, 'src/ui-alerts.html'),
-        'ui-progressbar': resolve(__dirname, 'src/ui-progressbar.html'),
-        'ui-grids': resolve(__dirname, 'src/ui-grids.html'),
-        'ui-modals': resolve(__dirname, 'src/ui-modals.html'),
-        'ui-switches': resolve(__dirname, 'src/ui-switches.html'),
-        'ui-typography': resolve(__dirname, 'src/ui-typography.html'),
-        'tables-basic': resolve(__dirname, 'src/tables-basic.html'),
-        'tables-data': resolve(__dirname, 'src/tables-data.html'),
-        'forms-advanced': resolve(__dirname, 'src/forms-advanced.html'),
-        'forms-basic': resolve(__dirname, 'src/forms-basic.html'),
-        widgets: resolve(__dirname, 'src/widgets.html'),
-        'charts-chartjs': resolve(__dirname, 'src/charts-chartjs.html'),
-        'charts-flot': resolve(__dirname, 'src/charts-flot.html'),
-        'charts-peity': resolve(__dirname, 'src/charts-peity.html'),
-        'maps-gmap': resolve(__dirname, 'src/maps-gmap.html'),
-        'maps-vector': resolve(__dirname, 'src/maps-vector.html'),
-        'font-fontawesome': resolve(__dirname, 'src/font-fontawesome.html'),
-        'font-themify': resolve(__dirname, 'src/font-themify.html'),
-        'page-login': resolve(__dirname, 'src/page-login.html'),
-        'page-register': resolve(__dirname, 'src/page-register.html'),
-        'pages-forget': resolve(__dirname, 'src/pages-forget.html'),
-        'error-404': resolve(__dirname, 'src/error-404.html'),
-        'error-500': resolve(__dirname, 'src/error-500.html'),
-        frame: resolve(__dirname, 'src/frame.html')
-      }
+      input: htmlEntries
     },
     assetsDir: 'assets',
     sourcemap: true
@@ -62,6 +42,14 @@ export default defineConfig({
     host: process.env.VITE_HOST || true
   },
   plugins: [
+    // Build-time Handlebars partials.
+    // Templates live in src/components/*.html and are inlined via {{> name ...}}
+    // — see src/components/stat-card.html for an example.
+    // (The runtime fetch-based system in src/partials/ is separate; it handles
+    // sidebar/header/head injection at runtime.)
+    handlebars({
+      partialDirectory: resolve(__dirname, 'src/components')
+    }),
     legacy({
       targets: ['defaults', 'not IE 11']
     }),
@@ -76,10 +64,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
-      '@styles': resolve(__dirname, 'src/styles'),
-      '@scripts': resolve(__dirname, 'src/scripts'),
-      '@assets': resolve(__dirname, 'src/assets')
+      '@': resolve(__dirname, 'src')
     }
   },
   optimizeDeps: {

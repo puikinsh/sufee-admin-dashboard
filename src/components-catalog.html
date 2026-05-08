@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8" />
+        <title>Component Catalog - Sufee Admin</title>
+        <meta name="description" content="Every reusable pattern in the Sufee dashboard, with markup and props" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <div data-partial="head-common"></div>
+        <style>
+            /* Catalog-only styling — small enough to keep inline. */
+            .catalog-toc {
+                position: sticky;
+                top: 80px;
+                font-size: 0.875rem;
+                max-height: calc(100vh - 100px);
+                overflow-y: auto;
+            }
+            .catalog-toc a {
+                display: block;
+                padding: 0.25rem 0.75rem;
+                border-left: 2px solid transparent;
+                color: var(--text-secondary);
+                text-decoration: none;
+                line-height: 1.4;
+            }
+            .catalog-toc a:hover,
+            .catalog-toc a.is-active {
+                color: var(--bs-primary);
+                border-left-color: var(--bs-primary);
+            }
+            .catalog-section {
+                scroll-margin-top: 80px;
+            }
+            .catalog-card {
+                margin-bottom: 2rem;
+            }
+            .catalog-snippet {
+                background: var(--bs-tertiary-bg);
+                border-radius: var(--radius-md);
+                padding: 1rem;
+                font-size: 0.8125rem;
+                line-height: 1.5;
+                overflow-x: auto;
+                margin: 0;
+                color: var(--text-primary);
+            }
+            .swatch {
+                display: flex;
+                align-items: center;
+                gap: 0.625rem;
+                padding: 0.5rem 0.75rem;
+                background: var(--bs-tertiary-bg);
+                border-radius: var(--radius-md);
+                font-size: 0.8125rem;
+                font-family: ui-monospace, SFMono-Regular, monospace;
+            }
+            .swatch-color {
+                width: 36px;
+                height: 36px;
+                border-radius: var(--radius-sm);
+                flex-shrink: 0;
+                border: 1px solid rgba(0, 0, 0, 0.06);
+            }
+            .radius-demo {
+                width: 64px;
+                height: 64px;
+                background: var(--bs-primary);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 0.6875rem;
+                font-weight: 600;
+                font-family: ui-monospace, SFMono-Regular, monospace;
+            }
+            .shadow-demo {
+                width: 96px;
+                height: 64px;
+                background: var(--bs-body-bg);
+                border-radius: var(--radius-md);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: var(--text-secondary);
+                font-family: ui-monospace, SFMono-Regular, monospace;
+            }
+            .token-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 0.75rem;
+            }
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                align-items: center;
+                padding: 1.5rem;
+                background: var(--bs-tertiary-bg);
+                border-radius: var(--radius-md);
+            }
+            kbd {
+                background: var(--bs-secondary-bg);
+                border-radius: var(--radius-sm);
+                padding: 0.125rem 0.4rem;
+                font-size: 0.8125rem;
+            }
+        </style>
+    </head>
+
+    <body class="sufee-dashboard" data-page="components-catalog">
+        <div class="d-flex min-vh-100">
+            <div data-partial="sidebar" data-partial-replace="true"></div>
+
+            <div class="main-content flex-grow-1">
+                <div data-partial="header" data-partial-replace="true"></div>
+                <div
+                    data-breadcrumb
+                    data-breadcrumb-title="Components"
+                    data-breadcrumb-path="Reference|Components"
+                ></div>
+
+                <main class="content-area p-4">
+                    <div class="container-fluid">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h1 class="h3 mb-2">Component Catalog</h1>
+                                <p class="text-muted mb-0">
+                                    The full design system at a glance: tokens, partials, and themed UI patterns.
+                                    Every snippet is copy-paste ready.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Sticky table of contents -->
+                            <aside class="col-lg-3 d-none d-lg-block">
+                                <nav class="catalog-toc" aria-label="Catalog sections">
+                                    <div class="text-muted small fw-bold text-uppercase mb-2 px-2">Foundations</div>
+                                    <a href="#tokens">Design tokens</a>
+                                    <a href="#colors">Color palette</a>
+                                    <a href="#radius">Radius scale</a>
+                                    <a href="#shadow">Shadow scale</a>
+                                    <a href="#motion">Motion scale</a>
+
+                                    <div class="text-muted small fw-bold text-uppercase mt-3 mb-2 px-2">
+                                        Build-time partials
+                                    </div>
+                                    <a href="#stat-card">stat-card</a>
+                                    <a href="#icon-stat-card">icon-stat-card</a>
+                                    <a href="#social-card">social-card</a>
+
+                                    <div class="text-muted small fw-bold text-uppercase mt-3 mb-2 px-2">
+                                        Page shells
+                                    </div>
+                                    <a href="#auth-shell">Auth shell</a>
+                                    <a href="#error-shell">Error shell</a>
+
+                                    <div class="text-muted small fw-bold text-uppercase mt-3 mb-2 px-2">UI patterns</div>
+                                    <a href="#cards">Cards</a>
+                                    <a href="#buttons">Buttons</a>
+                                    <a href="#forms">Forms</a>
+                                    <a href="#layout-helpers">Layout helpers</a>
+
+                                    <div class="text-muted small fw-bold text-uppercase mt-3 mb-2 px-2">Reference</div>
+                                    <a href="#new-partial">Adding a partial</a>
+                                </nav>
+                            </aside>
+
+                            <div class="col-lg-9">
+                                <!-- ======================== Design Tokens ======================== -->
+                                <section id="tokens" class="catalog-section">
+                                    <h2 class="h4 mb-1">Design tokens</h2>
+                                    <p class="text-muted">
+                                        Defined in
+                                        <code>src/styles/variables.scss</code>
+                                        . SCSS color tokens drive Bootstrap's
+                                        <code>--bs-*</code>
+                                        custom properties. Layout/motion/radius/shadow scales live as CSS custom
+                                        properties on
+                                        <code>:root</code>
+                                        — reference them via
+                                        <code>var(--token-name)</code>
+                                        .
+                                    </p>
+                                </section>
+
+                                <section id="colors" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h3 class="h5 mb-1">Color palette</h3>
+                                            <p class="text-muted small mb-3">
+                                                Change a hex in
+                                                <code>variables.scss</code>
+                                                and Bootstrap regenerates every themed component.
+                                            </p>
+                                            <div class="token-grid">
+                                                <div class="swatch">
+                                                    <span
+                                                        class="swatch-color"
+                                                        style="background: var(--bs-primary)"
+                                                    ></span>
+                                                    <div>
+                                                        <div>--bs-primary</div>
+                                                        <div class="text-muted">#20a8d8</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swatch">
+                                                    <span
+                                                        class="swatch-color"
+                                                        style="background: var(--bs-success)"
+                                                    ></span>
+                                                    <div>
+                                                        <div>--bs-success</div>
+                                                        <div class="text-muted">#4dbd74</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swatch">
+                                                    <span class="swatch-color" style="background: var(--bs-info)"></span>
+                                                    <div>
+                                                        <div>--bs-info</div>
+                                                        <div class="text-muted">#63c2de</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swatch">
+                                                    <span
+                                                        class="swatch-color"
+                                                        style="background: var(--bs-warning)"
+                                                    ></span>
+                                                    <div>
+                                                        <div>--bs-warning</div>
+                                                        <div class="text-muted">#ffc107</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swatch">
+                                                    <span
+                                                        class="swatch-color"
+                                                        style="background: var(--bs-danger)"
+                                                    ></span>
+                                                    <div>
+                                                        <div>--bs-danger</div>
+                                                        <div class="text-muted">#f86c6b</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swatch">
+                                                    <span
+                                                        class="swatch-color"
+                                                        style="background: var(--bs-secondary)"
+                                                    ></span>
+                                                    <div>
+                                                        <div>--bs-secondary</div>
+                                                        <div class="text-muted">#6c757d</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swatch">
+                                                    <span class="swatch-color" style="background: var(--bs-dark)"></span>
+                                                    <div>
+                                                        <div>--bs-dark</div>
+                                                        <div class="text-muted">#272c33</div>
+                                                    </div>
+                                                </div>
+                                                <div class="swatch">
+                                                    <span
+                                                        class="swatch-color"
+                                                        style="background: var(--sidebar-bg)"
+                                                    ></span>
+                                                    <div>
+                                                        <div>--sidebar-bg</div>
+                                                        <div class="text-muted">layout</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section id="radius" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h3 class="h5 mb-1">Radius scale</h3>
+                                            <p class="text-muted small mb-3">
+                                                Corner-rounding tokens. Use
+                                                <code>--radius-md</code>
+                                                for cards and inputs,
+                                                <code>--radius-lg</code>
+                                                for modals and large surfaces,
+                                                <code>--radius-pill</code>
+                                                for tags.
+                                            </p>
+                                            <div class="demo-row">
+                                                <div class="radius-demo" style="border-radius: var(--radius-sm)">sm</div>
+                                                <div class="radius-demo" style="border-radius: var(--radius-md)">md</div>
+                                                <div class="radius-demo" style="border-radius: var(--radius-lg)">lg</div>
+                                                <div class="radius-demo" style="border-radius: var(--radius-xl)">xl</div>
+                                                <div
+                                                    class="radius-demo"
+                                                    style="border-radius: var(--radius-pill); width: 96px"
+                                                >
+                                                    pill
+                                                </div>
+                                                <div class="radius-demo" style="border-radius: var(--radius-circle)">
+                                                    circle
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section id="shadow" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h3 class="h5 mb-1">Shadow scale</h3>
+                                            <p class="text-muted small mb-3">
+                                                Layered elevation system. Cards default to
+                                                <code>--shadow-sm</code>
+                                                with a hover lift to
+                                                <code>--shadow-md</code>
+                                                . Modals/dropdowns use
+                                                <code>--shadow-lg</code>
+                                                .
+                                            </p>
+                                            <div class="demo-row" style="background: var(--content-bg)">
+                                                <div class="shadow-demo" style="box-shadow: var(--shadow-xs)">xs</div>
+                                                <div class="shadow-demo" style="box-shadow: var(--shadow-sm)">sm</div>
+                                                <div class="shadow-demo" style="box-shadow: var(--shadow-md)">md</div>
+                                                <div class="shadow-demo" style="box-shadow: var(--shadow-lg)">lg</div>
+                                                <div class="shadow-demo" style="box-shadow: var(--shadow-xl)">xl</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section id="motion" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h3 class="h5 mb-1">Motion scale</h3>
+                                            <p class="text-muted small mb-3">
+                                                Three durations for interactive feedback.
+                                            </p>
+                                            <table class="table table-sm mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 30%">
+                                                            <code>--transition-fast</code>
+                                                        </td>
+                                                        <td>
+                                                            <code>150ms ease</code>
+                                                        </td>
+                                                        <td class="text-muted">
+                                                            buttons, links, inputs
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>--transition-base</code>
+                                                        </td>
+                                                        <td>
+                                                            <code>200ms ease</code>
+                                                        </td>
+                                                        <td class="text-muted">cards, layout shifts</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>--transition-slow</code>
+                                                        </td>
+                                                        <td>
+                                                            <code>300ms ease</code>
+                                                        </td>
+                                                        <td class="text-muted">overlays, sidebar collapse</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>--focus-ring</code>
+                                                        </td>
+                                                        <td colspan="2" class="text-muted">
+                                                            <code>0 0 0 0.2rem rgba(32, 168, 216, 0.25)</code>
+                                                            — used on every interactive element's focus state
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- ======================== Build-time partials ======================== -->
+                                <section id="stat-card" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="h5 mb-0">stat-card</h3>
+                                            <small class="text-muted">
+                                                Colored summary card with a mini sparkline.
+                                            </small>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-3 mb-4">
+                                                {{> stat-card color="primary" value="10,468" label="Members online"
+                                                    chartId="catalogChart1"
+                                                    chartValues="65,59,84,84,51,55,40,65,59,84"}}
+                                                {{> stat-card color="success" value="2,341" label="Sales today"
+                                                    chartId="catalogChart2"
+                                                    chartValues="12,19,27,43,52,31,48,12,19,27"}}
+                                            </div>
+
+                                            <pre class="catalog-snippet"><code>&#123;&#123;&gt; stat-card color="primary" value="10,468" label="Members online"
+    chartId="widgetChart1" chartValues="65,59,84,84,51,55,40"&#125;&#125;</code></pre>
+
+                                            <table class="table table-sm mb-0 mt-3">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 25%">Prop</th>
+                                                        <th>Notes</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><code>color</code></td>
+                                                        <td>
+                                                            <code>primary</code>
+                                                            ,
+                                                            <code>danger</code>
+                                                            ,
+                                                            <code>warning</code>
+                                                            ,
+                                                            <code>success</code>
+                                                            ,
+                                                            <code>info</code>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>value</code></td>
+                                                        <td>The big stat (e.g. "10,468")</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>label</code></td>
+                                                        <td>Caption under the value</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>chartId</code></td>
+                                                        <td>Unique DOM id for the canvas (consumed by widgets.js)</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>chartValues</code></td>
+                                                        <td>
+                                                            Optional. Comma-separated numbers. Falls back to a built-in
+                                                            default keyed by render order.
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section id="icon-stat-card" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="h5 mb-0">icon-stat-card</h3>
+                                            <small class="text-muted">
+                                                Compact stat with a circular icon — for sidebars and footers.
+                                            </small>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-2 mb-4" style="max-width: 320px">
+                                                {{> icon-stat-card color="success" icon="fa-dollar-sign"
+                                                    label="Total Profit" value="1,012"}}
+                                                {{> icon-stat-card color="primary" icon="fa-user" label="New Customer"
+                                                    value="961"}}
+                                                {{> icon-stat-card color="warning" icon="fa-chart-bar"
+                                                    label="Active Projects" value="770"}}
+                                            </div>
+
+                                            <pre class="catalog-snippet"><code>&#123;&#123;&gt; icon-stat-card color="success" icon="fa-dollar-sign"
+    label="Total Profit" value="1,012"&#125;&#125;</code></pre>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section id="social-card" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="h5 mb-0">social-card</h3>
+                                            <small class="text-muted">
+                                                Social media card with brand background and two stats.
+                                            </small>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-3 mb-4">
+                                                {{> social-card brand="facebook" iconClass="fab fa-facebook fa-3x"
+                                                    primaryValue="40k" primaryLabel="Friends" secondaryValue="450"
+                                                    secondaryLabel="Feeds"}}
+                                                {{> social-card brand="linkedin" iconClass="fab fa-linkedin fa-3x"
+                                                    primaryValue="40+" primaryLabel="Contacts" secondaryValue="250"
+                                                    secondaryLabel="Feeds"}}
+                                            </div>
+
+                                            <pre class="catalog-snippet"><code>&#123;&#123;&gt; social-card brand="facebook" iconClass="fab fa-facebook fa-3x"
+    primaryValue="40k"  primaryLabel="Friends"
+    secondaryValue="450" secondaryLabel="Feeds"&#125;&#125;</code></pre>
+
+                                            <p class="small text-muted mt-3 mb-0">
+                                                Brands:
+                                                <code>facebook</code>
+                                                ,
+                                                <code>twitter</code>
+                                                ,
+                                                <code>x</code>
+                                                ,
+                                                <code>linkedin</code>
+                                                ,
+                                                <code>google</code>
+                                                ,
+                                                <code>instagram</code>
+                                                . Pass
+                                                <code>iconHtml</code>
+                                                instead of
+                                                <code>iconClass</code>
+                                                for inline SVG.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- ======================== Auth shell ======================== -->
+                                <section id="auth-shell" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="h5 mb-0">Auth page shell</h3>
+                                            <small class="text-muted">
+                                                Used by login, register, and forgot-password pages. See
+                                                <code>page-login.html</code>
+                                                for a full example.
+                                            </small>
+                                        </div>
+                                        <div class="card-body">
+                                            <pre class="catalog-snippet"><code>&lt;body class="auth-page"&gt;
+  &lt;main class="auth-card"&gt;
+    &lt;header class="auth-hero"&gt;
+      &lt;img class="auth-logo" src="..."&gt;
+      &lt;h1 class="auth-title"&gt;Welcome Back&lt;/h1&gt;
+      &lt;p class="auth-subtitle"&gt;Sign in to your account&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;div class="auth-body"&gt;
+      &lt;form&gt;
+        &lt;div class="form-floating"&gt;...&lt;/div&gt;
+        &lt;button type="submit" class="auth-btn"&gt;Sign In&lt;/button&gt;
+        &lt;div class="auth-divider"&gt;Or continue with&lt;/div&gt;
+        &lt;div class="auth-social-row"&gt;
+          &lt;a href="#" class="auth-social-btn"&gt;...&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+    &lt;footer class="auth-footer"&gt;...&lt;/footer&gt;
+  &lt;/main&gt;
+&lt;/body&gt;</code></pre>
+
+                                            <table class="table table-sm mt-3 mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 28%">Class</th>
+                                                        <th>Purpose</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><code>.auth-page</code></td>
+                                                        <td>Body class — gradient background, centers the card</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.auth-card</code></td>
+                                                        <td>The white card container with shadow</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.auth-hero</code></td>
+                                                        <td>Gradient header above the form (logo, title, subtitle)</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.auth-icon-circle</code></td>
+                                                        <td>Alternative to a logo — used on the forgot-password page</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.auth-body</code></td>
+                                                        <td>Form area</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.auth-btn</code></td>
+                                                        <td>Full-width brand-gradient submit button</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.auth-divider</code></td>
+                                                        <td>Text divider with horizontal lines</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.auth-social-row</code></td>
+                                                        <td>
+                                                            Container for
+                                                            <code>.auth-social-btn</code>
+                                                            social-login buttons
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>.auth-message.is-success</code>
+                                                            <br />
+                                                            <code>.auth-message.is-error</code>
+                                                        </td>
+                                                        <td>
+                                                            Inline status message. Add
+                                                            <code>.is-visible</code>
+                                                            to show.
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.auth-password-strength</code></td>
+                                                        <td>
+                                                            Strength meter. Add
+                                                            <code>.is-weak</code>
+                                                            /
+                                                            <code>.is-medium</code>
+                                                            /
+                                                            <code>.is-strong</code>
+                                                            on the
+                                                            <code>.strength-fill</code>
+                                                            child.
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.auth-footer</code></td>
+                                                        <td>Footer area for cross-page links</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- ======================== Error pages ======================== -->
+                                <section id="error-shell" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="h5 mb-0">Error page shell</h3>
+                                            <small class="text-muted">
+                                                404, 500, etc. See
+                                                <code>error-404.html</code>
+                                                .
+                                            </small>
+                                        </div>
+                                        <div class="card-body">
+                                            <pre class="catalog-snippet"><code>&lt;body class="error-page"&gt;
+  &lt;main class="error-card"&gt;
+    &lt;div class="error-illustration"&gt;&lt;i class="fas fa-search"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="error-number"&gt;404&lt;/div&gt;
+    &lt;h1 class="error-title"&gt;Page Not Found&lt;/h1&gt;
+    &lt;p class="error-message"&gt;...&lt;/p&gt;
+
+    &lt;div class="error-suggestions"&gt;
+      &lt;h5&gt;Things to try&lt;/h5&gt;
+      &lt;ul&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;div class="error-actions"&gt;
+      &lt;a href="/" class="btn-error btn-error-primary"&gt;Back home&lt;/a&gt;
+      &lt;button class="btn-error btn-error-secondary"&gt;Go back&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+&lt;/body&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- ======================== Cards ======================== -->
+                                <section id="cards" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="h5 mb-0">Cards</h3>
+                                            <small class="text-muted">
+                                                Default
+                                                <code>.card</code>
+                                                ships rounded with hover lift; theme variants and helpers below.
+                                            </small>
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 class="h6 mb-2">Themed background variants</h4>
+                                            <div class="row g-3 mb-4">
+                                                <div class="col-md-6">
+                                                    <div class="card text-white bg-primary">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">.bg-primary</h5>
+                                                            <p class="card-text mb-0">Brand-primary surface.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="card text-white bg-success">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">.bg-success</h5>
+                                                            <p class="card-text mb-0">Positive accent surface.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <h4 class="h6 mb-2">
+                                                <code>.icon-circle</code>
+                                                — colored circle for inline stats
+                                            </h4>
+                                            <div class="demo-row mb-4">
+                                                <div class="icon-circle bg-primary">
+                                                    <i class="fas fa-user"></i>
+                                                </div>
+                                                <div class="icon-circle bg-success">
+                                                    <i class="fas fa-dollar-sign"></i>
+                                                </div>
+                                                <div class="icon-circle bg-warning">
+                                                    <i class="fas fa-chart-bar"></i>
+                                                </div>
+                                                <div class="icon-circle bg-danger">
+                                                    <i class="fas fa-exclamation-triangle"></i>
+                                                </div>
+                                                <div class="icon-circle bg-info">
+                                                    <i class="fas fa-info"></i>
+                                                </div>
+                                            </div>
+
+                                            <h4 class="h6 mb-2">Helpers</h4>
+                                            <table class="table table-sm mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 30%"><code>.card-stretch</code></td>
+                                                        <td>
+                                                            min-height: 500px — keep cards in a row visually aligned
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.row-stretch</code></td>
+                                                        <td>min-height: 500px on a flex row</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>.progress-thin</code></td>
+                                                        <td>
+                                                            4px-tall progress bar — for inline metric strips
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- ======================== Buttons ======================== -->
+                                <section id="buttons" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="h5 mb-0">Buttons</h3>
+                                            <small class="text-muted">
+                                                Bootstrap variants with the themed focus ring, plus
+                                                <code>.btn-social</code>
+                                                .
+                                            </small>
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 class="h6 mb-2">Theme buttons</h4>
+                                            <div class="demo-row mb-4">
+                                                <button class="btn btn-primary">Primary</button>
+                                                <button class="btn btn-secondary">Secondary</button>
+                                                <button class="btn btn-success">Success</button>
+                                                <button class="btn btn-danger">Danger</button>
+                                                <button class="btn btn-warning">Warning</button>
+                                                <button class="btn btn-info">Info</button>
+                                                <button class="btn btn-dark">Dark</button>
+                                                <button class="btn btn-outline-primary">Outline</button>
+                                            </div>
+
+                                            <h4 class="h6 mb-2">
+                                                <code>.btn-social.btn-{network}</code>
+                                                — branded social buttons
+                                            </h4>
+                                            <div class="demo-row mb-4">
+                                                <button class="btn btn-social btn-facebook">
+                                                    <i class="fab fa-facebook-f me-1"></i>
+                                                    Facebook
+                                                </button>
+                                                <button class="btn btn-social btn-x">
+                                                    <i class="fab fa-x-twitter me-1"></i>
+                                                    X
+                                                </button>
+                                                <button class="btn btn-social btn-linkedin">
+                                                    <i class="fab fa-linkedin-in me-1"></i>
+                                                    LinkedIn
+                                                </button>
+                                                <button class="btn btn-social btn-instagram">
+                                                    <i class="fab fa-instagram me-1"></i>
+                                                    Instagram
+                                                </button>
+                                                <button class="btn btn-social btn-github">
+                                                    <i class="fab fa-github me-1"></i>
+                                                    GitHub
+                                                </button>
+                                                <button class="btn btn-social btn-spotify">
+                                                    <i class="fab fa-spotify me-1"></i>
+                                                    Spotify
+                                                </button>
+                                            </div>
+                                            <p class="small text-muted mb-0">
+                                                Available networks:
+                                                <code>facebook, x, twitter, linkedin, tiktok, youtube, discord, slack,</code>
+                                                <code>snapchat, whatsapp, telegram, reddit, pinterest, twitch, github,</code>
+                                                <code>spotify, instagram</code>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- ======================== Forms ======================== -->
+                                <section id="forms" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="h5 mb-0">Forms</h3>
+                                            <small class="text-muted">
+                                                Standard Bootstrap inputs picked up by the new theme. For declarative
+                                                validation, mark with
+                                                <code>data-validate</code>
+                                                — the
+                                                <code>FormValidator</code>
+                                                component reads
+                                                <code>data-rules</code>
+                                                attributes on each field.
+                                            </small>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-3 mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input
+                                                            type="email"
+                                                            class="form-control"
+                                                            id="catalogEmail"
+                                                            placeholder="Email"
+                                                        />
+                                                        <label for="catalogEmail">Email address</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <select class="form-select" id="catalogSelect">
+                                                            <option>Choose…</option>
+                                                            <option>Option A</option>
+                                                            <option>Option B</option>
+                                                        </select>
+                                                        <label for="catalogSelect">Select</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input
+                                                        type="text"
+                                                        class="form-control is-valid"
+                                                        value="Looks good!"
+                                                    />
+                                                    <div class="valid-feedback">Valid input</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input
+                                                        type="text"
+                                                        class="form-control is-invalid"
+                                                        value="Bad input"
+                                                    />
+                                                    <div class="invalid-feedback">Required field</div>
+                                                </div>
+                                            </div>
+                                            <pre class="catalog-snippet"><code>&lt;form data-validate&gt;
+  &lt;input name="email" data-rules="required|email"&gt;
+  &lt;input name="age"   data-rules="required|numeric|min:18"&gt;
+&lt;/form&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- ======================== Layout helpers ======================== -->
+                                <section id="layout-helpers" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="h5 mb-0">Layout & data attributes</h3>
+                                            <small class="text-muted">
+                                                Drop-in attributes that auto-wire components.
+                                            </small>
+                                        </div>
+                                        <div class="card-body">
+                                            <table class="table table-sm mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 32%">Attribute</th>
+                                                        <th>What happens</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><code>&lt;table data-table&gt;</code></td>
+                                                        <td>Sortable headers, search input, pagination</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>&lt;canvas data-chart="line|bar|pie|doughnut|radar|polarArea|area"&gt;</code>
+                                                        </td>
+                                                        <td>
+                                                            Renders a Chart.js chart. Pass
+                                                            <code>data-labels</code>
+                                                            ,
+                                                            <code>data-values</code>
+                                                            ,
+                                                            <code>data-datasets</code>
+                                                            ,
+                                                            <code>data-colors</code>
+                                                            . See
+                                                            <code>charts-chartjs.html</code>
+                                                            .
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>&lt;form data-validate&gt;</code></td>
+                                                        <td>
+                                                            FormValidator reads
+                                                            <code>data-rules</code>
+                                                            on fields
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>data-page="..."</code></td>
+                                                        <td>Drives sidebar active-state highlighting</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>data-breadcrumb data-breadcrumb-title="..." data-breadcrumb-path="A|B|C"</code>
+                                                        </td>
+                                                        <td>Renders the breadcrumb bar above the content area</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <code>&lt;div data-partial="sidebar" data-partial-replace="true"&gt;</code>
+                                                        </td>
+                                                        <td>Runtime-injects the sidebar partial</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>data-theme-toggle</code></td>
+                                                        <td>
+                                                            Element toggles light/dark via
+                                                            <code>ThemeManager.bindToggle()</code>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- ======================== Adding a partial ======================== -->
+                                <section id="new-partial" class="catalog-section catalog-card">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h3 class="h5 mb-0">Adding a new partial</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <ol class="mb-3">
+                                                <li>
+                                                    Drop a new file in
+                                                    <code>src/components/your-partial.html</code>
+                                                    .
+                                                </li>
+                                                <li>
+                                                    Use
+                                                    <code>&#123;&#123;prop&#125;&#125;</code>
+                                                    for HTML-escaped output,
+                                                    <code>&#123;&#123;&#123;prop&#125;&#125;&#125;</code>
+                                                    for raw HTML (inline SVG, etc.).
+                                                </li>
+                                                <li>
+                                                    Reference it from any page:
+                                                    <code>
+                                                        &#123;&#123;&gt; your-partial prop1="x" prop2="y"&#125;&#125;
+                                                    </code>
+                                                    .
+                                                </li>
+                                                <li>
+                                                    If your partial has multi-line calls, add the consuming HTML to
+                                                    <code>.prettierignore</code>
+                                                    — Prettier reflows whitespace inside attribute values.
+                                                </li>
+                                                <li>Add an entry to this catalog so it stays discoverable.</li>
+                                            </ol>
+
+                                            <p class="mb-2">
+                                                <strong>Theming:</strong>
+                                                reference colors via
+                                                <code>var(--bs-primary)</code>
+                                                etc., never hardcode hexes. Use
+                                                <code>--radius-*</code>
+                                                /
+                                                <code>--shadow-*</code>
+                                                /
+                                                <code>--transition-*</code>
+                                                tokens for shape and motion.
+                                            </p>
+                                            <p class="small text-muted mb-0">
+                                                Components that own page DOM (charts, tables, forms) should self-register
+                                                in
+                                                <code>App.COMPONENT_REGISTRY</code>
+                                                with a CSS selector — see
+                                                <code>src/scripts/app.js</code>
+                                                .
+                                            </p>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <script type="module" src="/main.js"></script>
+        <script type="module">
+            // Highlight active TOC entry as user scrolls.
+            document.addEventListener('DOMContentLoaded', () => {
+                const links = document.querySelectorAll('.catalog-toc a');
+                const sections = [...links]
+                    .map(a => document.querySelector(a.getAttribute('href')))
+                    .filter(Boolean);
+
+                const observer = new IntersectionObserver(
+                    entries => {
+                        for (const entry of entries) {
+                            if (!entry.isIntersecting) continue;
+                            const id = entry.target.id;
+                            links.forEach(a => {
+                                a.classList.toggle('is-active', a.getAttribute('href') === `#${id}`);
+                            });
+                        }
+                    },
+                    { rootMargin: '-20% 0px -70% 0px' }
+                );
+
+                for (const s of sections) observer.observe(s);
+            });
+        </script>
+    </body>
+</html>

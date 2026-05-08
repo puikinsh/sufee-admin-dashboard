@@ -105,11 +105,38 @@ export class UserMenu {
   }
 
   handleLogout() {
-    // Confirm logout
-    if (confirm('Are you sure you want to logout?')) {
-      // Perform logout
-      window.location.href = '/logout';
+    // Lazy-create the confirmation modal once; reuse on subsequent clicks.
+    let modalEl = document.getElementById('logoutConfirmModal');
+    if (!modalEl) {
+      modalEl = document.createElement('div');
+      modalEl.id = 'logoutConfirmModal';
+      modalEl.className = 'modal fade';
+      modalEl.tabIndex = -1;
+      modalEl.setAttribute('aria-hidden', 'true');
+      modalEl.setAttribute('aria-labelledby', 'logoutConfirmTitle');
+      modalEl.innerHTML = `
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="logoutConfirmTitle">Sign out</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Are you sure you want to log out?</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-danger" data-action="confirm-logout">Log out</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modalEl);
+
+      modalEl.querySelector('[data-action="confirm-logout"]').addEventListener('click', () => {
+        window.location.href = '/logout';
+      });
     }
+
+    window.bootstrap.Modal.getOrCreateInstance(modalEl).show();
   }
 
   destroy() {

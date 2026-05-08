@@ -1,43 +1,17 @@
-// Modern SCSS Variables for Sufee Admin Dashboard
-// Migrated from Bootstrap 4 to Bootstrap 5 compatible variables
+// =====================================================================
+// Sufee Theme Variables — single source of truth
+// =====================================================================
+//
+// Color tokens are declared as SCSS variables. Bootstrap's _root.scss
+// then auto-generates the matching `--bs-*` CSS custom properties from
+// these (e.g. `--bs-primary`, `--bs-success`). Reference colors via
+// `var(--bs-primary)` in stylesheets — do not redeclare them.
+//
+// Layout/UI tokens that Bootstrap does not generate (sidebar, header,
+// custom text colors) are declared as CSS custom properties at :root
+// below. Reference them via `var(--sidebar-bg)` etc.
 
-// Color System
-:root {
-  // Primary Colors
-  --bs-primary: #20a8d8;
-  --bs-secondary: #6c757d;
-  --bs-success: #4dbd74;
-  --bs-info: #63c2de;
-  --bs-warning: #ffc107;
-  --bs-danger: #f86c6b;
-  --bs-light: #f8f9fa;
-  --bs-dark: #272c33;
-
-  // Custom Theme Colors
-  --color-flat-1: #20a8d8;
-  --color-flat-2: #63c2de;
-  --color-flat-3: #ffc107;
-  --color-flat-4: #f86c6b;
-  --color-flat-5: #4dbd74;
-
-  // Layout Colors
-  --menu-bg: #272c33;
-  --menu-color: #c8c9ce;
-  --header-bg: #ffffff;
-  --container-bg: #f1f2f7;
-
-  // Text Colors
-  --text-primary: #373757;
-  --text-secondary: #878787;
-  --text-muted: #868e96;
-
-  // Layout
-  --sidebar-width: 280px;
-  --sidebar-collapsed-width: 70px;
-  --header-height: 70px;
-}
-
-// SCSS Variables (using actual color values for Bootstrap compatibility)
+// ---------- Theme palette ----------
 $primary: #20a8d8;
 $secondary: #6c757d;
 $success: #4dbd74;
@@ -47,23 +21,17 @@ $danger: #f86c6b;
 $light: #f8f9fa;
 $dark: #272c33;
 
-// Theme specific variables
-$menu-bg: #272c33;
-$menu-color: #c8c9ce;
-$header-bg: #ffffff;
-$container-bg: #f1f2f7;
-
-// Bootstrap 5 customizations
+// ---------- Bootstrap feature flags ----------
 $enable-css-grid: true;
 $enable-negative-margins: true;
 $enable-dark-mode: true;
 
-// Typography
+// ---------- Typography ----------
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $font-size-base: 1rem;
 $line-height-base: 1.5;
 
-// Spacing
+// ---------- Spacing ----------
 $spacer: 1rem;
 $spacers: (
   0: 0,
@@ -74,7 +42,7 @@ $spacers: (
   5: $spacer * 3
 );
 
-// Breakpoints (Bootstrap 5 default)
+// ---------- Breakpoints (Bootstrap defaults) ----------
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -84,7 +52,6 @@ $grid-breakpoints: (
   xxl: 1400px
 );
 
-// Container max widths
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -93,22 +60,75 @@ $container-max-widths: (
   xxl: 1320px
 );
 
-// Component specific variables (SCSS variables)
-$sidebar-width: 280px;
-$sidebar-collapsed-width: 70px;
-$header-height: 70px;
+// ---------- Shape & motion (drives Bootstrap defaults) ----------
+$border-radius: 0.5rem; // Bootstrap default is 0.375rem; bumped slightly modern
+$border-radius-sm: 0.375rem;
+$border-radius-lg: 0.75rem;
+// Layered elevation system — softer + more depth than Bootstrap defaults
+$box-shadow-sm:
+  0 1px 2px rgba(15, 23, 42, 0.04),
+  0 1px 3px rgba(15, 23, 42, 0.06);
+$box-shadow:
+  0 4px 6px -1px rgba(15, 23, 42, 0.08),
+  0 2px 4px -2px rgba(15, 23, 42, 0.04);
+$box-shadow-lg:
+  0 10px 15px -3px rgba(15, 23, 42, 0.1),
+  0 4px 6px -4px rgba(15, 23, 42, 0.05);
 
-// Border radius
-$border-radius: 0.375rem;
-$border-radius-sm: 0.25rem;
-$border-radius-lg: 0.5rem;
+// =====================================================================
+// Custom layout tokens (CSS custom properties)
+// =====================================================================
+:root {
+  // Sidebar
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 70px;
+  --sidebar-bg: #{$dark};
+  --sidebar-text: #c8c9ce;
+  --sidebar-text-active: #ffffff;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.05);
+  --sidebar-active-bg: rgba(255, 255, 255, 0.1);
+  --sidebar-transition-duration: 0.35s;
 
-// Shadows
-$box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-$box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-$box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  // Layout
+  --header-height: 70px;
+  --content-bg: #f1f2f7;
 
-// Transitions
-$transition-base: all 0.25s ease-in-out;
-$transition-fade: opacity 0.15s linear;
-$transition-collapse: height 0.35s ease;
+  // Text
+  --text-primary: #373757;
+  --text-secondary: #878787;
+  --text-muted: #868e96;
+
+  // Header UI accents
+  --menu-toggle-bg: #e74c3c;
+  --menu-toggle-hover: #c0392b;
+
+  // ---------- Design tokens ----------
+  // Reference these everywhere instead of magic numbers. Bootstrap also reads
+  // these via $border-radius etc. above for its own components.
+
+  // Radius scale
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-pill: 50rem;
+  --radius-circle: 50%;
+
+  // Elevation scale (use --shadow-md for cards, --shadow-lg for modals/menus)
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+
+  // Motion scale
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  // Focus ring (one canonical style derived from --bs-primary)
+  --focus-ring: 0 0 0 0.2rem rgba(32, 168, 216, 0.25);
+}
+
+// Dark mode overrides live in styles/dark-theme.scss — imported AFTER
+// Bootstrap in main.scss so our --bs-* overrides win over Bootstrap defaults.

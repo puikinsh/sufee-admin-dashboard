@@ -1,0 +1,87 @@
+// =====================================================================
+// Dark mode — must be imported AFTER Bootstrap in main.scss
+// =====================================================================
+// Bootstrap 5.3 ships its own [data-bs-theme="dark"] block that flips the
+// default --bs-* tokens. We override that block to use a richer slate palette
+// and to flip our own custom tokens (--content-bg, --sidebar-*, --shadow-*).
+//
+// Strategy: a layered slate palette where each elevation gets a slightly
+// lighter surface color. Shadows alone don't read on dark backgrounds, so
+// cards also get a subtle border (see components/cards.scss).
+
+[data-bs-theme='dark'] {
+  // ---------- Bootstrap surface palette ----------
+  --bs-body-bg: #0f172a; // base canvas (slate-900)
+  --bs-body-bg-rgb: 15, 23, 42;
+  --bs-body-color: #e2e8f0; // slate-200
+  --bs-body-color-rgb: 226, 232, 240;
+  --bs-secondary-bg: #1e293b; // elevated (slate-800)
+  --bs-secondary-bg-rgb: 30, 41, 59;
+  --bs-tertiary-bg: #334155; // hover/inset (slate-700)
+  --bs-tertiary-bg-rgb: 51, 65, 85;
+  --bs-border-color: #334155;
+  --bs-border-color-translucent: rgba(255, 255, 255, 0.08);
+
+  // Cards
+  --bs-card-bg: #1e293b;
+  --bs-card-color: #e2e8f0;
+  --bs-card-border-color: #334155;
+  --bs-card-cap-bg: #1e293b;
+
+  // Dropdowns
+  --bs-dropdown-bg: #1e293b;
+  --bs-dropdown-color: #e2e8f0;
+  --bs-dropdown-link-color: #e2e8f0;
+  --bs-dropdown-link-hover-bg: #334155;
+  --bs-dropdown-link-hover-color: #ffffff;
+  --bs-dropdown-border-color: #334155;
+  --bs-dropdown-divider-bg: #334155;
+
+  // Modals / offcanvas
+  --bs-modal-bg: #1e293b;
+  --bs-modal-color: #e2e8f0;
+  --bs-modal-border-color: #334155;
+  --bs-modal-header-border-color: #334155;
+  --bs-offcanvas-bg: #1e293b;
+  --bs-offcanvas-color: #e2e8f0;
+
+  // Forms — inputs need a darker bg + visible borders
+  --bs-form-control-bg: #0f172a;
+  --bs-form-control-disabled-bg: #1e293b;
+  --bs-form-select-bg: #0f172a;
+
+  // Tables
+  --bs-table-bg: transparent;
+  --bs-table-color: #e2e8f0;
+  --bs-table-border-color: #334155;
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.025);
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.05);
+
+  // Code
+  --bs-code-color: #f8c8c8;
+
+  // ---------- Custom Sufee tokens ----------
+  --content-bg: #0f172a;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  // Sidebar matches the body color (subtle, with a border-right —
+  // see components/sidebar.scss for the border rule).
+  --sidebar-bg: #0f172a;
+  --sidebar-text: #94a3b8;
+  --sidebar-text-active: #ffffff;
+  --sidebar-hover-bg: rgba(255, 255, 255, 0.04);
+  --sidebar-active-bg: rgba(99, 194, 222, 0.12);
+
+  // Shadows on dark surfaces need to be black with higher alpha — slate-tinted
+  // shadows are nearly invisible against dark backgrounds.
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.55), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+
+  // Brighter focus ring against dark bg.
+  --focus-ring: 0 0 0 0.2rem rgba(99, 194, 222, 0.4);
+}

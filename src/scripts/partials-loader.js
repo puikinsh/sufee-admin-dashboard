@@ -32,7 +32,7 @@ export class PartialsLoader {
       const html = await response.text();
       this.cache.set(name, html);
       return html;
-    } catch (error) {
+    } catch {
       return '';
     }
   }
@@ -141,7 +141,9 @@ export class PartialsLoader {
   }
 
   /**
-   * Initialize sidebar active state based on current page
+   * Highlight the active sidebar link for the current page.
+   * Must be called after `loadAllPartials()` resolves — the sidebar partial
+   * is guaranteed to be in the DOM by then.
    */
   initializeSidebarActiveState() {
     const currentPage = document.body.dataset.page;
@@ -149,87 +151,58 @@ export class PartialsLoader {
       return;
     }
 
-    // Wait for sidebar to be loaded
-    const checkSidebar = () => {
-      const sidebarLinks = document.querySelectorAll('.sidebar .nav-link[data-page]');
-      if (sidebarLinks.length === 0) {
-        // Sidebar not loaded yet, try again
-        setTimeout(checkSidebar, 100);
-        return;
-      }
+    const activeLink = document.querySelector(`.sidebar .nav-link[data-page="${currentPage}"]`);
+    if (!activeLink) {
+      return;
+    }
 
-      // Remove all active classes
-      sidebarLinks.forEach(link => {
-        link.classList.remove('active');
-      });
+    activeLink.classList.add('active');
 
-      // Add active class to current page
-      const activeLink = document.querySelector(`.sidebar .nav-link[data-page="${currentPage}"]`);
-      if (activeLink) {
-        activeLink.classList.add('active');
+    // Expand the parent collapse if the active link is in a submenu
+    const parentCollapse = activeLink.closest('.collapse');
+    if (!parentCollapse) {
+      return;
+    }
+    parentCollapse.classList.add('show');
 
-        // Expand parent collapse if in submenu
-        const parentCollapse = activeLink.closest('.collapse');
-        if (parentCollapse) {
-          parentCollapse.classList.add('show');
+    const toggleButton = document.querySelector(`[data-bs-target="#${parentCollapse.id}"]`);
+    if (!toggleButton) {
+      return;
+    }
+    toggleButton.setAttribute('aria-expanded', 'true');
+    toggleButton.classList.remove('collapsed');
 
-          // Update the toggle button
-          const toggleButton = document.querySelector(`[data-bs-target="#${parentCollapse.id}"]`);
-          if (toggleButton) {
-            toggleButton.setAttribute('aria-expanded', 'true');
-            toggleButton.classList.remove('collapsed');
-
-            // Update arrow icon
-            const arrow = toggleButton.querySelector('.nav-arrow');
-            if (arrow) {
-              arrow.classList.remove('fa-chevron-right');
-              arrow.classList.add('fa-chevron-down');
-            }
-          }
-        }
-      }
-    };
-
-    // Listen for sidebar loaded event
-    document.addEventListener('partialLoaded', event => {
-      if (event.detail.partialName === 'sidebar') {
-        checkSidebar();
-      }
-    });
-
-    // Also check immediately in case sidebar is already loaded
-    checkSidebar();
+    const arrow = toggleButton.querySelector('.nav-arrow');
+    if (arrow) {
+      arrow.classList.remove('fa-chevron-right');
+      arrow.classList.add('fa-chevron-down');
+    }
   }
 
   /**
-   * Initialize header functionality
+   * Wire up header search toggle (opens/closes the inline search input).
+   * Must be called after `loadAllPartials()` resolves — sidebar toggle is
+   * handled separately by app.js to avoid duplicate listeners.
    */
   initializeHeader() {
-    document.addEventListener('partialLoaded', event => {
-      if (event.detail.partialName === 'header') {
-        // Initialize search toggle
-        const searchToggle = document.getElementById('searchToggle');
-        const searchForm = document.querySelector('.search-form');
-        const searchClose = document.getElementById('searchClose');
+    const searchToggle = document.getElementById('searchToggle');
+    const searchForm = document.querySelector('.search-form');
+    const searchClose = document.getElementById('searchClose');
+    if (!searchToggle || !searchForm) {
+      return;
+    }
 
-        if (searchToggle && searchForm) {
-          searchToggle.addEventListener('click', () => {
-            searchForm.classList.remove('d-none');
-            searchToggle.classList.add('d-none');
-          });
-
-          if (searchClose) {
-            searchClose.addEventListener('click', () => {
-              searchForm.classList.add('d-none');
-              searchToggle.classList.remove('d-none');
-            });
-          }
-        }
-
-        // Note: Sidebar toggle functionality is handled by app.js
-        // This prevents conflicts and duplicate event listeners
-      }
+    searchToggle.addEventListener('click', () => {
+      searchForm.classList.remove('d-none');
+      searchToggle.classList.add('d-none');
     });
+
+    if (searchClose) {
+      searchClose.addEventListener('click', () => {
+        searchForm.classList.add('d-none');
+        searchToggle.classList.remove('d-none');
+      });
+    }
   }
 }
 

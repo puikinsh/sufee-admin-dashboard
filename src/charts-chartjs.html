@@ -97,36 +97,7 @@
                                 <div class="card chart-card">
                                     <div class="card-header d-flex justify-content-between align-items-center">
                                         <h5 class="card-title mb-0">Line Chart</h5>
-                                        <div class="dropdown">
-                                            <button
-                                                class="btn btn-sm btn-outline-secondary dropdown-toggle"
-                                                type="button"
-                                                data-bs-toggle="dropdown"
-                                            >
-                                                <i class="fas fa-cog"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a class="dropdown-item" href="#" onclick="updateLineChart('week')">
-                                                        Last Week
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a
-                                                        class="dropdown-item"
-                                                        href="#"
-                                                        onclick="updateLineChart('month')"
-                                                    >
-                                                        Last Month
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="#" onclick="updateLineChart('year')">
-                                                        Last Year
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <span class="badge bg-info">Last 7 months</span>
                                     </div>
                                     <div class="card-body">
                                         <div class="chart-stats">
@@ -144,7 +115,14 @@
                                             </div>
                                         </div>
                                         <div class="chart-container">
-                                            <canvas id="lineChart"></canvas>
+                                            <canvas
+                                                id="lineChart"
+                                                data-chart="line"
+                                                data-labels="January,February,March,April,May,June,July"
+                                                data-values="65,59,80,81,56,55,40;28,48,40,19,86,27,90"
+                                                data-datasets="Revenue,Cost"
+                                                data-colors="info,danger"
+                                            ></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +136,14 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="chart-container">
-                                            <canvas id="barChart"></canvas>
+                                            <canvas
+                                                id="barChart"
+                                                data-chart="bar"
+                                                data-labels="Red,Blue,Yellow,Green,Purple,Orange"
+                                                data-values="12,19,3,5,2,3"
+                                                data-datasets="Sales"
+                                                data-no-legend
+                                            ></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -175,7 +160,12 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="chart-container">
-                                            <canvas id="pieChart"></canvas>
+                                            <canvas
+                                                id="pieChart"
+                                                data-chart="pie"
+                                                data-labels="Electronics,Clothing,Food,Books,Sports"
+                                                data-values="300,50,100,40,120"
+                                            ></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -189,7 +179,13 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="chart-container">
-                                            <canvas id="doughnutChart"></canvas>
+                                            <canvas
+                                                id="doughnutChart"
+                                                data-chart="doughnut"
+                                                data-labels="Desktop,Mobile,Tablet,Other"
+                                                data-values="55,30,10,5"
+                                                data-colors="info,warning,success,secondary"
+                                            ></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -206,7 +202,14 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="chart-container">
-                                            <canvas id="radarChart"></canvas>
+                                            <canvas
+                                                id="radarChart"
+                                                data-chart="radar"
+                                                data-labels="JavaScript,Python,Java,C++,Ruby,PHP"
+                                                data-values="85,70,60,75,50,80;70,85,75,60,70,65"
+                                                data-datasets="Developer A,Developer B"
+                                                data-colors="info,danger"
+                                            ></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -220,7 +223,13 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="chart-container">
-                                            <canvas id="polarAreaChart"></canvas>
+                                            <canvas
+                                                id="polarAreaChart"
+                                                data-chart="polarArea"
+                                                data-labels="Red,Green,Yellow,Grey,Blue"
+                                                data-values="11,16,7,3,14"
+                                                data-colors="danger,success,warning,secondary,info"
+                                            ></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -251,7 +260,14 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="chart-container chart-container-tall">
-                                            <canvas id="areaChart"></canvas>
+                                            <canvas
+                                                id="areaChart"
+                                                data-chart="area"
+                                                data-labels="00:00,04:00,08:00,12:00,16:00,20:00,24:00"
+                                                data-values="30,25,50,75,85,60,45"
+                                                data-datasets="Visitors"
+                                                data-colors="info"
+                                            ></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -299,7 +315,16 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="chart-container chart-container-tall">
-                                            <canvas id="horizontalBarChart"></canvas>
+                                            <canvas
+                                                id="horizontalBarChart"
+                                                data-chart="bar"
+                                                data-horizontal
+                                                data-labels="Product A,Product B,Product C,Product D,Product E"
+                                                data-values="65,59,80,81,56"
+                                                data-datasets="Sales"
+                                                data-colors="primary"
+                                                data-no-legend
+                                            ></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -313,7 +338,15 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="chart-container chart-container-tall">
-                                            <canvas id="stackedBarChart"></canvas>
+                                            <canvas
+                                                id="stackedBarChart"
+                                                data-chart="bar"
+                                                data-stacked
+                                                data-labels="Q1,Q2,Q3,Q4"
+                                                data-values="20,30,40,50;30,25,35,40;15,20,25,30"
+                                                data-datasets="Product A,Product B,Product C"
+                                                data-colors="danger,info,warning"
+                                            ></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -327,195 +360,29 @@
         <!-- Scripts -->
         <script type="module" src="/main.js"></script>
         <script type="module">
+            // Most charts on this page are wired up via `data-chart` attributes
+            // and rendered by ChartManager (src/scripts/components/charts.js).
+            //
+            // The three below (mixed, bubble, scatter) use Chart.js shapes that
+            // don't fit the single-array attribute model — kept as-is to show
+            // when to escape from the declarative wrapper.
             import Chart from 'chart.js/auto';
 
-            // Chart.js configuration
             Chart.defaults.font.family = "'Open Sans', sans-serif";
             Chart.defaults.color = '#6c757d';
 
-            // Common chart options
             const commonOptions = {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         position: 'bottom',
-                        labels: {
-                            padding: 15,
-                            boxWidth: 12
-                        }
+                        labels: { padding: 15, boxWidth: 12 }
                     }
                 }
             };
 
-            // Line Chart
-            const lineChart = new Chart(document.getElementById('lineChart'), {
-                type: 'line',
-                data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                    datasets: [
-                        {
-                            label: 'Revenue',
-                            data: [65, 59, 80, 81, 56, 55, 40],
-                            borderColor: 'rgb(75, 192, 192)',
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            tension: 0.4
-                        },
-                        {
-                            label: 'Cost',
-                            data: [28, 48, 40, 19, 86, 27, 90],
-                            borderColor: 'rgb(255, 99, 132)',
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                            tension: 0.4
-                        }
-                    ]
-                },
-                options: {
-                    ...commonOptions,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-
-            // Bar Chart
-            new Chart(document.getElementById('barChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                    datasets: [
-                        {
-                            label: 'Sales',
-                            data: [12, 19, 3, 5, 2, 3],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.8)',
-                                'rgba(54, 162, 235, 0.8)',
-                                'rgba(255, 206, 86, 0.8)',
-                                'rgba(75, 192, 192, 0.8)',
-                                'rgba(153, 102, 255, 0.8)',
-                                'rgba(255, 159, 64, 0.8)'
-                            ],
-                            borderColor: [
-                                'rgba(255, 99, 132, 1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }
-                    ]
-                },
-                options: {
-                    ...commonOptions,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-
-            // Pie Chart
-            new Chart(document.getElementById('pieChart'), {
-                type: 'pie',
-                data: {
-                    labels: ['Electronics', 'Clothing', 'Food', 'Books', 'Sports'],
-                    datasets: [
-                        {
-                            data: [300, 50, 100, 40, 120],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.8)',
-                                'rgba(54, 162, 235, 0.8)',
-                                'rgba(255, 206, 86, 0.8)',
-                                'rgba(75, 192, 192, 0.8)',
-                                'rgba(153, 102, 255, 0.8)'
-                            ]
-                        }
-                    ]
-                },
-                options: commonOptions
-            });
-
-            // Doughnut Chart
-            new Chart(document.getElementById('doughnutChart'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Desktop', 'Mobile', 'Tablet', 'Other'],
-                    datasets: [
-                        {
-                            data: [55, 30, 10, 5],
-                            backgroundColor: [
-                                'rgba(54, 162, 235, 0.8)',
-                                'rgba(255, 206, 86, 0.8)',
-                                'rgba(75, 192, 192, 0.8)',
-                                'rgba(153, 102, 255, 0.8)'
-                            ]
-                        }
-                    ]
-                },
-                options: {
-                    ...commonOptions,
-                    cutout: '60%'
-                }
-            });
-
-            // Radar Chart
-            new Chart(document.getElementById('radarChart'), {
-                type: 'radar',
-                data: {
-                    labels: ['JavaScript', 'Python', 'Java', 'C++', 'Ruby', 'PHP'],
-                    datasets: [
-                        {
-                            label: 'Developer A',
-                            data: [85, 70, 60, 75, 50, 80],
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)'
-                        },
-                        {
-                            label: 'Developer B',
-                            data: [70, 85, 75, 60, 70, 65],
-                            borderColor: 'rgba(255, 99, 132, 1)',
-                            backgroundColor: 'rgba(255, 99, 132, 0.2)'
-                        }
-                    ]
-                },
-                options: {
-                    ...commonOptions,
-                    scales: {
-                        r: {
-                            beginAtZero: true,
-                            max: 100
-                        }
-                    }
-                }
-            });
-
-            // Polar Area Chart
-            new Chart(document.getElementById('polarAreaChart'), {
-                type: 'polarArea',
-                data: {
-                    labels: ['Red', 'Green', 'Yellow', 'Grey', 'Blue'],
-                    datasets: [
-                        {
-                            data: [11, 16, 7, 3, 14],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.5)',
-                                'rgba(75, 192, 192, 0.5)',
-                                'rgba(255, 206, 86, 0.5)',
-                                'rgba(201, 203, 207, 0.5)',
-                                'rgba(54, 162, 235, 0.5)'
-                            ]
-                        }
-                    ]
-                },
-                options: commonOptions
-            });
-
-            // Mixed Chart
+            // Mixed Chart — bar + line on dual y-axes
             new Chart(document.getElementById('mixedChart'), {
                 type: 'bar',
                 data: {
@@ -553,32 +420,6 @@
                             grid: {
                                 drawOnChartArea: false
                             }
-                        }
-                    }
-                }
-            });
-
-            // Area Chart
-            new Chart(document.getElementById('areaChart'), {
-                type: 'line',
-                data: {
-                    labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
-                    datasets: [
-                        {
-                            label: 'Visitors',
-                            data: [30, 25, 50, 75, 85, 60, 45],
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                            fill: true,
-                            tension: 0.4
-                        }
-                    ]
-                },
-                options: {
-                    ...commonOptions,
-                    scales: {
-                        y: {
-                            beginAtZero: true
                         }
                     }
                 }
@@ -657,108 +498,6 @@
                     }
                 }
             });
-
-            // Horizontal Bar Chart
-            new Chart(document.getElementById('horizontalBarChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Product A', 'Product B', 'Product C', 'Product D', 'Product E'],
-                    datasets: [
-                        {
-                            label: 'Sales',
-                            data: [65, 59, 80, 81, 56],
-                            backgroundColor: 'rgba(153, 102, 255, 0.8)'
-                        }
-                    ]
-                },
-                options: {
-                    ...commonOptions,
-                    indexAxis: 'y',
-                    scales: {
-                        x: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-
-            // Stacked Bar Chart
-            new Chart(document.getElementById('stackedBarChart'), {
-                type: 'bar',
-                data: {
-                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-                    datasets: [
-                        {
-                            label: 'Product A',
-                            data: [20, 30, 40, 50],
-                            backgroundColor: 'rgba(255, 99, 132, 0.8)'
-                        },
-                        {
-                            label: 'Product B',
-                            data: [30, 25, 35, 40],
-                            backgroundColor: 'rgba(54, 162, 235, 0.8)'
-                        },
-                        {
-                            label: 'Product C',
-                            data: [15, 20, 25, 30],
-                            backgroundColor: 'rgba(255, 206, 86, 0.8)'
-                        }
-                    ]
-                },
-                options: {
-                    ...commonOptions,
-                    scales: {
-                        x: {
-                            stacked: true
-                        },
-                        y: {
-                            stacked: true,
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-
-            // Update line chart function
-            window.updateLineChart = function (period) {
-                let newData1, newData2, newLabels;
-
-                switch (period) {
-                    case 'week':
-                        newLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-                        newData1 = [30, 45, 35, 50, 40, 60, 55];
-                        newData2 = [20, 30, 25, 35, 30, 40, 35];
-                        break;
-                    case 'month':
-                        newLabels = ['Week 1', 'Week 2', 'Week 3', 'Week 4'];
-                        newData1 = [200, 250, 180, 300];
-                        newData2 = [150, 180, 140, 220];
-                        break;
-                    case 'year':
-                        newLabels = [
-                            'Jan',
-                            'Feb',
-                            'Mar',
-                            'Apr',
-                            'May',
-                            'Jun',
-                            'Jul',
-                            'Aug',
-                            'Sep',
-                            'Oct',
-                            'Nov',
-                            'Dec'
-                        ];
-                        newData1 = [65, 59, 80, 81, 56, 55, 40, 48, 58, 68, 78, 88];
-                        newData2 = [28, 48, 40, 19, 86, 27, 90, 85, 75, 65, 55, 45];
-                        break;
-                }
-
-                lineChart.data.labels = newLabels;
-                lineChart.data.datasets[0].data = newData1;
-                lineChart.data.datasets[1].data = newData2;
-                lineChart.update();
-            };
         </script>
     </body>
 </html>

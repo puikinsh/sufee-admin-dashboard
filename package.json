@@ -1,7 +1,7 @@
 {
   "name": "sufee-admin-dashboard",
-  "version": "2.2.0",
-  "description": "Responsive Bootstrap 5 Admin Dashboard Template with modern build tools",
+  "version": "3.0.0",
+  "description": "Responsive Bootstrap 5.3 Admin Dashboard Template with design tokens, dark mode, and a component-driven architecture",
   "type": "module",
   "main": "src/main.js",
   "scripts": {
@@ -34,25 +34,26 @@
   ],
   "author": "Aigars Silkalns",
   "license": "MIT",
-  "homepage": "https://colorlib.com/polygon/sufee/index.html",
+  "homepage": "https://preview.colorlib.com/theme/sufee-admin-dashboard/",
   "devDependencies": {
-    "@eslint/js": "^9.36.0",
-    "@vitejs/plugin-legacy": "^7.2.1",
-    "eslint": "^9.36.0",
+    "@eslint/js": "^10.0.1",
+    "@vitejs/plugin-legacy": "^8.0.1",
+    "eslint": "^10.3.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.4",
-    "prettier": "^3.6.2",
-    "sass": "^1.93.2",
-    "vite": "^7.1.11",
-    "vite-plugin-static-copy": "^3.1.3"
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.3",
+    "sass": "^1.99.0",
+    "vite": "^8.0.11",
+    "vite-plugin-handlebars": "^2.0.3",
+    "vite-plugin-static-copy": "^4.1.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.1.0",
+    "@fontsource-variable/open-sans": "^5.2.7",
+    "@fortawesome/fontawesome-free": "^7.2.0",
     "bootstrap": "^5.3.8",
-    "chart.js": "^4.5.0",
-    "flag-icons": "^7.2.3",
-    "leaflet": "^1.9.4",
-    "themify-icons": "^1.0.0"
+    "chart.js": "^4.5.1",
+    "flag-icons": "^7.5.0",
+    "leaflet": "^1.9.4"
   },
   "bugs": {
     "url": "https://github.com/sarangaem/sufee-admin-dashboard/issues"

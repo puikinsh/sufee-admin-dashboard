@@ -1,11 +1,11 @@
 // Button Component Styles
 
 .btn {
-  border-radius: 0;
-  transition: all 0.15s ease-in-out;
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
 
-  &:focus {
-    box-shadow: none !important;
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
     outline: 0;
   }
 
@@ -65,6 +65,131 @@
     &.btn-warning,
     &.btn-light {
       color: rgba(33, 37, 41, 0.5) !important;
+    }
+  }
+}
+
+// =====================================================================
+// Social media brand-colored buttons (.btn-social.btn-{network})
+// =====================================================================
+$social-brands: (
+  facebook: (
+    #1877f2,
+    #166fe5,
+    white
+  ),
+  x: (
+    #000000,
+    #333333,
+    white
+  ),
+  twitter: (
+    #000000,
+    #333333,
+    white
+  ),
+  linkedin: (
+    #0077b5,
+    #006ba1,
+    white
+  ),
+  tiktok: (
+    #000000,
+    #ff0050,
+    white
+  ),
+  youtube: (
+    #ff0000,
+    #e60000,
+    white
+  ),
+  discord: (
+    #5865f2,
+    #4752c4,
+    white
+  ),
+  slack: (
+    #4a154b,
+    #611f69,
+    white
+  ),
+  snapchat: (
+    #fffc00,
+    #e6e300,
+    #000000
+  ),
+  whatsapp: (
+    #25d366,
+    #20b85a,
+    white
+  ),
+  telegram: (
+    #0088cc,
+    #0077b3,
+    white
+  ),
+  reddit: (
+    #ff4500,
+    #e63e00,
+    white
+  ),
+  pinterest: (
+    #bd081c,
+    #a40717,
+    white
+  ),
+  twitch: (
+    #9146ff,
+    #7c3aed,
+    white
+  ),
+  github: (
+    #333333,
+    #24292e,
+    white
+  ),
+  spotify: (
+    #1ed760,
+    #1bc653,
+    #000000
+  )
+);
+
+.btn-social {
+  transition: var(--transition-slow);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  @each $name, $colors in $social-brands {
+    $bg: nth($colors, 1);
+    $bg-hover: nth($colors, 2);
+    $fg: nth($colors, 3);
+
+    &.btn-#{$name} {
+      background-color: $bg;
+      border-color: $bg;
+      color: $fg;
+
+      &:hover {
+        background-color: $bg-hover;
+        border-color: $bg-hover;
+        color: $fg;
+      }
+    }
+  }
+
+  // Instagram — gradient (special-cased)
+  &.btn-instagram {
+    background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+    border: none;
+    color: white;
+
+    &:hover {
+      background: linear-gradient(45deg, #7a349f, #e01a1a, #e39d3e);
+      color: white;
     }
   }
 }

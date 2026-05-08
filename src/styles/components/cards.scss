@@ -1,8 +1,38 @@
 // Card Component Styles
 
 .card {
-  border-radius: 0;
+  border: 0;
+  border-radius: var(--radius-md);
   margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  // In dark mode shadows alone don't read on dark surfaces — add a thin border.
+  [data-bs-theme='dark'] & {
+    border: 1px solid var(--bs-border-color);
+  }
+
+  // Themed background variants — keep `!important` so utility classes
+  // applied alongside (e.g. text-white) don't get overridden by Bootstrap's
+  // _root.scss default `--bs-card-bg`.
+  &.bg-primary {
+    background-color: var(--bs-primary) !important;
+  }
+  &.bg-danger {
+    background-color: var(--bs-danger) !important;
+  }
+  &.bg-warning {
+    background-color: var(--bs-warning) !important;
+  }
+  &.bg-success {
+    background-color: var(--bs-success) !important;
+  }
 
   .card-header {
     .card-actions {
@@ -18,4 +48,88 @@
       }
     }
   }
+}
+
+// Circular icon used in stat cards (e.g. dollar sign, user, chart-bar).
+// Specificity is intentional — the icon-circle is often nested in
+// .card-body, where Bootstrap utilities can otherwise win.
+.icon-circle,
+.card .icon-circle,
+.card-body .icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+
+  i {
+    font-size: 18px;
+    color: white;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  &.bg-success {
+    background-color: var(--bs-success);
+  }
+  &.bg-primary {
+    background-color: var(--bs-primary);
+  }
+  &.bg-warning {
+    background-color: var(--bs-warning);
+  }
+  &.bg-danger {
+    background-color: var(--bs-danger);
+  }
+  &.bg-info {
+    background-color: var(--bs-info);
+  }
+}
+
+// Social media branded cards (gradient backgrounds)
+.social-card {
+  &.social-facebook {
+    background: linear-gradient(135deg, #3b5998, #4e69a2);
+  }
+  &.social-twitter {
+    background: linear-gradient(135deg, #00aced, #1dcaff);
+  }
+  &.social-x {
+    background: linear-gradient(135deg, #000000, #333333);
+  }
+  &.social-linkedin {
+    background: linear-gradient(135deg, #4875b4, #5a87c7);
+  }
+  &.social-google {
+    background: linear-gradient(135deg, #d34836, #e05d4e);
+  }
+  &.social-instagram {
+    background: linear-gradient(135deg, #833ab4, #fd1d1d);
+  }
+}
+
+// Twitter card (legacy gradient header)
+.twitter-card .card-header {
+  background: linear-gradient(135deg, #17a2b8, #20c3db);
+}
+
+// X (formerly Twitter) themed card
+.x-card .card-header {
+  background: #000000;
+}
+
+.x-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.x-icon,
+.x-icon-small {
+  color: white;
+  fill: currentColor;
 }

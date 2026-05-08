@@ -33,7 +33,7 @@ export class WorldMap {
 
       // Create the actual map
       this.createMap();
-    } catch (error) {
+    } catch {
       // Failed to initialize world map
       this.showFallback();
     }
@@ -99,7 +99,6 @@ export class WorldMap {
 
   createMap() {
     // Check if we're inside a card body - if so, we need to work within the card structure
-    const cardBody = this.container.closest('.card-body');
     const card = this.container.closest('.card');
 
     if (card) {
@@ -271,7 +270,7 @@ export class WorldMap {
     // Add click handlers for mini country cards in the footer
     const countryMinis = card.querySelectorAll('.country-mini');
     countryMinis.forEach(mini => {
-      mini.addEventListener('click', e => {
+      mini.addEventListener('click', () => {
         const countryCode = mini.dataset.country;
         const country = this.data.find(c => c.code === countryCode);
         if (country) {

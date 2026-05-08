@@ -1,0 +1,165 @@
+// Error pages (404, 500, etc.) — shared shell.
+//
+// Markup pattern (see error-404.html):
+//   <body class="error-page">
+//     <div class="error-card">
+//       <div class="error-illustration"><i class="fas fa-search"></i></div>
+//       <div class="error-number">404</div>
+//       <h1 class="error-title">...</h1>
+//       <p class="error-message">...</p>
+//       <div class="error-suggestions">...</div>
+//       <div class="error-actions">...</div>
+//     </div>
+//   </body>
+
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+  padding: 2rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.error-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+  }
+}
+
+.error-illustration {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 1.5rem;
+  border-radius: var(--radius-circle);
+  background: rgba(32, 168, 216, 0.12);
+  color: var(--bs-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+.error-number {
+  font-size: 6rem;
+  font-weight: 800;
+  color: var(--bs-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.04em;
+
+  @media (max-width: 575.98px) {
+    font-size: 4.5rem;
+  }
+}
+
+.error-title {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem;
+}
+
+.error-message {
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  margin: 0 0 1.5rem;
+  line-height: 1.7;
+}
+
+.error-suggestions {
+  background: #f8f9fa;
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+
+  h5 {
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin: 0 0 0.625rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.7;
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  a {
+    color: var(--bs-primary);
+    font-weight: 500;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  justify-content: center;
+
+  .btn-error {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-fast);
+    border: 1.5px solid transparent;
+    cursor: pointer;
+
+    &.btn-error-primary {
+      background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+      color: white;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md);
+        color: white;
+      }
+    }
+
+    &.btn-error-secondary {
+      background: white;
+      border-color: #e9ecef;
+      color: var(--text-primary);
+
+      &:hover {
+        border-color: var(--bs-primary);
+        color: var(--bs-primary);
+      }
+    }
+  }
+}

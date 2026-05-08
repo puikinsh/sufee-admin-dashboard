@@ -1,0 +1,27 @@
+{{!--
+  Compact stat card with a circular icon on the left and a label/value pair on the right.
+
+  Usage: {{> icon-stat-card color="success" icon="fa-dollar-sign" label="Total Profit" value="1,012"}}
+
+  Props:
+    color  — Bootstrap theme color (success | primary | warning | danger | info)
+             Drives the icon-circle background.
+    icon   — Font Awesome v6/7 icon class (without "fas " prefix). e.g. "fa-user".
+    label  — Caption above the value
+    value  — The number/string to display
+--}}
+<div class="col-12">
+    <div class="card">
+        <div class="card-body d-flex align-items-center">
+            <div class="me-3">
+                <div class="icon-circle bg-{{color}}">
+                    <i class="fas {{icon}} text-white"></i>
+                </div>
+            </div>
+            <div>
+                <div class="text-muted small">{{label}}</div>
+                <h5 class="mb-0">{{value}}</h5>
+            </div>
+        </div>
+    </div>
+</div>

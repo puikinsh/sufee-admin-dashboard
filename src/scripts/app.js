@@ -2,7 +2,6 @@
 
 import { UserMenu } from './components/user-menu.js';
 import { ThemeManager } from './components/theme-manager.js';
-import { DOM } from './utils/dom.js';
 
 export class App {
   constructor() {
@@ -22,16 +21,14 @@ export class App {
     this.setupEventListeners();
     this.handleResponsive();
     this.initialized = true;
+  }
 
-    // Listen for header loaded to setup sidebar controls
-    document.addEventListener('partialLoaded', event => {
-      if (event.detail.partialName === 'header') {
-        // Small delay to ensure DOM is fully updated
-        setTimeout(() => {
-          this.setupSidebarControlsOnce();
-        }, 100);
-      }
-    });
+  // Called by main.js after `partialsLoader.loadAllPartials()` resolves.
+  // The header DOM (#sidebarToggleDesktop, #sidebarToggleMobile, etc.) is
+  // guaranteed to exist by the time we get here — no setTimeout needed.
+  onPartialsReady() {
+    this.setupSidebarControlsOnce();
+    this.components.get('theme')?.bindToggle();
   }
 
   initializeComponents() {
@@ -44,18 +41,12 @@ export class App {
 
     // Load page-specific components
     this.loadPageComponents();
-
-    // Note: Navigation and Search functionality is handled by partials-loader.js
-    // after the partials are loaded to prevent timing conflicts
   }
 
   initializeBootstrapComponents() {
-    // Wait for Bootstrap to be available
     if (typeof window.bootstrap === 'undefined') {
       return;
     }
-
-    // Note: Bootstrap collapse disabling is handled by Navigation component
 
     // Initialize tooltips
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
@@ -70,73 +61,55 @@ export class App {
     });
   }
 
+  // Component registry: each entry is matched against the DOM. If any element
+  // matching `selector` exists, the loader runs. Adding a new component =
+  // append a single entry; no central switch statement to maintain.
+  static COMPONENT_REGISTRY = [
+    {
+      name: 'widgets',
+      selector: '[id^="widgetChart"], #trafficChart, #worldMap',
+      load: async app => {
+        const { WidgetManager } = await import('./components/widgets.js');
+        app.components.set('widgets', new WidgetManager());
+      }
+    },
+    {
+      name: 'charts',
+      selector: '[data-chart]',
+      load: async app => {
+        const { ChartManager } = await import('./components/charts.js');
+        app.components.set('charts', new ChartManager());
+      }
+    },
+    {
+      name: 'tables',
+      selector: '[data-table]',
+      load: async app => {
+        const { DataTable } = await import('./components/datatable.js');
+        document.querySelectorAll('[data-table]').forEach((table, i) => {
+          app.components.set(`table-${i}`, new DataTable(table));
+        });
+      }
+    },
+    {
+      name: 'forms',
+      selector: 'form[data-validate]',
+      load: async app => {
+        const { FormValidator } = await import('./components/validation.js');
+        document.querySelectorAll('form[data-validate]').forEach((form, i) => {
+          app.components.set(`form-${i}`, new FormValidator(form));
+        });
+      }
+    }
+  ];
+
   loadPageComponents() {
-    const body = document.body;
-    const pageType = body.dataset.page || 'default';
-
-    // Dynamically load components based on page type
-    switch (pageType) {
-      case 'dashboard':
-        this.loadDashboardComponents();
-        break;
-      case 'charts':
-        this.loadChartComponents();
-        break;
-      case 'tables':
-        this.loadTableComponents();
-        break;
-      case 'forms':
-        this.loadFormComponents();
-        break;
-      default:
-        // Load basic components for all pages
-        break;
-    }
-  }
-
-  async loadDashboardComponents() {
-    try {
-      const { WidgetManager } = await import('./components/widgets.js');
-      this.components.set('widgets', new WidgetManager());
-    } catch (error) {
-      // Silently fail
-    }
-  }
-
-  async loadChartComponents() {
-    try {
-      const { ChartManager } = await import('./components/charts.js');
-      this.components.set('charts', new ChartManager());
-    } catch (error) {
-      // Silently fail
-    }
-  }
-
-  async loadTableComponents() {
-    try {
-      const { DataTable } = await import('./components/datatable.js');
-
-      // Initialize all data tables on the page
-      const tables = document.querySelectorAll('[data-table]');
-      tables.forEach((table, index) => {
-        this.components.set(`table-${index}`, new DataTable(table));
-      });
-    } catch (error) {
-      // Silently fail
-    }
-  }
-
-  async loadFormComponents() {
-    try {
-      const { FormValidator } = await import('./components/validation.js');
-
-      // Initialize forms with validation
-      const forms = document.querySelectorAll('form[data-validate]');
-      forms.forEach((form, index) => {
-        this.components.set(`form-${index}`, new FormValidator(form));
-      });
-    } catch (error) {
-      // Silently fail
+    for (const entry of App.COMPONENT_REGISTRY) {
+      if (document.querySelector(entry.selector)) {
+        entry.load(this).catch(() => {
+          // Component failed to load — page degrades gracefully.
+        });
+      }
     }
   }
 
@@ -357,20 +330,12 @@ export class App {
     const sidebar = document.getElementById('sidebar');
     const backdrop = this.getOrCreateBackdrop();
 
-    if (sidebar) {
-      sidebar.classList.add('show');
-      // Force the transform style directly
-      sidebar.style.transform = 'translateX(0)';
-      sidebar.style.position = 'fixed';
-      sidebar.style.top = '0';
-      sidebar.style.left = '0';
-      sidebar.style.zIndex = '1050';
-    }
-
-    if (backdrop) {
-      backdrop.classList.add('show');
-    }
-
+    // Class-only toggle — the mobile fixed-position + transform rules live in
+    // components/sidebar.scss (@media max-width: 991.98px). Setting inline
+    // styles here would survive the resize back to desktop and hide the
+    // sidebar permanently.
+    sidebar?.classList.add('show');
+    backdrop?.classList.add('show');
     document.body.style.overflow = 'hidden';
   }
 
@@ -378,16 +343,8 @@ export class App {
     const sidebar = document.getElementById('sidebar');
     const backdrop = document.querySelector('.sidebar-backdrop');
 
-    if (sidebar) {
-      sidebar.classList.remove('show');
-      // Force the transform style directly for close
-      sidebar.style.transform = 'translateX(-100%)';
-    }
-
-    if (backdrop) {
-      backdrop.classList.remove('show');
-    }
-
+    sidebar?.classList.remove('show');
+    backdrop?.classList.remove('show');
     document.body.style.overflow = '';
   }
 
@@ -427,9 +384,19 @@ export class App {
       this.closeMobileSidebar();
     }
 
-    // If switching from mobile to desktop
+    // If switching from mobile to desktop, clear any inline styles a previous
+    // version of the toggle code may have left on the sidebar — those would
+    // outrank the desktop CSS rules and keep the sidebar off-screen.
     if (wasMobile && !this.isMobile) {
       this.closeMobileSidebar();
+      const sidebar = document.getElementById('sidebar');
+      if (sidebar) {
+        sidebar.style.transform = '';
+        sidebar.style.position = '';
+        sidebar.style.top = '';
+        sidebar.style.left = '';
+        sidebar.style.zIndex = '';
+      }
       this.restoreSidebarState();
     }
   }
@@ -480,7 +447,7 @@ export class App {
     });
   }
 
-  handlePopState(event) {
+  handlePopState(_event) {
     // Handle browser navigation if needed
   }
 

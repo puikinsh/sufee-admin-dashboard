@@ -1,0 +1,40 @@
+{{!--
+  Social media card with brand background and two stats.
+
+  Usage:
+    {{> social-card brand="facebook" iconClass="fab fa-facebook fa-3x"
+        primaryValue="40k"  primaryLabel="Friends"
+        secondaryValue="450" secondaryLabel="Feeds"}}
+
+  Props:
+    brand           — facebook | twitter | x | linkedin | google | instagram
+                      (matches a .social-{{brand}} CSS class)
+    iconClass       — Font Awesome icon classes (e.g. "fab fa-facebook fa-3x").
+                      Optional — omit and pass `iconHtml` for custom SVG icons (X / Twitter).
+    iconHtml        — Raw HTML for the icon (use {{{iconHtml}}} triple-stash inside).
+    primaryValue    — Big stat #1
+    primaryLabel    — Caption #1
+    secondaryValue  — Big stat #2
+    secondaryLabel  — Caption #2
+--}}
+<div class="col-lg-3 col-md-6">
+    <div class="card social-card social-{{brand}}">
+        <div class="card-body text-center">
+            {{#if iconClass}}
+                <i class="{{iconClass}} text-white mb-3"></i>
+            {{else}}
+                <div class="x-icon-wrapper mb-3">{{{iconHtml}}}</div>
+            {{/if}}
+            <div class="row">
+                <div class="col-6">
+                    <h4 class="text-white">{{primaryValue}}</h4>
+                    <p class="text-white-50">{{primaryLabel}}</p>
+                </div>
+                <div class="col-6">
+                    <h4 class="text-white">{{secondaryValue}}</h4>
+                    <p class="text-white-50">{{secondaryLabel}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

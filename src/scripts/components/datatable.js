@@ -115,12 +115,7 @@ export class DataTable {
       const aNum = parseFloat(aVal.replace(/[^0-9.-]/g, ''));
       const bNum = parseFloat(bVal.replace(/[^0-9.-]/g, ''));
 
-      let comparison = 0;
-      if (!isNaN(aNum) && !isNaN(bNum)) {
-        comparison = aNum - bNum;
-      } else {
-        comparison = aVal.localeCompare(bVal);
-      }
+      const comparison = !isNaN(aNum) && !isNaN(bNum) ? aNum - bNum : aVal.localeCompare(bVal);
 
       return this.sortDirection === 'asc' ? comparison : -comparison;
     });

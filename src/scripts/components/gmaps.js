@@ -106,7 +106,7 @@ class GoogleMapsManager {
     });
 
     // Rectangle
-    const rectangle = new google.maps.Rectangle({
+    new google.maps.Rectangle({
       strokeColor: '#0d6efd',
       strokeOpacity: 0.8,
       strokeWeight: 2,
@@ -114,22 +114,22 @@ class GoogleMapsManager {
       fillOpacity: 0.35,
       map: this.maps.geometry,
       bounds: {
-        north: -12.030397656836609,
-        south: -12.034804866577001,
-        east: -77.01154422636042,
-        west: -77.02373871559225
+        north: -12.030398,
+        south: -12.034805,
+        east: -77.011544,
+        west: -77.023739
       }
     });
 
     // Polygon
     const triangleCoords = [
-      { lat: -12.040397656836609, lng: -77.03373871559225 },
-      { lat: -12.040248585302038, lng: -77.03993927003302 },
-      { lat: -12.050047116528843, lng: -77.02448169303511 },
-      { lat: -12.044804866577001, lng: -77.02154422636042 }
+      { lat: -12.040398, lng: -77.033739 },
+      { lat: -12.040249, lng: -77.039939 },
+      { lat: -12.050047, lng: -77.024482 },
+      { lat: -12.044805, lng: -77.021544 }
     ];
 
-    const polygon = new google.maps.Polygon({
+    new google.maps.Polygon({
       paths: triangleCoords,
       strokeColor: '#198754',
       strokeOpacity: 0.8,
@@ -140,21 +140,21 @@ class GoogleMapsManager {
     });
 
     // Circle
-    const circle = new google.maps.Circle({
+    new google.maps.Circle({
       strokeColor: '#6f42c1',
       strokeOpacity: 0.8,
       strokeWeight: 2,
       fillColor: '#6f42c1',
       fillOpacity: 0.35,
       map: this.maps.geometry,
-      center: { lat: -12.040504866577001, lng: -77.02024422636042 },
+      center: { lat: -12.040505, lng: -77.020244 },
       radius: 350
     });
 
     // Fit bounds to show all shapes
     const bounds = new google.maps.LatLngBounds();
-    bounds.extend({ lat: -12.030397656836609, lng: -77.03993927003302 });
-    bounds.extend({ lat: -12.050047116528843, lng: -77.01154422636042 });
+    bounds.extend({ lat: -12.030398, lng: -77.039939 });
+    bounds.extend({ lat: -12.050047, lng: -77.011544 });
     this.maps.geometry.fitBounds(bounds);
   }
 

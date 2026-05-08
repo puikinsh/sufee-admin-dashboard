@@ -2,6 +2,15 @@
 import { WorldMap } from './world-map.js';
 
 export class WidgetManager {
+  // Fallback datasets used when a widget canvas has no `data-values` attribute.
+  // Indexed by the canvas's 1-based position; cycles for canvases beyond the 4th.
+  static DEFAULT_CHART_DATA = [
+    [65, 59, 84, 84, 51, 55, 40, 65, 59, 84],
+    [28, 48, 40, 59, 86, 27, 90, 28, 48, 40],
+    [45, 25, 16, 36, 67, 18, 76, 45, 25, 16],
+    [12, 19, 27, 43, 52, 31, 48, 12, 19, 27]
+  ];
+
   constructor() {
     this.widgets = new Map();
     this.charts = new Map();
@@ -23,65 +32,111 @@ export class WidgetManager {
   }
 
   async loadChartJS() {
-    try {
-      // Dynamically import Chart.js with all components
-      const chartModule = await import('chart.js');
-      this.Chart = chartModule.Chart;
+    // Dynamically import Chart.js with all components
+    const chartModule = await import('chart.js');
+    this.Chart = chartModule.Chart;
 
-      // Register all Chart.js components
-      this.Chart.register(...chartModule.registerables);
-
-      // Chart.js loaded successfully
-    } catch (error) {
-      // Failed to load Chart.js
-      throw error;
-    }
+    // Register all Chart.js components
+    this.Chart.register(...chartModule.registerables);
   }
 
   initializeCounters() {
-    // Initialize animated counters
-    const counters = document.querySelectorAll('.count, .card-title');
-    counters.forEach(counter => {
-      if (counter.textContent.match(/^\d/)) {
-        this.animateCounter(counter);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const candidates = document.querySelectorAll('.count, .card-title');
+
+    const targets = [];
+    for (const el of candidates) {
+      const text = el.textContent.trim();
+      if (!/^\d/.test(text)) {
+        continue;
       }
-    });
+      const target = parseInt(text.replace(/,/g, ''), 10);
+      if (!Number.isFinite(target)) {
+        continue;
+      }
+      el.dataset.counterTarget = String(target);
+      targets.push(el);
+    }
+
+    if (reduceMotion || targets.length === 0) {
+      // The static text already shows the target — leave it.
+      return;
+    }
+
+    // Animate only when the element scrolls into view (one-shot per element).
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) {
+            continue;
+          }
+          this.runCounterAnimation(entry.target);
+          obs.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    for (const el of targets) {
+      observer.observe(el);
+    }
   }
 
-  animateCounter(element) {
-    const target = parseInt(element.textContent.replace(/,/g, ''));
-    const duration = 2000; // 2 seconds
-    const step = target / (duration / 16); // 60fps
+  runCounterAnimation(element) {
+    const target = Number(element.dataset.counterTarget);
+    if (!Number.isFinite(target)) {
+      return;
+    }
+    const duration = 1500;
+    const start = performance.now();
+    element.textContent = '0';
 
-    let current = 0;
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
+    const tick = now => {
+      const progress = Math.min(1, (now - start) / duration);
+      // Quadratic ease-out
+      const eased = 1 - (1 - progress) * (1 - progress);
+      element.textContent = Math.floor(target * eased).toLocaleString();
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        element.textContent = target.toLocaleString();
       }
-      element.textContent = Math.floor(current).toLocaleString();
-    }, 16);
+    };
+
+    requestAnimationFrame(tick);
   }
 
-  async initializeWidgetCharts() {
+  initializeWidgetCharts() {
     if (!this.Chart) {
       // Chart.js not loaded, skipping widget charts
       return;
     }
 
-    // Find all widget chart canvases
     const chartElements = document.querySelectorAll('[id^="widgetChart"]');
-
-    // Found widget chart canvases
 
     chartElements.forEach((canvas, index) => {
       try {
         this.createWidgetChart(canvas, index + 1);
-      } catch (error) {
+      } catch {
         // Failed to create widget chart
       }
     });
+  }
+
+  // Read chart values from `data-values="65,59,84,..."` on the canvas, or
+  // fall back to a built-in dataset keyed by 1-based widget index.
+  resolveWidgetChartValues(canvas, index) {
+    const attr = canvas.dataset.values;
+    if (attr) {
+      const parsed = attr
+        .split(',')
+        .map(s => Number(s.trim()))
+        .filter(n => Number.isFinite(n));
+      if (parsed.length > 0) {
+        return parsed;
+      }
+    }
+    return WidgetManager.DEFAULT_CHART_DATA[(index - 1) % WidgetManager.DEFAULT_CHART_DATA.length];
   }
 
   createWidgetChart(canvas, index) {
@@ -101,8 +156,8 @@ export class WidgetManager {
       this.charts.get(canvas.id).destroy();
     }
 
-    // Generate chart data
-    const data = this.generateWidgetChartData(index);
+    const values = this.resolveWidgetChartValues(canvas, index);
+    const data = this.buildWidgetChartData(values);
 
     // Creating widget chart
 
@@ -159,22 +214,12 @@ export class WidgetManager {
     // Widget chart created successfully
   }
 
-  generateWidgetChartData(index) {
-    // Different datasets for each widget
-    const datasets = [
-      { data: [65, 59, 84, 84, 51, 55, 40, 65, 59, 84] }, // Primary widget
-      { data: [28, 48, 40, 59, 86, 27, 90, 28, 48, 40] }, // Danger widget
-      { data: [45, 25, 16, 36, 67, 18, 76, 45, 25, 16] }, // Warning widget
-      { data: [12, 19, 27, 43, 52, 31, 48, 12, 19, 27] } // Success widget
-    ];
-
-    const selectedData = datasets[index - 1] || datasets[0];
-
+  buildWidgetChartData(values) {
     return {
-      labels: Array(selectedData.data.length).fill(''),
+      labels: Array(values.length).fill(''),
       datasets: [
         {
-          data: selectedData.data,
+          data: values,
           borderColor: 'rgba(255, 255, 255, 0.8)',
           backgroundColor: 'rgba(255, 255, 255, 0.1)',
           fill: false,
@@ -185,7 +230,7 @@ export class WidgetManager {
     };
   }
 
-  async initializeTrafficChart() {
+  initializeTrafficChart() {
     const trafficCanvas = document.getElementById('trafficChart');
     if (!trafficCanvas || !this.Chart) {
       return;
@@ -273,7 +318,7 @@ export class WidgetManager {
 
       this.charts.set('trafficChart', chart);
       // Traffic chart created successfully
-    } catch (error) {
+    } catch {
       // Failed to initialize traffic chart
     }
   }
@@ -287,7 +332,7 @@ export class WidgetManager {
     });
   }
 
-  async initializeWorldMap() {
+  initializeWorldMap() {
     const worldMapContainer = document.getElementById('worldMap');
     if (!worldMapContainer) {
       // World map container not found
@@ -303,7 +348,7 @@ export class WidgetManager {
 
       this.widgets.set('worldMap', worldMap);
       // World map initialized successfully
-    } catch (error) {
+    } catch {
       // Failed to initialize world map
       // Show fallback content
       worldMapContainer.innerHTML = `

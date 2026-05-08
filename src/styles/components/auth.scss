@@ -1,0 +1,305 @@
+// Auth shell — shared layout for login, register, and forgot-password pages.
+//
+// Markup pattern (see partials/auth-shell.html or page-login.html):
+//   <body class="auth-page">
+//     <div class="auth-card">
+//       <header class="auth-hero">
+//         <img class="auth-logo" src="...">
+//         <h1 class="auth-title">...</h1>
+//         <p class="auth-subtitle">...</p>
+//       </header>
+//       <div class="auth-body">
+//         <form>...</form>
+//       </div>
+//       <footer class="auth-footer">...</footer>
+//     </div>
+//   </body>
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // Brand-aligned gradient (uses theme primary + info)
+  background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+  padding: 1.25rem;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.auth-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  max-width: 460px;
+  width: 100%;
+}
+
+.auth-hero {
+  background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+  padding: 2.25rem 1.875rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+.auth-logo {
+  max-height: 56px;
+  margin-bottom: 1rem;
+  filter: brightness(0) invert(1);
+}
+
+.auth-icon-circle {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 1rem;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-circle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.875rem;
+  color: white;
+}
+
+.auth-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.auth-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.875rem;
+  margin: 0.4rem 0 0;
+}
+
+.auth-body {
+  padding: 2.25rem 1.875rem;
+}
+
+.auth-description {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+// Inputs: rounded, comfortable padding, brand focus ring
+.auth-page .form-floating {
+  margin-bottom: 1.125rem;
+
+  > .form-control {
+    border: 1.5px solid #e9ecef;
+    border-radius: var(--radius-md);
+    padding: 1rem 0.875rem;
+    height: auto;
+    font-size: 0.9rem;
+    transition: var(--transition-fast);
+
+    &:focus {
+      border-color: var(--bs-primary);
+      box-shadow: var(--focus-ring);
+    }
+  }
+
+  > label {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+}
+
+.auth-page .form-check {
+  margin-bottom: 1.5rem;
+
+  .form-check-input {
+    border-radius: var(--radius-sm);
+    border: 1.5px solid #e9ecef;
+
+    &:checked {
+      background-color: var(--bs-primary);
+      border-color: var(--bs-primary);
+    }
+
+    &:focus {
+      box-shadow: var(--focus-ring);
+    }
+  }
+
+  .form-check-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+}
+
+// Primary CTA — full-width, brand color, subtle hover lift
+.auth-btn {
+  width: 100%;
+  padding: 0.875rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 0;
+  background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+  color: white;
+  transition: var(--transition-fast);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+    color: white;
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+    outline: 0;
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+// Divider with text ("or continue with")
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e9ecef;
+  }
+
+  &::before {
+    margin-right: 0.875rem;
+  }
+  &::after {
+    margin-left: 0.875rem;
+  }
+}
+
+// Social login row
+.auth-social-row {
+  display: flex;
+  gap: 0.625rem;
+  margin-bottom: 1.5rem;
+
+  .auth-social-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border: 1.5px solid #e9ecef;
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition-fast);
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--bs-primary);
+      color: var(--bs-primary);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+.auth-footer {
+  padding: 1.25rem 1.875rem;
+  text-align: center;
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+
+  a {
+    color: var(--bs-primary);
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Password strength meter (used on the register page)
+.auth-password-strength {
+  margin-top: 0.5rem;
+
+  .strength-bar {
+    height: 4px;
+    background: #e9ecef;
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    margin-bottom: 0.25rem;
+  }
+
+  .strength-fill {
+    height: 100%;
+    width: 0;
+    background: var(--bs-danger);
+    transition:
+      width var(--transition-base),
+      background-color var(--transition-base);
+    border-radius: var(--radius-pill);
+
+    &.is-weak {
+      width: 33%;
+      background: var(--bs-danger);
+    }
+    &.is-medium {
+      width: 66%;
+      background: var(--bs-warning);
+    }
+    &.is-strong {
+      width: 100%;
+      background: var(--bs-success);
+    }
+  }
+
+  .strength-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+  }
+}
+
+// Success/error messages used on forgot-password etc.
+.auth-message {
+  padding: 0.875rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  display: none;
+
+  &.is-visible {
+    display: block;
+  }
+
+  &.is-success {
+    background: rgba(77, 189, 116, 0.12);
+    border-left: 3px solid var(--bs-success);
+    color: #1f6f3e;
+  }
+
+  &.is-error {
+    background: rgba(248, 108, 107, 0.12);
+    border-left: 3px solid var(--bs-danger);
+    color: #8a2828;
+  }
+}

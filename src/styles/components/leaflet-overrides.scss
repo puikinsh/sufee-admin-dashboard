@@ -48,8 +48,8 @@
 
 // Popup styling
 .leaflet-popup-content-wrapper {
-  border-radius: 8px;
-  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
 
   .leaflet-popup-content {
     margin: 8px;
@@ -62,8 +62,8 @@
 
 // Country mini cards in footer
 .country-mini {
-  transition: all 0.2s ease;
-  border-radius: 4px;
+  transition: var(--transition-fast);
+  border-radius: var(--radius-sm);
   padding: 4px !important;
 
   &:hover {

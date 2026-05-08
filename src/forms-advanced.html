@@ -834,7 +834,7 @@
                         fileList.innerHTML = files
                             .map(
                                 file => `
-                        <div class="d-flex align-items-center justify-content-between mt-2 p-2 bg-light rounded">
+                        <div class="d-flex align-items-center justify-content-between mt-2 p-2 bg-body-tertiary rounded">
                             <span><i class="fas fa-file me-2"></i>${file.name}</span>
                             <small class="text-muted">${(file.size / 1024).toFixed(2)} KB</small>
                         </div>
@@ -986,11 +986,11 @@
                     });
 
                     function highlight(e) {
-                        dropZone.classList.add('bg-light');
+                        dropZone.classList.add('bg-body-tertiary');
                     }
 
                     function unhighlight(e) {
-                        dropZone.classList.remove('bg-light');
+                        dropZone.classList.remove('bg-body-tertiary');
                     }
 
                     dropZone.addEventListener('drop', handleDrop, false);

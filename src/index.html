@@ -36,212 +36,52 @@
 
                         <!-- Widget Cards -->
                         <div class="row g-4 mb-4">
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="card text-white bg-primary">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                            <div>
-                                                <h4 class="card-title">10,468</h4>
-                                                <p class="card-text">Members online</p>
-                                            </div>
-                                            <div class="dropdown">
-                                                <button class="btn btn-link text-white p-0" data-bs-toggle="dropdown">
-                                                    <i class="fas fa-cog"></i>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <a class="dropdown-item" href="#">Something else</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-3">
-                                            <canvas id="widgetChart1" height="70"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="card text-white bg-danger">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                            <div>
-                                                <h4 class="card-title">10,468</h4>
-                                                <p class="card-text">Members online</p>
-                                            </div>
-                                            <div class="dropdown">
-                                                <button class="btn btn-link text-white p-0" data-bs-toggle="dropdown">
-                                                    <i class="fas fa-cog"></i>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <a class="dropdown-item" href="#">Something else</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-3">
-                                            <canvas id="widgetChart2" height="70"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="card text-white bg-warning">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                            <div>
-                                                <h4 class="card-title">10,468</h4>
-                                                <p class="card-text">Members online</p>
-                                            </div>
-                                            <div class="dropdown">
-                                                <button class="btn btn-link text-white p-0" data-bs-toggle="dropdown">
-                                                    <i class="fas fa-cog"></i>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <a class="dropdown-item" href="#">Something else</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-3">
-                                            <canvas id="widgetChart3" height="70"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="card text-white bg-success">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-start">
-                                            <div>
-                                                <h4 class="card-title">10,468</h4>
-                                                <p class="card-text">Members online</p>
-                                            </div>
-                                            <div class="dropdown">
-                                                <button class="btn btn-link text-white p-0" data-bs-toggle="dropdown">
-                                                    <i class="fas fa-cog"></i>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <a class="dropdown-item" href="#">Something else</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-3">
-                                            <canvas id="widgetChart4" height="70"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {{> stat-card color="primary" value="10,468" label="Members online"
+                                chartId="widgetChart1" chartValues="65,59,84,84,51,55,40,65,59,84"}}
+                            {{> stat-card color="danger"  value="10,468" label="Members online"
+                                chartId="widgetChart2" chartValues="28,48,40,59,86,27,90,28,48,40"}}
+                            {{> stat-card color="warning" value="10,468" label="Members online"
+                                chartId="widgetChart3" chartValues="45,25,16,36,67,18,76,45,25,16"}}
+                            {{> stat-card color="success" value="10,468" label="Members online"
+                                chartId="widgetChart4" chartValues="12,19,27,43,52,31,48,12,19,27"}}
                         </div>
 
                         <!-- Social Media Cards -->
                         <div class="row g-4 mb-4">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card social-card social-facebook">
-                                    <div class="card-body text-center">
-                                        <i class="fab fa-facebook fa-3x text-white mb-3"></i>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <h4 class="text-white">40k</h4>
-                                                <p class="text-white-50">Friends</p>
-                                            </div>
-                                            <div class="col-6">
-                                                <h4 class="text-white">450</h4>
-                                                <p class="text-white-50">Feeds</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {{> social-card brand="facebook"
+                                iconClass="fab fa-facebook fa-3x"
+                                primaryValue="40k" primaryLabel="Friends"
+                                secondaryValue="450" secondaryLabel="Feeds"}}
 
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card social-card social-x">
-                                    <div class="card-body text-center">
-                                        <div class="x-icon-wrapper mb-3">
-                                            <svg
-                                                class="x-icon"
-                                                width="48"
-                                                height="48"
-                                                viewBox="0 0 24 24"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                                                />
-                                            </svg>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <h4 class="text-white">30k</h4>
-                                                <p class="text-white-50">Followers</p>
-                                            </div>
-                                            <div class="col-6">
-                                                <h4 class="text-white">450</h4>
-                                                <p class="text-white-50">Posts</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {{> social-card brand="x"
+                                iconHtml='<svg class="x-icon" width="48" height="48" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'
+                                primaryValue="30k" primaryLabel="Followers"
+                                secondaryValue="450" secondaryLabel="Posts"}}
 
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card social-card social-linkedin">
-                                    <div class="card-body text-center">
-                                        <i class="fab fa-linkedin fa-3x text-white mb-3"></i>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <h4 class="text-white">40+</h4>
-                                                <p class="text-white-50">Contacts</p>
-                                            </div>
-                                            <div class="col-6">
-                                                <h4 class="text-white">250</h4>
-                                                <p class="text-white-50">Feeds</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {{> social-card brand="linkedin"
+                                iconClass="fab fa-linkedin fa-3x"
+                                primaryValue="40+" primaryLabel="Contacts"
+                                secondaryValue="250" secondaryLabel="Feeds"}}
 
-                            <div class="col-lg-3 col-md-6">
-                                <div class="card social-card social-instagram">
-                                    <div class="card-body text-center">
-                                        <i class="fab fa-instagram fa-3x text-white mb-3"></i>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <h4 class="text-white">85k</h4>
-                                                <p class="text-white-50">Followers</p>
-                                            </div>
-                                            <div class="col-6">
-                                                <h4 class="text-white">1.2k</h4>
-                                                <p class="text-white-50">Posts</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {{> social-card brand="instagram"
+                                iconClass="fab fa-instagram fa-3x"
+                                primaryValue="85k" primaryLabel="Followers"
+                                secondaryValue="1.2k" secondaryLabel="Posts"}}
                         </div>
 
                         <!-- Traffic Chart & World Map Row -->
                         <div class="row g-4 mb-4 align-items-stretch">
                             <!-- World Map - Left Side -->
                             <div class="col-xl-4 col-lg-6">
-                                <div class="card" style="min-height: 500px; height: auto">
+                                <div class="card card-stretch">
                                     <div class="card-header">
                                         <h5 class="card-title mb-0">World Map</h5>
                                         <small class="text-muted">Global Visitor Statistics</small>
                                     </div>
-                                    <div class="card-body p-0" style="position: relative">
+                                    <div class="card-body p-0 position-relative">
                                         <div
                                             id="worldMap"
-                                            style="height: 320px; width: 100%"
-                                            class="d-flex align-items-center justify-content-center bg-light"
+                                            class="d-flex align-items-center justify-content-center bg-body-tertiary"
                                         >
                                             <p class="text-muted mb-0">Interactive world map will load here</p>
                                         </div>
@@ -270,7 +110,7 @@
 
                             <!-- Traffic Chart - Center, Taller -->
                             <div class="col-xl-5 col-lg-6">
-                                <div class="card" style="min-height: 500px; height: auto">
+                                <div class="card card-stretch">
                                     <div class="card-header d-flex justify-content-between align-items-center">
                                         <div>
                                             <h5 class="card-title mb-0">Traffic</h5>
@@ -322,7 +162,7 @@
                                                 <div class="text-muted small">Visits</div>
                                                 <strong class="d-block text-nowrap">29,703 Users</strong>
                                                 <small class="text-muted">(40%)</small>
-                                                <div class="progress mt-2" style="height: 4px">
+                                                <div class="progress progress-thin mt-2">
                                                     <div class="progress-bar bg-success" style="width: 40%"></div>
                                                 </div>
                                             </div>
@@ -330,7 +170,7 @@
                                                 <div class="text-muted small">Unique</div>
                                                 <strong class="d-block text-nowrap">24,093 Users</strong>
                                                 <small class="text-muted">(20%)</small>
-                                                <div class="progress mt-2" style="height: 4px">
+                                                <div class="progress progress-thin mt-2">
                                                     <div class="progress-bar bg-info" style="width: 20%"></div>
                                                 </div>
                                             </div>
@@ -338,7 +178,7 @@
                                                 <div class="text-muted small">Pageviews</div>
                                                 <strong class="d-block text-nowrap">78,706 Views</strong>
                                                 <small class="text-muted">(60%)</small>
-                                                <div class="progress mt-2" style="height: 4px">
+                                                <div class="progress progress-thin mt-2">
                                                     <div class="progress-bar bg-warning" style="width: 60%"></div>
                                                 </div>
                                             </div>
@@ -349,7 +189,7 @@
 
                             <!-- Profile Card & Stats - Right Side -->
                             <div class="col-xl-3">
-                                <div class="row g-3" style="min-height: 500px">
+                                <div class="row row-stretch g-3">
                                     <!-- Profile Card -->
                                     <div class="col-12">
                                         <div class="card x-card">
@@ -422,51 +262,9 @@
                                     <!-- Stats Cards -->
                                     <div class="col-12">
                                         <div class="row g-2">
-                                            <div class="col-12">
-                                                <div class="card">
-                                                    <div class="card-body d-flex align-items-center">
-                                                        <div class="me-3">
-                                                            <div class="icon-circle bg-success">
-                                                                <i class="fas fa-dollar-sign text-white"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="text-muted small">Total Profit</div>
-                                                            <h5 class="mb-0">1,012</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="card">
-                                                    <div class="card-body d-flex align-items-center">
-                                                        <div class="me-3">
-                                                            <div class="icon-circle bg-primary">
-                                                                <i class="fas fa-user text-white"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="text-muted small">New Customer</div>
-                                                            <h5 class="mb-0">961</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="card">
-                                                    <div class="card-body d-flex align-items-center">
-                                                        <div class="me-3">
-                                                            <div class="icon-circle bg-warning">
-                                                                <i class="fas fa-chart-bar text-white"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="text-muted small">Active Projects</div>
-                                                            <h5 class="mb-0">770</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {{> icon-stat-card color="success" icon="fa-dollar-sign" label="Total Profit"    value="1,012"}}
+                                            {{> icon-stat-card color="primary" icon="fa-user"        label="New Customer"    value="961"}}
+                                            {{> icon-stat-card color="warning" icon="fa-chart-bar"   label="Active Projects" value="770"}}
                                         </div>
                                     </div>
                                 </div>

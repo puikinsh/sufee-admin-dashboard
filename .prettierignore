@@ -31,3 +31,11 @@ Thumbs.db
 # Documentation that has specific formatting
 CHANGELOG.md
 LICENSE
+
+# Handlebars-templated HTML — Prettier reflows whitespace inside multi-line
+# partial-call attributes (e.g. iconHtml='<svg ...>'), breaking the syntax.
+# Format these by hand.
+src/components/
+src/index.html
+src/components-catalog.html
+src/widgets.html

@@ -51,7 +51,12 @@ export default [
         ResizeObserver: 'readonly',
         IntersectionObserver: 'readonly',
         MutationObserver: 'readonly',
-        CustomEvent: 'readonly'
+        CustomEvent: 'readonly',
+        getComputedStyle: 'readonly',
+        requestAnimationFrame: 'readonly',
+        cancelAnimationFrame: 'readonly',
+        performance: 'readonly',
+        navigator: 'readonly'
       }
     },
     plugins: {

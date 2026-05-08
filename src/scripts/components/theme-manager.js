@@ -1,105 +1,78 @@
-// Theme Manager Component - Handle dark/light mode
+// Theme Manager — toggles light/dark via Bootstrap 5.3's `data-bs-theme`.
+//
+// Lifecycle:
+//   constructor() runs immediately and applies the saved/system theme to
+//     <html> so the page paints correctly from first frame.
+//   bindToggle() wires up the header button, called from
+//     App.onPartialsReady() once the partial is in the DOM.
+
+const STORAGE_KEY = 'sufee-theme';
 
 export class ThemeManager {
   constructor() {
-    this.currentTheme = 'light';
-    this.themeToggle = null;
-
-    this.init();
-  }
-
-  init() {
-    // Load saved theme from localStorage
-    this.currentTheme = localStorage.getItem('sufee-theme') || 'light';
-
-    // Find theme toggle button
-    this.themeToggle = document.querySelector('[data-theme-toggle]');
-
-    // Apply initial theme
+    this.currentTheme = this.resolveInitialTheme();
     this.applyTheme(this.currentTheme);
-
-    this.setupEventListeners();
+    this.watchSystemPreference();
   }
 
-  setupEventListeners() {
-    if (this.themeToggle) {
-      this.themeToggle.addEventListener('click', () => {
-        this.toggleTheme();
-      });
+  resolveInitialTheme() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === 'light' || saved === 'dark') {
+      return saved;
     }
-
-    // Listen for system theme changes
-    if (window.matchMedia) {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      mediaQuery.addEventListener('change', e => {
-        if (!localStorage.getItem('sufee-theme')) {
-          this.applyTheme(e.matches ? 'dark' : 'light');
-        }
-      });
+    if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
     }
+    return 'light';
   }
 
-  toggleTheme() {
-    const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-    this.setTheme(newTheme);
+  watchSystemPreference() {
+    const mq = window.matchMedia?.('(prefers-color-scheme: dark)');
+    if (!mq) {
+      return;
+    }
+    mq.addEventListener('change', e => {
+      // Only follow the system if the user hasn't picked a theme manually.
+      if (!localStorage.getItem(STORAGE_KEY)) {
+        this.applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  }
+
+  // Called by App.onPartialsReady() after the header partial is injected.
+  bindToggle() {
+    const button = document.querySelector('[data-theme-toggle]');
+    if (!button) {
+      return;
+    }
+    this.updateToggleAppearance(button, this.currentTheme);
+    button.addEventListener('click', () => {
+      const next = this.currentTheme === 'light' ? 'dark' : 'light';
+      this.setTheme(next);
+      this.updateToggleAppearance(button, next);
+    });
   }
 
   setTheme(theme) {
     this.currentTheme = theme;
     this.applyTheme(theme);
-    localStorage.setItem('sufee-theme', theme);
-
-    // Emit theme change event
-    this.dispatchEvent('theme:changed', { theme });
+    localStorage.setItem(STORAGE_KEY, theme);
+    document.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
   }
 
   applyTheme(theme) {
-    const html = document.documentElement;
-
-    if (theme === 'dark') {
-      html.setAttribute('data-bs-theme', 'dark');
-      html.classList.add('dark-theme');
-    } else {
-      html.setAttribute('data-bs-theme', 'light');
-      html.classList.remove('dark-theme');
-    }
-
-    // Update theme toggle button
-    this.updateThemeToggle(theme);
+    document.documentElement.setAttribute('data-bs-theme', theme);
   }
 
-  updateThemeToggle(theme) {
-    if (!this.themeToggle) {
-      return;
-    }
-
-    const icon = this.themeToggle.querySelector('i');
+  updateToggleAppearance(button, theme) {
+    const icon = button.querySelector('i');
     if (icon) {
-      if (theme === 'dark') {
-        icon.className = 'fa fa-sun';
-        this.themeToggle.setAttribute('title', 'Switch to light mode');
-      } else {
-        icon.className = 'fa fa-moon';
-        this.themeToggle.setAttribute('title', 'Switch to dark mode');
-      }
+      icon.className = theme === 'dark' ? 'fa fa-sun' : 'fa fa-moon';
     }
+    button.setAttribute('title', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
   }
 
   getCurrentTheme() {
     return this.currentTheme;
-  }
-
-  // Utility method to dispatch custom events
-  dispatchEvent(eventName, detail = {}) {
-    const event = new CustomEvent(eventName, {
-      detail,
-      bubbles: true,
-      cancelable: true
-    });
-    document.dispatchEvent(event);
-  }
-
-  destroy() {
-    // Cleanup if needed
   }
 }

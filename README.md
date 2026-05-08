@@ -1,69 +1,81 @@
-# Sufee HTML5 Admin Dashboard Template v2.2
+# Sufee HTML5 Admin Dashboard Template v3.0
 
-[![Sufee Admin Dashboard](./sufee-admin-dashboard.png)](https://colorlib.com/polygon/sufee/index.html)
+[![Sufee Admin Dashboard](./sufee-admin-dashboard.png)](https://preview.colorlib.com/theme/sufee-admin-dashboard/)
 
-**Sufee** is a responsive Bootstrap 5 Admin Dashboard Template. Originally built with Bootstrap 4,
-this major release brings a complete modernization with Bootstrap 5, Vite build system,
-component-based architecture, and professional error handling.
+**Sufee** is a responsive Bootstrap 5.3 admin dashboard template with a real design system: layered
+design tokens, a working dark mode, and build-time partials so you can compose dashboards without
+copy-paste. v3.0 modernizes the visual language and strips ~1,800 lines of legacy code.
 
-[View Live Demo →](https://colorlib.com/polygon/sufee/index.html)
+[View Live Demo →](https://preview.colorlib.com/theme/sufee-admin-dashboard/)
 
-## What's New in v2.2
+## What's New in v3.0
 
-### Dependency Updates
+### Design system
 
-- **Bootstrap 5.3.8**: Latest stable release with bug fixes and improvements
-- **Font Awesome 7.1.0**: Major upgrade with new icon library and enhanced features
-- **Vite 7.1.8**: Latest build system with improved performance and HMR
-- **ESLint 9.36.0**: Enhanced JavaScript linting with better rule support
-- **Sass 1.93.2**: Updated SCSS compiler for faster compilation
-- **Zero Vulnerabilities**: All dependencies updated with latest security patches
+- **Design tokens** for radius, shadow, transition, and focus ring — change a value in
+  `variables.scss` and it updates everywhere. No more magic numbers.
+- **Single CSS variable namespace.** Removed the parallel `--sufee-*` / `--color-flat-*` /
+  `--menu-*` declarations; theme colors come from Bootstrap's `--bs-*` (driven by SCSS `$primary`
+  etc.). Layout uses `--sidebar-*`, `--content-bg`, `--text-*`.
+- **Modernized cards** — rounded corners, subtle shadow with hover lift, no hard border. Dark mode
+  adds a thin border for elevation since shadows fade on dark surfaces.
+- **Dark mode that works.** Header toggle flips `data-bs-theme`, persists in `localStorage`, follows
+  `prefers-color-scheme` by default. Layered slate palette (slate-900 body / slate-800 cards /
+  slate-700 hover) with black-tinted shadows that actually read on dark backgrounds.
 
-### What's New in v2.1
+### Architecture
 
-### Code Quality & Developer Experience
+- **Build-time Handlebars partials** — drop a file in `src/components/` and call it with
+  `{{> stat-card color="primary" value="10,468" ...}}`. Inlined at build, no runtime fetch. Three
+  partials ship: `stat-card`, `social-card`, `icon-stat-card`.
+- **Component catalog page** at `/components-catalog.html` — every reusable pattern with rendered
+  preview, copy-paste markup, and props table.
+- **Auth and error page shells.** `<body class="auth-page">` + `.auth-card` / `.auth-hero` /
+  `.auth-btn`, etc. — login, register, forget, 404, 500 all share one shell. Going from 1,837 lines
+  of duplicated inline CSS to a 303-line shared file.
+- **Selector-based component loading.** `App.COMPONENT_REGISTRY` lazy-loads modules when their
+  selector exists in the DOM — no central `data-page` switch to maintain.
+- **Vite glob-discovered HTML entries.** Drop a `.html` in `src/`, it builds.
+- **`data-chart` API** —
+  `<canvas data-chart="line" data-labels="..." data-values="..." data-datasets="..." data-colors="...">`
+  covers line / bar / pie / doughnut / radar / area / polarArea / horizontal / stacked. Replaces
+  ~430 lines of inline Chart.js setup on the demo page.
 
-- **ESLint & Prettier Integration**: Professional code quality tools with automatic formatting
-- **Error Handling System**: Custom 404/500 pages with user-friendly messaging and error reporting
-- **Self-Hosted Fonts**: Privacy-focused local font hosting eliminating Google Fonts CDN
-- **Enhanced Build Process**: Optimized Vite configuration with error page integration
+### Bug fixes
 
-### Key Improvements
+- **Sidebar disappearing after mobile/desktop resize** — inline styles from earlier toggle code
+  outranked the desktop CSS. Now class-only toggles with leftover-style cleanup.
+- **Brand colors weren't actually applied.** `main.js` was importing the prebuilt Bootstrap CSS
+  after the themed SCSS, so `--bs-primary` was Bootstrap's `#0d6efd` instead of the brand `#20a8d8`.
+  Removed the duplicate import.
+- **Self-hosted fonts were 1.6KB Google 404 HTML pages saved with `.woff2` extensions.** Replaced
+  with `@fontsource-variable/open-sans`.
+- **Logo broken on auth pages**, `confirm()` for logout replaced with a Bootstrap modal, three
+  `setTimeout(100)` race-condition workarounds replaced with a deterministic `await` chain, ~45
+  ESLint issues cleaned.
 
-- **Professional Error Pages**: Beautiful, branded error pages with helpful navigation
-- **Global Error Handler**: Automatic error capture and user-friendly notifications
-- **GDPR Compliance**: Eliminated external CDN dependencies for better privacy
-- **Development Tools**: Enhanced debugging with toast notifications and error tracking
+### Removed
 
-## What's New in v2.0
+- ~1,800 lines of dead/legacy code: `navigation.js`, `search.js`, `dom.js`, the `error-handler.js`
+  toast/fetch-interception bloat, BS4 leftovers, unused Vite aliases, `themify-icons` NPM duplicate
+  of the public-folder copy, `rel="shortcut icon"`, duplicate Bootstrap CSS import.
 
-### Major Changes
+### Versions in this release
 
-- **Bootstrap 5 Migration**: Complete upgrade from Bootstrap 4 to Bootstrap 5
-- **Modern Build System**: Replaced Grunt/Bower with Vite and NPM
-- **Component Architecture**: New dynamic partials system for code reusability
-- **ES6 Modules**: Modern JavaScript with proper module imports
-- **Performance**: Optimized build process with code splitting and tree shaking
-- **Developer Experience**: Hot Module Replacement (HMR) for instant updates
+Bootstrap 5.3.8 · Chart.js 4.5.1 · Font Awesome 7.2.0 · Vite 8.0.11 · ESLint 10.3.0 · Sass 1.99.0 ·
+Prettier 3.8.3 · `@fontsource-variable/open-sans` 5.2.7 · `vite-plugin-handlebars` 2.0.3. Zero
+vulnerabilities.
 
-### Key Features
+See [CHANGELOG.md](./CHANGELOG.md) for the complete release notes including breaking changes and
+migration guidance.
 
-- **Professional Error Handling**: Custom 404/500 pages with user-friendly messaging
-- **Code Quality Tools**: ESLint & Prettier integration for consistent, high-quality code
-- **Self-Hosted Fonts**: Privacy-focused local font hosting (no external CDN dependencies)
-- **Responsive Design**: Works flawlessly on all devices and screen sizes
-- **Dynamic Sidebar**: Collapsible navigation with smooth animations
-- **Reusable Components**: Partials system eliminates code duplication
-- **Modern Charting**: Chart.js integration with interactive visualizations
-- **Data Tables**: Advanced tables with sorting, searching, and pagination
-- **Form Validation**: Built-in validation with user-friendly error messages
-- **Multiple Layouts**: Various dashboard configurations and page templates
-- **Authentication Pages**: Login, register, and password reset pages
-- **100+ UI Components**: Comprehensive widget and component library
+---
 
 ## Premium Dashboard Templates
 
-Ready to ship faster? These production-grade templates from [DashboardPack](https://dashboardpack.com/?utm_source=github&utm_medium=readme&utm_campaign=sufee) come with premium support, regular updates, and everything you need for client projects.
+Ready to ship faster? These production-grade templates from
+[DashboardPack](https://dashboardpack.com/?utm_source=github&utm_medium=readme&utm_campaign=sufee)
+come with premium support, regular updates, and everything you need for client projects.
 
 <table>
   <tr>
@@ -172,70 +184,62 @@ Ready to ship faster? These production-grade templates from [DashboardPack](http
 
 ```
 sufee-admin-dashboard/
-├── src/                    # Source files
-│   ├── partials/          # Reusable HTML components
-│   │   ├── head-common.html
-│   │   ├── header.html
-│   │   ├── sidebar.html
-│   │   └── scripts-common.html
-│   ├── scripts/           # JavaScript modules
-│   │   ├── app.js         # Main application class
-│   │   ├── components/    # UI components
-│   │   └── utils/         # Utility functions
-│   ├── styles/            # SCSS stylesheets
-│   │   ├── main.scss      # Main stylesheet
-│   │   ├── variables.scss # Theme variables
-│   │   └── components/    # Component styles
-│   ├── *.html             # Page templates
-│   └── main.js            # JavaScript entry point
-├── public/                # Static assets
-│   ├── favicon.ico
-│   └── images/           # Image assets
-├── dist/                  # Production build (generated)
-├── package.json           # NPM dependencies
-└── vite.config.js         # Vite configuration
+├── src/
+│   ├── *.html              # Pages (auto-discovered by Vite)
+│   ├── components/         # Build-time Handlebars partials (stat-card, etc.)
+│   ├── partials/           # Runtime fetch-injected partials (sidebar, header, head)
+│   ├── scripts/
+│   │   ├── app.js          # App class + COMPONENT_REGISTRY
+│   │   ├── partials-loader.js
+│   │   ├── components/     # UI component modules (lazy-loaded)
+│   │   └── utils/
+│   ├── styles/
+│   │   ├── main.scss       # Bootstrap import + layout shell + component imports
+│   │   ├── variables.scss  # Theme palette ($primary etc.) + layout tokens (--sidebar-*)
+│   │   └── components/     # One SCSS file per component (sidebar, header, cards, ...)
+│   └── main.js             # Entry point
+├── public/                 # Copied verbatim into dist/
+├── dist/                   # Production build (generated)
+├── vite.config.js
+└── package.json
 ```
 
-## Creating Pages
+## Build a New Dashboard Page
 
-### Basic Page Template
+End-to-end recipe — about 10 minutes from blank file to live page.
 
-Create a new HTML file in the `src/` directory:
+### 1. Create the HTML file
+
+Drop a file in `src/`. Vite auto-discovers anything matching `src/*.html`, so no config edit is
+needed.
 
 ```html
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
   <head>
     <meta charset="utf-8" />
-    <title>Your Page - Sufee Admin</title>
-    <meta name="description" content="Page description" />
+    <title>Sales — Sufee Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <div data-partial="head-common"></div>
   </head>
 
-  <body class="sufee-dashboard" data-page="your-page-id">
+  <body class="sufee-dashboard" data-page="sales">
     <div class="d-flex min-vh-100">
-      <!-- Sidebar -->
       <div data-partial="sidebar" data-partial-replace="true"></div>
 
-      <!-- Main Content -->
       <div class="main-content flex-grow-1">
-        <!-- Header -->
         <div data-partial="header" data-partial-replace="true"></div>
-
-        <!-- Breadcrumb -->
         <div
           data-breadcrumb
-          data-breadcrumb-title="Page Title"
-          data-breadcrumb-path="Section|Subsection|Page Title"
+          data-breadcrumb-title="Sales"
+          data-breadcrumb-path="Dashboards|Sales"
         ></div>
 
-        <!-- Content -->
-        <section class="content-area p-4">
+        <main class="content-area p-4">
           <div class="container-fluid">
-            <!-- Your content here -->
+            <!-- Your content goes here (next step) -->
           </div>
-        </section>
+        </main>
       </div>
     </div>
 
@@ -244,73 +248,127 @@ Create a new HTML file in the `src/` directory:
 </html>
 ```
 
-### Adding to Navigation
+### 2. Compose with partials — no copy-paste
 
-To add your page to the sidebar navigation, edit `src/partials/sidebar.html`:
+There are two kinds of partials. Don't confuse them:
+
+| Kind                         | Where                   | When                                   | Use for                                                    |
+| ---------------------------- | ----------------------- | -------------------------------------- | ---------------------------------------------------------- |
+| **Build-time** (Handlebars)  | `src/components/*.html` | Inlined at build (no fetch, SEO-clean) | Repeated UI blocks: cards, widgets, panels                 |
+| **Runtime** (fetch + inject) | `src/partials/*.html`   | Fetched on page load                   | Page chrome shared across all pages: head, sidebar, header |
+
+Use a build-time partial like a function call. Inside the `<main>` from step 1:
+
+```html
+<div class="row g-4 mb-4">
+  {{> stat-card color="primary" value="10,468" label="Members online" chartId="widgetChart1"
+  chartValues="65,59,84,84,51,55,40,65,59,84"}} {{> stat-card color="success" value="2,341"
+  label="Sales today" chartId="widgetChart2" chartValues="12,19,27,43,52,31,48,12,19,27"}}
+</div>
+
+<div class="row g-2">
+  {{> icon-stat-card color="success" icon="fa-dollar-sign" label="Total Profit" value="1,012"}} {{>
+  icon-stat-card color="primary" icon="fa-user" label="New Customers" value="961"}}
+</div>
+```
+
+Built-in partials:
+
+| Partial          | Props                                                                                                    |
+| ---------------- | -------------------------------------------------------------------------------------------------------- |
+| `stat-card`      | `color`, `value`, `label`, `chartId`, `chartValues` (optional, comma-separated numbers)                  |
+| `social-card`    | `brand`, `iconClass` _or_ `iconHtml`, `primaryValue`, `primaryLabel`, `secondaryValue`, `secondaryLabel` |
+| `icon-stat-card` | `color`, `icon` (Font Awesome class), `label`, `value`                                                   |
+
+Adding a new partial: drop `src/components/your-name.html`, then call
+`{{> your-name prop1="x" prop2="y"}}`. Use `{{prop}}` for HTML-escaped output, `{{{prop}}}` for raw
+HTML (inline SVG, etc.). See the existing partials for examples.
+
+> Prettier mangles multi-line `{{> partial}}` calls. The `.prettierignore` already excludes
+> `src/components/` and `src/index.html`; add new templated pages there too.
+
+### 3. Wire interactive components — declarative, not imperative
+
+Components self-register against CSS selectors. If a page contains the selector, the matching JS
+module is lazy-loaded automatically — no JS edit, no central switch statement to update.
+
+| Selector                                            | Component                             |
+| --------------------------------------------------- | ------------------------------------- |
+| `[data-table]`                                      | DataTable (sort/search/paginate)      |
+| `[data-chart]`                                      | ChartManager (Chart.js wrappers)      |
+| `form[data-validate]`                               | FormValidator                         |
+| `[id^="widgetChart"]`, `#trafficChart`, `#worldMap` | WidgetManager (the dashboard widgets) |
+
+So a sortable table is just:
+
+```html
+<table class="table table-striped" data-table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- rows -->
+  </tbody>
+</table>
+```
+
+A validated form:
+
+```html
+<form data-validate>
+  <input name="email" data-rules="required|email" />
+</form>
+```
+
+Adding a new component: append an entry to `App.COMPONENT_REGISTRY` in
+[src/scripts/app.js](src/scripts/app.js).
+
+### 4. Add the page to the sidebar
+
+Edit [src/partials/sidebar.html](src/partials/sidebar.html), add a nav link. The `data-page`
+attribute must match the body's `data-page="sales"`:
 
 ```html
 <li class="nav-item">
-  <a class="nav-link" href="your-page.html" data-page="your-page-id">
-    <i class="fas fa-icon"></i>
-    <span class="nav-text ms-2">Your Page</span>
+  <a class="nav-link" href="sales.html" data-page="sales">
+    <i class="fas fa-chart-line"></i>
+    <span class="nav-text ms-2">Sales</span>
   </a>
 </li>
 ```
 
-## Partials System
+The active-state highlight is automatic.
 
-The partials system automatically loads common components:
+### 5. Run
 
-| Partial          | Description                          |
-| ---------------- | ------------------------------------ |
-| `head-common`    | Meta tags, CSS imports, favicon      |
-| `sidebar`        | Navigation sidebar with menu         |
-| `header`         | Top header with search and user menu |
-| `scripts-common` | Common JavaScript imports            |
-
-### Partial Attributes
-
-- `data-partial="name"` - Specifies which partial to load
-- `data-partial-replace="true"` - Replaces the container element
-- `data-page="id"` - Sets active navigation item
-- `data-breadcrumb` - Enables breadcrumb generation
-
-## Components
-
-### Charts
-
-```javascript
-// Chart.js is automatically available
-const ctx = document.getElementById('myChart').getContext('2d');
-const chart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    /* ... */
-  }
-});
-```
-
-### Data Tables
-
-```html
-<table class="table table-striped" data-table>
-  <!-- Table content -->
-</table>
-```
-
-### Forms
-
-```html
-<form data-validate>
-  <!-- Form fields with validation -->
-</form>
+```bash
+npm run dev      # Vite dev server with HMR
+npm run build    # Production output to dist/
 ```
 
 ## Customization
 
-### Theme Variables
+### Rebrand the theme palette
 
-Edit `src/styles/variables.scss` to customize colors and sizing:
+Edit [src/styles/variables.scss](src/styles/variables.scss). The SCSS color tokens drive Bootstrap's
+`--bs-*` CSS custom properties — change them in one place and every themed component updates:
+
+```scss
+$primary: #20a8d8; // → --bs-primary, .btn-primary, .text-primary, ...
+$success: #4dbd74; // → --bs-success, .alert-success, validation icons, ...
+$danger: #f86c6b;
+$info: #63c2de;
+$warning: #ffc107;
+```
+
+Reference colors in your own SCSS as `var(--bs-primary)` — never hardcode hex.
+
+### Resize/restyle the layout chrome
+
+Layout tokens are CSS custom properties at the bottom of `variables.scss`:
 
 ```scss
 :root {
@@ -318,16 +376,19 @@ Edit `src/styles/variables.scss` to customize colors and sizing:
   --sidebar-collapsed-width: 70px;
   --sidebar-bg: #272c33;
   --sidebar-text: #c8c9ce;
-  --sidebar-text-active: #ffffff;
-  // Add your custom variables
+  --content-bg: #f1f2f7;
+  --header-height: 70px;
+  // ...etc
 }
 ```
 
-### Adding Components
+### Add a JS component
 
-1. Create component file in `src/scripts/components/`
-2. Import in relevant pages or main.js
-3. Add styles in `src/styles/components/`
+1. Create the file in [src/scripts/components/](src/scripts/components/) exporting a class.
+2. Append to `App.COMPONENT_REGISTRY` in [src/scripts/app.js](src/scripts/app.js) with a CSS
+   selector. The loader probes the DOM and lazy-imports your module when the selector matches.
+3. Add styles in [src/styles/components/](src/styles/components/) and `@import` from
+   [src/styles/main.scss](src/styles/main.scss).
 
 ## Build Configuration
 

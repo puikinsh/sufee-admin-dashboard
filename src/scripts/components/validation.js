@@ -81,7 +81,7 @@ export class FormValidator {
     return true;
   }
 
-  applyRule(value, ruleName, ruleValue, field) {
+  applyRule(value, ruleName, ruleValue, _field) {
     switch (ruleName) {
       case 'required':
         return value.length > 0;
@@ -92,9 +92,10 @@ export class FormValidator {
       case 'max':
         return value.length <= parseInt(ruleValue);
 
-      case 'email':
+      case 'email': {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return !value || emailRegex.test(value);
+      }
 
       case 'numeric':
         return !value || /^\d+$/.test(value);
@@ -113,13 +114,15 @@ export class FormValidator {
           return !value;
         }
 
-      case 'confirmed':
+      case 'confirmed': {
         const confirmField = this.form.querySelector(`[name="${ruleValue}"]`);
         return confirmField && value === confirmField.value;
+      }
 
-      case 'regex':
+      case 'regex': {
         const regex = new RegExp(ruleValue);
         return !value || regex.test(value);
+      }
 
       default:
         return true;

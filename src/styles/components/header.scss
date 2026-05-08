@@ -1,233 +1,161 @@
-// Header Component Styles - Original exact replica
+// Header Component Styles
+// Targets the modern Bootstrap 5 markup in partials/header.html.
 
-header.header {
-  background: #fff;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-  clear: both;
-  display: block;
-  padding: 0;
-  width: 100%;
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: var(--bs-body-bg);
+  box-shadow: var(--shadow-xs);
 
-  .header-menu {
-    display: block;
-    width: 100%;
-    position: relative;
-
-    &::after {
-      content: '';
-      display: table;
-      clear: both;
-    }
-
-    .col-sm-7 {
-      position: inherit;
-      float: left;
-      width: 58.333333%;
-    }
-
-    .col-sm-5 {
-      float: left;
-      width: 41.666667%;
-    }
-  }
-}
-
-// Menu toggle button
-.menutoggle {
-  background: #e74c3c;
-  border-radius: 50%;
-  color: #fff !important;
-  cursor: pointer;
-  font-size: 18px;
-  height: 43px;
-  width: 43px;
-  line-height: 43px;
-  text-align: center;
-  border: none;
-  display: inline-block;
-  text-decoration: none;
-
-  &:hover {
-    background: #c0392b;
+  .navbar {
+    padding: 8px 0;
+    min-height: 60px;
   }
 
-  i {
-    font-size: 16px;
-  }
-}
+  // Sidebar toggle button (red circular button)
+  #sidebarToggleDesktop {
+    transition: var(--transition-slow);
 
-// Collapsed state menu toggle
-body.open .menutoggle i:before {
-  content: '\f0a4';
-}
+    &:hover {
+      background-color: var(--menu-toggle-hover) !important;
+      transform: scale(1.05);
+    }
 
-// Search functionality
-.search-trigger {
-  background: transparent;
-  border: none;
-  color: #868e96;
-  cursor: pointer;
-  font-size: 16px;
-  height: 41px;
-  width: 43px;
-  display: inline-block;
-  text-align: center;
-  line-height: 41px;
-}
-
-// Header dropdowns
-.dropdown {
-  display: inline-block;
-
-  .dropdown-toggle {
-    background: transparent;
-    border: none;
-    color: #868e96;
-    font-size: 16px;
-    position: relative;
-    padding: 8px 12px;
-    display: inline-block;
-
-    .count {
-      background: #d9534f;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 10px;
-      height: 18px;
-      width: 18px;
-      line-height: 18px;
-      position: absolute;
-      right: 5px;
-      top: 5px;
-      text-align: center;
+    &:focus-visible {
+      box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+      outline: 0;
     }
   }
 
-  .dropdown-menu {
-    background: #fff;
-    border: 1px solid #e9ecef;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    min-width: 250px;
-    max-width: 350px;
+  // Search input
+  .search-form {
+    transition: var(--transition-slow);
 
-    p {
-      font-size: 14px;
-      margin: 0;
-      padding: 8px 15px;
-      font-weight: 600;
-      border-bottom: 1px solid #e9ecef;
+    &.d-none {
+      display: none !important;
     }
 
-    .dropdown-item {
-      color: #868e96;
-      font-size: 13px;
-      padding: 10px 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    &:not(.d-none) {
+      animation: slideInLeft 0.3s ease;
+    }
 
-      &:hover {
-        background: #f8f9fa;
+    .form-control {
+      border: 1px solid var(--bs-border-color);
+      border-radius: var(--radius-sm);
+
+      &:focus {
+        border-color: var(--bs-primary);
+        box-shadow: var(--focus-ring);
       }
     }
   }
-}
 
-// User area
-.user-area {
-  position: relative;
-  float: right;
+  #searchToggle {
+    transition: var(--transition-fast);
 
-  .dropdown-toggle {
-    background: transparent;
-    border: none;
-    padding: 0;
-    display: flex;
-    align-items: center;
-
-    &::after {
-      display: none;
+    &.d-none {
+      opacity: 0;
+      transform: scale(0.8);
     }
   }
 
-  .user-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  .user-menu {
-    background: #fff;
-    border: 1px solid #e9ecef;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    min-width: 150px;
-    padding: 5px 0;
-
-    .nav-link {
-      color: #868e96;
-      display: block;
-      font-size: 14px;
-      line-height: 22px;
-      padding: 8px 15px;
-      text-decoration: none;
-
-      &:hover {
-        background: #f8f9fa;
-        color: #000;
-      }
-
-      i {
-        margin-right: 8px;
-        width: 16px;
-        text-align: center;
-      }
-    }
-  }
-}
-
-// Language select
-.language-select {
-  float: right;
-  margin-right: 15px;
-
-  .dropdown-toggle {
-    background: transparent;
+  // Header icon buttons (notifications, messages, etc.)
+  .btn-link {
     border: none;
-    color: #868e96;
-    font-size: 16px;
-    padding: 8px;
     text-decoration: none;
+    transition: var(--transition-fast);
 
-    &::after {
-      display: none;
+    &:hover {
+      color: var(--bs-primary) !important;
+      transform: scale(1.1);
+    }
+
+    &:focus {
+      box-shadow: none;
     }
   }
 
+  // Notification badges in header
+  .badge {
+    &.bg-danger {
+      background-color: var(--bs-danger) !important;
+    }
+    &.bg-warning {
+      background-color: var(--bs-warning) !important;
+    }
+    &.bg-primary {
+      background-color: var(--bs-primary) !important;
+    }
+  }
+
+  // Dropdown menus opened from header buttons
   .dropdown-menu {
-    background: #fff;
-    border: 1px solid #e9ecef;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    min-width: 60px;
-    padding: 5px 0;
+    border-radius: var(--radius-lg);
+    border: none;
+    margin-top: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+
+    &.dropdown-menu-end {
+      --bs-position: end;
+    }
 
     .dropdown-item {
-      color: #868e96;
-      display: block;
-      font-size: 14px;
-      padding: 8px 15px;
-      text-decoration: none;
-      text-align: center;
+      border-radius: 0;
+      transition: var(--transition-fast);
 
-      &:hover {
-        background: #f8f9fa;
+      &:hover,
+      &:focus {
+        background-color: var(--bs-tertiary-bg);
+        color: var(--bs-primary);
       }
 
-      i {
-        font-size: 16px;
+      &:active {
+        background-color: var(--bs-primary);
+        color: white;
+      }
+    }
+
+    .dropdown-header {
+      border-radius: 0;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .dropdown-divider {
+      margin: 0;
+      opacity: 0.2;
+    }
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Breadcrumb section sits below the header
+.breadcrumb-section {
+  background-color: var(--bs-body-bg);
+  border-bottom: 1px solid var(--bs-border-color);
+
+  .breadcrumb {
+    background: none;
+    padding: 0;
+    margin: 0;
+
+    .breadcrumb-item {
+      font-size: 14px;
+
+      &.active {
+        color: var(--text-secondary);
       }
     }
   }

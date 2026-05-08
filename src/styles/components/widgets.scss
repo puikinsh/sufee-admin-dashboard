@@ -7,6 +7,29 @@
   }
 }
 
+// Equal-height dashboard cards used in the World Map / Traffic Chart row.
+// Pair a `.row` (or wrapper) containing the column with `.card.card-stretch`
+// to keep neighbouring cards visually aligned regardless of inner content.
+.card-stretch {
+  min-height: 500px;
+}
+
+.row-stretch {
+  min-height: 500px;
+}
+
+// World map container — sized via CSS so HTML stays free of inline styles.
+#worldMap {
+  height: 320px;
+  width: 100%;
+}
+
+// Thin progress bar for inline metric strips (e.g. "40% / 20% / 60%" footers).
+// Bootstrap's default is 1rem; this is the slim variant used on dashboards.
+.progress-thin {
+  height: 4px;
+}
+
 // Dashboard widget cards with charts
 .widget-card,
 .card {
@@ -77,7 +100,7 @@
 .icon-circle {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,7 +147,7 @@
   position: relative;
   margin-bottom: 30px;
   color: #fff;
-  border-radius: 3px;
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
 
@@ -186,7 +209,7 @@
       font-size: 24px;
       padding: 15px;
       border: 2px solid;
-      border-radius: 50%;
+      border-radius: var(--radius-circle);
       width: 54px;
       height: 54px;
       display: flex;
@@ -259,7 +282,7 @@
 }
 
 .twt-category {
-  background: #fff;
+  background: var(--bs-card-bg);
   padding: 20px;
 
   ul {
@@ -288,8 +311,8 @@
 }
 
 .twt-write {
-  background: #fff;
-  border-top: 1px solid #e0e0e0;
+  background: var(--bs-card-bg);
+  border-top: 1px solid var(--bs-border-color);
 
   .t-text-area {
     border: none;
@@ -304,8 +327,8 @@
 }
 
 .twt-footer {
-  background: #f8f9fa;
-  border-top: 1px solid #e0e0e0;
+  background: var(--bs-tertiary-bg);
+  border-top: 1px solid var(--bs-border-color);
   font-size: 14px;
   color: var(--text-secondary);
 

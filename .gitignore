@@ -50,6 +50,9 @@ Desktop.ini
 
 # Docker
 Docker/
-CLAUDE.md
-CLAUDE.md
+
+# Local Claude Code config (editor-level, not part of the template)
+.claude/
+
+# Per-release notes
 RELEASE_v2.2.0.md

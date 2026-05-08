@@ -38,6 +38,7 @@
                             <div class="card-body">
                                 <table
                                     id="basicDataTable"
+                                    data-table
                                     class="table table-striped table-bordered"
                                     style="width: 100%"
                                 >
@@ -160,7 +161,7 @@
                                 <small class="text-muted">Export data to Excel, PDF, CSV and more</small>
                             </div>
                             <div class="card-body">
-                                <table id="exportDataTable" class="table table-hover" style="width: 100%">
+                                <table id="exportDataTable" data-table class="table table-hover" style="width: 100%">
                                     <thead class="table-light">
                                         <tr>
                                             <th>Product</th>
@@ -304,7 +305,12 @@
                                 <small class="text-muted">Automatically adjusts columns based on screen size</small>
                             </div>
                             <div class="card-body">
-                                <table id="responsiveDataTable" class="table table-striped nowrap" style="width: 100%">
+                                <table
+                                    id="responsiveDataTable"
+                                    data-table
+                                    class="table table-striped nowrap"
+                                    style="width: 100%"
+                                >
                                     <thead>
                                         <tr>
                                             <th>Order ID</th>
@@ -419,7 +425,7 @@
                                 <small class="text-muted">Individual column searching with select dropdowns</small>
                             </div>
                             <div class="card-body">
-                                <table id="filterDataTable" class="table table-bordered" style="width: 100%">
+                                <table id="filterDataTable" data-table class="table table-bordered" style="width: 100%">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
@@ -519,66 +525,9 @@
         </div>
 
         <!-- Scripts -->
+        <!-- Tables with `data-table` are auto-initialized by DataTable
+             (src/scripts/components/datatable.js): sortable headers, search
+             input, pagination. No inline JS needed. -->
         <script type="module" src="/main.js"></script>
-        <script type="module">
-            // Initialize DataTables after DOM is loaded
-            document.addEventListener('DOMContentLoaded', function () {
-                // Basic DataTable
-                if ($.fn.DataTable && $('#basicDataTable').length) {
-                    $('#basicDataTable').DataTable({
-                        pageLength: 10,
-                        lengthMenu: [
-                            [10, 25, 50, -1],
-                            [10, 25, 50, 'All']
-                        ]
-                    });
-                }
-
-                // DataTable with Export Buttons
-                if ($.fn.DataTable && $('#exportDataTable').length) {
-                    $('#exportDataTable').DataTable({
-                        dom: 'Bfrtip',
-                        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-                        pageLength: 10
-                    });
-                }
-
-                // Responsive DataTable
-                if ($.fn.DataTable && $('#responsiveDataTable').length) {
-                    $('#responsiveDataTable').DataTable({
-                        responsive: true,
-                        pageLength: 10
-                    });
-                }
-
-                // DataTable with Column Filters
-                if ($.fn.DataTable && $('#filterDataTable').length) {
-                    $('#filterDataTable').DataTable({
-                        initComplete: function () {
-                            this.api()
-                                .columns()
-                                .every(function () {
-                                    var column = this;
-                                    var select = $(
-                                        '<select class="form-select form-select-sm"><option value="">All</option></select>'
-                                    )
-                                        .appendTo($(column.footer()).empty())
-                                        .on('change', function () {
-                                            var val = $.fn.dataTable.util.escapeRegex($(this).val());
-                                            column.search(val ? '^' + val + '$' : '', true, false).draw();
-                                        });
-                                    column
-                                        .data()
-                                        .unique()
-                                        .sort()
-                                        .each(function (d, j) {
-                                            select.append('<option value="' + d + '">' + d + '</option>');
-                                        });
-                                });
-                        }
-                    });
-                }
-            });
-        </script>
     </body>
 </html>

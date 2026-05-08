@@ -28,9 +28,12 @@ export function initializeBreadcrumb() {
     }
   });
 
+  // Background + border come from .breadcrumb-section in components/header.scss
+  // — do NOT use bg-light/bg-body-tertiary utilities here, they override the
+  // themed styles and break dark mode.
   const html = `
         <!-- Breadcrumbs -->
-        <div class="breadcrumb-section bg-light border-bottom py-3">
+        <div class="breadcrumb-section py-3">
             <div class="container-fluid">
                 <div class="row align-items-center">
                     <div class="col-md-6">

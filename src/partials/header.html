@@ -1,6 +1,6 @@
 <!-- Top Header -->
 <header class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid px-3">
             <!-- Left side -->
             <div class="d-flex align-items-center flex-grow-1">
@@ -45,6 +45,17 @@
 
             <!-- Right side -->
             <div class="d-flex align-items-center">
+                <!-- Theme Toggle -->
+                <button
+                    type="button"
+                    class="btn btn-link text-secondary p-2"
+                    data-theme-toggle
+                    title="Toggle theme"
+                    aria-label="Toggle dark mode"
+                >
+                    <i class="fa fa-moon"></i>
+                </button>
+
                 <!-- Notifications Dropdown -->
                 <div class="dropdown">
                     <button
@@ -62,7 +73,7 @@
                         </span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 350px; max-width: 90vw">
-                        <li><h6 class="dropdown-header bg-light fw-bold py-3 px-3">Notifications</h6></li>
+                        <li><h6 class="dropdown-header bg-body-tertiary fw-bold py-3 px-3">Notifications</h6></li>
                         <li><hr class="dropdown-divider my-0" /></li>
                         <li>
                             <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal">
@@ -146,14 +157,14 @@
                     >
                         <i class="fas fa-envelope"></i>
                         <span
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-body-emphasis"
                             style="font-size: 10px"
                         >
                             7
                         </span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 350px; max-width: 90vw">
-                        <li><h6 class="dropdown-header bg-light fw-bold py-3 px-3">Messages</h6></li>
+                        <li><h6 class="dropdown-header bg-body-tertiary fw-bold py-3 px-3">Messages</h6></li>
                         <li><hr class="dropdown-divider my-0" /></li>
                         <li>
                             <a class="dropdown-item py-2 px-3" href="#" style="white-space: normal">
@@ -252,7 +263,9 @@
                         aria-expanded="false"
                     >
                         <img src="images/admin.jpg" alt="User" class="rounded-circle me-2" width="32" height="32" />
-                        <span class="text-dark d-none d-md-inline fw-semibold" style="font-size: 14px">John Doe</span>
+                        <span class="text-body-emphasis d-none d-md-inline fw-semibold" style="font-size: 14px">
+                            John Doe
+                        </span>
                         <i class="fas fa-angle-down text-secondary ms-1" style="font-size: 12px"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="min-width: 180px">
