@@ -1,12 +1,12 @@
 # Sufee HTML5 Admin Dashboard Template v3.0
 
-[![Sufee Admin Dashboard](./sufee-admin-dashboard.png)](https://preview.colorlib.com/theme/sufee-admin-dashboard/)
+[![Sufee Admin Dashboard](./sufee-admin-dashboard.png)](https://preview.colorlib.com/theme/sufee/)
 
 **Sufee** is a responsive Bootstrap 5.3 admin dashboard template with a real design system: layered
 design tokens, a working dark mode, and build-time partials so you can compose dashboards without
 copy-paste. v3.0 modernizes the visual language and strips ~1,800 lines of legacy code.
 
-[View Live Demo →](https://preview.colorlib.com/theme/sufee-admin-dashboard/)
+[View Live Demo →](https://preview.colorlib.com/theme/sufee/)
 
 ## What's New in v3.0
 

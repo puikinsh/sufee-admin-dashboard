@@ -127,7 +127,7 @@ the codebase shed roughly 1,800 lines of dead/legacy code.
 ### Notes
 
 - Preview moved from `colorlib.com/polygon/sufee/` (Hetzner) to
-  `preview.colorlib.com/theme/sufee-admin-dashboard/` (Cloudflare R2).
+  `preview.colorlib.com/theme/sufee/` (Cloudflare R2).
 - `dist/` is no longer tracked in git — `npm run build` produces it locally / in CI.
 
 ---

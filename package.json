@@ -34,7 +34,7 @@
   ],
   "author": "Aigars Silkalns",
   "license": "MIT",
-  "homepage": "https://preview.colorlib.com/theme/sufee-admin-dashboard/",
+  "homepage": "https://preview.colorlib.com/theme/sufee/",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@vitejs/plugin-legacy": "^8.0.1",
