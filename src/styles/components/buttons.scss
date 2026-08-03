@@ -1,5 +1,8 @@
 // Button Component Styles
 
+// `nth()` as a global function is deprecated; it now lives in the sass:list module.
+@use 'sass:list';
+
 .btn {
   border-radius: var(--radius-md);
   transition: var(--transition-fast);
@@ -164,9 +167,9 @@ $social-brands: (
   }
 
   @each $name, $colors in $social-brands {
-    $bg: nth($colors, 1);
-    $bg-hover: nth($colors, 2);
-    $fg: nth($colors, 3);
+    $bg: list.nth($colors, 1);
+    $bg-hover: list.nth($colors, 2);
+    $fg: list.nth($colors, 3);
 
     &.btn-#{$name} {
       background-color: $bg;

@@ -11,7 +11,7 @@ import handlebars from 'vite-plugin-handlebars';
 const htmlEntries = Object.fromEntries(
   globSync('src/*.html').map(file => {
     const name = basename(file, '.html');
-    return [name === 'index' ? 'main' : name, resolve(__dirname, file)];
+    return [name === 'index' ? 'main' : name, resolve(import.meta.dirname, file)];
   })
 );
 
@@ -31,7 +31,25 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler'
+        api: 'modern-compiler',
+
+        // Bootstrap 5.3 is not Sass-module-ready: its own source still uses
+        // `@import` internally and calls deprecated global/colour built-ins in
+        // scss/_functions.scss. We cannot fix vendored code, and Bootstrap has
+        // deferred `@use`/`@forward` support to v6.
+        //
+        // quietDeps silences deprecations raised *inside node_modules* — that's
+        // the `global-builtin`, `color-functions` and `if-function` noise coming
+        // out of Bootstrap's _functions.scss. Deprecations in our own SCSS still
+        // surface, which is what we want.
+        quietDeps: true,
+
+        // `import` is silenced explicitly because it fires on OUR main.scss:
+        // Bootstrap's granular partials can only be pulled in with `@import`
+        // (they rely on shared global scope for variable overrides), so we
+        // cannot migrate the entry stylesheet to `@use` while on Bootstrap 5.
+        // Revisit when upgrading to Bootstrap 6.
+        silenceDeprecations: ['import']
       }
     },
     devSourcemap: true
@@ -48,7 +66,7 @@ export default defineConfig({
     // (The runtime fetch-based system in src/partials/ is separate; it handles
     // sidebar/header/head injection at runtime.)
     handlebars({
-      partialDirectory: resolve(__dirname, 'src/components')
+      partialDirectory: resolve(import.meta.dirname, 'src/components')
     }),
     legacy({
       targets: ['defaults', 'not IE 11']
@@ -64,7 +82,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
+      '@': resolve(import.meta.dirname, 'src')
     }
   },
   optimizeDeps: {
