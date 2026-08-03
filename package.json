@@ -1,6 +1,6 @@
 {
   "name": "sufee-admin-dashboard",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Responsive Bootstrap 5.3 Admin Dashboard Template with design tokens, dark mode, and a component-driven architecture",
   "type": "module",
   "main": "src/main.js",

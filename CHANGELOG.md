@@ -5,6 +5,29 @@ All notable changes to the Sufee Admin Dashboard Template will be documented in 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.2] - 2026-08-03
+
+### Fixed
+
+- **Self-hosted Open Sans was never actually applied.** `@fontsource-variable/open-sans`
+  registers its family as `Open Sans Variable`, but `variables.scss` and `main.scss` both asked
+  for `'Open Sans'`. The name never matched, so the font was downloaded on every page load and
+  then silently discarded — the entire template rendered in the system sans-serif fallback while
+  still paying the bandwidth cost for 24 unused woff2 files.
+
+  `$font-family-sans-serif` is now `'Open Sans Variable', 'Open Sans', sans-serif`, and
+  `main.scss` references that variable instead of re-declaring the stack.
+
+  Confirmed by measuring rendered text rather than trusting `document.fonts.check()`, which
+  returns true for a family the browser is merely *willing* to fall back on. Before the fix, a
+  string set in `Open Sans Variable` measured identical to the fallback (154px = 154px). After,
+  it measures 257px against 249px for `sans-serif` and 234px for `serif` — three distinct
+  widths, i.e. the real font is in use. `Open Sans Variable` now also appears in
+  `document.fonts` with status `loaded`; previously only the Font Awesome faces did.
+
+  Introduced in 3.0.0 with the Fontsource migration, so every 3.0.x release before this one is
+  affected.
+
 ## [3.0.1] - 2026-08-03
 
 Dependency maintenance release. Every package is now on its latest published version.
@@ -104,7 +127,9 @@ Checked in a real browser (Chromium, 1440×900) against the production build, no
 bundler exit code:
 
 - 10 representative pages load with **zero** console errors, page errors, or failed requests.
-- Open Sans Variable and Font Awesome 7 fonts load and glyphs resolve to real dimensions.
+- Font Awesome 7 faces load and glyphs resolve to real dimensions. (The Open Sans check here
+  used `document.fonts.check()`, which reports success for a family the browser is only willing
+  to fall back on — it masked the bug fixed in 3.0.2. Superseded by a width-measurement check.)
 - All 5 dashboard canvases actually paint pixels (Chart.js sparklines + traffic chart).
 - `--bs-primary` computes to the brand `#20a8d8`, confirming Bootstrap is still compiled from
   source with our overrides rather than falling back to stock `#0d6efd`.

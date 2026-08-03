@@ -27,7 +27,11 @@ $enable-negative-margins: true;
 $enable-dark-mode: true;
 
 // ---------- Typography ----------
-$font-family-sans-serif: 'Open Sans', sans-serif;
+// @fontsource-variable/open-sans registers the family as 'Open Sans Variable'
+// — it must come first or the self-hosted font is downloaded but never matched,
+// and everything silently falls back to the system sans-serif. 'Open Sans' is
+// kept as a fallback for machines that have it installed locally.
+$font-family-sans-serif: 'Open Sans Variable', 'Open Sans', sans-serif;
 $font-size-base: 1rem;
 $line-height-base: 1.5;
 
