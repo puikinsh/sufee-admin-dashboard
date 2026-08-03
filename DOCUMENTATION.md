@@ -287,14 +287,14 @@ Every Sufee page follows this structure:
 
 ### Data Attributes
 
-| Attribute               | Purpose                          | Example                             |
-| ----------------------- | -------------------------------- | ----------------------------------- | ----------- |
-| `data-page`             | Page identifier for active state | `data-page="dashboard"`             |
-| `data-partial`          | Load HTML partial                | `data-partial="sidebar"`            |
-| `data-partial-replace`  | Replace element with partial     | `data-partial-replace="true"`       |
-| `data-breadcrumb`       | Enable breadcrumb                | `data-breadcrumb`                   |
-| `data-breadcrumb-title` | Breadcrumb title                 | `data-breadcrumb-title="Dashboard"` |
-| `data-breadcrumb-path`  | Breadcrumb path                  | `data-breadcrumb-path="Home         | Dashboard"` |
+| Attribute               | Purpose                          | Example                                  |
+| ----------------------- | -------------------------------- | ---------------------------------------- |
+| `data-page`             | Page identifier for active state | `data-page="dashboard"`                  |
+| `data-partial`          | Load HTML partial                | `data-partial="sidebar"`                 |
+| `data-partial-replace`  | Replace element with partial     | `data-partial-replace="true"`            |
+| `data-breadcrumb`       | Enable breadcrumb                | `data-breadcrumb`                        |
+| `data-breadcrumb-title` | Breadcrumb title                 | `data-breadcrumb-title="Dashboard"`      |
+| `data-breadcrumb-path`  | Breadcrumb path                  | `data-breadcrumb-path="Home\|Dashboard"` |
 
 ---
 
@@ -344,7 +344,7 @@ Sufee includes 30 pre-built pages:
 
 ### Icons
 
-- `font-fontawesome.html` - Font Awesome 6 showcase
+- `font-fontawesome.html` - Font Awesome 7 showcase
 - `font-themify.html` - Themify icons showcase
 
 ### Authentication

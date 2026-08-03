@@ -62,8 +62,8 @@ copy-paste. v3.0 modernizes the visual language and strips ~1,800 lines of legac
 
 ### Versions in this release
 
-Bootstrap 5.3.8 · Chart.js 4.5.1 · Font Awesome 7.2.0 · Vite 8.0.11 · ESLint 10.3.0 · Sass 1.99.0 ·
-Prettier 3.8.3 · `@fontsource-variable/open-sans` 5.2.7 · `vite-plugin-handlebars` 2.0.3. Zero
+Bootstrap 5.3.8 · Chart.js 4.5.1 · Font Awesome 7.3.1 · Vite 8.2.0 · ESLint 10.8.0 · Sass 1.102.0 ·
+Prettier 3.9.6 · `@fontsource-variable/open-sans` 5.3.0 · `vite-plugin-handlebars` 2.0.3. Zero
 vulnerabilities.
 
 See [CHANGELOG.md](./CHANGELOG.md) for the complete release notes including breaking changes and
@@ -420,26 +420,44 @@ The project uses Vite for building. Configuration is in `vite.config.js`:
 
 ## Dependencies
 
-### Core
+Exact ranges live in [package.json](./package.json); the versions below are what this release was
+built and tested against.
 
-- Bootstrap 5.3.x
-- Vite 5.x
-- Sass
+### Runtime
 
-### UI Libraries
+| Package                          | Version | Purpose                                  |
+| -------------------------------- | ------- | ---------------------------------------- |
+| `bootstrap`                      | 5.3.8   | UI framework (compiled from SCSS source) |
+| `chart.js`                       | 4.5.1   | All charts                               |
+| `@fortawesome/fontawesome-free`  | 7.3.1   | Icon set                                 |
+| `leaflet`                        | 1.9.4   | Vector / world maps                      |
+| `flag-icons`                     | 7.5.0   | Country flags                            |
+| `@fontsource-variable/open-sans` | 5.3.0   | Self-hosted variable font                |
 
-- Chart.js 4.x
-- DataTables 1.13.x
-- Font Awesome 6.x
-- Themify Icons
-- Flag Icons
+### Build & tooling
+
+| Package                   | Version | Purpose                             |
+| ------------------------- | ------- | ----------------------------------- |
+| `vite`                    | 8.2.0   | Dev server and production bundler   |
+| `sass`                    | 1.102.0 | SCSS compilation                    |
+| `@vitejs/plugin-legacy`   | 8.2.2   | Legacy browser bundle               |
+| `vite-plugin-handlebars`  | 2.0.3   | Build-time partials                 |
+| `vite-plugin-static-copy` | 4.1.1   | Copies `src/partials/` into `dist/` |
+| `eslint`                  | 10.8.0  | Linting                             |
+| `prettier`                | 3.9.6   | Formatting                          |
+
+### Not npm dependencies
+
+- **Themify Icons** — served as a static copy from `public/themify-icons/`.
+- **DataTables** — not used. `src/scripts/components/datatable.js` is a custom vanilla-JS
+  sort/search/paginate component with no third-party dependency.
+- **Google Maps** — loaded from a `<script>` tag in `maps-gmap.html`, not bundled.
 
 ### Utilities
 
 - NO jQuery - 100% vanilla JavaScript
 - Native HTML5 form validation
 - Modern ES6+ JavaScript modules
-- Various chart libraries (Chart.js, etc.)
 
 ## Migration from v1.x
 

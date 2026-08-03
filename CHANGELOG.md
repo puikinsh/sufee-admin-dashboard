@@ -5,6 +5,120 @@ All notable changes to the Sufee Admin Dashboard Template will be documented in 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.1] - 2026-08-03
+
+Dependency maintenance release. Every package is now on its latest published version.
+No breaking changes, no API changes, no markup changes — upgrading is a drop-in `npm install`.
+
+### Changed
+
+- **Dependencies updated to latest** — all nine outdated packages, all within their existing
+  semver ranges (no major bumps were available):
+
+  | Package                          | From   | To      |
+  | -------------------------------- | ------ | ------- |
+  | `vite`                           | 8.0.11 | 8.2.0   |
+  | `sass`                           | 1.99.0 | 1.102.0 |
+  | `eslint`                         | 10.3.0 | 10.8.0  |
+  | `prettier`                       | 3.8.3  | 3.9.6   |
+  | `@vitejs/plugin-legacy`          | 8.0.1  | 8.2.2   |
+  | `vite-plugin-static-copy`        | 4.1.0  | 4.1.1   |
+  | `eslint-plugin-prettier`         | 5.5.5  | 5.5.6   |
+  | `@fortawesome/fontawesome-free`  | 7.2.0  | 7.3.1   |
+  | `@fontsource-variable/open-sans` | 5.2.7  | 5.3.0   |
+
+  Already on latest and untouched: `bootstrap` 5.3.8, `chart.js` 4.5.1, `leaflet` 1.9.4,
+  `flag-icons` 7.5.0, `@eslint/js` 10.0.1, `eslint-config-prettier` 10.1.8,
+  `vite-plugin-handlebars` 2.0.3. `npm audit` reports zero vulnerabilities.
+
+- **`package.json` ranges bumped to match** — the declared floors now track the installed
+  versions rather than lagging several releases behind.
+
+- **README dependency table rewritten** — the old list claimed Vite 5.x, Font Awesome 6.x, and
+  a `DataTables 1.13.x` dependency that was never in `package.json`. It now reflects actual
+  installed versions and separates real npm packages from the static/CDN assets
+  (Themify Icons, Google Maps) and from `datatable.js`, which is a custom vanilla component.
+
+- **Sass build output is now warning-free** — the build previously printed 40 deprecation
+  warnings. These came from two distinct sources and are handled differently:
+
+  - **30 from inside Bootstrap** (`node_modules/bootstrap/scss/_functions.scss`) —
+    `global-builtin`, `color-functions` and `if-function`. This is vendored code we cannot
+    edit, and Bootstrap has deferred Sass module support to v6. Silenced with `quietDeps: true`,
+    which mutes deprecations raised inside dependencies while still surfacing our own.
+  - **10 `import` warnings** — Bootstrap 5.3's granular partials rely on shared global scope for
+    variable overrides, so `main.scss` cannot move to `@use` while on Bootstrap 5. Silenced
+    explicitly via `silenceDeprecations: ['import']`.
+
+  Both are configured in `vite.config.js` with comments explaining the constraint and pointing
+  at the Bootstrap 6 upgrade as the trigger to revisit. **CSS output is byte-for-byte identical**
+  — the compiled bundle hash did not change.
+
+- **`nth()` → `list.nth()`** in `styles/components/buttons.scss` — the last 6 deprecation
+  warnings were genuinely ours, not Bootstrap's. `nth()` as a global function is deprecated in
+  favour of the `sass:list` module. Social-brand button colours verified unchanged in-browser.
+
+### Fixed
+
+- **Malformed data-attributes table in `DOCUMENTATION.md`** — the `data-breadcrumb-path` row
+  contained an unescaped `|` inside its code span, which split the row into a phantom fourth
+  column. Prettier 3.8.3 tolerated it; 3.9.6 no longer does and reflowed the entire table into
+  an unreadable paragraph. The pipe is now escaped (`\|`) and the table has a correct
+  three-column separator.
+
+- **`__dirname` in `vite.config.js`** — replaced with `import.meta.dirname` in all three call
+  sites. Vite 8.2 warns that `__dirname` is unsupported by `configLoader: 'native'`, which is
+  planned to become the default in a future major. The build is now forward-compatible and the
+  warning is gone.
+
+- **Leaflet marker images 404'd on `maps-vector.html`** — Leaflet resolves its default
+  `marker-icon.png` / `marker-shadow.png` relative to where it believes `leaflet.css` lives,
+  which breaks once Vite hashes and relocates assets. The three marker images are now imported
+  explicitly and passed to `L.Icon.Default.mergeOptions()`, so Vite rewrites them to real built
+  paths. Pre-existing bug, unrelated to the version bumps (Leaflet itself was already current).
+
+- **Dead placeholder avatars in `tables-basic.html`** — three `<img>` tags pointed at
+  `https://via.placeholder.com/32`, a third-party service that no longer resolves, producing
+  broken images and failed requests. Replaced with the bundled `images/avatar/{1,2,3}.jpg`
+  already used elsewhere in the template. The template now makes **no external image requests**.
+
+- **ESLint ignored `.mjs` files** — the flat config matched only `**/*.js`, so `scripts/*.mjs`
+  fell through to `eslint:recommended` with no globals defined and reported every
+  `process`/`console`/`document` reference as `no-undef` (11 errors). `.mjs` is now covered by
+  the main rule block, with a dedicated `scripts/**` block supplying Node globals.
+
+- **`no-unused-vars` didn't honour the `_` convention for catch bindings** — ESLint 9+ lints
+  caught errors by default, so `catch (_e)` was reported despite the project's `^_` ignore
+  pattern. Added `caughtErrorsIgnorePattern: '^_'`.
+
+- **`npm run quality` now exits 0.** Both `lint:check` and `format:check` pass across the repo;
+  previously the gate failed on the two items above plus unformatted Markdown.
+
+- **Stale layout note in `CLAUDE.md`** — documented the sidebar as `aside.left-panel` +
+  `.right-panel`. The actual markup is `nav#sidebar.sidebar` + `.main-content` inside a
+  `div.d-flex.min-vh-100` shell.
+
+### Verified
+
+Checked in a real browser (Chromium, 1440×900) against the production build, not just the
+bundler exit code:
+
+- 10 representative pages load with **zero** console errors, page errors, or failed requests.
+- Open Sans Variable and Font Awesome 7 fonts load and glyphs resolve to real dimensions.
+- All 5 dashboard canvases actually paint pixels (Chart.js sparklines + traffic chart).
+- `--bs-primary` computes to the brand `#20a8d8`, confirming Bootstrap is still compiled from
+  source with our overrides rather than falling back to stock `#0d6efd`.
+- Dark-mode toggle flips `data-bs-theme` and repaints (`#f1f2f7` → `#0f172a`).
+- Runtime partials inject the sidebar and header (39 nav links present).
+- Leaflet initialises with 181 tile/vector nodes.
+
+### Known issues
+
+- **Sass `@import` cannot be migrated while on Bootstrap 5.** The deprecation is silenced rather
+  than resolved, deliberately and with the reasoning recorded in `vite.config.js`. Dart Sass
+  3.0.0 will remove `@import` entirely; the fix is Bootstrap 6, which ships Sass module support.
+  Builds are unaffected until then.
+
 ## [3.0.0] - 2026-05-08
 
 A major design-system and architecture release. The dashboard renders correctly in
