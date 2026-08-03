@@ -102,7 +102,7 @@ the same file's `:root` block.
 
 The themed Bootstrap is compiled from source via `main.scss`. Importing the prebuilt CSS in addition
 would override our customized values. There used to be exactly this bug — `main.js` imported both,
-and the compiled `--bs-primary` was Bootstrap's default `#0d6efd` instead of our brand `#20a8d8`.
+and the compiled `--bs-primary` was Bootstrap's default `#0d6efd` instead of our brand `#187ea2`.
 The comment in `main.js` exists to prevent regression.
 
 ### SCSS file map

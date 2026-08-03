@@ -498,12 +498,12 @@ Sufee uses custom theme colors defined in `variables.scss`:
 
 ```scss
 // Primary Colors (CSS Variables)
---bs-primary: #20a8d8;
+--bs-primary: #187ea2;
 --bs-secondary: #6c757d;
 --bs-success: #4dbd74;
 --bs-info: #63c2de;
 --bs-warning: #ffc107;
---bs-danger: #f86c6b;
+--bs-danger: #c0504d;
 --bs-light: #f8f9fa;
 --bs-dark: #272c33;
 
@@ -640,7 +640,7 @@ const chart = new Chart(ctx, {
       {
         label: 'Sales',
         data: [12, 19, 3, 5, 2, 3],
-        borderColor: '#20a8d8',
+        borderColor: '#187ea2',
         tension: 0.1
       }
     ]

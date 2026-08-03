@@ -5,6 +5,97 @@ All notable changes to the Sufee Admin Dashboard Template will be documented in 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] - 2026-08-03
+
+Design polish and accessibility pass. No layout changes, no markup restructuring, no new
+dependencies — the look is intentionally the same, with contrast, dark mode and token
+consistency brought up to standard.
+
+### Changed
+
+- **Every button, badge and stat card now meets WCAG AA (4.5:1).** Previously white labels sat
+  on pale fills at 1.63:1–2.86:1. The fix is split deliberately:
+
+  - `buttons.scss` forced `color: white !important` on six variants, which overrode Bootstrap's
+    `button-variant()` mixin — the mixin already derives an accessible label from the fill via
+    `color-contrast()`. Removing the override lets pale fills (success, info, warning, light)
+    take dark text and darker fills keep white.
+  - `$primary` `#20a8d8` → `#187ea2` (2.74:1 → 4.62:1) and `$danger` `#f86c6b` → `#c0504d`
+    (2.86:1 → 4.67:1). Same hue and character, a few steps deeper, so the primary CTA and
+    destructive actions keep their white labels rather than flipping to dark text.
+  - `$min-contrast-ratio: 4.5` is now declared explicitly so the contract is visible in the
+    palette rather than inherited silently.
+
+  | Component | Before | After |
+  | --- | --- | --- |
+  | `btn`/`badge` info | 2.04:1 | 10.30:1 |
+  | `btn`/`badge` success | 2.37:1 | 8.85:1 |
+  | `btn`/`badge` primary | 2.74:1 | 4.62:1 |
+  | `btn`/`badge` danger | 2.86:1 | 4.67:1 |
+  | dashboard stat card (warning) | 1.63:1 | 12.88:1 |
+  | dashboard stat card (success) | 2.37:1 | 8.85:1 |
+
+- **New `styles/components/badges.scss`.** `.badge` ships a fixed white label and the `bg-*`
+  utilities only set a background, so `badge bg-warning` rendered white-on-yellow. Individual
+  pages had been patching this by hand with `text-body-emphasis` on some badges but not others
+  — which is why the same badge looked different from page to page. Badge labels are now
+  derived from the fill in one place.
+
+- **Coloured cards use `.text-bg-*` instead of `text-white bg-*`** — the stat-card build-time
+  partial plus 16 hand-written cards across four pages. `.text-bg-*` sets fill and label
+  together; `text-white bg-*` pinned a white label onto yellow and green.
+
+- **Chart colours are read from the `--bs-*` custom properties at runtime.**
+  `charts.js` carried its own literal copy of the palette, which had already drifted — it still
+  held `#20a8d8`/`#f86c6b`, so every chart would have been drawn off-brand after this release.
+  The cache is dropped on `themeChanged` so charts follow light/dark.
+
+### Fixed
+
+- **Auth and error pages were unusable in dark mode.** `page-login`, `page-register`,
+  `pages-forget`, `error-404` and `error-500` carried `data-bs-theme="light"` **on `<body>`**.
+  `ThemeManager` only sets the attribute on `<html>`, so the body-level value always won and
+  pinned every descendant to light. Combined with hard-coded `#fff`/`#f8f9fa`/`#e9ecef`
+  surfaces in `auth.scss` and `error-page.scss`, dark mode produced a blinding white card —
+  and on the 404 page the theme-aware text over that hard-coded white surface made the
+  "Page Not Found" heading and "Things to try" panel effectively invisible.
+
+  The body-level lock is removed (the `<html>` one is just the pre-JS default and is correct),
+  and both stylesheets now use `--bs-body-bg` / `--bs-tertiary-bg` / `--bs-border-color` /
+  `--bs-*-bg-subtle`, which `dark-theme.scss` already defined. This also fixed the washed-out
+  Facebook/X/Google buttons on the login page as a side effect.
+
+- **Invalid form fields used the wrong red.** `.is-invalid` and `.invalid-feedback` hard-coded
+  Bootstrap's stock `#dc3545`, which is a different red from the theme's `$danger` — so an
+  invalid field did not match `.btn-danger` or `.text-danger` next to it. Both now use
+  `var(--bs-danger)`.
+
+- **`.btn-light` was invisible on white cards.** Bootstrap sets its border to the fill itself
+  (`#f8f9fa` on `#fff`), leaving no edge. It now takes `var(--bs-border-color)`.
+
+- **Focus ring was frozen to the old brand colour.** `--focus-ring` hard-coded
+  `rgba(32, 168, 216, …)`, so it would have kept the pre-3.1 hue after the palette moved. It is
+  now derived from `$primary`. The red menu toggle's ring moved out of `header.scss` into a
+  `--focus-ring-menu` token declared next to `--menu-toggle-bg`.
+
+- **Stray magic numbers** — `widgets.scss` used a bare `3px 3px 0 0` radius instead of the
+  radius scale.
+
+- **Documented colour values corrected** in the component catalog swatches, README theming
+  sample, `DOCUMENTATION.md` variable reference and Chart.js example, and `CLAUDE.md`.
+
+### Verified
+
+Measured in Chromium against the production build rather than judged by eye — which mattered:
+an early read of a screenshot suggested `btn-warning` was broken when measurement showed it at
+9.46:1 and already correct, while the genuinely broken cases were the pale fills.
+
+- Contrast measured programmatically for every button, badge and stat-card label; lowest value
+  across the set is now 4.62:1.
+- Auth and error pages confirmed rendering dark surfaces with `sufee-theme=dark`.
+- 10 pages load with zero console, page or network errors; charts paint; fonts resolve; Leaflet
+  initialises; runtime partials inject.
+
 ## [3.0.2] - 2026-08-03
 
 ### Fixed

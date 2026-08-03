@@ -357,9 +357,9 @@ Edit [src/styles/variables.scss](src/styles/variables.scss). The SCSS color toke
 `--bs-*` CSS custom properties — change them in one place and every themed component updates:
 
 ```scss
-$primary: #20a8d8; // → --bs-primary, .btn-primary, .text-primary, ...
+$primary: #187ea2; // → --bs-primary, .btn-primary, .text-primary, ...
 $success: #4dbd74; // → --bs-success, .alert-success, validation icons, ...
-$danger: #f86c6b;
+$danger: #c0504d;
 $info: #63c2de;
 $warning: #ffc107;
 ```
