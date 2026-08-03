@@ -19,15 +19,46 @@
 // For chart shapes that don't fit this attribute model (mixed bar/line,
 // bubble, scatter), use Chart.js directly via `window.Chart`.
 
-const THEME_COLORS = {
-  primary: '#20a8d8',
+// Chart colours are read from the `--bs-*` custom properties at runtime rather
+// than duplicated here. A literal copy of the palette is a second source of
+// truth and it does drift — this list still held #20a8d8 / #f86c6b after the
+// theme moved to accessible values, so every chart was drawn off-brand.
+//
+// Fallbacks only apply if a property is missing (e.g. a chart rendered before
+// the stylesheet resolves); they mirror styles/variables.scss.
+const COLOR_FALLBACKS = {
+  primary: '#187ea2',
   secondary: '#6c757d',
   success: '#4dbd74',
   info: '#63c2de',
   warning: '#ffc107',
-  danger: '#f86c6b',
+  danger: '#c0504d',
   dark: '#272c33'
 };
+
+let themeColorCache = null;
+
+function themeColors() {
+  if (themeColorCache) {
+    return themeColorCache;
+  }
+  const root = getComputedStyle(document.documentElement);
+  themeColorCache = Object.fromEntries(
+    Object.entries(COLOR_FALLBACKS).map(([name, fallback]) => {
+      const value = root.getPropertyValue(`--bs-${name}`).trim();
+      return [name, value || fallback];
+    })
+  );
+  return themeColorCache;
+}
+
+// The palette differs between light and dark, so drop the cache when the theme
+// flips and let the next chart re-read it.
+// ThemeManager dispatches this on `document` (and it does not bubble), so it
+// must be observed there — a window listener would never fire.
+document.addEventListener('themeChanged', () => {
+  themeColorCache = null;
+});
 
 const DEFAULT_COLOR_CYCLE = ['primary', 'success', 'warning', 'danger', 'info', 'secondary'];
 
@@ -58,7 +89,7 @@ function parseDatasets(canvas) {
   return datasetGroups.map((data, i) => ({
     data,
     label: datasetLabels[i] ?? `Dataset ${i + 1}`,
-    color: THEME_COLORS[colorNames[i % colorNames.length]] || THEME_COLORS.primary
+    color: themeColors()[colorNames[i % colorNames.length]] || themeColors().primary
   }));
 }
 
@@ -195,7 +226,7 @@ function buildSliceData(canvas, { alpha = 1 } = {}) {
   const colorsAttr = canvas.dataset.colors || '';
   const colorNames = colorsAttr ? colorsAttr.split(',').map(s => s.trim()) : DEFAULT_COLOR_CYCLE;
   const sliceColors = first.data.map((_, i) => {
-    const hex = THEME_COLORS[colorNames[i % colorNames.length]] || THEME_COLORS.primary;
+    const hex = themeColors()[colorNames[i % colorNames.length]] || themeColors().primary;
     return alpha < 1 ? hexToRgba(hex, alpha) : hex;
   });
   return {

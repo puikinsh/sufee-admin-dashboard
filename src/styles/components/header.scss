@@ -23,7 +23,7 @@
     }
 
     &:focus-visible {
-      box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+      box-shadow: var(--focus-ring-menu);
       outline: 0;
     }
   }

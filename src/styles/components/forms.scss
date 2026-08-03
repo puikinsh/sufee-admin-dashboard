@@ -1,12 +1,14 @@
 // Form Component Styles
 
 .form-control {
+  // Use the theme's danger colour, not Bootstrap's stock #dc3545 — the two are
+  // different reds, so invalid fields did not match .btn-danger or .text-danger.
   &.is-invalid {
-    border-color: #dc3545;
+    border-color: var(--bs-danger);
 
     &:focus {
-      border-color: #dc3545;
-      box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+      border-color: var(--bs-danger);
+      box-shadow: 0 0 0 0.2rem #{rgba($danger, 0.25)};
     }
   }
 }
@@ -16,5 +18,5 @@
   width: 100%;
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: #dc3545;
+  color: var(--bs-danger);
 }
