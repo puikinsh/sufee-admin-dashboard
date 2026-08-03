@@ -10,8 +10,11 @@ export default [
   prettierConfig,
 
   {
-    // Configuration for all JavaScript files
-    files: ['**/*.js'],
+    // Configuration for all JavaScript files.
+    // `.mjs` is included so build/tooling scripts get the same quality rules as
+    // src/ — without it they fall back to eslint:recommended with no globals at
+    // all, which reports every `process`/`console` reference as no-undef.
+    files: ['**/*.js', '**/*.mjs'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -71,7 +74,11 @@ export default [
         'error',
         {
           argsIgnorePattern: '^_',
-          varsIgnorePattern: '^_'
+          varsIgnorePattern: '^_',
+          // ESLint 9+ lints catch bindings by default (caughtErrors: 'all'),
+          // so the project's `_`-prefix convention has to cover them too —
+          // otherwise `catch (_e) { /* ignore */ }` is reported as unused.
+          caughtErrorsIgnorePattern: '^_'
         }
       ],
       'no-console': [
@@ -161,6 +168,33 @@ export default [
       }
     },
     rules: {
+      'no-console': 'off'
+    }
+  },
+
+  {
+    // Node-side tooling scripts (e.g. scripts/social-preview.mjs).
+    // These run under Node, so they need Node globals on top of the browser
+    // globals declared above — the browser ones stay relevant because
+    // Playwright `page.evaluate()` callbacks are authored inline here and are
+    // statically analysed as part of this file.
+    files: ['scripts/**/*.js', 'scripts/**/*.mjs'],
+    languageOptions: {
+      globals: {
+        process: 'readonly',
+        console: 'readonly',
+        Buffer: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        module: 'readonly',
+        require: 'readonly',
+        exports: 'readonly',
+        global: 'readonly',
+        URL: 'readonly'
+      }
+    },
+    rules: {
+      // Tooling scripts legitimately report progress on stdout.
       'no-console': 'off'
     }
   },
