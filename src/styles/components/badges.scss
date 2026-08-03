@@ -1,0 +1,15 @@
+// Badge Component Styles
+
+// `.badge` ships with a fixed white label, and the `bg-*` utilities only set a
+// background — so `badge bg-warning` rendered white-on-yellow at 1.63:1, and
+// `badge bg-info` white-on-cyan at 2.04:1.
+//
+// Individual pages worked around this by hand-adding `text-body-emphasis` to
+// some warning badges but not others, which is why the same badge looked
+// different from page to page. Derive the label from the fill instead, exactly
+// as the buttons now do, so every badge is correct without per-page patching.
+@each $name, $color in $theme-colors {
+  .badge.bg-#{$name} {
+    color: color-contrast($color);
+  }
+}

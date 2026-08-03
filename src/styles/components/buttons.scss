@@ -12,64 +12,24 @@
     outline: 0;
   }
 
-  // Ensure white text for all solid buttons except warning
-  &.btn-primary,
-  &.btn-secondary,
-  &.btn-success,
-  &.btn-danger,
-  &.btn-info,
-  &.btn-dark {
-    color: white !important;
-
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
-      color: white !important;
-    }
-  }
-
-  // Warning button should have dark text for readability
-  &.btn-warning {
-    color: #212529 !important;
-
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
-      color: #212529 !important;
-    }
-  }
-
-  // Light button should have dark text
+  // `.btn-light` is #f8f9fa sitting on a white card, so without a border it is
+  // effectively invisible. Bootstrap sets border-color to the fill itself; give
+  // it a real edge instead.
   &.btn-light {
-    color: #212529 !important;
-
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
-      color: #212529 !important;
-    }
+    border-color: var(--bs-border-color);
   }
 
-  // Disabled state should maintain text colors
-  &:disabled,
-  &.disabled {
-    &.btn-primary,
-    &.btn-secondary,
-    &.btn-success,
-    &.btn-danger,
-    &.btn-info,
-    &.btn-dark {
-      color: rgba(255, 255, 255, 0.5) !important;
-    }
-
-    &.btn-warning,
-    &.btn-light {
-      color: rgba(33, 37, 41, 0.5) !important;
-    }
-  }
+  // NOTE: do not hard-code button text colour here.
+  //
+  // Bootstrap's `button-variant()` mixin already derives the label colour from
+  // the fill via `color-contrast()`, which honours `$min-contrast-ratio` (4.5:1).
+  // This block used to force `color: white !important` on primary/secondary/
+  // success/danger/info/dark, which overrode that and produced 2.0–2.9:1 text on
+  // the pale fills — well below WCAG AA.
+  //
+  // With the override gone, each variant picks its own accessible label:
+  // pale fills (success, info, warning, light) get dark text; darker fills
+  // (primary, secondary, danger, dark) keep white.
 }
 
 // =====================================================================

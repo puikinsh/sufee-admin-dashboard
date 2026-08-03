@@ -12,14 +12,27 @@
 // below. Reference them via `var(--sidebar-bg)` etc.
 
 // ---------- Theme palette ----------
-$primary: #20a8d8;
-$secondary: #6c757d;
-$success: #4dbd74;
-$info: #63c2de;
-$warning: #ffc107;
-$danger: #f86c6b;
-$light: #f8f9fa;
-$dark: #272c33;
+//
+// Contrast contract: Bootstrap derives button/badge label colour from the fill
+// via `color-contrast()` against `$min-contrast-ratio`. Fills dark enough to
+// carry white text keep it; paler fills (success, info, warning, light) get
+// dark text automatically. Ratios below are the fill vs. white.
+//
+// `$primary` and `$danger` are deliberately a few steps deeper than the
+// original #20a8d8 / #f86c6b so the primary CTA and destructive actions keep
+// white labels and still clear AA. Same hue, same character, just darker —
+// at the old values white text sat at 2.74:1 and 2.86:1.
+$primary: #187ea2; // 4.62:1 on white  (was #20a8d8 — 2.74:1)
+$secondary: #6c757d; // 4.69:1 on white
+$success: #4dbd74; // pale fill — takes dark text (8.85:1)
+$info: #63c2de; // pale fill — takes dark text (10.30:1)
+$warning: #ffc107; // pale fill — takes dark text (12.88:1)
+$danger: #c0504d; // 4.67:1 on white  (was #f86c6b — 2.86:1)
+$light: #f8f9fa; // pale fill — takes dark text
+$dark: #272c33; // 14.05:1 on white
+
+// Explicit rather than inherited so the contract above is visible at a glance.
+$min-contrast-ratio: 4.5;
 
 // ---------- Bootstrap feature flags ----------
 $enable-css-grid: true;
@@ -105,6 +118,9 @@ $box-shadow-lg:
   // Header UI accents
   --menu-toggle-bg: #e74c3c;
   --menu-toggle-hover: #c0392b;
+  // Focus ring for the red toggle — declared beside the colour it derives from
+  // so the two cannot drift apart (it used to be a loose rgba() in header.scss)
+  --focus-ring-menu: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
 
   // ---------- Design tokens ----------
   // Reference these everywhere instead of magic numbers. Bootstrap also reads
@@ -130,8 +146,9 @@ $box-shadow-lg:
   --transition-base: 200ms ease;
   --transition-slow: 300ms ease;
 
-  // Focus ring (one canonical style derived from --bs-primary)
-  --focus-ring: 0 0 0 0.2rem rgba(32, 168, 216, 0.25);
+  // Focus ring (one canonical style, derived from $primary so it cannot drift —
+  // this used to hard-code rgba(32, 168, 216) and silently kept the old hue)
+  --focus-ring: 0 0 0 0.2rem #{rgba($primary, 0.25)};
 }
 
 // Dark mode overrides live in styles/dark-theme.scss — imported AFTER
