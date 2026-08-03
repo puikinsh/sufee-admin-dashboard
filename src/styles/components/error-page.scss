@@ -12,18 +12,20 @@
 //     </div>
 //   </body>
 
+@use 'sass:color';
+
 .error-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+  background: linear-gradient(135deg, var(--bs-primary) 0%, #{color.scale($primary, $lightness: -18%)} 100%);
   padding: 2rem;
   font-family: 'Open Sans', sans-serif;
 }
 
 .error-card {
-  background: white;
+  background: var(--bs-body-bg);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   padding: 3rem 2.5rem;
@@ -40,7 +42,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+    background: linear-gradient(135deg, var(--bs-primary) 0%, #{color.scale($primary, $lightness: -18%)} 100%);
   }
 }
 
@@ -49,7 +51,7 @@
   height: 96px;
   margin: 0 auto 1.5rem;
   border-radius: var(--radius-circle);
-  background: rgba(32, 168, 216, 0.12);
+  background: var(--bs-primary-bg-subtle);
   color: var(--bs-primary);
   display: flex;
   align-items: center;
@@ -85,7 +87,7 @@
 }
 
 .error-suggestions {
-  background: #f8f9fa;
+  background: var(--bs-tertiary-bg);
   border-radius: var(--radius-md);
   padding: 1.25rem;
   text-align: left;
@@ -141,7 +143,7 @@
     cursor: pointer;
 
     &.btn-error-primary {
-      background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+      background: linear-gradient(135deg, var(--bs-primary) 0%, #{color.scale($primary, $lightness: -18%)} 100%);
       color: white;
 
       &:hover {
@@ -152,8 +154,8 @@
     }
 
     &.btn-error-secondary {
-      background: white;
-      border-color: #e9ecef;
+      background: var(--bs-body-bg);
+      border-color: var(--bs-border-color);
       color: var(--text-primary);
 
       &:hover {

@@ -15,19 +15,21 @@
 //     </div>
 //   </body>
 
+@use 'sass:color';
+
 .auth-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   // Brand-aligned gradient (uses theme primary + info)
-  background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+  background: linear-gradient(135deg, var(--bs-primary) 0%, #{color.scale($primary, $lightness: -18%)} 100%);
   padding: 1.25rem;
   font-family: 'Open Sans', sans-serif;
 }
 
 .auth-card {
-  background: white;
+  background: var(--bs-body-bg);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-xl);
   overflow: hidden;
@@ -36,7 +38,7 @@
 }
 
 .auth-hero {
-  background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+  background: linear-gradient(135deg, var(--bs-primary) 0%, #{color.scale($primary, $lightness: -18%)} 100%);
   padding: 2.25rem 1.875rem 2rem;
   text-align: center;
   color: white;
@@ -92,7 +94,7 @@
   margin-bottom: 1.125rem;
 
   > .form-control {
-    border: 1.5px solid #e9ecef;
+    border: 1.5px solid var(--bs-border-color);
     border-radius: var(--radius-md);
     padding: 1rem 0.875rem;
     height: auto;
@@ -116,7 +118,7 @@
 
   .form-check-input {
     border-radius: var(--radius-sm);
-    border: 1.5px solid #e9ecef;
+    border: 1.5px solid var(--bs-border-color);
 
     &:checked {
       background-color: var(--bs-primary);
@@ -142,7 +144,7 @@
   font-weight: 600;
   border-radius: var(--radius-md);
   border: 0;
-  background: linear-gradient(135deg, var(--bs-primary) 0%, #1d8db6 100%);
+  background: linear-gradient(135deg, var(--bs-primary) 0%, #{color.scale($primary, $lightness: -18%)} 100%);
   color: white;
   transition: var(--transition-fast);
 
@@ -178,7 +180,7 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: #e9ecef;
+    background: var(--bs-border-color);
   }
 
   &::before {
@@ -202,9 +204,9 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.75rem;
-    border: 1.5px solid #e9ecef;
+    border: 1.5px solid var(--bs-border-color);
     border-radius: var(--radius-md);
-    background: white;
+    background: var(--bs-body-bg);
     color: var(--text-primary);
     font-size: 0.875rem;
     font-weight: 500;
@@ -222,8 +224,8 @@
 .auth-footer {
   padding: 1.25rem 1.875rem;
   text-align: center;
-  background: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  background: var(--bs-tertiary-bg);
+  border-top: 1px solid var(--bs-border-color);
   font-size: 0.875rem;
   color: var(--text-secondary);
 
@@ -244,7 +246,7 @@
 
   .strength-bar {
     height: 4px;
-    background: #e9ecef;
+    background: var(--bs-border-color);
     border-radius: var(--radius-pill);
     overflow: hidden;
     margin-bottom: 0.25rem;
@@ -292,14 +294,14 @@
   }
 
   &.is-success {
-    background: rgba(77, 189, 116, 0.12);
+    background: var(--bs-success-bg-subtle);
     border-left: 3px solid var(--bs-success);
-    color: #1f6f3e;
+    color: var(--bs-success-text-emphasis);
   }
 
   &.is-error {
-    background: rgba(248, 108, 107, 0.12);
+    background: var(--bs-danger-bg-subtle);
     border-left: 3px solid var(--bs-danger);
-    color: #8a2828;
+    color: var(--bs-danger-text-emphasis);
   }
 }
