@@ -344,6 +344,20 @@
             import L from 'leaflet';
             import 'leaflet/dist/leaflet.css';
 
+            // Leaflet resolves its default marker images relative to where it
+            // thinks leaflet.css lives, which breaks once Vite hashes and moves
+            // assets — the browser then 404s on marker-icon.png / marker-shadow.png.
+            // Importing them explicitly lets Vite rewrite the URLs to the built paths.
+            import markerIcon from 'leaflet/dist/images/marker-icon.png';
+            import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+            import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+
+            L.Icon.Default.mergeOptions({
+                iconUrl: markerIcon,
+                iconRetinaUrl: markerIcon2x,
+                shadowUrl: markerShadow
+            });
+
             // Initialize maps
             let maps = {};
             let markers = [];
