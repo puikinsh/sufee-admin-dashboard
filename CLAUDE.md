@@ -159,3 +159,44 @@ In dev mode, `window.bootstrap`, `window.Chart`, `window.sufeeApp`, `window.part
 - `error-handler.js` is intentionally minimal (~30 lines) — just two `window` listeners that log
   uncaught errors. Don't reintroduce the toast system or fetch interception that used to live there;
   if a real backend is added later, wire Sentry/BugSnag into those two listeners.
+
+## Deploying the demo (preview.colorlib.com/theme/sufee/)
+
+The live demo is the **contents of `dist/`** uploaded to the bucket root — not the repo root. The
+shared `~/.config/rclone/template-filter.txt` does **not** apply here: it excludes `dist/**` and
+`src/**` because it was written for plain static templates, so using it would publish nothing
+usable.
+
+```bash
+npm run build
+rclone copy dist/ r2pro:colorlib-preview/theme/sufee/
+```
+
+### Use `copy`, never `sync`
+
+`rclone sync` deletes destination files that no longer exist locally. Vite fingerprints every asset
+(`main-<hash>.css`), so a rebuild produces new names and `sync` deletes the old ones — but
+Cloudflare still serves the **previously cached HTML**, which references exactly those now-deleted
+files. The result is a live site 404ing on its own CSS and JS.
+
+This is not hypothetical; it happened during the 3.0.2 deploy. Recovery was to rebuild the previous
+commit (Vite hashing is deterministic, so the old filenames regenerate) and `copy` those assets back
+alongside the new ones.
+
+Keeping both generations is correct: cached HTML keeps working, and fresh HTML gets the new build.
+Prune stale assets only after the CDN TTL has fully elapsed.
+
+### Purge the cache after deploying
+
+The zone sends `cache-control: public, max-age=3600, s-maxage=2592000` — **30 days at the edge**.
+Until it is purged, visitors keep getting the previous build even though R2 is current. Purge
+`preview.colorlib.com/theme/sufee/*` in the Cloudflare dashboard (Caching → Configuration → Purge
+Custom Prefix/URL) after every deploy, or the release is invisible.
+
+Verify what the edge is actually serving, not just what is in the bucket:
+
+```bash
+curl -s https://preview.colorlib.com/theme/sufee/ | grep -o 'assets/main-[A-Za-z0-9_-]*\.css'
+```
+
+Compare that hash against `ls dist/assets/main-*.css`. A mismatch means the cache is stale.
