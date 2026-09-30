@@ -5,6 +5,38 @@ All notable changes to the Sufee Admin Dashboard Template will be documented in 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - 2026-10-01
+
+Google Maps no longer ships with an API key. The demo shows static map previews; buyers add their
+own key in one place to get interactive maps.
+
+### Changed
+
+- **Google Maps page (`maps-gmap.html`) shows a static preview until you add a key.** Each of the
+  eight examples (basic, markers, geometry overlays, elevation, geolocation, night style, traffic
+  and transit, map events) renders an SVG preview of the same area at the live map's centre and
+  zoom, with the same markers, shapes and info windows, plus the notice "Preview — add your Google
+  Maps API key in `src/config/maps.config.js` to load the interactive map". The previews are drawn
+  from Natural Earth data (public domain), live in `src/images/maps/`, and follow dark mode.
+- **Add your key in `src/config/maps.config.js`** (`googleMapsApiKey`, plus an optional
+  `googleMapsMapId`) and rebuild. The Maps JavaScript API is then loaded through Google's official
+  loader, `@googlemaps/js-api-loader` (Apache-2.0, new dependency), and the same examples are drawn
+  as interactive maps. Markers use Advanced Markers instead of the deprecated `google.maps.Marker`.
+  A rejected key or a failed load falls back to the previews with a note to check the key.
+- The elevation example requests elevations when a marker is first clicked, not on page load.
+- `GoogleMapsManager` is registered in `App.COMPONENT_REGISTRY` for `[data-gmap]`.
+
+### Removed
+
+- **The bundled Google Maps API key.** Its Cloud project has no billing, so every map showed
+  "This page can't load Google Maps correctly" (`BillingNotEnabledMapError`).
+
+### Fixed
+
+- **`maps-gmap.html` had no styles, sidebar or header in the build.** It was the only page that did
+  not load `main.js`.
+- The Willis Tower and Millennium Park markers had each other's coordinates.
+
 ## [3.1.0] - 2026-08-03
 
 Design polish and accessibility pass. No layout changes, no markup restructuring, no new
