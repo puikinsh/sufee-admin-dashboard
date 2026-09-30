@@ -30,7 +30,7 @@
                                         <h4 class="mb-0">Basic Map</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div class="map" id="basic-map" style="height: 400px"></div>
+                                        <div class="gmap" id="basic-map" data-gmap="basic" style="height: 400px"></div>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                                         <h4 class="mb-0">Map with Markers</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div id="map-2" class="map" style="height: 400px"></div>
+                                        <div class="gmap" id="map-2" data-gmap="markers" style="height: 400px"></div>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                         <h4 class="mb-0">Geometry overlays</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div class="map" id="map-3" style="height: 400px"></div>
+                                        <div class="gmap" id="map-3" data-gmap="geometry" style="height: 400px"></div>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                                         <h4 class="mb-0">Elevation locations</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div id="map-4" class="map" style="height: 400px"></div>
+                                        <div class="gmap" id="map-4" data-gmap="elevation" style="height: 400px"></div>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,12 @@
                                         <h4 class="mb-0">Geolocation</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div class="map" id="map-5" style="height: 400px"></div>
+                                        <div
+                                            class="gmap"
+                                            id="map-5"
+                                            data-gmap="geolocation"
+                                            style="height: 400px"
+                                        ></div>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +90,7 @@
                                         <h4 class="mb-0">Styled Map (Night Mode)</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div id="map-6" class="map" style="height: 400px"></div>
+                                        <div class="gmap" id="map-6" data-gmap="styled" style="height: 400px"></div>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +101,7 @@
                                         <h4 class="mb-0">Traffic & Transit Layers</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div class="map" id="map-7" style="height: 400px"></div>
+                                        <div class="gmap" id="map-7" data-gmap="traffic" style="height: 400px"></div>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +112,7 @@
                                         <h4 class="mb-0">Map events</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div class="map" id="map-8" style="height: 400px"></div>
+                                        <div class="gmap" id="map-8" data-gmap="events" style="height: 400px"></div>
                                     </div>
                                 </div>
                             </div>
@@ -119,17 +124,8 @@
 
         <div data-partial="scripts-common"></div>
 
-        <!-- Google Maps initialization -->
-        <script type="module">
-            import GoogleMapsManager from './scripts/components/gmaps.js';
-
-            // Load Google Maps API
-            const script = document.createElement('script');
-            script.src =
-                'https://maps.googleapis.com/maps/api/js?key=AIzaSyD2jlT6C_to6X1mMvR9yRWeRvpIgTXgddM&callback=initGoogleMaps&libraries=geometry,places';
-            script.async = true;
-            script.defer = true;
-            document.head.appendChild(script);
-        </script>
+        <!-- Google Maps: add your API key in src/config/maps.config.js (static previews are shown until then).
+             The maps are built by scripts/components/gmaps.js, loaded for every [data-gmap] element. -->
+        <script type="module" src="/main.js"></script>
     </body>
 </html>

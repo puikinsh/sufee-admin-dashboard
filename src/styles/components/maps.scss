@@ -1,0 +1,266 @@
+// Google Maps page (maps-gmap.html, scripts/components/gmaps.js)
+//
+// Until a key is set in src/config/maps.config.js, each map shows a static
+// preview: an inline SVG drawn from Natural Earth data (public domain) plus a
+// short notice. The palette is tokenised so the preview follows dark mode.
+
+.gmap {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--bs-border-radius);
+  background: var(--gmap-water);
+
+  --gmap-water: #dce8f4;
+  --gmap-water-label: #7f9bb8;
+  --gmap-land: #f5f7f9;
+  --gmap-coast: #c3d2e2;
+  --gmap-urban: #eaeef3;
+  --gmap-grid: #dde4ec;
+  --gmap-road: #d5dce5;
+  --gmap-road-major: #f0c36b;
+  --gmap-river: #b7cfe8;
+  --gmap-rail: #a9b4c1;
+  --gmap-place: #8592a1;
+  --gmap-place-label: #4f5d6d;
+  --gmap-surface: #fff;
+  --gmap-surface-border: #d8dee6;
+  --gmap-surface-text: #1f2937;
+  --gmap-surface-muted: #5b6776;
+  --gmap-halo: #fff;
+}
+
+[data-bs-theme='dark'] .gmap {
+  --gmap-water: #0b1627;
+  --gmap-water-label: #4d6788;
+  --gmap-land: #1a2436;
+  --gmap-coast: #2c3a52;
+  --gmap-urban: #1f2b40;
+  --gmap-grid: #243048;
+  --gmap-road: #2e3b53;
+  --gmap-road-major: #7a6440;
+  --gmap-river: #1d3453;
+  --gmap-rail: #4a5870;
+  --gmap-place: #7b8799;
+  --gmap-place-label: #b3bdcb;
+  --gmap-surface: #1e293b;
+  --gmap-surface-border: #334155;
+  --gmap-surface-text: #e2e8f0;
+  --gmap-surface-muted: #94a3b8;
+  --gmap-halo: #1a2436;
+}
+
+// A live Google map fills the container; the preview is removed.
+.gmap-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.gmap-preview-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: var(--bs-body-font-family);
+
+  .gp-water {
+    fill: var(--gmap-water);
+  }
+  .gp-land {
+    fill: var(--gmap-land);
+    stroke: var(--gmap-coast);
+    stroke-width: 1.2;
+    stroke-linejoin: round;
+  }
+  .gp-urban {
+    fill: var(--gmap-urban);
+  }
+  .gp-lake {
+    fill: var(--gmap-water);
+    stroke: var(--gmap-coast);
+    stroke-width: 1;
+  }
+  .gp-grid {
+    fill: none;
+    stroke: var(--gmap-grid);
+    stroke-width: 1;
+    stroke-dasharray: 3 4;
+  }
+  .gp-river {
+    fill: none;
+    stroke: var(--gmap-river);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+  }
+  .gp-rail {
+    fill: none;
+    stroke: var(--gmap-rail);
+    stroke-width: 1.5;
+    stroke-dasharray: 5 3;
+  }
+  .gp-road,
+  .gp-road-major {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .gp-road {
+    stroke: var(--gmap-road);
+    stroke-width: 2;
+  }
+  .gp-road-major {
+    stroke: var(--gmap-road-major);
+    stroke-width: 3;
+  }
+
+  // Traffic & transit example (Google's layer colours)
+  .gp-traffic {
+    stroke: #34a853;
+    stroke-width: 4;
+  }
+  .gp-traffic-slow {
+    stroke: #f9a825;
+    stroke-width: 3;
+  }
+  .gp-key-traffic {
+    fill: #34a853;
+  }
+  .gp-key-slow {
+    fill: #f9a825;
+  }
+  .gp-key-transit {
+    fill: var(--gmap-rail);
+  }
+
+  .gp-place {
+    fill: var(--gmap-place);
+    stroke: var(--gmap-halo);
+    stroke-width: 1.5;
+  }
+  .gp-place-label,
+  .gp-water-label {
+    font-size: 12px;
+    font-weight: 500;
+    paint-order: stroke;
+    stroke: var(--gmap-halo);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+  .gp-place-label {
+    fill: var(--gmap-place-label);
+  }
+  .gp-place-major {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .gp-water-label {
+    fill: var(--gmap-water-label);
+    stroke: var(--gmap-water);
+    font-style: italic;
+    letter-spacing: 0.04em;
+  }
+
+  // Geometry example: same colours as the live overlays
+  .gp-shape {
+    fill-opacity: 0.35;
+    stroke-opacity: 0.8;
+    stroke-width: 2;
+  }
+  .gp-shape-blue {
+    fill: #0d6efd;
+    stroke: #0d6efd;
+  }
+  .gp-shape-green {
+    fill: #198754;
+    stroke: #198754;
+    stroke-width: 3;
+  }
+  .gp-shape-purple {
+    fill: #6f42c1;
+    stroke: #6f42c1;
+  }
+
+  .gp-pin {
+    fill: #ea4335;
+    stroke: #b31412;
+    stroke-width: 1;
+  }
+  .gp-pin-dot {
+    fill: #b31412;
+  }
+  .gp-you {
+    fill: #0d6efd;
+    fill-opacity: 0.85;
+    stroke: #fff;
+    stroke-width: 2;
+  }
+  .gp-you-halo {
+    fill: #0d6efd;
+    fill-opacity: 0.15;
+  }
+
+  .gp-label-bg,
+  .gp-chip,
+  .gp-info-bg {
+    fill: var(--gmap-surface);
+    stroke: var(--gmap-surface-border);
+  }
+  .gp-label,
+  .gp-chip-text,
+  .gp-info-title,
+  .gp-info-text {
+    font-size: 12px;
+    fill: var(--gmap-surface-text);
+  }
+  .gp-label,
+  .gp-info-title {
+    font-weight: 600;
+  }
+  .gp-info-title {
+    font-size: 13px;
+  }
+  .gp-info-text {
+    fill: var(--gmap-surface-muted);
+  }
+
+  // Night-mode example: the palette of the live map's night style
+  &.is-night {
+    --gmap-water: #17263c;
+    --gmap-water-label: #515c6d;
+    --gmap-land: #242f3e;
+    --gmap-coast: #2d3a4c;
+    --gmap-urban: #283445;
+    --gmap-grid: #2a3646;
+    --gmap-road: #38414e;
+    --gmap-road-major: #746855;
+    --gmap-river: #17263c;
+    --gmap-place: #d59563;
+    --gmap-place-label: #d59563;
+    --gmap-halo: #242f3e;
+  }
+}
+
+.gmap-notice {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100% - 24px);
+  padding: 6px 10px;
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  color: var(--bs-body-color);
+  background: rgba(var(--bs-body-bg-rgb), 0.94);
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0, 0, 0, 0.08));
+
+  i {
+    color: var(--bs-primary);
+  }
+
+  code {
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+}

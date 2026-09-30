@@ -1,0 +1,15 @@
+<svg class="gmap-preview-svg is-night" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map preview: Brooklyn, New York, in a night-mode map style" xmlns="http://www.w3.org/2000/svg">
+<!-- Static preview of the Google map (zoom 12). Made with Natural Earth, public domain: naturalearthdata.com -->
+<rect class="gp-water" width="800" height="400"/>
+<path class="gp-land" d="M128.4,-10L114.3,5.6L47.5,57.1L-5.9,126.1L-10,137.9L-10,-10ZM810,227.2L792,216.8L750.8,204.5L686.7,224.3L636.4,238L612,253.2L595.2,270L570.8,301.3L566.2,337.1L593.6,390.4L598.3,410L245.1,410L245.1,410L240.1,402.7L166.9,370.8L137.9,316L150,242.8L185,203.1L217,143.6L209.3,93.2L248.9,45.9L261.1,23L281.8,8.8L311.6,-9.8L312.1,-10L810,-10ZM252.8,-10L247.9,-7.6L205.1,10.7L207.6,-10L252.8,-10ZM-10,214L11,201.9L30.9,204.8L41.6,221.6L46.3,245.9L37,261.3L44.8,302.4L75.4,335.8L98.3,381.5L76.5,410L-10,410Z"/>
+<path class="gp-urban" d="M252.8,-10L247.9,-7.6L247.9,-7.6L205.1,10.7L207.6,-10L252.8,-10ZM128.4,-10L114.3,5.6L47.5,57.1L-5.9,126.1L-10,137.9L-10,-10ZM-10,214L11,201.9L30.9,204.8L41.6,221.6L46.3,245.9L37,261.3L37,261.3L44.8,302.4L75.4,335.8L98.3,381.5L76.5,410L-10,410ZM810,227.2L792,216.8L750.8,204.5L686.7,224.3L636.4,238L612,253.2L595.2,270L570.8,301.3L566.2,337.1L593.6,390.4L598.3,410L245.1,410L245.1,410L240.1,402.7L166.9,370.8L137.9,316L150,242.8L185,203.1L217,143.6L209.3,93.2L248.9,45.9L261.1,23L281.8,8.8L311.6,-9.8L312.1,-10L810,-10Z"/>
+<path class="gp-grid" d="M108.7,410L108.7,-10M254.4,410L254.4,-10M400,410L400,-10M545.6,410L545.6,-10M691.3,410L691.3,-10M-10,391.9L810,391.9M-10,200L810,200M-10,8L810,8M254.4,410L254.4,-10M400,410L400,-10M-10,391.9L810,391.9"/>
+<path class="gp-road" d="M325.7,205.1L369.3,193.6L482.5,182.1M482.5,182.1L565.2,170.6L634.9,130.4L713.3,130.4"/>
+<path class="gp-road-major" d="M174.1,330.7L163.9,350.7M-10,360.9L118.4,357.3L163.9,350.7M810,132.7L776,130.7L680,134.9L606.3,168.5L541.1,220.8L512.8,284.3L447.6,362.7L385.3,388.8L311.6,400L229.5,310.4L192.6,288M174.1,330.7L199.3,264.1L194.3,230.7L255,164.1L315.7,30.7L289.6,-10M-10,51L63.5,-10M325.7,205.1L269.1,136.2M195.1,228L264.8,136.2L243,84.5L264.8,9.8L356.2,21.3L371.3,-10M810,50.6L785.6,-10"/>
+<g transform="translate(416.9 91.7)"><circle class="gp-place" r="3"/><text class="gp-place-label gp-place-major" x="7" y="4" text-anchor="start">Brooklyn</text></g>
+<g transform="translate(344.7 160.8)"><circle class="gp-place" r="3"/><text class="gp-place-label" x="-7" y="4" text-anchor="end">Prospect Park</text></g>
+<g transform="translate(167.3 290.6)"><circle class="gp-place" r="3"/><text class="gp-place-label" x="7" y="4" text-anchor="start">Bay Ridge</text></g>
+<g transform="translate(528.2 237.6)"><circle class="gp-place" r="3"/><text class="gp-place-label" x="7" y="4" text-anchor="start">Canarsie</text></g>
+<g transform="translate(230.2 110.2)"><circle class="gp-place" r="3"/><text class="gp-place-label" x="-7" y="4" text-anchor="end">Red Hook</text></g>
+<g transform="translate(444.9 309.4)"><circle class="gp-place" r="3"/><text class="gp-place-label" x="7" y="4" text-anchor="start">Flatlands</text></g>
+</svg>

@@ -92,6 +92,14 @@ export class App {
       }
     },
     {
+      name: 'gmaps',
+      selector: '[data-gmap]',
+      load: async app => {
+        const { GoogleMapsManager } = await import('./components/gmaps.js');
+        app.components.set('gmaps', new GoogleMapsManager());
+      }
+    },
+    {
       name: 'forms',
       selector: 'form[data-validate]',
       load: async app => {

@@ -1,0 +1,12 @@
+<svg class="gmap-preview-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map preview: central Lima with three elevation markers" xmlns="http://www.w3.org/2000/svg">
+<!-- Static preview of the Google map (zoom 13). Made with Natural Earth, public domain: naturalearthdata.com -->
+<rect class="gp-water" width="800" height="400"/>
+<path class="gp-land" d="M-10,-10L810,-10L810,410L-10,410Z"/>
+<path class="gp-urban" d="M-10,-10L810,-10L810,410L-10,410Z"/>
+<path class="gp-grid" d="M40.8,410L40.8,-10M99,410L99,-10M157.3,410L157.3,-10M215.5,410L215.5,-10M273.8,410L273.8,-10M332,410L332,-10M390.3,410L390.3,-10M448.5,410L448.5,-10M506.8,410L506.8,-10M565.1,410L565.1,-10M623.3,410L623.3,-10M681.6,410L681.6,-10M739.8,410L739.8,-10M798.1,410L798.1,-10M-10,358.9L810,358.9M-10,299.3L810,299.3M-10,239.7L810,239.7M-10,180.1L810,180.1M-10,120.6L810,120.6M-10,61L810,61M-10,1.5L810,1.5M99,410L99,-10M157.3,410L157.3,-10M273.8,410L273.8,-10M390.3,410L390.3,-10M448.5,410L448.5,-10M565.1,410L565.1,-10M623.3,410L623.3,-10M739.8,410L739.8,-10M798.1,410L798.1,-10M-10,180.1L810,180.1M-10,120.6L810,120.6M-10,61L810,61M-10,1.5L810,1.5"/>
+<path class="gp-road" d="M810,271.9L758.8,283.1M758.8,283.1L422.4,356.8L254.2,356.8L62,332.2L-10,339.6"/>
+<path class="gp-road-major" d="M13.1,-10L-10,37.2M-10,396.5L47.2,410"/>
+<g class="gp-marker" transform="translate(368.5 182.5)"><path class="gp-pin" d="M0 0C-1.6-5.4-9-10.5-9-17.5a9 9 0 0 1 18 0C9-10.5 1.6-5.4 0 0Z"/><circle class="gp-pin-dot" cy="-17.5" r="3.3"/><g transform="translate(-99.2 -36)"><rect class="gp-label-bg" width="85.2" height="22" rx="5"/><text class="gp-label" x="9" y="15">Location 1</text></g></g>
+<g class="gp-marker" transform="translate(422.4 240)"><path class="gp-pin" d="M0 0C-1.6-5.4-9-10.5-9-17.5a9 9 0 0 1 18 0C9-10.5 1.6-5.4 0 0Z"/><circle class="gp-pin-dot" cy="-17.5" r="3.3"/><g transform="translate(-99.2 -36)"><rect class="gp-label-bg" width="85.2" height="22" rx="5"/><text class="gp-label" x="9" y="15">Location 2</text></g></g>
+<g class="gp-marker" transform="translate(439.5 208.8)"><path class="gp-pin" d="M0 0C-1.6-5.4-9-10.5-9-17.5a9 9 0 0 1 18 0C9-10.5 1.6-5.4 0 0Z"/><circle class="gp-pin-dot" cy="-17.5" r="3.3"/><g transform="translate(14 -36)"><rect class="gp-label-bg" width="85.2" height="22" rx="5"/><text class="gp-label" x="9" y="15">Location 3</text></g></g>
+</svg>

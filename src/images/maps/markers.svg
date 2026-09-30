@@ -1,0 +1,18 @@
+<svg class="gmap-preview-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map preview: Chicago with markers on Chicago, Willis Tower and Millennium Park" xmlns="http://www.w3.org/2000/svg">
+<!-- Static preview of the Google map (zoom 11). Made with Natural Earth, public domain: naturalearthdata.com -->
+<rect class="gp-water" width="800" height="400"/>
+<path class="gp-land" d="M-10,-10L810,-10L810,410L-10,410Z"/>
+<path class="gp-urban" d="M399.9,-10L402.6,14.8L445.9,115.3L445.9,115.4L445.9,115.4L480.8,258.6L505.7,319.9L567.9,410L-10,410L-10,-10Z"/>
+<path class="gp-lake" d="M567.7,410L505.5,320L480.7,258.4L445.9,115.1L402.4,14.9L399.7,-10L810,-10L810,410Z"/>
+<path class="gp-grid" d="M36,410L36,-10M108.8,410L108.8,-10M181.6,410L181.6,-10M254.4,410L254.4,-10M327.3,410L327.3,-10M400.1,410L400.1,-10M472.9,410L472.9,-10M545.7,410L545.7,-10M618.5,410L618.5,-10M691.3,410L691.3,-10M764.2,410L764.2,-10M-10,395.2L400,394.4L810,395.2M-10,297.6L400,296.7L810,297.6M-10,199.9L400,199L810,199.9M-10,102.1L400,101.2L810,102.1M-10,4.2L400,3.3L810,4.2M108.8,410L108.8,-10M181.6,410L181.6,-10M254.4,410L254.4,-10M327.3,410L327.3,-10M472.9,410L472.9,-10M545.7,410L545.7,-10M618.5,410L618.5,-10M691.3,410L691.3,-10M-10,395.2L400,394.4L810,395.2M-10,199.9L400,199L810,199.9"/>
+<path class="gp-road" d="M57.2,14.4L63.7,198.7L78.9,254.2L83.3,376.9L105.1,403.1M266.2,373.9L261.8,160.7M261.8,154.8L257.7,-10M267.1,410L266.2,373.9M444.7,169.5L451.2,113.9L438.2,99.3"/>
+<path class="gp-road-major" d="M259.9,-10L357.9,59.5L375.6,76.5L390.8,113.9L406,130.8L416.1,205.6M-10,189.7L-8.8,188.6L8.9,147.8L1.3,49.3L6.4,32.3L59.5,18.7L66.8,-10M-10,218.6L-1.2,222.5L39.3,327.7M100,385.4L163.2,304L180.9,307.4L226.4,290.4L416.1,205.6M100,385.4L39.3,327.7M416.1,205.6L428.7,236.1L413.6,320.9L416.1,348.1L466.2,410M131.7,410L100,385.4M-10,355L39.3,327.7M258.2,-10L259.3,-1.7M-10,82.3L2.7,93.4L7.1,140.2L48.4,160.7L133.4,157.8L166,151.9L220.4,157.8L333.7,149L420.8,149"/>
+<g transform="translate(204.2 131.6)"><circle class="gp-place" r="3"/><text class="gp-place-label" x="7" y="4" text-anchor="start">Oak Park</text></g>
+<g transform="translate(248.8 208.7)"><circle class="gp-place" r="3"/><text class="gp-place-label" x="-7" y="4" text-anchor="end">Cicero</text></g>
+<g transform="translate(486.4 308.9)"><circle class="gp-place" r="3"/><text class="gp-place-label" x="7" y="4" text-anchor="start">Hyde Park</text></g>
+<g transform="translate(398.2 60.4)"><circle class="gp-place" r="3"/><text class="gp-place-label" x="-7" y="4" text-anchor="end">Lincoln Park</text></g>
+<text class="gp-water-label" x="560.3" y="239.2" text-anchor="middle">Lake Michigan</text>
+<g class="gp-marker" transform="translate(400 200)"><path class="gp-pin" d="M0 0C-1.6-5.4-9-10.5-9-17.5a9 9 0 0 1 18 0C9-10.5 1.6-5.4 0 0Z"/><circle class="gp-pin-dot" cy="-17.5" r="3.3"/><g transform="translate(-79 -36)"><rect class="gp-label-bg" width="65" height="22" rx="5"/><text class="gp-label" x="9" y="15">Chicago</text></g></g>
+<g class="gp-marker" transform="translate(420.6 143.6)"><path class="gp-pin" d="M0 0C-1.6-5.4-9-10.5-9-17.5a9 9 0 0 1 18 0C9-10.5 1.6-5.4 0 0Z"/><circle class="gp-pin-dot" cy="-17.5" r="3.3"/><g transform="translate(-112.6 -36)"><rect class="gp-label-bg" width="98.6" height="22" rx="5"/><text class="gp-label" x="9" y="15">Willis Tower</text></g></g>
+<g class="gp-marker" transform="translate(439.1 137.8)"><path class="gp-pin" d="M0 0C-1.6-5.4-9-10.5-9-17.5a9 9 0 0 1 18 0C9-10.5 1.6-5.4 0 0Z"/><circle class="gp-pin-dot" cy="-17.5" r="3.3"/><g transform="translate(14 -36)"><rect class="gp-label-bg" width="118.8" height="22" rx="5"/><text class="gp-label" x="9" y="15">Millennium Park</text></g></g>
+</svg>

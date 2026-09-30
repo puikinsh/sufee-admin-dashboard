@@ -1,0 +1,11 @@
+<svg class="gmap-preview-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map preview: click anywhere on the map to place a marker" xmlns="http://www.w3.org/2000/svg">
+<!-- Static preview of the Google map (zoom 16). Made with Natural Earth, public domain: naturalearthdata.com -->
+<rect class="gp-water" width="800" height="400"/>
+<path class="gp-land" d="M-10,-10L810,-10L810,410L-10,410Z"/>
+<path class="gp-urban" d="M-10,-10L810,-10L810,410L-10,410Z"/>
+<path class="gp-grid" d="M42.7,410L42.7,-10M135.9,410L135.9,-10M229.1,410L229.1,-10M322.3,410L322.3,-10M415.5,410L415.5,-10M508.7,410L508.7,-10M601.9,410L601.9,-10M695.1,410L695.1,-10M788.3,410L788.3,-10M-10,327.1L810,327.1M-10,231.8L810,231.8M-10,136.5L810,136.5M-10,41.2L810,41.2M42.7,410L42.7,-10M135.9,410L135.9,-10M229.1,410L229.1,-10M322.3,410L322.3,-10M415.5,410L415.5,-10M508.7,410L508.7,-10M601.9,410L601.9,-10M695.1,410L695.1,-10M788.3,410L788.3,-10"/>
+<g transform="translate(313 303.3)"><circle class="gp-place" r="3"/><text class="gp-place-label" x="-7" y="4" text-anchor="end">Plaza Mayor</text></g>
+<g class="gp-marker" transform="translate(400 200)"><path class="gp-pin" d="M0 0C-1.6-5.4-9-10.5-9-17.5a9 9 0 0 1 18 0C9-10.5 1.6-5.4 0 0Z"/><circle class="gp-pin-dot" cy="-17.5" r="3.3"/></g>
+<g transform="translate(324.1 104)"><path class="gp-info-bg" d="M6 0H145.8A6 6 0 0 1 151.8 6V60A6 6 0 0 1 145.8 66H83.9L75.9 74L67.9 66H6A6 6 0 0 1 0 60V6A6 6 0 0 1 6 0Z"/><text class="gp-info-title" x="12" y="22">You clicked here!</text><text class="gp-info-text" x="12" y="40">Lat: -12.043333</text><text class="gp-info-text" x="12" y="56">Lng: -77.028333</text></g>
+<g transform="translate(243.5 12)"><rect class="gp-chip" width="313" height="26" rx="4"/><text class="gp-chip-text" x="12" y="17">Click anywhere on the map to place a marker</text></g>
+</svg>
