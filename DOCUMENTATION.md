@@ -130,7 +130,7 @@ sufee-admin-dashboard/
 │   │   ├── components/       # UI component modules
 │   │   │   ├── charts.js     # Chart.js integration
 │   │   │   ├── datatable.js  # Table enhancements
-│   │   │   ├── gmaps.js      # Google Maps wrapper
+│   │   │   ├── gmaps.js      # Google Maps examples (preview until a key is set)
 │   │   │   ├── navigation.js # Sidebar navigation
 │   │   │   ├── search.js     # Search functionality
 │   │   │   ├── theme-manager.js # Theme switching
@@ -187,6 +187,7 @@ All dependencies are managed through NPM (package.json):
 | `@fortawesome/fontawesome-free` | ^7.1.0  | Icon library (major upgrade) |
 | `chart.js`                      | ^4.5.0  | Charting library             |
 | `leaflet`                       | ^1.9.4  | Interactive maps             |
+| `@googlemaps/js-api-loader`     | ^2.1.3  | Google Maps loader           |
 | `flag-icons`                    | ^7.2.3  | Country flag icons           |
 | `themify-icons`                 | ^1.0.0  | Additional icons             |
 
@@ -339,7 +340,7 @@ Sufee includes 30 pre-built pages:
 
 ### Maps
 
-- `maps-gmap.html` - Google Maps integration
+- `maps-gmap.html` - Google Maps examples (static previews until you add a key)
 - `maps-vector.html` - Vector maps with Leaflet
 
 ### Icons
@@ -689,6 +690,45 @@ Sufee includes Leaflet 1.9.4 for interactive maps:
 ```
 
 The `leaflet-overrides.scss` file provides Sufee-specific styling for Leaflet maps.
+
+### Google Maps: add your API key
+
+The Google Maps page (`maps-gmap.html`) ships **without an API key**. Until you add one, each of its
+eight examples shows a static preview of the same area, with the same markers and overlays, and this
+notice:
+
+> Preview — add your Google Maps API key in `src/config/maps.config.js` to load the interactive map
+
+The previews are SVGs in `src/images/maps/`, drawn from
+[Natural Earth](https://www.naturalearthdata.com/) data (public domain), so the demo makes no
+requests to Google and exposes no key.
+
+To load interactive Google Maps:
+
+1. In the [Google Cloud console](https://console.cloud.google.com/), create an API key and enable
+   the **Maps JavaScript API** (and the **Elevation API** for the elevation example). Google Maps
+   Platform needs a billing account on the project.
+2. Restrict the key to your site's HTTP referrers and to those APIs. A browser-side key is always
+   visible in the page source.
+3. Paste it into [src/config/maps.config.js](src/config/maps.config.js):
+
+   ```js
+   export default {
+     googleMapsApiKey: 'YOUR_KEY',
+     googleMapsMapId: 'DEMO_MAP_ID' // replace with your own Map ID for production
+   };
+   ```
+
+4. Rebuild (`npm run build`). The key is bundled into the page's JavaScript.
+
+The maps are loaded with Google's official loader,
+[`@googlemaps/js-api-loader`](https://github.com/googlemaps/js-api-loader) (Apache-2.0), by
+[src/scripts/components/gmaps.js](src/scripts/components/gmaps.js). If Google rejects the key (for
+example `RefererNotAllowedMapError` or `BillingNotEnabledMapError` in the console), the previews
+come back with a note to check the key. **Never commit a real key to a public repository**: keep
+`googleMapsApiKey` empty in version control.
+
+The vector maps page (`maps-vector.html`, Leaflet and OpenStreetMap) needs no key.
 
 ---
 

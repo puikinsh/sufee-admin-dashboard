@@ -73,6 +73,7 @@ and calls `load()` for matches. Components self-declare what DOM they own:
 | ----------------------------------------------- | ------------------------------------------ |
 | `[id^="widgetChart"], #trafficChart, #worldMap` | `components/widgets.js` (WidgetManager)    |
 | `[data-chart]`                                  | `components/charts.js` (ChartManager)      |
+| `[data-gmap]`                                   | `components/gmaps.js` (GoogleMapsManager)  |
 | `[data-table]`                                  | `components/datatable.js` (DataTable)      |
 | `form[data-validate]`                           | `components/validation.js` (FormValidator) |
 
@@ -112,8 +113,8 @@ The comment in `main.js` exists to prevent regression.
 - [src/styles/variables.scss](src/styles/variables.scss) — `$primary` etc. (drives Bootstrap) +
   `--sidebar-*` etc. (custom CSS vars).
 - [src/styles/components/](src/styles/components/) — one file per concern: `sidebar`, `header`,
-  `cards`, `buttons`, `forms`, `tables`, `charts`, `widgets`, `leaflet-overrides`. Component styles
-  live here, not in `main.scss`.
+  `cards`, `buttons`, `forms`, `tables`, `charts`, `widgets`, `leaflet-overrides`, `maps`. Component
+  styles live here, not in `main.scss`.
 
 `components/sidebar.scss` is the canonical sidebar styling (450 lines). `components/header.scss` is
 the canonical header. Don't duplicate styles back into `main.scss`.
@@ -131,14 +132,16 @@ the canonical header. Don't duplicate styles back into `main.scss`.
 ## Dependencies (actual, from `package.json`)
 
 Runtime: `bootstrap@^5.3.8`, `chart.js@^4.5.1`, `@fortawesome/fontawesome-free@^7.3.1`,
-`leaflet@^1.9.4`, `flag-icons@^7.5.0`, `@fontsource-variable/open-sans@^5.3.0`.
+`leaflet@^1.9.4`, `flag-icons@^7.5.0`, `@fontsource-variable/open-sans@^5.3.0`,
+`@googlemaps/js-api-loader@^2.1.3`.
 
 Themify Icons is **not** an npm dependency — it is served as a static copy from
 `public/themify-icons/`.
 
-Note: `components/gmaps.js` is Google Maps (loads `maps.googleapis.com` from `maps-gmap.html`).
-`components/world-map.js` is Leaflet-based. There's a demo Google Maps API key hardcoded in
-`maps-gmap.html` — replace with your own for production.
+Note: `components/gmaps.js` is the Google Maps page. With no key in `src/config/maps.config.js` (the
+committed state — never commit a key) it renders the static Natural Earth SVG previews from
+`src/images/maps/`; with a key it loads Google through `@googlemaps/js-api-loader`.
+`components/world-map.js` is Leaflet-based and needs no key.
 
 In dev mode, `window.bootstrap`, `window.Chart`, `window.sufeeApp`, `window.partialsLoader`, and
 `window.errorHandler` are exposed for console debugging.
