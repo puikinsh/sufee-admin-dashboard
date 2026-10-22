@@ -180,6 +180,14 @@ come with premium support, regular updates, and everything you need for client p
    ```
    Production files will be generated in the `dist/` directory
 
+## Deploy
+
+To host your own copy on Wasmer Edge, fork this repository and import your fork. The button below
+opens the Wasmer import page for this repository and does not copy it into your GitHub account.
+Wasmer installs the dependencies, runs `npm run build` and serves the generated `dist/` folder.
+
+[![Deploy to Wasmer](https://img.shields.io/badge/Deploy%20to-Wasmer-171717?logo=wasmer&logoColor=white)](https://wasmer.io/apps/create?github=puikinsh%2Fsufee-admin-dashboard)
+
 ## Project Structure
 
 ```
