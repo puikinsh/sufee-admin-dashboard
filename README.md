@@ -62,8 +62,8 @@ copy-paste. v3.0 modernizes the visual language and strips ~1,800 lines of legac
 
 ### Versions in this release
 
-Bootstrap 5.3.8 · Chart.js 4.5.1 · Font Awesome 7.3.1 · Vite 8.2.0 · ESLint 10.8.0 · Sass 1.102.0 ·
-Prettier 3.9.6 · `@fontsource-variable/open-sans` 5.3.0 · `vite-plugin-handlebars` 2.0.3. Zero
+Bootstrap 5.3.9 · Chart.js 4.6.1 · Font Awesome 7.3.1 · Vite 8.3.8 · ESLint 10.15.0 · Sass 1.108.2 ·
+Prettier 3.10.1 · `@fontsource-variable/open-sans` 5.3.0 · `vite-plugin-handlebars` 2.0.3. Zero
 vulnerabilities.
 
 See [CHANGELOG.md](./CHANGELOG.md) for the complete release notes including breaking changes and
@@ -467,8 +467,8 @@ built and tested against.
 
 | Package                          | Version | Purpose                                  |
 | -------------------------------- | ------- | ---------------------------------------- |
-| `bootstrap`                      | 5.3.8   | UI framework (compiled from SCSS source) |
-| `chart.js`                       | 4.5.1   | All charts                               |
+| `bootstrap`                      | 5.3.9   | UI framework (compiled from SCSS source) |
+| `chart.js`                       | 4.6.1   | All charts                               |
 | `@fortawesome/fontawesome-free`  | 7.3.1   | Icon set                                 |
 | `leaflet`                        | 1.9.4   | Vector / world maps                      |
 | `@googlemaps/js-api-loader`      | 2.1.3   | Loads Google Maps once a key is set      |
