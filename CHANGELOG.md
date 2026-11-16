@@ -5,6 +5,17 @@ All notable changes to the Sufee Admin Dashboard Template will be documented in 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.1] - 2026-11-16
+
+Maintenance release: dependencies and Bootstrap brought up to date. No visual changes.
+
+### Changed
+
+- Bootstrap 5.3.8 to 5.3.9.
+- Chart.js 4.6.1, flag-icons 7.6.0, Vite 8.3.8, Sass 1.108.2, ESLint 10.15.0, Prettier 3.10.1 and
+  the remaining dev dependencies updated to their latest releases. `npm audit` reports 0
+  vulnerabilities.
+
 ## [3.2.0] - 2026-10-01
 
 Google Maps no longer ships with an API key. The demo shows static map previews; buyers add their
