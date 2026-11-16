@@ -37,13 +37,13 @@
   "homepage": "https://preview.colorlib.com/theme/sufee/",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@vitejs/plugin-legacy": "^8.2.2",
-    "eslint": "^10.8.0",
+    "@vitejs/plugin-legacy": "^8.2.4",
+    "eslint": "^10.15.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.6",
-    "prettier": "^3.9.6",
-    "sass": "^1.102.0",
-    "vite": "^8.2.0",
+    "eslint-plugin-prettier": "^5.5.7",
+    "prettier": "^3.10.1",
+    "sass": "^1.108.2",
+    "vite": "^8.3.8",
     "vite-plugin-handlebars": "^2.0.3",
     "vite-plugin-static-copy": "^4.1.1"
   },
@@ -51,9 +51,9 @@
     "@fontsource-variable/open-sans": "^5.3.0",
     "@fortawesome/fontawesome-free": "^7.3.1",
     "@googlemaps/js-api-loader": "^2.1.3",
-    "bootstrap": "^5.3.8",
-    "chart.js": "^4.5.1",
-    "flag-icons": "^7.5.0",
+    "bootstrap": "^5.3.9",
+    "chart.js": "^4.6.1",
+    "flag-icons": "^7.6.0",
     "leaflet": "^1.9.4"
   },
   "bugs": {

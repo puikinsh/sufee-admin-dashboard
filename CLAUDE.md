@@ -131,7 +131,7 @@ the canonical header. Don't duplicate styles back into `main.scss`.
 
 ## Dependencies (actual, from `package.json`)
 
-Runtime: `bootstrap@^5.3.8`, `chart.js@^4.5.1`, `@fortawesome/fontawesome-free@^7.3.1`,
+Runtime: `bootstrap@^5.3.9`, `chart.js@^4.6.1`, `@fortawesome/fontawesome-free@^7.3.1`,
 `leaflet@^1.9.4`, `flag-icons@^7.5.0`, `@fontsource-variable/open-sans@^5.3.0`,
 `@googlemaps/js-api-loader@^2.1.3`.
 

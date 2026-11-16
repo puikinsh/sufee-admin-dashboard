@@ -27,14 +27,14 @@ admin template with modern build tools and latest dependencies.
 
 ## Introduction
 
-Sufee Admin Dashboard is a modern, responsive admin template built with Bootstrap 5.3.8 and Vite.
+Sufee Admin Dashboard is a modern, responsive admin template built with Bootstrap 5.3.9 and Vite.
 Originally created with Bootstrap 4, version 2.0 brought a complete modernization with contemporary
 build tools and a component-based architecture. Version 2.2 updates all dependencies to their latest
 versions for improved performance and security.
 
 ### Key Features
 
-- **Bootstrap 5.3.8**: Latest Bootstrap framework with bug fixes and improvements
+- **Bootstrap 5.3.9**: Latest Bootstrap framework with bug fixes and improvements
 - **Vite 7.1.8**: Lightning-fast development with HMR and enhanced build performance
 - **Dynamic Partials**: Reusable HTML components system
 - **Chart.js 4.5.0**: Modern charting library
@@ -51,7 +51,7 @@ versions for improved performance and security.
 ### What's New in v2.2
 
 - **Updated all dependencies** to their latest versions
-- **Bootstrap 5.3.8**: Latest stable release
+- **Bootstrap 5.3.9**: Latest stable release
 - **Font Awesome 7.1.0**: Major version upgrade with new icon library
 - **Vite 7.1.8**: Enhanced build system performance
 - **ESLint 9.36.0**: Improved JavaScript linting
@@ -183,7 +183,7 @@ All dependencies are managed through NPM (package.json):
 
 | Package                         | Version | Purpose                      |
 | ------------------------------- | ------- | ---------------------------- |
-| `bootstrap`                     | ^5.3.8  | UI framework (latest stable) |
+| `bootstrap`                     | ^5.3.9  | UI framework (latest stable) |
 | `@fortawesome/fontawesome-free` | ^7.1.0  | Icon library (major upgrade) |
 | `chart.js`                      | ^4.5.0  | Charting library             |
 | `leaflet`                       | ^1.9.4  | Interactive maps             |
